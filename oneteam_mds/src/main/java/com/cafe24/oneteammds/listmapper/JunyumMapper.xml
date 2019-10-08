@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.listmapper.JunyumMapper">
+ 	
+ 	<!-- 병원 -->
+ 	
+ 	<!-- 병원DB - 법정 전염성 감염병 -->
+ 	
+ 	<select	id="getJunyumhList" 
+ 			resultType="com.cafe24.oneteammds.listvo.Junyumh">
+ 		SELECT 
+ 			lcidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , lcidName
+ 		  , lcidpGroup
+ 		  , lcidtResult
+ 		  , lcidinOut
+ 		  , lcidArea
+ 		  , pDoctor
+ 		  , lcidoDate
+ 		  , lciddDate
+ 		  , lcidrDate
+ 		  , adminId
+ 		  , lcidDate
+		FROM 
+			junyumh
+ 	</select>
+ 	
+ 	<!-- 병원DB - 법정 전염성 감염병 -> 법정 전염성 감염병 regist form -->
+ 	
+ 	<select id="getJunyumhById"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Junyumh">
+		SELECT 
+ 			lcidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , lcidName
+ 		  , lcidpGroup
+ 		  , lcidtResult
+ 		  , lcidinOut
+ 		  , lcidArea
+ 		  , pDoctor
+ 		  , lcidoDate
+ 		  , lciddDate
+ 		  , lcidrDate
+ 		  , adminId
+ 		  , lcidDate
+		FROM 
+			junyumh
+		where
+			patientId = #{patientId}
+ 	</select>
+ 	
+ 	<!-- 법정 전염성 감염병 regist complete -->
+ 	
+ 	<insert id="getJunyumRegist"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Junyumh">
+ 		REPLACE INTO 
+ 			junyum
+		SELECT
+			lcidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , lcidName
+ 		  , lcidpGroup
+ 		  , lcidtResult
+ 		  , lcidinOut
+ 		  , lcidArea
+ 		  , pDoctor
+ 		  , lcidoDate
+ 		  , lciddDate
+ 		  , lcidrDate
+ 		  , adminId
+ 		  , lcidDate
+		FROM 
+			junyumh
+		WHERE 
+			patientId = #{patientId}
+	</insert>
+	
+	<!-- 시스템DB -->
+	
+	<!-- MDS DB - 법정 전염성 감염병 -->
+	
+	<select id="getJunyumdbList"
+			resultType="com.cafe24.oneteammds.listvo.Junyum">
+		SELECT 
+ 			lcidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , lcidName
+ 		  , lcidpGroup
+ 		  , lcidtResult
+ 		  , lcidinOut
+ 		  , lcidArea
+ 		  , pDoctor
+ 		  , lcidoDate
+ 		  , lciddDate
+ 		  , lcidrDate
+ 		  , adminId
+ 		  , lcidDate
+		FROM 
+			junyum
+	</select>
+	
+ </mapper>

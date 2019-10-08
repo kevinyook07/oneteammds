@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout/default}">
+
+<th:block layout:fragment="customContents">
+	<div class="page-content">
+	 <!-- **************윗상단 메인 메뉴 ************** -->
+		<div class="page-header">
+		<h2 style="text-align:center">알러지 및 부작용 리스트</h2>
+			<div class="container-fluid"></div>
+	<!-- **************윗상단 메인 메뉴END ************** -->
+	<!--************메인 컨텐트 ************ -->		
+	   	</div>
+	   	  <!-- Form Elements -->
+              <div class="col-lg-12">
+                <div class="block">
+                  
+                  <div class="block-body">
+                    
+                     <table class="table">
+                      <thead>
+		<tr>
+			<td>진단내역</td>
+		</tr>
+		<tr>
+			<td>진단내역코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.dbCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.drDate}"></td>
+			<td>
+				<a th:href="@{/jindandbDesc(dbCode=${list.dbCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>약물처방내역</td>
+		</tr>
+		<tr>
+			<td>약물처방내역코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.mbCode}"></td>
+			<td th:text="${list.mrDate}"></td>
+			<td>
+				<a th:href="@{/yakmuldbDesc(mbCode=${list.mbCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>검체검사결과</td>
+		</tr>
+		<tr>
+			<td>검체검사결과코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.strCode}"></td>
+			<td th:text="${list.strDate}"></td>
+			<td>
+				<a th:href="@{/gumchedbDesc(strCode=${list.strCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>병리검사결과</td>
+		</tr>
+		<tr>
+			<td>병리검사결과코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.ptrCode}"></td>
+			<td th:text="${list.ptrDate}"></td>
+			<td>
+				<a th:href="@{/byungridbDesc(ptrCode=${list.ptrCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>영상검사결과</td>
+		</tr>
+		<tr>
+			<td>영상검사결과코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.itrCode}"></td>
+			<td th:text="${list.itrDate}"></td>
+			<td>
+				<a th:href="@{/youngsangdbDesc(itrCode=${list.itrCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>영상판독정보</td>
+		</tr>
+		<tr>
+			<td>영상판독정보코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.iidCode}"></td>
+			<td th:text="${list.iidrDate}"></td>
+			<td>
+				<a th:href="@{/pandogdbDesc(iidCode=${list.iidCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>기능검사결과</td>
+		</tr>
+		<tr>
+			<td>기능검사결과코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.ftrCode}"></td>
+			<td th:text="${list.ftrDate}"></td>
+			<td>
+				<a th:href="@{/ginuengdbDesc(ftrCode=${list.ftrCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>수술내역</td>
+		</tr>
+		<tr>
+			<td>수술내역코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.sbCode}"></td>
+			<td th:text="${list.sbDate}"></td>
+			<td>
+				<a th:href="@{/susuldbDesc(sbCode=${list.sbCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>알러지및부작용</td>
+		</tr>
+		<tr>
+			<td>알러지및부작용코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.aseCode}"></td>
+			<td th:text="${list.aserDate}"></td>
+			<td>
+				<a th:href="@{/allergydbDesc(aseCode=${list.aseCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>예방접종내역</td>
+		</tr>
+		<tr>
+			<td>예방접종내역코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.pibCode}"></td>
+			<td th:text="${list.pirDate}"></td>
+			<td>
+				<a th:href="@{/yebangdbDesc(pibCode=${list.pibCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>생체신호및상태</td>
+		</tr>
+		<tr>
+			<td>생체신호및상태코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.vscCode}"></td>
+			<td th:text="${list.vscrDate}"></td>
+			<td>
+				<a th:href="@{/saengchaedbDesc(vscCode=${list.vscCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>흡연상태</td>
+		</tr>
+		<tr>
+			<td>흡연상태코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.scCode}"></td>
+			<td th:text="${list.scrDate}"></td>
+			<td>
+				<a th:href="@{/smokingdbDesc(scCode=${list.scCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>음주상태</td>
+		</tr>
+		<tr>
+			<td>음주상태코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.dcCode}"></td>
+			<td th:text="${list.dcrDate}"></td>
+			<td>
+				<a th:href="@{/drinkingdbDesc(dcCode=${list.dcCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>법정전염성감염병</td>
+		</tr>
+		<tr>
+			<td>법정전염성감염병코드</td>
+			<td>등록일자</td>
+			<td>상세보기</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td th:text="${list.lcidCode}"></td>
+			<td th:text="${list.lcidDate}"></td>
+			<td>
+				<a th:href="@{/junyumdbDesc(lcidCode=${list.lcidCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<td>전체상세확인</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totaldbList}">
+			<td>
+				<a th:href="@{/totaldbDesc(dbCode=${list.dbCode}
+										 , mbCode=${list.mbCode}
+										 , strCode=${list.strCode}
+										 , ptrCode=${list.ptrCode}
+										 , itrCode=${list.itrCode}
+										 , iidCode=${list.iidCode}
+										 , ftrCode=${list.ftrCode}
+										 , sbCode=${list.sbCode}
+										 , aseCode=${list.aseCode}
+										 , pibCode=${list.pibCode}
+										 , vscCode=${list.vscCode}
+										 , scCode=${list.scCode}
+										 , dcCode=${list.dcCode}
+										 , lcidCode=${list.lcidCode})}">전체상세확인</a>
+			</td>
+		</tr>
+	  </tbody>
+                    </table>
+                      <div class="line"></div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          <!--************메인 컨텐트 END************ -->	
+</th:block>
+</html>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.listmapper.SaengchaeMapper">
+ 	
+ 	<!-- 병원 -->
+ 	
+ 	<!-- 병원DB - 생체신호 및 상태 -->
+ 	
+ 	<select	id="getSaengchaehList" 
+ 			resultType="com.cafe24.oneteammds.listvo.Saengchaeh">
+ 		SELECT 
+ 			vscCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , vscHeight
+ 		  , vscWeight
+ 		  , bpMin
+ 		  , bpMax
+ 		  , bheat
+ 		  , pDoctor
+ 		  , vscCheck
+ 		  , adminId
+ 		  , vscrDate
+		FROM 
+			saengchaeh
+ 	</select>
+ 	
+ 	<!-- 병원DB - 생체신호 및 상태 -> 생체신호 및 상태 regist form -->
+ 	
+ 	<select id="getSaengchaehById"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Saengchaeh">
+		SELECT 
+ 			vscCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , vscHeight
+ 		  , vscWeight
+ 		  , bpMin
+ 		  , bpMax
+ 		  , bheat
+ 		  , pDoctor
+ 		  , vscCheck
+ 		  , adminId
+ 		  , vscrDate
+		FROM 
+			saengchaeh
+		where
+			patientId = #{patientId}
+ 	</select>
+ 	
+ 	<!-- 생체신호 및 상태 regist complete -->
+ 	
+ 	<insert id="getSaengchaeRegist"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Saengchaeh">
+ 	REPLACE INTO 
+ 			saengchae
+		SELECT
+			vscCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , vscHeight
+ 		  , vscWeight
+ 		  , bpMin
+ 		  , bpMax
+ 		  , bheat
+ 		  , pDoctor
+ 		  , vscCheck
+ 		  , adminId
+ 		  , vscrDate
+		FROM 
+			saengchaeh
+		WHERE 
+			patientId = #{patientId}
+	</insert>
+	
+	<!-- 시스템DB -->
+	
+	<!-- MDS DB - 생체신호 및 상태 -->
+	
+	<select id="getSaengchaedbList"
+			resultType="com.cafe24.oneteammds.listvo.Saengchae">
+		SELECT 
+ 			vscCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , vscHeight
+ 		  , vscWeight
+ 		  , bpMin
+ 		  , bpMax
+ 		  , bheat
+ 		  , pDoctor
+ 		  , vscCheck
+ 		  , adminId
+ 		  , vscrDate
+		FROM 
+			saengchae
+	</select>
+	
+ </mapper>

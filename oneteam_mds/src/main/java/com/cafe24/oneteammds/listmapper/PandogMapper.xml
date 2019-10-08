@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.listmapper.PandogMapper">
+ 	
+ 	<!-- 병원 -->
+ 	
+ 	<!-- 병원DB - 영상판독정보 -->
+ 	
+ 	<select	id="getPandoghList" 
+ 			resultType="com.cafe24.oneteammds.listvo.Pandogh">
+ 		SELECT 
+ 			iidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , liContent
+ 		  , iUrl
+ 		  , idName
+ 		  , pDoctor
+ 		  , ifdTime
+ 		  , iliDate
+ 		  , adminId
+ 		  , iidrDate
+		FROM 
+			pandogh
+ 	</select>
+ 	
+ 	<!-- 병원DB - 영상판독정보 -> 영상판독정보 regist form -->
+ 	
+ 	<select id="getPandoghById"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Pandogh">
+		SELECT 
+ 			iidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , liContent
+ 		  , iUrl
+ 		  , idName
+ 		  , pDoctor
+ 		  , ifdTime
+ 		  , iliDate
+ 		  , adminId
+ 		  , iidrDate
+		FROM 
+			pandogh
+		where
+			patientId = #{patientId}
+ 	</select>
+ 	
+ 	<!-- 영상판독정보 regist complete -->
+ 	
+ 	<insert id="getPandogRegist"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Pandogh">
+ 	REPLACE INTO 
+ 			pandog
+		SELECT
+			iidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , liContent
+ 		  , iUrl
+ 		  , idName
+ 		  , pDoctor
+ 		  , ifdTime
+ 		  , iliDate
+ 		  , adminId
+ 		  , iidrDate
+		FROM 
+			pandogh
+		WHERE 
+			patientId = #{patientId}
+	</insert>
+	
+	<!-- 시스템DB -->
+	
+	<!-- MDS DB - 영상판독정보 -->
+	
+	<select id="getPandogdbList"
+			resultType="com.cafe24.oneteammds.listvo.Pandog">
+		SELECT 
+ 			iidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , liContent
+ 		  , iUrl
+ 		  , idName
+ 		  , pDoctor
+ 		  , ifdTime
+ 		  , iliDate
+ 		  , adminId
+ 		  , iidrDate
+		FROM 
+			pandog
+	</select>
+	
+ </mapper>

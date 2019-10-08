@@ -1,0 +1,1312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.listmapper.TotalMapper">
+ 	
+ 	<!-- 병원 -->
+ 	
+ 	<select	id="getTotalhList" 
+ 			resultType="com.cafe24.oneteammds.listvo.Totalh">
+		SELECT
+			jdh.dbCode, jdh.hospitalId, jdh.patientId, jdh.dName, jdh.dCode, jdh.dDate, jdh.pDoctor, jdh.adminId, jdh.drDate
+ 		  , ymh.mbCode,ymh.mmName, ymh.mmCode, ymh.miName, ymh.miCode, ymh.mVolume, ymh.mdUnit, ymh.mdNumber, ymh.mPeriod, ymh.mUsage, ymh.mdTime, ymh.mrDate
+ 		  , gch.strCode,gch.stiName, gch.stiCode, gch.stName, gch.strValue, gch.strrValue, gch.stdTime, gch.strDate
+ 		  , brh.ptrCode, brh.ptName, brh.ptCode, brh.ptrValue, brh.ptdTime, brh.ptrDate
+ 		  , ysh.itrCode, ysh.itName, ysh.itCode, ysh.itrValue, ysh.itdTime, ysh.itrDate
+ 		  , pdh.iidCode, pdh.liContent, pdh.iUrl, pdh.idName, pdh.ifdTime, pdh.iliDate, pdh.iidrDate
+ 		  , gnh.ftrCode, gnh.ftName, gnh.ftCode, gnh.ftrValue, gnh.ftdTime, gnh.ftrDate
+ 		  , ssh.sbCode, ssh.sName, ssh.sCode, ssh.aKind, ssh.sdTime, ssh.sbDate
+ 		  , algh.aseCode, algh.asemFactor, algh.asemfCode, algh.aseName, algh.aseReaction, algh.asedTime, algh.aserDate
+ 		  , ybh.pibCode, ybh.piName, ybh.piCode, ybh.pivName, ybh.piBalance, ybh.piDate, ybh.pirDate
+ 		  , sch.vscCode, sch.vscHeight, sch.vscWeight, sch.bpMin, sch.bpMax, sch.bheat, sch.vscCheck, sch.vscrDate
+ 		  , smkh.scCode, smkh.sccName, smkh.scrDate
+ 		  , drkh.dcCode, drkh.dccName, drkh.dcrDate
+ 		  , jyh.lcidCode, jyh.lcidName, jyh.lcidpGroup, jyh.lcidtResult, jyh.lcidinOut, jyh.lcidArea, jyh.lcidoDate, jyh.lciddDate, jyh.lcidrDate, jyh.lcidDate
+		FROM
+			jindanh jdh
+		JOIN
+			yakmulh ymh
+			ON
+				jdh.hospitalId = ymh.hospitalId
+			AND
+				jdh.patientId = ymh.patientId
+		JOIN
+			gumcheh gch
+			ON
+				jdh.hospitalId = gch.hospitalId
+			AND
+				jdh.patientId = gch.patientId
+		JOIN
+			byungrih brh
+			ON 
+				jdh.hospitalId = brh.hospitalId
+			AND 
+				jdh.patientId = brh.patientId
+		JOIN 
+			youngsangh ysh
+			ON 
+				jdh.hospitalId = ysh.hospitalId
+			AND 
+				jdh.patientId = ysh.patientId
+		JOIN 
+			pandogh pdh
+			ON 
+				jdh.hospitalId = pdh.hospitalId
+			AND 
+				jdh.patientId = pdh.patientId
+		JOIN 
+			ginuengh gnh
+			ON 
+				jdh.hospitalId = gnh.hospitalId
+			AND 
+				jdh.patientId = gnh.patientId
+		JOIN 
+			susulh ssh
+			ON
+				jdh.hospitalId = ssh.hospitalId
+			AND 
+				jdh.patientId = ssh.patientId	 
+		JOIN 
+			allergyh algh
+			ON 
+				jdh.hospitalId = algh.hospitalId
+			AND 
+				jdh.patientId = algh.patientId	
+		JOIN 
+			yebangh ybh
+			ON 
+				jdh.hospitalId = ybh.hospitalId
+			AND 
+				jdh.patientId = ybh.patientId
+		JOIN 
+			saengchaeh sch
+			ON 
+				jdh.hospitalId = sch.hospitalId
+			AND 
+				jdh.patientId = sch.patientId
+		JOIN 
+			smokingh smkh
+			ON 
+				jdh.hospitalId = smkh.hospitalId
+			AND 
+				jdh.patientId = smkh.patientId
+		JOIN 
+			drinkingh drkh
+			ON 
+				jdh.hospitalId = drkh.hospitalId
+			AND 
+				jdh.patientId = drkh.patientId
+		JOIN 
+			junyumh jyh
+			ON 
+				jdh.hospitalId = jyh.hospitalId
+			AND 
+				jdh.patientId = jyh.patientId
+		 
+ 	</select>
+ 	
+ 	<select id="getTotalhById"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Totalh">
+		SELECT
+			jdh.dbCode, jdh.hospitalId, jdh.patientId, jdh.dName, jdh.dCode, jdh.dDate, jdh.pDoctor, jdh.adminId, jdh.drDate
+ 		  , ymh.mbCode,ymh.mmName, ymh.mmCode, ymh.miName, ymh.miCode, ymh.mVolume, ymh.mdUnit, ymh.mdNumber, ymh.mPeriod, ymh.mUsage, ymh.mdTime, ymh.mrDate
+ 		  , gch.strCode,gch.stiName, gch.stiCode, gch.stName, gch.strValue, gch.strrValue, gch.stdTime, gch.strDate
+ 		  , brh.ptrCode, brh.ptName, brh.ptCode, brh.ptrValue, brh.ptdTime, brh.ptrDate
+ 		  , ysh.itrCode, ysh.itName, ysh.itCode, ysh.itrValue, ysh.itdTime, ysh.itrDate
+ 		  , pdh.iidCode, pdh.liContent, pdh.iUrl, pdh.idName, pdh.ifdTime, pdh.iliDate, pdh.iidrDate
+ 		  , gnh.ftrCode, gnh.ftName, gnh.ftCode, gnh.ftrValue, gnh.ftdTime, gnh.ftrDate
+ 		  , ssh.sbCode, ssh.sName, ssh.sCode, ssh.aKind, ssh.sdTime, ssh.sbDate
+ 		  , algh.aseCode, algh.asemFactor, algh.asemfCode, algh.aseName, algh.aseReaction, algh.asedTime, algh.aserDate
+ 		  , ybh.pibCode, ybh.piName, ybh.piCode, ybh.pivName, ybh.piBalance, ybh.piDate, ybh.pirDate
+ 		  , sch.vscCode, sch.vscHeight, sch.vscWeight, sch.bpMin, sch.bpMax, sch.bheat, sch.vscCheck, sch.vscrDate
+ 		  , smkh.scCode, smkh.sccName, smkh.scrDate
+ 		  , drkh.dcCode, drkh.dccName, drkh.dcrDate
+ 		  , jyh.lcidCode, jyh.lcidName, jyh.lcidpGroup, jyh.lcidtResult, jyh.lcidinOut, jyh.lcidArea, jyh.lcidoDate, jyh.lciddDate, jyh.lcidrDate, jyh.lcidDate
+		FROM
+			jindanh jdh
+		JOIN
+			yakmulh ymh
+			ON
+				jdh.hospitalId = ymh.hospitalId
+			AND
+				jdh.patientId = ymh.patientId
+		JOIN
+			gumcheh gch
+			ON
+				jdh.hospitalId = gch.hospitalId
+			AND
+				jdh.patientId = gch.patientId
+		JOIN
+			byungrih brh
+			ON 
+				jdh.hospitalId = brh.hospitalId
+			AND 
+				jdh.patientId = brh.patientId
+		JOIN 
+			youngsangh ysh
+			ON 
+				jdh.hospitalId = ysh.hospitalId
+			AND 
+				jdh.patientId = ysh.patientId
+		JOIN 
+			pandogh pdh
+			ON 
+				jdh.hospitalId = pdh.hospitalId
+			AND 
+				jdh.patientId = pdh.patientId
+		JOIN 
+			ginuengh gnh
+			ON 
+				jdh.hospitalId = gnh.hospitalId
+			AND 
+				jdh.patientId = gnh.patientId
+		JOIN 
+			susulh ssh
+			ON
+				jdh.hospitalId = ssh.hospitalId
+			AND 
+				jdh.patientId = ssh.patientId	 
+		JOIN 
+			allergyh algh
+			ON 
+				jdh.hospitalId = algh.hospitalId
+			AND 
+				jdh.patientId = algh.patientId	
+		JOIN 
+			yebangh ybh
+			ON 
+				jdh.hospitalId = ybh.hospitalId
+			AND 
+				jdh.patientId = ybh.patientId
+		JOIN 
+			saengchaeh sch
+			ON 
+				jdh.hospitalId = sch.hospitalId
+			AND 
+				jdh.patientId = sch.patientId
+		JOIN 
+			smokingh smkh
+			ON 
+				jdh.hospitalId = smkh.hospitalId
+			AND 
+				jdh.patientId = smkh.patientId
+		JOIN 
+			drinkingh drkh
+			ON 
+				jdh.hospitalId = drkh.hospitalId
+			AND 
+				jdh.patientId = drkh.patientId
+		JOIN 
+			junyumh jyh
+			ON 
+				jdh.hospitalId = jyh.hospitalId
+			AND 
+				jdh.patientId = jyh.patientId
+ 	</select>
+ 	
+ 	<insert id="getTotalRegist"
+ 			parameterType="com.cafe24.oneteammds.listvo.Total">
+ 		INSERT IGNORE INTO 
+ 			total(
+ 				hospitalId, patientId
+ 				, dbCode, drDate
+ 				, mbCode, mrDate
+ 				, strCode, strDate
+ 				, ptrCode, ptrDate
+ 				, itrCode, itrDate
+ 				, iidCode, iidrDate
+ 				, ftrCode, ftrDate
+ 				, sbCode, sbDate
+ 				, aseCode, aserDate
+ 				, pibCode, pirDate
+ 				, vscCode, vscrDate
+ 				, scCode, scrDate
+ 				, dcCode, dcrDate
+ 				, lcidCode, lcidDate
+ 			)
+		SELECT 
+			jdh.hospitalId, jdh.patientId, jdh.dbCode, jdh.drDate
+ 		  , ymh.mbCode, ymh.mrDate
+ 		  , gch.strCode, gch.strDate
+ 		  , brh.ptrCode, brh.ptrDate
+ 		  , ysh.itrCode, ysh.itrDate
+ 		  , pdh.iidCode, pdh.iidrDate
+ 		  , gnh.ftrCode, gnh.ftrDate
+ 		  , ssh.sbCode, ssh.sbDate
+ 		  , algh.aseCode, algh.aserDate
+ 		  , ybh.pibCode, ybh.pirDate
+ 		  , sch.vscCode, sch.vscrDate
+ 		  , smkh.scCode, smkh.scrDate
+ 		  , drkh.dcCode, drkh.dcrDate
+ 		  , jyh.lcidCode, jyh.lcidDate
+		FROM 
+			jindanh jdh
+		JOIN
+			yakmulh ymh
+			ON
+				jdh.hospitalId = ymh.hospitalId
+			AND
+				jdh.patientId = ymh.patientId
+		JOIN
+			gumcheh gch
+			ON
+				jdh.hospitalId = gch.hospitalId
+			AND
+				jdh.patientId = gch.patientId
+		JOIN
+			byungrih brh
+			ON 
+				jdh.hospitalId = brh.hospitalId
+			AND 
+				jdh.patientId = brh.patientId
+		JOIN 
+			youngsangh ysh
+			ON 
+				jdh.hospitalId = ysh.hospitalId
+			AND 
+				jdh.patientId = ysh.patientId
+		JOIN 
+			pandogh pdh
+			ON 
+				jdh.hospitalId = pdh.hospitalId
+			AND 
+				jdh.patientId = pdh.patientId
+		JOIN 
+			ginuengh gnh
+			ON 
+				jdh.hospitalId = gnh.hospitalId
+			AND 
+				jdh.patientId = gnh.patientId
+		JOIN 
+			susulh ssh
+			ON
+				jdh.hospitalId = ssh.hospitalId
+			AND 
+				jdh.patientId = ssh.patientId	 
+		JOIN 
+			allergyh algh
+			ON 
+				jdh.hospitalId = algh.hospitalId
+			AND 
+				jdh.patientId = algh.patientId	
+		JOIN 
+			yebangh ybh
+			ON 
+				jdh.hospitalId = ybh.hospitalId
+			AND 
+				jdh.patientId = ybh.patientId
+		JOIN 
+			saengchaeh sch
+			ON 
+				jdh.hospitalId = sch.hospitalId
+			AND 
+				jdh.patientId = sch.patientId
+		JOIN 
+			smokingh smkh
+			ON 
+				jdh.hospitalId = smkh.hospitalId
+			AND 
+				jdh.patientId = smkh.patientId
+		JOIN 
+			drinkingh drkh
+			ON 
+				jdh.hospitalId = drkh.hospitalId
+			AND 
+				jdh.patientId = drkh.patientId
+		JOIN 
+			junyumh jyh
+			ON 
+				jdh.hospitalId = jyh.hospitalId
+			AND 
+				jdh.patientId = jyh.patientId
+ 	</insert>
+	
+	<!-- 시스템DB -->
+	<select id="getTotaldbList"
+			resultType="com.cafe24.oneteammds.listvo.Total">
+		SELECT 
+ 			hospitalId
+ 		  , patientId
+ 		  , dbCode
+ 		  , drDate
+ 		  , mbCode
+ 		  , mrDate
+ 		  , strCode
+ 		  , strDate
+ 		  , ptrCode
+ 		  , ptrDate
+ 		  , itrCode
+ 		  , itrDate
+ 		  , iidCode
+ 		  , iidrDate
+ 		  , ftrCode
+ 		  , ftrDate
+ 		  , sbCode
+ 		  , sbDate
+ 		  , aseCode
+ 		  , aserDate
+ 		  , pibCode
+ 		  , pirDate
+ 		  , vscCode
+ 		  , vscrDate
+ 		  , scCode
+ 		  , scrDate
+ 		  , dcCode
+ 		  , dcrDate
+ 		  , lcidCode
+ 		  , lcidDate
+		FROM 
+			total
+	</select>
+	
+	<!-- 진단내역 상세 -->
+	
+	<select id="getJindanhByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Jindanh">
+		SELECT 
+ 			dbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , dName
+ 		  , dCode
+ 		  , dDate
+ 		  , pDoctor
+ 		  , adminId
+ 		  , drDate
+
+		FROM 
+			jindanh
+		where
+			dbCode = #{dbCode}
+ 	</select>
+ 	
+	<insert id="getJindanRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Jindanh">
+ 		REPLACE INTO 
+ 			jindan
+		SELECT
+			dbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , dName
+ 		  , dCode
+ 		  , dDate
+ 		  , pDoctor
+ 		  , adminId
+ 		  , drDate
+		FROM 
+			jindanh
+		WHERE 
+			dbCode = #{dbCode}
+	</insert>
+	
+	<select	id="getJindandbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Jindan">
+ 		SELECT 
+ 			dbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , dName
+ 		  , dCode
+ 		  , dDate
+ 		  , pDoctor
+ 		  , adminId
+ 		  , drDate
+
+		FROM 
+			jindan
+		WHERE
+			dbCode = #{dbCode}
+ 	</select>
+ 	
+ 	<!-- 약물처방내역 상세 -->
+ 	
+ 	<select id="getYakmulhByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Yakmulh">
+		SELECT 
+ 			mbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , mmName
+ 		  , mmCode
+ 		  , miName
+ 		  , miCode
+ 		  , mVolume
+ 		  , mdUnit
+ 		  , mdNumber
+ 		  , mPeriod
+ 		  , mUsage
+ 		  , pDoctor
+ 		  , mdTime
+ 		  , adminId
+ 		  , mrDate
+		FROM 
+			yakmulh
+		where
+			mbCode = #{mbCode}
+ 	</select>
+ 	
+ 	<insert id="getYakmulRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Yakmulh">
+ 		REPLACE INTO 
+ 			yakmul
+		SELECT 
+ 			mbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , mmName
+ 		  , mmCode
+ 		  , miName
+ 		  , miCode
+ 		  , mVolume
+ 		  , mdUnit
+ 		  , mdNumber
+ 		  , mPeriod
+ 		  , mUsage
+ 		  , pDoctor
+ 		  , mdTime
+ 		  , adminId
+ 		  , mrDate
+		FROM 
+			yakmulh
+		where
+			mbCode = #{mbCode}
+	</insert>
+	
+	<select	id="getYakmuldbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Yakmul">
+ 		SELECT 
+ 			mbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , mmName
+ 		  , mmCode
+ 		  , miName
+ 		  , miCode
+ 		  , mVolume
+ 		  , mdUnit
+ 		  , mdNumber
+ 		  , mPeriod
+ 		  , mUsage
+ 		  , pDoctor
+ 		  , mdTime
+ 		  , adminId
+ 		  , mrDate
+		FROM 
+			yakmul
+		where
+			mbCode = #{mbCode}
+ 	</select>
+ 	
+ 	<!-- 검체검사결과 상세 -->
+ 	
+ 	<select id="getGumchehByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Gumcheh">
+		SELECT 
+ 			strCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , stiName
+ 		  , stiCode
+ 		  , stName
+ 		  , strValue
+ 		  , strrValue
+ 		  , pDoctor
+ 		  , stdTime
+ 		  , adminId
+ 		  , strDate
+		FROM 
+			gumcheh
+		where
+			strCode = #{strCode}
+ 	</select>
+ 	
+ 	<insert id="getGumcheRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Gumcheh">
+ 		REPLACE INTO 
+ 			gumche
+		SELECT 
+ 			strCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , stiName
+ 		  , stiCode
+ 		  , stName
+ 		  , strValue
+ 		  , strrValue
+ 		  , pDoctor
+ 		  , stdTime
+ 		  , adminId
+ 		  , strDate
+		FROM 
+			gumcheh
+		where
+			strCode = #{strCode}
+	</insert>
+	
+	<select	id="getGumchedbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Gumche">
+ 		SELECT 
+ 			strCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , stiName
+ 		  , stiCode
+ 		  , stName
+ 		  , strValue
+ 		  , strrValue
+ 		  , pDoctor
+ 		  , stdTime
+ 		  , adminId
+ 		  , strDate
+		FROM 
+			gumche
+		where
+			strCode = #{strCode}
+ 	</select>
+ 	
+ 	<!-- 병리검사결과 상세 -->
+ 	
+ 	<select id="getByungrihByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Byungrih">
+		SELECT 
+ 			ptrCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , ptName
+ 		  , ptCode
+ 		  , ptrValue
+ 		  , pDoctor
+ 		  , ptdTime
+ 		  , adminId
+ 		  , ptrDate
+		FROM 
+			byungrih
+		where
+			ptrCode = #{ptrCode}
+ 	</select>
+ 	
+ 	<insert id="getByungriRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Byungrih">
+ 		REPLACE INTO 
+ 			byungri
+		SELECT 
+ 			ptrCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , ptName
+ 		  , ptCode
+ 		  , ptrValue
+ 		  , pDoctor
+ 		  , ptdTime
+ 		  , adminId
+ 		  , ptrDate
+		FROM 
+			byungrih
+		where
+			ptrCode = #{ptrCode}
+	</insert>
+	
+	<select	id="getByungridbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Byungri">
+ 		SELECT 
+ 			ptrCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , ptName
+ 		  , ptCode
+ 		  , ptrValue
+ 		  , pDoctor
+ 		  , ptdTime
+ 		  , adminId
+ 		  , ptrDate
+		FROM 
+			byungri
+		where
+			ptrCode = #{ptrCode}
+ 	</select>
+ 	
+ 	<!-- 영상검사결과 상세 -->
+ 	
+ 	<select id="getYoungsanghByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Youngsangh">
+		SELECT 
+ 			itrCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , itName
+ 		  , itCode
+ 		  , itrValue
+ 		  , pDoctor
+ 		  , itdTime
+ 		  , adminId
+ 		  , itrDate
+		FROM 
+			youngsangh
+		where
+			itrCode = #{itrCode}
+ 	</select>
+ 	
+ 	<insert id="getYoungsangRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Youngsangh">
+ 		REPLACE INTO 
+ 			youngsang
+		SELECT 
+ 			itrCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , itName
+ 		  , itCode
+ 		  , itrValue
+ 		  , pDoctor
+ 		  , itdTime
+ 		  , adminId
+ 		  , itrDate
+		FROM 
+			youngsangh
+		where
+			itrCode = #{itrCode}
+	</insert>
+	
+	<select	id="getYoungsangdbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Youngsang">
+ 		SELECT 
+ 			itrCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , itName
+ 		  , itCode
+ 		  , itrValue
+ 		  , pDoctor
+ 		  , itdTime
+ 		  , adminId
+ 		  , itrDate
+		FROM 
+			youngsang
+		where
+			itrCode = #{itrCode}
+ 	</select>
+ 	
+ 	<!-- 영상판독정보 상세 -->
+ 	
+ 	<select id="getPandoghByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Pandogh">
+		SELECT 
+ 			iidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , liContent
+ 		  , iUrl
+ 		  , idName
+ 		  , pDoctor
+ 		  , ifdTime
+ 		  , iliDate
+ 		  , adminId
+ 		  , iidrDate
+		FROM 
+			pandogh
+		where
+			iidCode = #{iidCode}
+ 	</select>
+ 	
+ 	<insert id="getPandogRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Pandogh">
+ 		REPLACE INTO 
+ 			pandog
+		SELECT 
+ 			iidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , liContent
+ 		  , iUrl
+ 		  , idName
+ 		  , pDoctor
+ 		  , ifdTime
+ 		  , iliDate
+ 		  , adminId
+ 		  , iidrDate
+		FROM 
+			pandogh
+		where
+			iidCode = #{iidCode}
+	</insert>
+	
+	<select	id="getPandogdbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Pandog">
+ 		SELECT 
+ 			iidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , liContent
+ 		  , iUrl
+ 		  , idName
+ 		  , pDoctor
+ 		  , ifdTime
+ 		  , iliDate
+ 		  , adminId
+ 		  , iidrDate
+		FROM 
+			pandog
+		where
+			iidCode = #{iidCode}
+ 	</select>
+ 	
+ 	<!-- 기능검사결과 상세 -->
+ 	
+ 	<select id="getGinuenghByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Ginuengh">
+		SELECT 
+ 			ftrCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , ftName
+ 		  , ftCode
+ 		  , ftrValue
+ 		  , pDoctor
+ 		  , ftdTime
+ 		  , adminId
+ 		  , ftrDate
+		FROM 
+			ginuengh
+		where
+			ftrCode = #{ftrCode}
+ 	</select>
+ 	
+ 	<insert id="getGinuengRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Ginuengh">
+ 		REPLACE INTO 
+ 			ginueng
+		SELECT 
+ 			ftrCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , ftName
+ 		  , ftCode
+ 		  , ftrValue
+ 		  , pDoctor
+ 		  , ftdTime
+ 		  , adminId
+ 		  , ftrDate
+		FROM 
+			ginuengh
+		where
+			ftrCode = #{ftrCode}
+	</insert>
+	
+	<select	id="getGinuengdbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Ginueng">
+ 		SELECT 
+ 			ftrCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , ftName
+ 		  , ftCode
+ 		  , ftrValue
+ 		  , pDoctor
+ 		  , ftdTime
+ 		  , adminId
+ 		  , ftrDate
+		FROM 
+			ginueng
+		where
+			ftrCode = #{ftrCode}
+ 	</select>
+ 	
+ 	<!-- 수술내역 상세 -->
+ 	
+ 	<select id="getSusulhByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Susulh">
+		SELECT 
+ 			sbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , sName
+ 		  , sCode
+ 		  , aKind
+ 		  , pDoctor
+ 		  , sdTime
+ 		  , adminId
+ 		  , sbDate
+		FROM 
+			susulh
+		where
+			sbCode = #{sbCode}
+ 	</select>
+ 	
+ 	<insert id="getSusulRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Susulh">
+ 		REPLACE INTO 
+ 			susul
+		SELECT 
+ 			sbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , sName
+ 		  , sCode
+ 		  , aKind
+ 		  , pDoctor
+ 		  , sdTime
+ 		  , adminId
+ 		  , sbDate
+		FROM 
+			susulh
+		where
+			sbCode = #{sbCode}
+	</insert>
+	
+	<select	id="getSusuldbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Susul">
+ 		SELECT 
+ 			sbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , sName
+ 		  , sCode
+ 		  , aKind
+ 		  , pDoctor
+ 		  , sdTime
+ 		  , adminId
+ 		  , sbDate
+		FROM 
+			susul
+		where
+			sbCode = #{sbCode}
+ 	</select>
+ 	
+ 	<!-- 알러지 및 부작용 상세 -->
+ 	
+ 	<select id="getAllergyhByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Allergyh">
+		SELECT 
+ 			aseCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , asemFactor
+ 		  , asemfCode
+ 		  , aseName
+ 		  , aseReaction
+ 		  , pDoctor
+ 		  , asedTime
+ 		  , adminId
+ 		  , aserDate
+		FROM 
+			allergyh
+		where
+			aseCode = #{aseCode}
+ 	</select>
+ 	
+ 	<insert id="getAllergyRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Allergyh">
+ 		REPLACE INTO 
+ 			allergy
+		SELECT 
+ 			aseCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , asemFactor
+ 		  , asemfCode
+ 		  , aseName
+ 		  , aseReaction
+ 		  , pDoctor
+ 		  , asedTime
+ 		  , adminId
+ 		  , aserDate
+		FROM 
+			allergyh
+		where
+			aseCode = #{aseCode}
+	</insert>
+	
+	<select	id="getAllergydbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Allergy">
+ 		SELECT 
+ 			aseCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , asemFactor
+ 		  , asemfCode
+ 		  , aseName
+ 		  , aseReaction
+ 		  , pDoctor
+ 		  , asedTime
+ 		  , adminId
+ 		  , aserDate
+		FROM 
+			allergy
+		where
+			aseCode = #{aseCode}
+ 	</select>
+ 	
+ 	<!-- 예방접종내역 상세 -->
+ 	
+ 	<select id="getYebanghByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Yebangh">
+		SELECT 
+ 			pibCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , piName
+ 		  , piCode
+ 		  , pivName
+ 		  , piBalance
+ 		  , pDoctor
+ 		  , piDate
+ 		  , adminId
+ 		  , pirDate
+		FROM 
+			yebangh
+		where
+			pibCode = #{pibCode}
+ 	</select>
+ 	
+ 	<insert id="getYebangRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Yebangh">
+ 		REPLACE INTO 
+ 			yebang
+		SELECT 
+ 			pibCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , piName
+ 		  , piCode
+ 		  , pivName
+ 		  , piBalance
+ 		  , pDoctor
+ 		  , piDate
+ 		  , adminId
+ 		  , pirDate
+		FROM 
+			yebangh
+		where
+			pibCode = #{pibCode}
+	</insert>
+	
+	<select	id="getYebangdbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Yebang">
+ 		SELECT 
+ 			pibCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , piName
+ 		  , piCode
+ 		  , pivName
+ 		  , piBalance
+ 		  , pDoctor
+ 		  , piDate
+ 		  , adminId
+ 		  , pirDate
+		FROM 
+			yebang
+		where
+			pibCode = #{pibCode}
+ 	</select>
+ 	
+ 	<!-- 생체신호 및 상태 상세 -->
+ 	
+ 	<select id="getSaengchaehByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Saengchaeh">
+		SELECT 
+ 			vscCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , vscHeight
+ 		  , vscWeight
+ 		  , bpMin
+ 		  , bpMax
+ 		  , bheat
+ 		  , pDoctor
+ 		  , vscCheck
+ 		  , adminId
+ 		  , vscrDate
+		FROM 
+			saengchaeh
+		where
+			vscCode = #{vscCode}
+ 	</select>
+ 	
+ 	<insert id="getSaengchaeRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Saengchaeh">
+ 		REPLACE INTO 
+ 			saengchae
+		SELECT 
+ 			vscCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , vscHeight
+ 		  , vscWeight
+ 		  , bpMin
+ 		  , bpMax
+ 		  , bheat
+ 		  , pDoctor
+ 		  , vscCheck
+ 		  , adminId
+ 		  , vscrDate
+		FROM 
+			saengchaeh
+		where
+			vscCode = #{vscCode}
+	</insert>
+	
+	<select	id="getSaengchaedbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Saengchae">
+ 		SELECT 
+ 			vscCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , vscHeight
+ 		  , vscWeight
+ 		  , bpMin
+ 		  , bpMax
+ 		  , bheat
+ 		  , pDoctor
+ 		  , vscCheck
+ 		  , adminId
+ 		  , vscrDate
+		FROM 
+			saengchae
+		where
+			vscCode = #{vscCode}
+ 	</select>
+ 	
+ 	<!-- 흡연상태 상세 -->
+ 	
+ 	<select id="getSmokinghByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Smokingh">
+		SELECT 
+ 			scCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , sccName
+ 		  , pDoctor
+ 		  , adminId
+ 		  , scrDate
+		FROM 
+			smokingh
+		where
+			scCode = #{scCode}
+ 	</select>
+ 	
+ 	<insert id="getSmokingRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Smokingh">
+ 		REPLACE INTO 
+ 			smoking
+		SELECT 
+ 			scCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , sccName
+ 		  , pDoctor
+ 		  , adminId
+ 		  , scrDate
+		FROM 
+			smokingh
+		where
+			scCode = #{scCode}
+	</insert>
+	
+	<select	id="getSmokingdbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Smoking">
+ 		SELECT 
+ 			scCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , sccName
+ 		  , pDoctor
+ 		  , adminId
+ 		  , scrDate
+		FROM 
+			smoking
+		where
+			scCode = #{scCode}
+ 	</select>
+ 	
+ 	<!-- 음주상태 상세 -->
+ 	
+ 	<select id="getDrinkinghByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Drinkingh">
+		SELECT 
+ 			dcCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , dccName
+ 		  , pDoctor
+ 		  , adminId
+ 		  , dcrDate
+		FROM 
+			drinkingh
+		where
+			dcCode = #{dcCode}
+ 	</select>
+ 	
+ 	<insert id="getDrinkingRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Drinkingh">
+ 		REPLACE INTO 
+ 			drinking
+		SELECT 
+ 			dcCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , dccName
+ 		  , pDoctor
+ 		  , adminId
+ 		  , dcrDate
+		FROM 
+			drinkingh
+		where
+			dcCode = #{dcCode}
+	</insert>
+	
+	<select	id="getDrinkingdbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Drinking">
+ 		SELECT 
+ 			dcCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , dccName
+ 		  , pDoctor
+ 		  , adminId
+ 		  , dcrDate
+		FROM 
+			drinking
+		where
+			dcCode = #{dcCode}
+ 	</select>
+ 	
+ 	<!-- 법정 전염성 감염병 상세 -->
+ 	
+ 	<select id="getJunyumhByCode"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Junyumh">
+		SELECT 
+ 			lcidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , lcidName
+ 		  , lcidpGroup
+ 		  , lcidtResult
+ 		  , lcidinOut
+ 		  , lcidArea
+ 		  , pDoctor
+ 		  , lcidoDate
+ 		  , lciddDate
+ 		  , lcidrDate
+ 		  , adminId
+ 		  , lcidDate
+		FROM 
+			junyumh
+		where
+			lcidCode = #{lcidCode}
+ 	</select>
+ 	
+ 	<insert id="getJunyumRegist2"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Junyumh">
+ 		REPLACE INTO 
+ 			junyum
+		SELECT 
+ 			lcidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , lcidName
+ 		  , lcidpGroup
+ 		  , lcidtResult
+ 		  , lcidinOut
+ 		  , lcidArea
+ 		  , pDoctor
+ 		  , lcidoDate
+ 		  , lciddDate
+ 		  , lcidrDate
+ 		  , adminId
+ 		  , lcidDate
+		FROM 
+			junyumh
+		where
+			lcidCode = #{lcidCode}
+	</insert>
+	
+	<select	id="getJunyumdbDesc" 
+ 			resultType="com.cafe24.oneteammds.listvo.Junyum">
+ 		SELECT 
+ 			lcidCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , lcidName
+ 		  , lcidpGroup
+ 		  , lcidtResult
+ 		  , lcidinOut
+ 		  , lcidArea
+ 		  , pDoctor
+ 		  , lcidoDate
+ 		  , lciddDate
+ 		  , lcidrDate
+ 		  , adminId
+ 		  , lcidDate
+		FROM 
+			junyum
+		where
+			lcidCode = #{lcidCode}
+ 	</select>
+ 	
+ 	<select	id="getTotalReplace" 
+ 			resultType="com.cafe24.oneteammds.listvo.Total">
+		SELECT
+			jd.dbCode, jd.hospitalId, jd.patientId, jd.dName, jd.dCode, jd.dDate, jd.pDoctor, jd.adminId, jd.drDate
+ 		  , ym.mbCode, ym.mmName, ym.mmCode, ym.miName, ym.miCode, ym.mVolume, ym.mdUnit, ym.mdNumber, ym.mPeriod, ym.mUsage, ym.mdTime, ym.mrDate
+ 		  , gc.strCode, gc.stiName, gc.stiCode, gc.stName, gc.strValue, gc.strrValue, gc.stdTime, gc.strDate
+ 		  , br.ptrCode, br.ptName, br.ptCode, br.ptrValue, br.ptdTime, br.ptrDate
+ 		  , ys.itrCode, ys.itName, ys.itCode, ys.itrValue, ys.itdTime, ys.itrDate
+ 		  , pd.iidCode, pd.liContent, pd.iUrl, pd.idName, pd.ifdTime, pd.iliDate, pd.iidrDate
+ 		  , gn.ftrCode, gn.ftName, gn.ftCode, gn.ftrValue, gn.ftdTime, gn.ftrDate
+ 		  , ss.sbCode, ss.sName, ss.sCode, ss.aKind, ss.sdTime, ss.sbDate
+ 		  , alg.aseCode, alg.asemFactor, alg.asemfCode, alg.aseName, alg.aseReaction, alg.asedTime, alg.aserDate
+ 		  , yb.pibCode, yb.piName, yb.piCode, yb.pivName, yb.piBalance, yb.piDate, yb.pirDate
+ 		  , sc.vscCode, sc.vscHeight, sc.vscWeight, sc.bpMin, sc.bpMax, sc.bheat, sc.vscCheck, sc.vscrDate
+ 		  , smk.scCode, smk.sccName, smk.scrDate
+ 		  , drk.dcCode, drk.dccName, drk.dcrDate
+ 		  , jy.lcidCode, jy.lcidName, jy.lcidpGroup, jy.lcidtResult, jy.lcidinOut, jy.lcidArea, jy.lcidoDate, jy.lciddDate, jy.lcidrDate, jy.lcidDate
+		FROM
+			jindan jd
+		JOIN
+			yakmul ym
+		JOIN
+			gumche gc
+		JOIN
+			byungri br
+		JOIN 
+			youngsang ys
+		JOIN 
+			pandog pd
+		JOIN 
+			ginueng gn
+		JOIN 
+			susul ss
+		JOIN 
+			allergy alg
+		JOIN 
+			yebang yb
+		JOIN 
+			saengchae sc
+		JOIN 
+			smoking smk
+		JOIN 
+			drinking drk
+		JOIN 
+			junyum jy
+		 
+ 	</select>
+ 	
+ </mapper>

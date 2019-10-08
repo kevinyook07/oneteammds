@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.listmapper.AllergyMapper">
+ 	
+ 	<!-- 병원 -->
+ 	
+ 	<!-- 병원DB - 알러지 및 부작용 -->
+ 	
+ 	<select	id="getAllergyhList" 
+ 			resultType="com.cafe24.oneteammds.listvo.Allergyh">
+ 		SELECT 
+ 			aseCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , asemFactor
+ 		  , asemfCode
+ 		  , aseName
+ 		  , aseReaction
+ 		  , pDoctor
+ 		  , asedTime
+ 		  , adminId
+ 		  , aserDate
+		FROM 
+			allergyh
+ 	</select>
+ 	
+ 	<!-- 병원DB - 알러지 및 부작용 -> 알러지 및 부작용 regist form -->
+ 	
+ 	<select id="getAllergyhById"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Allergyh">
+		SELECT 
+ 			aseCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , asemFactor
+ 		  , asemfCode
+ 		  , aseName
+ 		  , aseReaction
+ 		  , pDoctor
+ 		  , asedTime
+ 		  , adminId
+ 		  , aserDate
+		FROM 
+			allergyh
+		where
+			patientId = #{patientId}
+ 	</select>
+ 	
+ 	<!-- 알러지 및 부작용 regist complete -->
+ 	
+ 	<insert id="getAllergyRegist"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Allergyh">
+ 	REPLACE INTO 
+ 			allergy
+		SELECT
+			aseCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , asemFactor
+ 		  , asemfCode
+ 		  , aseName
+ 		  , aseReaction
+ 		  , pDoctor
+ 		  , asedTime
+ 		  , adminId
+ 		  , aserDate
+		FROM 
+			allergyh
+		WHERE 
+			patientId = #{patientId}
+	</insert>
+	
+	<!-- 시스템DB -->
+	
+	<!-- MDS DB - 알러지 및 부작용 -->
+	
+	<select id="getAllergydbList"
+			resultType="com.cafe24.oneteammds.listvo.Allergy">
+		SELECT 
+ 			aseCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , asemFactor
+ 		  , asemfCode
+ 		  , aseName
+ 		  , aseReaction
+ 		  , pDoctor
+ 		  , asedTime
+ 		  , adminId
+ 		  , aserDate
+		FROM 
+			allergy
+	</select>
+ 	
+ </mapper>
