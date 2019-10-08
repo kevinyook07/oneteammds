@@ -34,6 +34,7 @@
               <div class="info d-flex align-items-center">
                 <div class="content">
                   <div class="logo">
+                  <!--  계정 오류로 인한 push -->
                     <h1>환자 수정</h1>
                   </div>
                   <p>Medical treatment data sharing system.</p>
@@ -92,7 +93,7 @@
                       <input  type="text" name="g_phone" class="input-material" th:value="${patient.g_phone}">
                       <label for="register-userphone" class="label-material">보호자 연락처        </label>
                     </div>
-           
+                      <input type="hidden" name="p_level" value="환자">       
                     <div class="form-group terms-conditions text-center">
                       <input name="registerAgree" type="checkbox" required="" value="1" data-msg="수정 확인이 필요합니다." class="checkbox-template">
                       <label for="register-agree">수정된 내역을 확인 하였습니다.</label>

@@ -1,5 +1,5 @@
 package com.cafe24.oneteammds.vo;
-
+//계정 오류로 인한 push
 public class Patient {
 
 	private String p_id;
@@ -12,6 +12,7 @@ public class Patient {
 	private String p_addr;
 	private String g_name;
 	private String g_phone;
+	private String p_level;
 	private String a_id;
 	private String pr_date;
 	public String getP_id() {
@@ -86,12 +87,21 @@ public class Patient {
 	public void setPr_date(String pr_date) {
 		this.pr_date = pr_date;
 	}
+	
+	public String getP_level() {
+		return p_level;
+	}
+	public void setP_level(String p_level) {
+		this.p_level = p_level;
+	}
 	@Override
 	public String toString() {
 		return "Patient [p_id=" + p_id + ", p_pw=" + p_pw + ", h_id=" + h_id + ", p_name=" + p_name + ", p_gender="
 				+ p_gender + ", p_birth=" + p_birth + ", p_phone=" + p_phone + ", p_addr=" + p_addr + ", g_name="
-				+ g_name + ", g_phone=" + g_phone + ", a_id=" + a_id + ", pr_date=" + pr_date + "]";
+				+ g_name + ", g_phone=" + g_phone + ", p_level=" + p_level + ", a_id=" + a_id + ", pr_date=" + pr_date
+				+ "]";
 	}
+	
 	
 	
 	

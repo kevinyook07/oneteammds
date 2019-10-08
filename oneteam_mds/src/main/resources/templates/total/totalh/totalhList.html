@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout/default}">
+
+<th:block layout:fragment="customContents">
+	<div class="page-content">
+	 <!-- **************윗상단 메인 메뉴 ************** -->
+		<div class="page-header">
+		<h2 style="text-align:center">알러지 및 부작용 리스트</h2>
+			<div class="container-fluid"></div>
+	<!-- **************윗상단 메인 메뉴END ************** -->
+	<!--************메인 컨텐트 ************ -->		
+	   	</div>
+	   	  <!-- Form Elements -->
+              <div class="col-lg-12">
+                <div class="block">
+                  
+                  <div class="block-body">
+                    
+                     <table class="table">
+                      <thead>
+		<tr>
+			<td>진단내역</td>
+		</tr>
+		<tr>
+			<td>진단내역코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.dbCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.dName}"></td>
+			<td th:text="${list.dCode}"></td>
+			<td th:text="${list.dDate}"></td>
+			<td th:text="${list.pDoctor}"></td>
+			<td th:text="${list.adminId}"></td> -->
+			<td th:text="${list.drDate}"></td>
+			<td>
+				<a th:href="@{/jindanRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	
+	<table border="1">
+		<tr>
+			<td>약물처방내역</td>
+		</tr>
+		<tr>
+			<td>약물처방내역코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.mbCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.mmName}"></td>
+			<td th:text="${list.mmCode}"></td>
+			<td th:text="${list.miName}"></td>
+			<td th:text="${list.miCode}"></td>
+			<td th:text="${list.mVolume}"></td>
+			<td th:text="${list.mdUnit}"></td>
+			<td th:text="${list.mdNumber}"></td>
+			<td th:text="${list.mPeriod}"></td>
+			<td th:text="${list.mUsage}"></td>
+			<td th:text="${list.mdTime}"></td> -->
+			<td th:text="${list.mrDate}"></td>
+			<td>
+				<a th:href="@{/yakmulRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	
+	<table border="1">
+		<tr>
+			<td>검체검사결과</td>
+		</tr>
+		<tr>
+			<td>검체검사결과코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.strCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.stiName}"></td>
+			<td th:text="${list.stiCode}"></td>
+			<td th:text="${list.stName}"></td>
+			<td th:text="${list.strValue}"></td>
+			<td th:text="${list.strrValue}"></td>
+			<td th:text="${list.stdTime}"></td> -->
+			<td th:text="${list.strDate}"></td>
+			<td>
+				<a th:href="@{/gumcheRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	
+	<table border="1">
+		<tr>
+			<td>병리검사결과</td>
+		</tr>
+		<tr>
+			<td>병리검사결과코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.ptrCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.ptName}"></td>
+			<td th:text="${list.ptCode}"></td>
+			<td th:text="${list.ptrValue}"></td>
+			<td th:text="${list.ptdTime}"></td> -->
+			<td th:text="${list.ptrDate}"></td>
+			<td>
+				<a th:href="@{/byungriRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	
+	<table border="1">
+		<tr>
+			<td>영상검사결과</td>
+		</tr>
+		<tr>
+			<td>영상검사결과코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.itrCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.itName}"></td>
+			<td th:text="${list.itCode}"></td>
+			<td th:text="${list.itrValue}"></td>
+			<td th:text="${list.itdTime}"></td> -->
+			<td th:text="${list.itrDate}"></td>
+			<td>
+				<a th:href="@{/youngsangRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	
+	<table border="1">
+		<tr>
+			<td>영상판독정보</td>
+		</tr>
+		<tr>
+			<td>영상판독정보코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.iidCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.liContent}"></td>
+			<td th:text="${list.iUrl}"></td>
+			<td th:text="${list.idName}"></td>
+			<td th:text="${list.ifdTime}"></td>
+			<td th:text="${list.iliDate}"></td> -->
+			<td th:text="${list.iidrDate}"></td>
+			<td>
+				<a th:href="@{/pandogRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	
+	<table border="1">
+		<tr>
+			<td>기능검사결과</td>
+		</tr>
+		<tr>
+			<td>기능검사결과코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.ftrCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.ftName}"></td>
+			<td th:text="${list.ftCode}"></td>
+			<td th:text="${list.ftrValue}"></td>
+			<td th:text="${list.ftdTime}"></td> -->
+			<td th:text="${list.ftrDate}"></td>
+			<td>
+				<a th:href="@{/ginuengRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	
+	<table border="1">
+		<tr>
+			<td>수술내역</td>
+		</tr>
+		<tr>
+			<td>수술내역코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.sbCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.sName}"></td>
+			<td th:text="${list.sCode}"></td>
+			<td th:text="${list.aKind}"></td>
+			<td th:text="${list.sdTime}"></td> -->
+			<td th:text="${list.sbDate}"></td>
+			<td>
+				<a th:href="@{/susulRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	<table border="1">
+		<tr>
+			<td>알러지및부작용</td>
+		</tr>
+		<tr>
+			<td>알러지및부작용코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.aseCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.asemFactor}"></td>
+			<td th:text="${list.asemfCode}"></td>
+			<td th:text="${list.aseName}"></td>
+			<td th:text="${list.aseReaction}"></td>
+			<td th:text="${list.asedTime}"></td> -->
+			<td th:text="${list.aserDate}"></td>
+			<td>
+				<a th:href="@{/allergyRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	<table border="1">
+		<tr>
+			<td>예방접종내역</td>
+		</tr>
+		<tr>
+			<td>예방접종내역코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.pibCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.piName}"></td>
+			<td th:text="${list.piCode}"></td>
+			<td th:text="${list.pivName}"></td>
+			<td th:text="${list.piBalance}"></td>
+			<td th:text="${list.piDate}"></td> -->
+			<td th:text="${list.pirDate}"></td>
+			<td>
+				<a th:href="@{/yebangRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	<table border="1">
+		<tr>
+			<td>생체신호및상태</td>
+		</tr>
+		<tr>
+			<td>생체신호및상태코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.vscCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.vscHeight}"></td>
+			<td th:text="${list.vscWeight}"></td>
+			<td th:text="${list.bpMin}"></td>
+			<td th:text="${list.bpMax}"></td>
+			<td th:text="${list.bheat}"></td>
+			<td th:text="${list.vscCheck}"></td> -->
+			<td th:text="${list.vscrDate}"></td>
+			<td>
+				<a th:href="@{/saengchaeRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	<table border="1">
+		<tr>
+			<td>흡연상태</td>
+		</tr>
+		<tr>
+			<td>흡연상태코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.scCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.sccName}"></td> -->
+			<td th:text="${list.scrDate}"></td>
+			<td>
+				<a th:href="@{/smokingRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	<table border="1">
+		<tr>
+			<td>음주상태</td>
+		</tr>
+		<tr>
+			<td>음주상태코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.dcCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.dccName}"></td> -->
+			<td th:text="${list.dcrDate}"></td>
+			<td>
+				<a th:href="@{/drinkingRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	<table border="1">
+		<tr>
+			<td>법정전염성감염병</td>
+		</tr>
+		<tr>
+			<td>법정전염성감염병코드</td>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+			<td>등록일자</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.lcidCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<!-- <td th:text="${list.lcidName}"></td>
+			<td th:text="${list.lcidpGroup}"></td>
+			<td th:text="${list.lcidtResult}"></td>
+			<td th:text="${list.lcidinOut}"></td>
+			<td th:text="${list.lcidArea}"></td>
+			<td th:text="${list.lcidoDate}"></td>
+			<td th:text="${list.lciddDate}"></td>
+			<td th:text="${list.lcidrDate}"></td> -->
+			<td th:text="${list.lcidDate}"></td>
+			<td>
+				<a th:href="@{/junyumRegist(patientId=${list.patientId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	</table>
+	
+	<table border="1">
+		<tr>
+			<td>진료정보전체등록</td>
+		</tr>
+		<tr>
+			<td>병원고유번호</td>
+			<td>환자고유번호</td>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalhList}">
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<td>
+				<a th:href="@{/totalRegist(patientId=${list.patientId}, hospitalId=${list.hospitalId})}">�ý���DB���</a>
+			</td>
+		</tr>
+	  </tbody>
+                    </table>
+                      <div class="line"></div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          <!--************메인 컨텐트 END************ -->	
+</th:block>
+</html>

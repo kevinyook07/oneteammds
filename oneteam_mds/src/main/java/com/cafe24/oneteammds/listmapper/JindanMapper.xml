@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.listmapper.JindanMapper">
+ 	
+ 	<!-- 병원 -->
+ 	
+ 	<!-- 병원DB - 진단내역 -->
+ 	
+ 	<select	id="getJindanhList" 
+ 			resultType="com.cafe24.oneteammds.listvo.Jindanh">
+ 		SELECT 
+ 			dbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , dName
+ 		  , dCode
+ 		  , dDate
+ 		  , pDoctor
+ 		  , adminId
+ 		  , drDate
+
+		FROM 
+			jindanh
+ 	</select>
+ 	
+ 	<!-- 병원DB - 진단내역 -> 진단내역 regist form -->
+ 	
+ 	<select id="getJindanhById"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Jindanh">
+		SELECT 
+ 			dbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , dName
+ 		  , dCode
+ 		  , dDate
+ 		  , pDoctor
+ 		  , adminId
+ 		  , drDate
+
+		FROM 
+			jindanh
+		where
+			patientId = #{patientId}
+ 	</select>
+ 	
+ 	<!-- 진단내역 regist complete -->
+ 	
+ 	<insert id="getJindanRegist"
+ 		    parameterType="com.cafe24.oneteammds.listvo.Jindanh">
+ 	REPLACE INTO 
+ 			jindan
+		SELECT
+			dbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , dName
+ 		  , dCode
+ 		  , dDate
+ 		  , pDoctor
+ 		  , adminId
+ 		  , drDate
+		FROM 
+			jindanh
+		WHERE 
+			patientId = #{patientId}
+	</insert>
+	
+	<!-- 시스템DB -->
+	
+	<!-- MDS DB - 진단내역 -->
+	
+	<select id="getJindandbList"
+			resultType="com.cafe24.oneteammds.listvo.Jindan">
+		SELECT 
+ 			dbCode
+ 		  , hospitalId
+ 		  , patientId
+ 		  , dName
+ 		  , dCode
+ 		  , dDate
+ 		  , pDoctor
+ 		  , adminId
+ 		  , drDate
+		FROM 
+			jindan
+	</select>
+
+ </mapper>

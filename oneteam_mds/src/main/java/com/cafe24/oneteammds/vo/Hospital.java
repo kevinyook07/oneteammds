@@ -1,5 +1,5 @@
 package com.cafe24.oneteammds.vo;
-
+//계정 오류로 인한 push
 public class Hospital {
 
 	private String h_id;
@@ -7,6 +7,7 @@ public class Hospital {
 	private String h_name;
 	private String a_id;
 	private String hr_date;
+	private String h_level;
 	public String getH_id() {
 		return h_id;
 	}
@@ -37,13 +38,16 @@ public class Hospital {
 	public void setHr_date(String hr_date) {
 		this.hr_date = hr_date;
 	}
+	public String getH_level() {
+		return h_level;
+	}
+	public void setH_level(String h_level) {
+		this.h_level = h_level;
+	}
 	@Override
 	public String toString() {
 		return "Hospital [h_id=" + h_id + ", h_pw=" + h_pw + ", h_name=" + h_name + ", a_id=" + a_id + ", hr_date="
-				+ hr_date + "]";
+				+ hr_date + ", h_level=" + h_level + "]";
 	}
-	
-	
-
 	
 }
