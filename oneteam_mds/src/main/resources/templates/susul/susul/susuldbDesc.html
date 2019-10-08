@@ -20,11 +20,21 @@
                     
                      <table class="table">
                       <thead>
+                      <tr>
+			<th style="white-space:nowrap;">병원 고유번호</th>
+					        <th style="white-space:nowrap;">환자 고유번호</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${yakmuldbDesc}">
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+		</tr>
+		</tbody>
+		<thead>
 	
 		<tr>
 			<th style="white-space:nowrap;">수술내역 코드</th>
-							<th style="white-space:nowrap;">병원고유번호</th>
-							<th style="white-space:nowrap;">환자고유번호</th>
 							<th style="white-space:nowrap;">수술명</th>
 							<th style="white-space:nowrap;">수술코드</th>
 							<th style="white-space:nowrap;">마취종류</th>
@@ -38,8 +48,6 @@
 						<tbody>
 		<tr th:each="list:${susuldbDesc}">
 			<td th:text="${list.sbCode}"></td>
-			<td th:text="${list.hospitalId}"></td>
-			<td th:text="${list.patientId}"></td>
 			<td th:text="${list.sName}"></td>
 			<td th:text="${list.sCode}"></td>
 			<td th:text="${list.aKind}"></td>

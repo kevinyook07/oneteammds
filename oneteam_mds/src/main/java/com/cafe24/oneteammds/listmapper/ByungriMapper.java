@@ -13,7 +13,9 @@ public interface ByungriMapper {
 	// 병원
 	
 	// 병원DB - 병리검사결과
-	public List<Byungrih> getByungrihList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 병리검사결과 리스트  출력 처리
+	public List<Byungrih> getByungrihList(String hospitalId);
 	
 	// 병원DB - 병리검사결과 --> 병리검사결과 regist form
 	public Byungrih getByungrihById(String patientId);

@@ -19,10 +19,13 @@ public class GinuengController {
 	// 병원
 	
 	// 병원DB - 기능검사결과
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 기능검사결과 리스트  출력 처리
 	@RequestMapping("/ginuenghList")
-	public String getGinuengList(Model model) {
+	public String getGinuengList(@RequestParam(value="hospitalId")String hospitalId
+							   , Model model) {
 		
-		model.addAttribute("ginuenghList", ginuengService.getGinuenghList());
+		model.addAttribute("ginuenghList", ginuengService.getGinuenghList(hospitalId));
 		
 		return "/ginueng/ginuengh/ginuenghList";
 	}

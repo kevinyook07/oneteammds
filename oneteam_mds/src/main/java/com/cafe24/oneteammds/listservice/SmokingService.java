@@ -20,8 +20,10 @@ public class SmokingService {
 	// 병원
 	
 	// 병원DB - 흡연상태
-	public List<Smokingh> getSmokinghList(){
-		return smokingMapper.getSmokinghList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 흡연상태 리스트  출력 처리
+	public List<Smokingh> getSmokinghList(String hospitalId){
+		return smokingMapper.getSmokinghList(hospitalId);
 	}
 	
 	// 병원DB - 흡연상태 -> 흡연상태 regist form

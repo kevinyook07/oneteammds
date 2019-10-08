@@ -13,7 +13,9 @@ public interface JunyumMapper {
 	// 병원
 	
 	// 병원DB - 법정 전염성 감염병
-	public List<Junyumh> getJunyumhList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 법정 전염성 감염병 리스트  출력 처리
+	public List<Junyumh> getJunyumhList(String hospitalId);
 	
 	// 병원DB - 법정 전염성 감염병 --> 법정 전염성 감염병 regist form
 	public Junyumh getJunyumhById(String patientId);

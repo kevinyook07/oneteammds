@@ -20,10 +20,20 @@
                     
                      <table class="table">
                       <thead>
+                      <tr>
+			<th style="white-space:nowrap;">병원 고유번호</th>
+					        <th style="white-space:nowrap;">환자 고유번호</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${smokingdbDesc}">
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+		</tr>
+		</tbody>
+		<thead>
 		<tr>
 			<th style="white-space:nowrap;">흡연상태 코드</th>
-							<th style="white-space:nowrap;">병원고유번호</th>
-							<th style="white-space:nowrap;">환자고유번호</th>
 							<th style="white-space:nowrap;">흡연상태코드 명칭</th>
 							<th style="white-space:nowrap;">담당의</th>
 							<th style="white-space:nowrap;">등록자 고유번호</th>
@@ -34,8 +44,6 @@
 						<tbody>
 		<tr th:each="list:${smokingdbDesc}">
 			<td th:text="${list.scCode}"></td>
-			<td th:text="${list.hospitalId}"></td>
-			<td th:text="${list.patientId}"></td>
 			<td th:text="${list.sccName}"></td>
 			<td th:text="${list.pDoctor}"></td>
 			<td th:text="${list.adminId}"></td>

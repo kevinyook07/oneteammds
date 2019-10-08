@@ -20,8 +20,10 @@ public class JindanService {
 	// 병원
 	
 	// 병원DB - 진단내역
-	public List<Jindanh> getJindanhList(){
-		return jindanMapper.getJindanhList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 진단내역 리스트  출력 처리
+	public List<Jindanh> getJindanhList(String hospitalId){
+		return jindanMapper.getJindanhList(hospitalId);
 	}
 	
 	// 병원DB - 진단내역 -> 진단내역 regist form
