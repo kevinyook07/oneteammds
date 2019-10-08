@@ -30,7 +30,7 @@
                     <li><a href="patientList">유저 리스트</a></li>
                   </ul>
                 </li>
-                 <li><a href="#exampledropdownDropdown0" aria-expanded="false" data-toggle="collapse" ><i class="icon-grid"></i>병원 진료 리스트</a>
+                 <li><a href="#exampledropdownDropdown0" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '병원'}"><i class="icon-grid"></i>병원 진료 리스트</a>
                   <ul id="exampledropdownDropdown0" class="collapse list-unstyled">
                     <li><a th:href="@{/jindanhList(hospitalId=${session.SID})}">진단내역</a></li>
                     <li><a th:href="@{/yakmulhList(hospitalId=${session.SID})}">약물처방 내역</a></li>
@@ -48,7 +48,7 @@
                     <li><a th:href="@{/pandoghList(hospitalId=${session.SID})}">영상판독정보</a></li>
                   </ul>
                 </li>
-                <li><a href="#exampledropdownDropdown3" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>MDS 진료 리스트</a>
+                <li><a href="#exampledropdownDropdown3" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '관리자'}"> <i class="icon-grid"></i>MDS 진료 리스트</a>
                   <ul id="exampledropdownDropdown3" class="collapse list-unstyled">
                     <li><a href="jindandbList">진단내역</a></li>
                     <li><a href="yakmuldbList">약물처방 내역</a></li>
