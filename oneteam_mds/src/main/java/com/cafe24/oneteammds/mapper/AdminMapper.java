@@ -1,5 +1,5 @@
 package com.cafe24.oneteammds.mapper;
-
+//계정 오류로 인한 push
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;

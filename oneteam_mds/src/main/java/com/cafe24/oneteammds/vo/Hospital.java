@@ -1,5 +1,5 @@
 package com.cafe24.oneteammds.vo;
-
+//계정 오류로 인한 push
 public class Hospital {
 
 	private String h_id;

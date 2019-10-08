@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+  <!-- 계정 오류로 인한 push -->
 <mapper namespace="com.cafe24.oneteammds.mapper.AdminMapper">
 
 	<!-- 1명의 관리자 권한 조회 쿼리문 -->
