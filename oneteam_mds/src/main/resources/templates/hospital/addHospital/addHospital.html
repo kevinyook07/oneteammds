@@ -60,13 +60,9 @@
                       <input type="text" name="h_name" required="" data-msg="병원명을 입력 해주세요" class="input-material">
                       <label for="register-username" class="label-material">병원명        </label>
                     </div>
-                    <label for="register-username" class="label-material">등록자        </label>
-  					<div class="form-group-material">
-	  					<select name="a_id" required="" data-msg="등록자를 선택 해주세요" class="form-control">
-	    					<h1>[[${session.SID}]]</h1>
-						</select>
-                      
-                    </div>
+	  					<input type="hidden"name="a_id" th:value="${session.SID}">
+	  					<input type="hidden"name="h_level" value="병원">
+	  					
                     <div class="form-group terms-conditions text-center">
                       <input name="registerAgree" type="checkbox" required="" value="1" data-msg="약관 동의가 필요합니다." class="checkbox-template">
                       <label for="register-agree">모든 약관에 동의 하시겠습니까?</label>

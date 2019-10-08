@@ -53,12 +53,14 @@
 			 hospitalId
 			,hospitalPw 
 			,hName
+			,hLevel
 			,admId
 			,hrDate
 		)VALUES(
 			 #{h_id}
 			,#{h_pw}
 			,#{h_name}
+			,#{h_level}
 			,#{a_id}
 			,NOW()
 		)

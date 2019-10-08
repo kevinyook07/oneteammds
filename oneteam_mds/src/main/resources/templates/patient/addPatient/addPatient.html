@@ -55,13 +55,13 @@
                       <input type="password" name="p_pw" required="" data-msg="비밀번호를 입력 해주세요." class="input-material">
                       <label for="register-password" class="label-material">비밀번호      </label>
                     </div>
-                    <div class="form-group-material">
+					<div class="form-group-material">
                     <label for="register-username" class="label-material">등록병원계정       </label>
 	  					<select name="h_id" required="" data-msg="등록병원 계정을 선택 해주세요" class="form-control">
-	    					<option value="">선택</option>
-	    					<option value="hospitalId01">hospitalId01</option>
-						    <option value="hospitalId02">hospitalId02</option>
-						    <option value="hospitalId01">hospitalId03</option>
+	    					<option th:value="${session.SID}" selected>[[${session.SID}]]</option>
+	    					<option value="hospitalId01">hospitalIda</option>
+						    <option value="hospitalId02">hospitalIdb</option>
+						    <option value="hospitalId01">hospitalIdc</option>
 						</select>
                     </div>
   					<div class="form-group-material">
@@ -104,7 +104,7 @@
                        <div class="form-group-material">
                       <input type="hidden" name="p_level" value="환자">
                     </div>
-                    <div class="form-group-material">
+ <!--등록자 선택         <div class="form-group-material">
                     <label for="register-username" class="label-material">등록자       </label>
 	  					<select name="a_id" required="" data-msg="등록자를 선택 해주세요" class="form-control">
 	    					<option value="">선택</option>
@@ -112,7 +112,9 @@
 						    <option value="adminId02">adminId02</option>
 						    <option value="adminId03">adminId03</option>
 						</select>
-                    </div>
+                    </div> -->
+                   	<input type="hidden"name="a_id" th:value="${session.SID}">
+                    	  					
                     <div class="form-group terms-conditions text-center">
                       <input name="registerAgree" type="checkbox" required="" value="1" data-msg="약관 동의가 필요합니다." class="checkbox-template">
                       <label for="register-agree">모든 약관에 동의 하시겠습니까?</label>
