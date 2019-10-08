@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper namespace 설정 -->  
+<mapper namespace="com.cafe24.oneteammds.yochengmapper.YochengMapper">
+	
+	<!-- select 쿼리문 입력, resultType 설정 -->
+	<select	id="getYochengAdminList" 
+ 			resultType="com.cafe24.oneteammds.yochengvo.Yochenglist">
+	
+		SELECT 
+			susinCode
+			, hospitalId
+			, hospitalName
+			, patientId
+			, patientName
+			, susinJinlyoCode
+			, susinDate
+			, susinSayu
+		FROM 
+			yochenglist
+	
+	</select>
+	
+	<!-- select 쿼리문 입력, parameterType=String 설정, resultType 설정 -->
+	<select	id="getYochengAdminListSearch" parameterType="String"
+ 			resultType="com.cafe24.oneteammds.yochengvo.Yochenglist">
+	
+		SELECT 
+			susinCode
+			, hospitalId
+			, hospitalName
+			, patientId
+			, patientName
+			, susinJinlyoCode
+			, susinDate
+			, susinSayu
+		FROM 
+			yochenglist
+		<if test="sk1 != null and sv1 neq ''.toString()">
+			where
+				${sk1} like concat('%',#{sv1}, '%')		
+		</if>	
+	
+	</select>
+	
+	
+	
+	
+	
+	
+	
+
+</mapper>
