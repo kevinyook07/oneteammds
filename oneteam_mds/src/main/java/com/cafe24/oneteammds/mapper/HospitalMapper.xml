@@ -41,7 +41,7 @@
 			,hrDate		AS hr_date
 		FROM 
 			hospital
-		<if test="sv != null and sv neq ''.toString()">
+		<if test="sv2 != null and sv2 neq ''.toString()">
 			WHERE 
 				${sk2} Like CONCAT('%',#{sv2},'%')		
 		</if>

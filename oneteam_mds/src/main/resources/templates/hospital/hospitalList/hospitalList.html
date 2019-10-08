@@ -17,6 +17,14 @@
 
 				<div class="block-body">
 
+					<form action="/hospitalList" method="post">
+						<select name="sk2">
+							<option value="hospitalId">아이디</option>
+							<option value="hName">병원명</option>
+						</select> <input type="text" name="sv2">
+						<button type="submit">검색</button>
+					</form>
+
 					<table class="table">
 						<thead>
 							<tr>
@@ -35,14 +43,13 @@
 								<td th:text="${hl.h_name}"></td>
 								<td th:text="${hl.a_id}"></td>
 								<td th:text="${hl.hr_date}"></td>
-								<td>
-									<a th:href="@{/modifyHospital(hospitalId=${hl.h_id})}">
-										<button type="submit" class="btn btn-secondary" style="float: right;">수정</button>
-									</a>
-									<a th:href="@{/delHospital(hospitalId=${hl.h_id})}">
-										<button type="submit" class="btn btn-secondary" style="float: right;">삭제</button>
-									</a>
-								</td>
+								<td><a th:href="@{/modifyHospital(hospitalId=${hl.h_id})}">
+										<button type="submit" class="btn btn-secondary"
+											style="float: right;">수정</button>
+								</a> <a th:href="@{/delHospital(hospitalId=${hl.h_id})}">
+										<button type="submit" class="btn btn-secondary"
+											style="float: right;">삭제</button>
+								</a></td>
 							</tr>
 						</tbody>
 					</table>

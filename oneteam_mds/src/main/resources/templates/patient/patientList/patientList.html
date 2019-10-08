@@ -17,50 +17,59 @@
 
 				<div class="block-body">
 
-					<table class="table">
-						<thead>
-							<tr>
-								<th>아이디</th>
-								<th>비밀번호</th>
-								<th>병원 아이디</th>
-								<th>환자 이름</th>
-								<th>성별</th>
-								<th>생년월일</th>
-								<th>연락처</th>
-								<th>주소</th>
-								<th>보호자 이름</th>
-								<th>보호자 연락처</th>
-								<th>등록자</th>
-								<th>등록일자</th>
-								<th>관리</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="pl : ${patientList}">
-								<td th:text="${pl.p_id}"></td>
-								<td th:text="${pl.p_pw}"></td>
-								<td th:text="${pl.h_id}"></td>
-								<td th:text="${pl.p_name}"></td>
-								<td th:text="${pl.p_gender}"></td>
-								<td th:text="${pl.p_birth}"></td>
-								<td th:text="${pl.p_phone}"></td>
-								<td th:text="${pl.p_addr}"></td>
-								<td th:text="${pl.g_name}"></td>
-								<td th:text="${pl.g_phone}"></td>
-								<td th:text="${pl.a_id}"></td>
-								<td th:text="${pl.pr_date}"></td>
+					<form action="/patientList" method="post">
+						<select name="sk3">
+							<option value="patientId">아이디</option>
+							<option value="pName">환자명</option>
+							<option value="gName">보호자명</option>
+						</select> <input type="text" name="sv3">
+						<button type="submit">검색</button>
+					</form>
+					<div style="width: 100%; height: 200px; overflow: auto">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>아이디</th>
+									<th>비밀번호</th>
+									<th style="white-space: nowrap;">병원 아이디</th>
+									<th style="white-space: nowrap;">환자 이름</th>
+									<th style="white-space: nowrap;">성별</th>
+									<th>생년월일</th>
+									<th style="white-space: nowrap;">연락처</th>
+									<th style="white-space: nowrap;">주소</th>
+									<th style="white-space: nowrap;">보호자 이름</th>
+									<th style="white-space: nowrap;">보호자 연락처</th>
+									<th>등록자</th>
+									<th>등록일자</th>
+									<th>관리</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="pl : ${patientList}">
+									<td th:text="${pl.p_id}"></td>
+									<td th:text="${pl.p_pw}"></td>
+									<td th:text="${pl.h_id}"></td>
+									<td th:text="${pl.p_name}"></td>
+									<td th:text="${pl.p_gender}"></td>
+									<td th:text="${pl.p_birth}"></td>
+									<td th:text="${pl.p_phone}" style="white-space: nowrap;"></td>
+									<td th:text="${pl.p_addr}"></td>
+									<td th:text="${pl.g_name}"></td>
+									<td th:text="${pl.g_phone}" style="white-space: nowrap;"></td>
+									<td th:text="${pl.a_id}"></td>
+									<td th:text="${pl.pr_date}" style="white-space: nowrap;"></td>
 
-								<td>
-									<a th:href="@{/modifyPatient(patientId=${pl.p_id})}">
-										<button type="submit" class="btn btn-secondary" style="float: right;">수정</button>
-									</a>
-									<a th:href="@{/delPatient(patientId=${pl.p_id})}">
-										<button type="submit" class="btn btn-secondary" style="float: right;">삭제</button>
-									</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+									<td><a th:href="@{/modifyPatient(patientId=${pl.p_id})}">
+											<button type="submit" class="btn btn-secondary"
+												style="float: right;">수정</button>
+									</a> <a th:href="@{/delPatient(patientId=${pl.p_id})}">
+											<button type="submit" class="btn btn-secondary"
+												style="float: right;">삭제</button>
+									</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 					<div class="line"></div>
 				</div>
 			</div>

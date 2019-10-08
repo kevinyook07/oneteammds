@@ -85,9 +85,9 @@
 			,prDate		AS pr_date
 		FROM 
 			patient
-		<if test="sv != null and sv neq ''.toString()">
+		<if test="sv3 != null and sv3 neq ''.toString()">
 		WHERE
-			${sk} Like CONCAT('%',#{sv},'%')
+			${sk3} Like CONCAT('%',#{sv3},'%')
 		</if>
 	</select>
 	
