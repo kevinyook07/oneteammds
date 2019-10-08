@@ -20,10 +20,20 @@
                     
                      <table class="table">
                       <thead>
+                      <tr>
+			<th style="white-space:nowrap;">병원 고유번호</th>
+					        <th style="white-space:nowrap;">환자 고유번호</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${yebangdbDesc}">
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+		</tr>
+		</tbody>
+		<thead>
 		<tr>
 			 <th style="white-space:nowrap;">예방접종내역 코드</th>
-							<th style="white-space:nowrap;">병원고유번호</th>
-							<th style="white-space:nowrap;">환자고유번호</th>
 							<th style="white-space:nowrap;">예방접종명</th>
 							<th style="white-space:nowrap;">예방접종코드</th>
 							<th style="white-space:nowrap;">백신명</th>
@@ -37,8 +47,6 @@
 						<tbody>
 		<tr th:each="list:${yebangdbDesc}">
 			<td th:text="${list.pibCode}"></td>
-			<td th:text="${list.hospitalId}"></td>
-			<td th:text="${list.patientId}"></td>
 			<td th:text="${list.piName}"></td>
 			<td th:text="${list.piCode}"></td>
 			<td th:text="${list.pivName}"></td>

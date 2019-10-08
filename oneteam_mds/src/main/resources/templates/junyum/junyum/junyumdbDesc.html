@@ -20,11 +20,21 @@
                     
                      <table class="table">
                       <thead>
+                      <tr>
+			<th style="white-space:nowrap;">병원 고유번호</th>
+					        <th style="white-space:nowrap;">환자 고유번호</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${junyumdbDesc}">
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+		</tr>
+		</tbody>
+		<thead>
 	
 		<tr>
 			<th style="white-space:nowrap;">법정전염성감염병코드</th>
-			<th style="white-space:nowrap;">병원고유번호</th>
-			<th style="white-space:nowrap;">환자고유번호</th>
 			<th style="white-space:nowrap;">감염병명</th>
 			<th style="white-space:nowrap;">환자분류</th>
 			<th style="white-space:nowrap;">확진검사결과</th>
@@ -41,8 +51,6 @@
 						<tbody>
 		<tr th:each="list:${junyumdbDesc}">
 			<td th:text="${list.lcidCode}"></td>
-			<td th:text="${list.hospitalId}"></td>
-			<td th:text="${list.patientId}"></td>
 			<td th:text="${list.lcidName}"></td>
 			<td th:text="${list.lcidpGroup}"></td>
 			<td th:text="${list.lcidtResult}"></td>

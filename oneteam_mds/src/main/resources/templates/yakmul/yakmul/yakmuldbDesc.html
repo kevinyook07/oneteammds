@@ -20,11 +20,20 @@
                     
                      <table class="table">
                       <thead>
-	
+		<tr>
+			<th style="white-space:nowrap;">병원 고유번호</th>
+					        <th style="white-space:nowrap;">환자 고유번호</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${yakmuldbDesc}">
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+		</tr>
+		</tbody>
+		<thead>
 		<tr>
 			<th style="white-space:nowrap;">약물 처방내역 코드</th>
-					        <th style="white-space:nowrap;">병원 고유번호</th>
-					        <th style="white-space:nowrap;">환자 고유번호</th>
 					        <th style="white-space:nowrap;">처방약품명</th>
 					        <th style="white-space:nowrap;">처방약품코드</th>
 					        <th style="white-space:nowrap;">주성분명</th>
@@ -41,10 +50,10 @@
 		</tr>
 		</thead>
 						<tbody>
+		
 		<tr th:each="list:${yakmuldbDesc}">
+			
 			<td th:text="${list.mbCode}"></td>
-			<td th:text="${list.hospitalId}"></td>
-			<td th:text="${list.patientId}"></td>
 			<td th:text="${list.mmName}"></td>
 			<td th:text="${list.mmCode}"></td>
 			<td th:text="${list.miName}"></td>
