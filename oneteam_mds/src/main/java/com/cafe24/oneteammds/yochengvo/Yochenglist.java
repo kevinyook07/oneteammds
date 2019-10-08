@@ -3,32 +3,46 @@ package com.cafe24.oneteammds.yochengvo;
 public class Yochenglist {
 	//Yochenglist DB 컬럼 값 vo
 	//private 접근 지정자 설정 후 각각의 변수 입력
-	private String susinCode;
-	private String hospitalId;
-	private String hospitalName;
+	private String yochengCode;
+	private String yochengoutHospitalId;
+	private String yochengoutHospitalName;
+	private String yochenginHospitalId;
+	private String yochenginHospitalName;
 	private String patientId;
 	private String patientName;
-	private String susinJinlyoCode;
-	private String susinDate;
-	private String susinSayu;
+	private String yochengJinlyoCode;
+	private String yochengDate;
+	private String yochengSayu;
 	//getter setter 입력
-	public String getSusinCode() {
-		return susinCode;
+	public String getYochengCode() {
+		return yochengCode;
 	}
-	public void setSusinCode(String susinCode) {
-		this.susinCode = susinCode;
+	public void setYochengCode(String yochengCode) {
+		this.yochengCode = yochengCode;
 	}
-	public String getHospitalId() {
-		return hospitalId;
+	public String getYochengoutHospitalId() {
+		return yochengoutHospitalId;
 	}
-	public void setHospitalId(String hospitalId) {
-		this.hospitalId = hospitalId;
+	public void setYochengoutHospitalId(String yochengoutHospitalId) {
+		this.yochengoutHospitalId = yochengoutHospitalId;
 	}
-	public String getHospitalName() {
-		return hospitalName;
+	public String getYochengoutHospitalName() {
+		return yochengoutHospitalName;
 	}
-	public void setHospitalName(String hospitalName) {
-		this.hospitalName = hospitalName;
+	public void setYochengoutHospitalName(String yochengoutHospitalName) {
+		this.yochengoutHospitalName = yochengoutHospitalName;
+	}
+	public String getYochenginHospitalId() {
+		return yochenginHospitalId;
+	}
+	public void setYochenginHospitalId(String yochenginHospitalId) {
+		this.yochenginHospitalId = yochenginHospitalId;
+	}
+	public String getYochenginHospitalName() {
+		return yochenginHospitalName;
+	}
+	public void setYochenginHospitalName(String yochenginHospitalName) {
+		this.yochenginHospitalName = yochenginHospitalName;
 	}
 	public String getPatientId() {
 		return patientId;
@@ -42,31 +56,34 @@ public class Yochenglist {
 	public void setPatientName(String patientName) {
 		this.patientName = patientName;
 	}
-	public String getSusinJinlyoCode() {
-		return susinJinlyoCode;
+	public String getYochengJinlyoCode() {
+		return yochengJinlyoCode;
 	}
-	public void setSusinJinlyoCode(String susinJinlyoCode) {
-		this.susinJinlyoCode = susinJinlyoCode;
+	public void setYochengJinlyoCode(String yochengJinlyoCode) {
+		this.yochengJinlyoCode = yochengJinlyoCode;
 	}
-	public String getSusinDate() {
-		return susinDate;
+	public String getYochengDate() {
+		return yochengDate;
 	}
-	public void setSusinDate(String susinDate) {
-		this.susinDate = susinDate;
+	public void setYochengDate(String yochengDate) {
+		this.yochengDate = yochengDate;
 	}
-	public String getSusinSayu() {
-		return susinSayu;
+	public String getYochengSayu() {
+		return yochengSayu;
 	}
-	public void setSusinSayu(String susinSayu) {
-		this.susinSayu = susinSayu;
+	public void setYochengSayu(String yochengSayu) {
+		this.yochengSayu = yochengSayu;
 	}
+	
 	//toString 입력
 	//어노테이션 override
 	@Override
 	public String toString() {
-		return "Yochenglist [susinCode=" + susinCode + ", hospitalId=" + hospitalId + ", hospitalName=" + hospitalName
-				+ ", patientId=" + patientId + ", patientName=" + patientName + ", susinJinlyoCode=" + susinJinlyoCode
-				+ ", susinDate=" + susinDate + ", susinSayu=" + susinSayu + "]";
+		return "Yochenglist [yochengCode=" + yochengCode + ", yochengoutHospitalId=" + yochengoutHospitalId
+				+ ", yochengoutHospitalName=" + yochengoutHospitalName + ", yochenginHospitalId=" + yochenginHospitalId
+				+ ", yochenginHospitalName=" + yochenginHospitalName + ", patientId=" + patientId + ", patientName="
+				+ patientName + ", yochengJinlyoCode=" + yochengJinlyoCode + ", yochengDate=" + yochengDate
+				+ ", yochengSayu=" + yochengSayu + "]";
 	}
 		
 

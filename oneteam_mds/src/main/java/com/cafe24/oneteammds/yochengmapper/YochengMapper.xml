@@ -10,15 +10,17 @@
 	<select	id="getYochengAdminList" 
  			resultType="com.cafe24.oneteammds.yochengvo.Yochenglist">
 	
-		SELECT 
-			susinCode
-			, hospitalId
-			, hospitalName
+		SELECT
+			yochengCode
+			, yochengoutHospitalId
+			, yochengoutHospitalName
+			, yochenginHospitalId
+			, yochenginHospitalName
 			, patientId
 			, patientName
-			, susinJinlyoCode
-			, susinDate
-			, susinSayu
+			, yochengJinlyoCode
+			, yochengDate
+			, yochengSayu
 		FROM 
 			yochenglist
 	
@@ -28,15 +30,17 @@
 	<select	id="getYochengAdminListSearch" parameterType="String"
  			resultType="com.cafe24.oneteammds.yochengvo.Yochenglist">
 	
-		SELECT 
-			susinCode
-			, hospitalId
-			, hospitalName
+		SELECT
+			yochengCode
+			, yochengoutHospitalId
+			, yochengoutHospitalName
+			, yochenginHospitalId
+			, yochenginHospitalName
 			, patientId
 			, patientName
-			, susinJinlyoCode
-			, susinDate
-			, susinSayu
+			, yochengJinlyoCode
+			, yochengDate
+			, yochengSayu
 		FROM 
 			yochenglist
 		<if test="sk1 != null and sv1 neq ''.toString()">
@@ -45,6 +49,27 @@
 		</if>	
 	
 	</select>
+	
+	<!-- <insert id=""
+ 		    parameterType="com.cafe24.oneteammds.vo.">
+ 	REPLACE INTO 
+ 			susinHospitalList
+		SELECT
+			yochengCode
+			, yochengoutHospitalId
+			, yochengoutHospitalName
+			, yochenginHospitalId
+			, yochenginHospitalName
+			, patientId
+			, patientName
+			, yochengJinlyoCode
+			, yochengDate
+			, yochengSayu
+		FROM 
+			yochenglist
+		WHERE 
+			patientId = #{patientId}
+	</insert> -->
 	
 	
 	
