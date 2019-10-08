@@ -204,6 +204,10 @@
 				jdh.hospitalId = jyh.hospitalId
 			AND 
 				jdh.patientId = jyh.patientId
+		WHERE 
+				jdh.hospitalId = #{hospitalId}
+			AND 
+				jdh.patientId = #{patientId}	
  	</select>
  	
  	<insert id="getTotalRegist"

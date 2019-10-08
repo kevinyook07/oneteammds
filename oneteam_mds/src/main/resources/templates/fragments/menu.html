@@ -32,15 +32,16 @@
                 </li>
                  <li><a href="#exampledropdownDropdown0" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '병원'}"><i class="icon-grid"></i>병원 진료 리스트</a>
                   <ul id="exampledropdownDropdown0" class="collapse list-unstyled">
+                  	<li><a th:href="@{/totalhList(hospitalId=${session.SID})}">전체진료정보 리스트</a></li>
                     <li><a th:href="@{/jindanhList(hospitalId=${session.SID})}">진단내역</a></li>
-                    <li><a th:href="@{/yakmulhList(hospitalId=${session.SID})}">약물처방 내역</a></li>
-                    <li><a th:href="@{/gumchehList(hospitalId=${session.SID})}">검체검사 결과</a></li>
-                    <li><a th:href="@{/byungrihList(hospitalId=${session.SID})}">병리검사 결과</a></li>
-                    <li><a th:href="@{/youngsanghList(hospitalId=${session.SID})}">영상검사 결과</a></li>
-                    <li><a th:href="@{/ginuenghList(hospitalId=${session.SID})}">기능검사 결과</a></li>
+                    <li><a th:href="@{/yakmulhList(hospitalId=${session.SID})}">약물처방내역</a></li>
+                    <li><a th:href="@{/gumchehList(hospitalId=${session.SID})}">검체검사결과</a></li>
+                    <li><a th:href="@{/byungrihList(hospitalId=${session.SID})}">병리검사결과</a></li>
+                    <li><a th:href="@{/youngsanghList(hospitalId=${session.SID})}">영상검사결과</a></li>
+                    <li><a th:href="@{/ginuenghList(hospitalId=${session.SID})}">기능검사결과</a></li>
                     <li><a th:href="@{/susulhList(hospitalId=${session.SID})}">수술내역</a></li>
                     <li><a th:href="@{/allergyhList(hospitalId=${session.SID})}" >알러지 및 부작용</a></li>
-                    <li><a th:href="@{/yebanghList(hospitalId=${session.SID})}">예방접종 내역</a></li>
+                    <li><a th:href="@{/yebanghList(hospitalId=${session.SID})}">예방접종내역</a></li>
                     <li><a th:href="@{/saengchaehList(hospitalId=${session.SID})}">생체 신호 및 상태</a></li>
                     <li><a th:href="@{/smokinghList(hospitalId=${session.SID})}">흡연상태</a></li>
                     <li><a th:href="@{/drinkinghList(hospitalId=${session.SID})}">음주상태</a></li>

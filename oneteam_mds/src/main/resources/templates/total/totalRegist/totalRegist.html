@@ -1,217 +1,346 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/default}">
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout/default}">
 
-<th:block layout:fragment="customTitle">
-	<title>�๰ó�泻�����</title>
-</th:block>
 <th:block layout:fragment="customContents">
-	<form action="/totaldbList" method="post">
-		
-		<td>진단내역</td><br>
-		<input type="text" name="dbCode"
-			   th:value="${totalh.dbCode}">
-		<table border="1">
-			
-			<tr>
-				<td>병원고유번호</td>
-				<td>
-					<input type="text" name="hospitalId"
+	<div class="page-content">
+	 <!-- **************윗상단 메인 메뉴 ************** -->
+		<div class="page-header">
+		<h2 style="text-align:center">진단내역 등록</h2>
+			<div class="container-fluid"></div>
+	<!-- **************윗상단 메인 메뉴END ************** -->
+	<!--************메인 컨텐트 ************ -->		
+	   	</div>
+	   	  <!-- Form Elements -->
+        
+        
+    
+       <div class="col-lg-12">
+                <div class="block"></br>
+                  <div class="block-body">
+                  	<form class="form-horizontal" action="/totaldbList" method="post">
+                  	<div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">병원 고유번호</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="hospitalId"
 						th:value="${totalh.hospitalId}" readonly="readonly">
-				</td>
-			</tr>
-			<tr>
-				<td>환자고유번호</td>
-				<td>
-					<input type="text" name="patientId"
+                        </div>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">환자 고유번호</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="patientId"
 						th:value="${totalh.patientId}" readonly="readonly">
-				</td>
-			</tr>
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="drDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">진단내역 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="dbCode"
+						th:value="${totalh.dbCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="drDate"
 						th:value="${totalh.drDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>약물처방내역</td><br>
-		<input type="text" name="mbCode"
-			   th:value="${totalh.mbCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="mrDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">약물처방내역 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="mbCode"
+						th:value="${totalh.mbCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="mrDate"
 						th:value="${totalh.mrDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>검체검사결과</td><br>
-		<input type="text" name="strCode"
-			   th:value="${totalh.strCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="strDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">검체검사결과 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="strCode"
+						th:value="${totalh.strCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="strDate"
 						th:value="${totalh.strDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>병리검사결과</td><br>
-		<input type="text" name="ptrCode"
-			   th:value="${totalh.ptrCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="ptrDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">병리검사결과 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="ptrCode"
+						th:value="${totalh.ptrCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="ptrDate"
 						th:value="${totalh.ptrDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>영상검사결과</td><br>
-		<input type="text" name="itrCode"
-			   th:value="${totalh.itrCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="itrDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">영상검사결과 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="itrCode"
+						th:value="${totalh.itrCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="itrDate"
 						th:value="${totalh.itrDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>영상판독정보</td><br>
-		<input type="text" name="iidCode"
-			   th:value="${totalh.iidCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="iidrDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">영상판독정보 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="iidCode"
+						th:value="${totalh.iidCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="iidrDate"
 						th:value="${totalh.iidrDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>기능검사결과</td><br>
-		<input type="text" name="ftrCode"
-			   th:value="${totalh.ftrCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="ftrDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">기능검사결과 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="ftrCode"
+						th:value="${totalh.ftrCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="ftrDate"
 						th:value="${totalh.ftrDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>수술내역</td><br>
-		<input type="text" name="sbCode"
-			   th:value="${totalh.sbCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="sbDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">수술내역 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="sbCode"
+						th:value="${totalh.sbCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="sbDate"
 						th:value="${totalh.sbDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>알러지및부작용</td><br>
-		<input type="text" name="aseCode"
-			   th:value="${totalh.aseCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="aserDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">알러지 및 부작용 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="aseCode"
+						th:value="${totalh.aseCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="aserDate"
 						th:value="${totalh.aserDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>예방접종내역</td><br>
-		<input type="text" name="pibCode"
-			   th:value="${totalh.pibCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="pirDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">예방접종내역 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="pibCode"
+						th:value="${totalh.pibCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="pirDate"
 						th:value="${totalh.pirDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>생체신호및상태</td><br>
-		<input type="text" name="vscCode"
-			   th:value="${totalh.vscCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="vscrDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">생체신호 및 상태 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="vscCode"
+						th:value="${totalh.vscCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="vscrDate"
 						th:value="${totalh.vscrDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>흡연상태</td><br>
-		<input type="text" name="scCode"
-			   th:value="${totalh.scCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="scrDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">흡연상태 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="scCode"
+						th:value="${totalh.scCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="scrDate"
 						th:value="${totalh.scrDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>음주상태</td><br>
-		<input type="text" name="dcCode"
-			   th:value="${totalh.dcCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="dcrDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">음주상태 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="dcCode"
+						th:value="${totalh.dcCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="dcrDate"
 						th:value="${totalh.dcrDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-		<td>법정전염성감염병</td><br>
-		<input type="text" name="lcidCode"
-			   th:value="${totalh.lcidCode}">
-		<table border="1">
-			<tr>
-				<td>등록일자</td>
-				<td>
-					<input type="text" name="lcidDate"
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"></label>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row" >
+                        <label class="col-sm-3 form-control-label">법정 전염성 감염병 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="lcidCode"
+						th:value="${totalh.lcidCode}" readonly="readonly">
+                        </div>
+                      </div>                  
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">등록일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="lcidDate"
 						th:value="${totalh.lcidDate}" readonly="readonly">
-				</td>
-			</tr>
-			</table>
-			
-			<tr style="text-align: center;">
-				<td colspan="2">
-					<button type="submit">진료정보전체등록완료</button>
-				</td>
-			</tr>
-		</table>
-	</form>
+                        </div>
+                      </div>
+                      
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <div class="col-sm-9 ml-auto">
+                          <button type="submit" class="btn btn-secondary" style="float: right;">MDS시스템DB등록</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!--************메인 컨텐트 END************ -->	
 </th:block>
 </html>
