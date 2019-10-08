@@ -42,8 +42,8 @@ public class HospitalController {
 			return "/login/hospitalLogin/hospitalLogin";
 		}
 		session.setAttribute("SID"		, loginHospital.getH_id());
-		session.setAttribute("SLEVEL"	, loginHospital.getH_name());
-		/* session.setAttribute("SNAME" , loginHospital.gethName()); */
+		session.setAttribute("SLEVEL"	, loginHospital.getH_level());
+		session.setAttribute("SNAME" , loginHospital.getH_name());
 		
 		//로그인 성공 화면 index
 		return "redirect:/";

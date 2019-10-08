@@ -8,6 +8,7 @@
  	
  	<!-- 병원DB - 알러지 및 부작용 -->
  	
+ 	<!-- 병원 권한 로그인시 입력되는 ID값 받아서 알러지 및 부작용 리스트  출력 처리 -->
  	<select	id="getAllergyhList" 
  			resultType="com.cafe24.oneteammds.listvo.Allergyh">
  		SELECT 
@@ -24,6 +25,8 @@
  		  , aserDate
 		FROM 
 			allergyh
+		WHERE
+			hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 알러지 및 부작용 -> 알러지 및 부작용 regist form -->
