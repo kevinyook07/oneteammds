@@ -20,8 +20,10 @@ public class YakmulService {
 	// 병원
 	
 	// 병원DB - 약물처방내역
-	public List<Yakmulh> getYakmulhList(){
-		return yakmulMapper.getYakmulhList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 약물처방내역 리스트  출력 처리
+	public List<Yakmulh> getYakmulhList(String hospitalId){
+		return yakmulMapper.getYakmulhList(hospitalId);
 	}
 	
 	// 병원DB - 약물처방내역 -> 약물처방내역 regist form

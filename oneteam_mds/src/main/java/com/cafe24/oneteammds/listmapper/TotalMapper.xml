@@ -6,6 +6,7 @@
  	
  	<!-- 병원 -->
  	
+ 	<!-- 병원 권한 로그인시 입력되는 ID값 받아서 전체 진료정보 리스트  출력 처리 -->
  	<select	id="getTotalhList" 
  			resultType="com.cafe24.oneteammds.listvo.Totalh">
 		SELECT
@@ -103,7 +104,8 @@
 				jdh.hospitalId = jyh.hospitalId
 			AND 
 				jdh.patientId = jyh.patientId
-		 
+		 WHERE
+			jdh.hospitalId = #{session.SID}
  	</select>
  	
  	<select id="getTotalhById"

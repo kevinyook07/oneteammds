@@ -19,10 +19,13 @@ public class SmokingController {
 	// 병원
 	
 	// 병원DB - 흡연상태
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 흡연상태 리스트  출력 처리
 	@RequestMapping("/smokinghList")
-	public String getSmokingList(Model model) {
+	public String getSmokingList(@RequestParam(value="hospitalId")String hospitalId
+							   , Model model) {
 		
-		model.addAttribute("smokinghList", smokingService.getSmokinghList());
+		model.addAttribute("smokinghList", smokingService.getSmokinghList(hospitalId));
 		
 		return "/smoking/smokingh/smokinghList";
 	}

@@ -41,7 +41,9 @@ public interface TotalMapper {
 	// 병원
 	
 	// 병원 DB 전체리스트
-	public List<Totalh> getTotalhList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 전체 진료정보 리스트  출력 처리
+	public List<Totalh> getTotalhList(String hospitalId);
 	
 	// 병원 DB 전체 regist
 	public Totalh getTotalhById(String patientId, String hospitalId);

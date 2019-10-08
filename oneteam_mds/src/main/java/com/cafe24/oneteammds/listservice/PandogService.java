@@ -20,8 +20,10 @@ public class PandogService {
 	// 병원
 	
 	// 병원DB - 영상판독정보
-	public List<Pandogh> getPandoghList(){
-		return pandogMapper.getPandoghList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 영상판독정보 리스트  출력 처리
+	public List<Pandogh> getPandoghList(String hospitalId){
+		return pandogMapper.getPandoghList(hospitalId);
 	}
 	
 	// 병원DB - 영상판독정보 -> 영상판독정보 regist form

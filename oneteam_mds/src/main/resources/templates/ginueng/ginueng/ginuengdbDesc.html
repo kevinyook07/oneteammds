@@ -20,10 +20,20 @@
                     
                      <table class="table">
                       <thead>
+                      <tr>
+			<th style="white-space:nowrap;">병원 고유번호</th>
+					        <th style="white-space:nowrap;">환자 고유번호</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${ginuengdbDesc}">
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+		</tr>
+		</tbody>
+		<thead>
 		<tr>
 			<th style="white-space:nowrap;">기능검사결과 코드</th>
-							<th style="white-space:nowrap;">병원고유번호</th>
-							<th style="white-space:nowrap;">환자고유번호</th>
 							<th style="white-space:nowrap;">검사명</th>
 							<th style="white-space:nowrap;">검사코드</th>
 							<th style="white-space:nowrap;">검사결과값</th>
@@ -37,8 +47,6 @@
 						<tbody>
 		<tr th:each="list:${ginuengdbDesc}">
 			<td th:text="${list.ftrCode}"></td>
-			<td th:text="${list.hospitalId}"></td>
-			<td th:text="${list.patientId}"></td>
 			<td th:text="${list.ftName}"></td>
 			<td th:text="${list.ftCode}"></td>
 			<td th:text="${list.ftrValue}"></td>

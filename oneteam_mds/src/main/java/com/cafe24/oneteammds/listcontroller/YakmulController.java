@@ -19,10 +19,13 @@ public class YakmulController {
 	// 병원
 	
 	// 병원DB - 약물처방내역
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 약물처방내역 리스트  출력 처리
 	@RequestMapping("/yakmulhList")
-	public String getYakmulList(Model model) {
+	public String getYakmulList(@RequestParam(value="hospitalId")String hospitalId
+							  , Model model) {
 		
-		model.addAttribute("yakmulhList", yakmulService.getYakmulhList());
+		model.addAttribute("yakmulhList", yakmulService.getYakmulhList(hospitalId));
 		
 		return "/yakmul/yakmulh/yakmulhList";
 	}

@@ -19,10 +19,13 @@ public class SaengchaeController {
 	// 병원
 	
 	// 병원DB - 생체신호 및 상태
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 생체상태 및 신호 리스트  출력 처리
 	@RequestMapping("/saengchaehList")
-	public String getSaengchaeList(Model model) {
+	public String getSaengchaeList(@RequestParam(value="hospitalId")String hospitalId
+							     , Model model) {
 		
-		model.addAttribute("saengchaehList", saengchaeService.getSaengchaehList());
+		model.addAttribute("saengchaehList", saengchaeService.getSaengchaehList(hospitalId));
 		
 		return "/saengchae/saengchaeh/saengchaehList";
 	}

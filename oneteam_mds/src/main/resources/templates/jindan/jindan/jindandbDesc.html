@@ -20,10 +20,20 @@
                     
                      <table class="table">
                       <thead>
+                      <tr>
+			<th style="white-space:nowrap;">병원 고유번호</th>
+					        <th style="white-space:nowrap;">환자 고유번호</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${jindandbDesc}">
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+		</tr>
+		</tbody>
+		<thead>
 		<tr>
 			<th style="white-space:nowrap;">진단내역 코드</th>
-					        <th style="white-space:nowrap;">병원 고유번호</th>
-					        <th style="white-space:nowrap;">환자 고유번호</th>
 					        <th style="white-space:nowrap;">상병명</th>
 					        <th style="white-space:nowrap;">상병코드</th>
 					        <th style="white-space:nowrap;">진단일자</th>
@@ -35,8 +45,6 @@
 						<tbody>
 		<tr th:each="list:${jindandbDesc}">
 			<td th:text="${list.dbCode}"></td>
-			<td th:text="${list.hospitalId}"></td>
-			<td th:text="${list.patientId}"></td>
 			<td th:text="${list.dName}"></td>
 			<td th:text="${list.dCode}"></td>
 			<td th:text="${list.dDate}"></td>

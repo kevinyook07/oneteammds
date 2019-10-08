@@ -19,10 +19,13 @@ public class PandogController {
 	// 병원
 	
 	// 병원DB - 영상판독정보
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 영상판독정보 리스트  출력 처리
 	@RequestMapping("/pandoghList")
-	public String getPandogList(Model model) {
+	public String getPandogList(@RequestParam(value="hospitalId")String hospitalId
+							  , Model model) {
 		
-		model.addAttribute("pandoghList", pandogService.getPandoghList());
+		model.addAttribute("pandoghList", pandogService.getPandoghList(hospitalId));
 		
 		return "/pandog/pandogh/pandoghList";
 	}

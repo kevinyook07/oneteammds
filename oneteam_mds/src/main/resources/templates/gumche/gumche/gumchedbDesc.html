@@ -20,10 +20,20 @@
                     
                      <table class="table">
                       <thead>
-		<tr>
-			 <th style="white-space:nowrap;">검체검사결과 코드</th>
-					        <th style="white-space:nowrap;">병원 고유번호</th>
+                      <tr>
+			<th style="white-space:nowrap;">병원 고유번호</th>
 					        <th style="white-space:nowrap;">환자 고유번호</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${gumchedbDesc}">
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+		</tr>
+		</tbody>
+		<thead>
+		<tr>
+			 <th style="white-space:nowrap;">검체검사결과 코드</th>					 
 					        <th style="white-space:nowrap;">검사항목명</th>
 					        <th style="white-space:nowrap;">검사항목코드</th>
 					        <th style="white-space:nowrap;">검사명</th>
@@ -39,8 +49,6 @@
 						<tbody>
 		<tr th:each="list:${gumchedbDesc}">
 			<td th:text="${list.strCode}"></td>
-			<td th:text="${list.hospitalId}"></td>
-			<td th:text="${list.patientId}"></td>
 			<td th:text="${list.stiName}"></td>
 			<td th:text="${list.stiCode}"></td>
 			<td th:text="${list.stName}"></td>
