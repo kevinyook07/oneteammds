@@ -17,69 +17,45 @@
 			<div class="block"><br/>
 				<div class="block-body">
 					<form class="form-horizontal" action="susinHospitalInsert" method="post">
-					<div class="line"></div>
-						<div class="form-group row" >
-							<label class="col-sm-3 form-control-label">수신 코드</label>
-						<div class="col-sm-9">
-                    		<input type="text" class="form-control" name="susinCode" required>
-						</div>										
-                      	</div>
-					
-                    	<div class="form-group row" >
-                        	<label class="col-sm-3 form-control-label">병원 고유번호</label>
-                        <div class="col-sm-9">
-                          	<input type="text" class="form-control" name="hospitalId" required> 
-                        </div>
-                      	</div>
-                   	
-                      	<div class="form-group row" >
-                        	<label class="col-sm-3 form-control-label">병원 이름</label>
-                        <div class="col-sm-9">
-                          	<input type="text" class="form-control" name="hospitalName" required>
-                        </div>
-                      	</div>
-                   	
-                      	<div class="form-group row">
-                        	<label class="col-sm-3 form-control-label">환자 고유번호</label>
-                        <div class="col-sm-9">
-                          	<input type="text" class="form-control" name="patientId" required>
-                        </div>
-                      	</div>
-                      	
-                      	<div class="form-group row">
-                        	<label class="col-sm-3 form-control-label">환자 이름</label>
-                        <div class="col-sm-9">
-                          	<input type="text" class="form-control" name="patientName" required>
-                        </div>
-                      	</div>
-                  
-                      	<div class="form-group row">
-                        	<label class="col-sm-3 form-control-label">수신 진료 코드</label>
-                        <div class="col-sm-9">
-                          	<input type="text" class="form-control" name="susinJinlyoCode" required>
-                        </div>
-                      	</div>
-                   
-                      	<div class="form-group row">
-                        	<label class="col-sm-3 form-control-label">수신 요청 일자</label>
-                        <div class="col-sm-9">
-                          	<input type="date"  class="form-control" name="susinDate" required>
-                        </div>
-                      	</div>
-                    
-                      	<div class="form-group row">
-                        	<label class="col-sm-3 form-control-label">사유</label>
-                        <div class="col-sm-9">
-                          	<textarea rows="10" cols="20" class="form-control" name="susinSayu" required></textarea> 
-                    	</div>
-                      	</div>
-                   
-                      	<div class="form-group row">
-                        <div class="col-sm-9 ml-auto">
-                          <button type="submit" class="btn btn-secondary" style="float: right;">등록</button>
-                        </div>
-                      	</div>
-					</form>
+						<div class="form-group-material">
+	                      <input id="register-susinCode" name="susinCode" class="input-material" required>
+	                      <label for="register-susinCode" class="label-material">요청 코드</label>
+	                    </div>
+						
+						<div class="form-group-material">
+	                      <input name="hospitalId" class="input-material" required>
+	                      <label class="label-material">병원 고유번호</label>
+	                    </div>
+	                    
+	                    <div class="form-group-material">
+	                      <input name="hospitalName" class="input-material" required>
+	                      <label class="label-material">병원 이름</label>
+	                    </div>
+	             
+	                	<div class="form-group-material">
+	                      <input name="patientId" class="input-material" required>
+	                      <label class="label-material">환자 고유번호</label>
+	                    </div>
+	                    
+	                    <div class="form-group-material">
+	                      <input name="patientName" class="input-material" required>
+	                      <label class="label-material">환자 이름</label>
+	                    </div>
+	                    
+	                    <div class="form-group-material">
+	                      <input name="susinJinlyoCode" class="input-material" required>
+	                      <label class="label-material">요청 진료 코드</label>
+	                    </div>
+	                    
+	                    <div class="form-group-material">
+	                      <label class="label-material">사유</label>
+	                    	<textarea rows="10" cols="20" class="form-control" name="susinSayu" required></textarea> 
+	                    </div>
+	                    
+	                   	<div class="form-group text-center">
+	                      <button type="submit" class="btn btn-primary">정 보 요 청</button>
+	                    </div>
+                    </form>
 				</div>
 			</div>
 		</div>
