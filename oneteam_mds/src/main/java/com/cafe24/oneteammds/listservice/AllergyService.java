@@ -20,8 +20,10 @@ public class AllergyService {
 	// 병원
 	
 	// 병원DB - 알러지 및 부작용
-	public List<Allergyh> getAllergyhList(){
-		return allergyMapper.getAllergyhList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 알러지 및 부작용 리스트  출력 처리
+	public List<Allergyh> getAllergyhList(String hospitalId){
+		return allergyMapper.getAllergyhList(hospitalId);
 	}
 	
 	// 병원DB - 알러지 및 부작용 -> 알러지 및 부작용 regist form
