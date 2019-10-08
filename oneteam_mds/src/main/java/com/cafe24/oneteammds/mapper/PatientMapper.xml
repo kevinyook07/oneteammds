@@ -18,6 +18,7 @@
 			,pAddr		AS p_addr
 			,gName		AS g_name
 			,gPhone		AS g_phone
+			,pLevel		AS p_level
 			,adminId	AS a_id
 			,prDate		AS pr_date
 		FROM 
@@ -61,6 +62,7 @@
 			,pAddr		AS p_addr
 			,gName		AS g_name
 			,gPhone		AS g_phone
+			,pLevel		AS p_level
 			,adminId	AS a_id
 			,prDate		AS pr_date
 		FROM 
@@ -81,6 +83,7 @@
 			,pAddr		AS p_addr
 			,gName		AS g_name
 			,gPhone		AS g_phone
+			,pLevel		AS p_level
 			,adminId	AS a_id
 			,prDate		AS pr_date
 		FROM 
@@ -104,6 +107,7 @@
 			,pAddr
 			,gName
 			,gPhone
+			,pLevel
 			,adminId
 			,prDate
 		)VALUES( 
@@ -117,6 +121,7 @@
 			,#{p_addr}
 			,#{g_name}
 			,#{g_phone}
+			,#{p_level}
 			,#{a_id}
 			,NOW()
 		)
@@ -135,6 +140,7 @@
 			,pAddr		= #{p_addr}
 			,gName		= #{g_name}
 			,gPhone		= #{g_phone}
+			,pLevel		= #{p_level}
 		WHERE
 			patientId	= #{p_id}
 	</update>

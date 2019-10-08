@@ -41,7 +41,7 @@ public class PatientController {
 			return "/login/patientLogin/patientLogin";
 		}
 		session.setAttribute("SID"		, loginPatient.getP_id());
-		/* session.setAttribute("SLEVEL" , loginPatient.getPatientId()); */
+		session.setAttribute("SLEVEL" , loginPatient.getP_level());
 		session.setAttribute("SNAME"	, loginPatient.getP_name());
 		
 		//로그인 성공 화면 index
