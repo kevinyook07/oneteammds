@@ -19,10 +19,13 @@ public class DrinkingController {
 	// 병원
 	
 	// 병원DB - 음주상태
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 음주상태 리스트  출력 처리
 	@RequestMapping("/drinkinghList")
-	public String getDrinkingList(Model model) {
+	public String getDrinkingList(@RequestParam(value="hospitalId")String hospitalId
+							    , Model model) {
 		
-		model.addAttribute("drinkinghList", drinkingService.getDrinkinghList());
+		model.addAttribute("drinkinghList", drinkingService.getDrinkinghList(hospitalId));
 		
 		return "/drinking/drinkingh/drinkinghList";
 	}

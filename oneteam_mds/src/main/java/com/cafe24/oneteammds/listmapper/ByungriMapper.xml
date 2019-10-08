@@ -8,6 +8,7 @@
  	
  	<!-- 병원DB - 병리검사결과 -->
  	
+ 	<!-- 병원 권한 로그인시 입력되는 ID값 받아서 병리검사결과 리스트  출력 처리 -->
  	<select	id="getByungrihList" 
  			resultType="com.cafe24.oneteammds.listvo.Byungrih">
  		SELECT 
@@ -23,6 +24,8 @@
  		  , ptrDate
 		FROM 
 			byungrih
+		WHERE
+			hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 병리검사결과 -> 병리검사결과 regist form -->

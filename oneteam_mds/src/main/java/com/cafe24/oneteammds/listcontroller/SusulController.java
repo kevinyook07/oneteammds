@@ -19,10 +19,13 @@ public class SusulController {
 	// 병원
 	
 	// 병원DB - 수술내역
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 수술내역 리스트  출력 처리
 	@RequestMapping("/susulhList")
-	public String getSusulList(Model model) {
+	public String getSusulList(@RequestParam(value="hospitalId")String hospitalId
+							 , Model model) {
 		
-		model.addAttribute("susulhList", susulService.getSusulhList());
+		model.addAttribute("susulhList", susulService.getSusulhList(hospitalId));
 		
 		return "/susul/susulh/susulhList";
 	}

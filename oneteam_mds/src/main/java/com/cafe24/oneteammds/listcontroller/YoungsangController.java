@@ -19,10 +19,13 @@ public class YoungsangController {
 	// 병원
 	
 	// 병원DB - 영상검사결과
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 영상검사결과 리스트  출력 처리
 	@RequestMapping("/youngsanghList")
-	public String getYoungsangList(Model model) {
+	public String getYoungsangList(@RequestParam(value="hospitalId")String hospitalId
+								 , Model model) {
 		
-		model.addAttribute("youngsanghList", youngsangService.getYoungsanghList());
+		model.addAttribute("youngsanghList", youngsangService.getYoungsanghList(hospitalId));
 		
 		return "/youngsang/youngsangh/youngsanghList";
 	}

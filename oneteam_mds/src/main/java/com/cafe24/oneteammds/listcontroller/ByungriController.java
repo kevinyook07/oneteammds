@@ -19,10 +19,13 @@ public class ByungriController {
 	// 병원
 	
 	// 병원DB - 병리검사결과
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 병리검사결과 리스트  출력 처리
 	@RequestMapping("/byungrihList")
-	public String getByungriList(Model model) {
+	public String getByungriList(@RequestParam(value="hospitalId")String hospitalId
+			 				   , Model model) {
 		
-		model.addAttribute("byungrihList", byungriService.getByungrihList());
+		model.addAttribute("byungrihList", byungriService.getByungrihList(hospitalId));
 		
 		return "/byungri/byungrih/byungrihList";
 	}

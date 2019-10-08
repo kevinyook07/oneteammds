@@ -20,8 +20,10 @@ public class JunyumService {
 	// 병원
 	
 	// 병원DB - 법정 전염성 감염병
-	public List<Junyumh> getJunyumhList(){
-		return junyumMapper.getJunyumhList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 법정 전염성 감염병 리스트  출력 처리
+	public List<Junyumh> getJunyumhList(String hospitalId){
+		return junyumMapper.getJunyumhList(hospitalId);
 	}
 	
 	// 병원DB - 법정 전염성 감염병 -> 법정 전염성 감염병 regist form

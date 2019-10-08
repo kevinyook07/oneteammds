@@ -13,7 +13,9 @@ public interface GumcheMapper {
 	// 병원
 	
 	// 병원DB - 검체검사결과
-	public List<Gumcheh> getGumchehList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 검체검사결과 리스트  출력 처리
+	public List<Gumcheh> getGumchehList(String hospitalId);
 	
 	// 병원DB - 검체검사결과 --> 검체검사결과 regist form
 	public Gumcheh getGumchehById(String patientId);

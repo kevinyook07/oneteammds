@@ -19,10 +19,13 @@ public class YebangController {
 	// 병원
 	
 	// 병원DB - 예방접종내역
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 예방접종내역 리스트  출력 처리
 	@RequestMapping("/yebanghList")
-	public String getYebangList(Model model) {
+	public String getYebangList(@RequestParam(value="hospitalId")String hospitalId
+							  , Model model) {
 		
-		model.addAttribute("yebanghList", yebangService.getYebanghList());
+		model.addAttribute("yebanghList", yebangService.getYebanghList(hospitalId));
 		
 		return "/yebang/yebangh/yebanghList";
 	}

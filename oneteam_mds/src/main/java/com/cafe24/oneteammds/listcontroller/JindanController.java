@@ -19,10 +19,13 @@ public class JindanController {
 	// 병원
 	
 	// 병원DB - 진단내역
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 진단내역 리스트  출력 처리
 	@RequestMapping("/jindanhList")
-	public String getJindanList(Model model) {
+	public String getJindanList(@RequestParam(value="hospitalId")String hospitalId
+							  , Model model) {
 		
-		model.addAttribute("jindanhList", jindanService.getJindanhList());
+		model.addAttribute("jindanhList", jindanService.getJindanhList(hospitalId));
 		
 		return "/jindan/jindanh/jindanhList";
 	}

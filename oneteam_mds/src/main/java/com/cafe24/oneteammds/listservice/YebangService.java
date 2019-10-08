@@ -20,8 +20,10 @@ public class YebangService {
 	// 병원
 	
 	// 병원DB - 예방접종내역
-	public List<Yebangh> getYebanghList(){
-		return yebangMapper.getYebanghList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 예방접종내역 리스트  출력 처리
+	public List<Yebangh> getYebanghList(String hospitalId){
+		return yebangMapper.getYebanghList(hospitalId);
 	}
 	
 	// 병원DB - 예방접종내역 -> 예방접종내역 regist form

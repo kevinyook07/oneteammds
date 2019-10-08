@@ -20,8 +20,10 @@ public class YoungsangService {
 	// 병원
 	
 	// 병원DB - 영상검사결과
-	public List<Youngsangh> getYoungsanghList(){
-		return youngsangMapper.getYoungsanghList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 영상검사결과 리스트  출력 처리
+	public List<Youngsangh> getYoungsanghList(String hospitalId){
+		return youngsangMapper.getYoungsanghList(hospitalId);
 	}
 	
 	// 병원DB - 영상검사결과 -> 영상검사결과 regist form
