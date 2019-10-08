@@ -1947,7 +1947,7 @@ input.input-material:focus {
 }
 
 input.input-material ~ label {
-  color: #aaa;
+  color: #5e5e5e;
   position: absolute;
   top: 14px;
   left: 0;

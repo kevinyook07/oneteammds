@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper namespace 설정 -->  
+<mapper namespace="com.cafe24.oneteammds.susinmapper.SusinHospitalMapper">
+	
+	<insert id="yochengHinsert" parameterType="com.cafe24.oneteammds.susinvo.SusinHospital"> 
+	<!-- yochenglist 테이블에 DB값 생성 쿼리문 -->
+	INSERT INTO yochenglist
+		
+		(susinCode, 
+		hospitalId, 
+		hospitalName, 
+		patientId, 
+		patientName, 
+		susinJinlyoCode, 
+		susinDate, 
+		susinSayu)
+	
+	VALUES (
+		
+		#{susinCode}, 
+		#{hospitalId}, 
+		#{hospitalName}, 
+		#{patientId}, 
+		#{patientName}, 
+		#{susinJinlyoCode}, 
+		NOW(), 
+		#{susinSayu})
+
+	</insert>
+	
+	<select id="susinHospitalList" resultType="com.cafe24.oneteammds.susinvo.SusinHospital">
+	<!-- 특정 컬럼을 통해 조회 쿼리문 -->
+		SELECT * FROM 
+			yochenglist
+		WHERE 
+			hospitalId = 'hospitalIda'
+	</select>
+
+</mapper>
