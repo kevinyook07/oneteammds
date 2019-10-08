@@ -21,9 +21,10 @@
                   <div class="block-body">
                     <form class="form-horizontal" action="/susinAdminList" method="post">
                       <div class="form-group row" >
-                        <label class="col-sm-3 form-control-label">흡연상태 코드</label>
+                        <label class="col-sm-3 form-control-label">수신 코드</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control"> <!-- name="scCode"
+                          <input type="text" class="form-control" name="susinCode"
+						th:value="${smokingh.scCode}" readonly="readonly"> <!-- name="scCode"
 						th:value="${smokingh.scCode}" readonly="readonly" -->
                         </div>
                       </div>
