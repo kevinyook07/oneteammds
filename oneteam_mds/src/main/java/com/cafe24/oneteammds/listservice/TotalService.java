@@ -46,8 +46,10 @@ public class TotalService {
 	private TotalMapper totalMapper;
 	
 	// 병원
-	public List<Totalh> getTotalhList(){
-		return totalMapper.getTotalhList();
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 전체 진료정보 리스트  출력 처리
+	public List<Totalh> getTotalhList(String hospitalId){
+		return totalMapper.getTotalhList(hospitalId);
 	}
 	
 	public Totalh getTotalhById(String patientId, String hospitalId) { 

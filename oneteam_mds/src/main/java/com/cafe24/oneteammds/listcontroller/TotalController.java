@@ -33,10 +33,13 @@ public class TotalController {
 	// 병원
 	
 	// 병원 DB 전체리스트
+	
+	// 병원 권한 로그인시 입력되는 ID값 받아서 전체 진료정보 리스트  출력 처리
 	@RequestMapping("/totalhList")
-	public String getTotalList(Model model) {
+	public String getTotalList(@RequestParam(value="hospitalId")String hospitalId
+							 , Model model) {
 		
-		model.addAttribute("totalhList", totalService.getTotalhList());
+		model.addAttribute("totalhList", totalService.getTotalhList(hospitalId));
 		
 		return "/total/totalh/totalhList";
 	}
