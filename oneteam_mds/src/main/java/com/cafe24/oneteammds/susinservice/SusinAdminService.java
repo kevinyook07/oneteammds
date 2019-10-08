@@ -16,7 +16,7 @@ public class SusinAdminService {
 	@Autowired //어노테이션 autowired
 	private SusinAdminMapper susinAdminMapper;
 	
-	//접근 지정자 설정 //return은 호출된 고으로 return된다
+	//접근 지정자 설정 //return은 호출된 곳으로 return된다
 	public List<SusinAdmin> getsusinAdminYochengList(){
 		
 		return susinAdminMapper.getsusinAdminYochengList();

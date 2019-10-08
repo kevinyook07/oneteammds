@@ -46,8 +46,9 @@
 								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">수신 사유</th>
 		      				</tr>
 						</thead>
+					<!-- DB 값 -->
 					<tbody>
-						<tr th:each="list:${susinAdminYochengList}"> <!-- DB 값 -->
+						<tr th:each="list:${susinAdminYochengList}"> 
 							<td th:text="${list.susinCode}"></td>
 							<td th:text="${list.hospitalId}"></td>
 							<td th:text="${list.hospitalName}"></td>

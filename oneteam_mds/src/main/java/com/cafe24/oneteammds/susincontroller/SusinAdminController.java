@@ -18,12 +18,12 @@ public class SusinAdminController {
 	
 	
 	@GetMapping("/susinAdminYochengList") //어노테이션 getmapping // susinAdminInsert 경로 설정
-	public String susinAdminYochengList(SusinAdmin susinAdmin, Model model) {
+	public String susinAdminYochengList(SusinAdmin susinAdmin, Model model) { //susinAdminYochengList 메서드 설정
 		
-		List<SusinAdmin> list = susinAdminService.getsusinAdminYochengList();
-		model.addAttribute("susinAdminYochengList", list);
+		List<SusinAdmin> list = susinAdminService.getsusinAdminYochengList(); //list 객체 생성
+		model.addAttribute("susinAdminYochengList", list); 
 		
-		return "/susinAdmin/susinAdminYochengList/susinAdminYochengList";
+		return "/susinAdmin/susinAdminYochengList/susinAdminYochengList"; //susinAdminYochengList으로 return
 	}
 	
 }
