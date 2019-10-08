@@ -13,17 +13,6 @@ import com.cafe24.oneteammds.susinvo.SusinAdmin;
 @Controller //어노테이션 controller
 public class SusinAdminController {
 
-	@Autowired //어너테이션 autowired
-	private SusinAdminService susinAdminService;
 	
-	
-	@GetMapping("/susinAdminYochengList") //어노테이션 getmapping // susinAdminInsert 경로 설정
-	public String susinAdminYochengList(SusinAdmin susinAdmin, Model model) { //susinAdminYochengList 메서드 설정
-		
-		List<SusinAdmin> list = susinAdminService.getsusinAdminYochengList(); //list 객체 생성
-		model.addAttribute("susinAdminYochengList", list); 
-		
-		return "/susinAdmin/susinAdminYochengList/susinAdminYochengList"; //susinAdminYochengList으로 return
-	}
 	
 }

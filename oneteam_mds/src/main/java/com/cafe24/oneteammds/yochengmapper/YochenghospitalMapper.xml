@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper namespace 설정 -->  
+<mapper namespace="com.cafe24.oneteammds.yochengmapper.YochenghospitalMapper">
+	
+	<insert id="yochengHinsert" parameterType="com.cafe24.oneteammds.yochengvo.Yochenghospital"> 
+	<!-- yochenglist 테이블에 DB값 생성 쿼리문 -->
+	INSERT INTO yochenglist(
+		
+		yochengCode, 
+		yochengoutHospitalId, 
+		yochengoutHospitalName, 
+		yochenginHospitalId, 
+		yochenginHospitalName, 
+		patientId, patientName, 
+		yochengJinlyoCode, 
+		yochengDate, 
+		yochengSayu)
+	
+	VALUES (
+		#{yochengCode}, 
+		#{yochengoutHospitalId},
+		#{yochengoutHospitalName}, 
+		#{yochenginHospitalId}, 
+		#{yochenginHospitalName}, 
+		#{patientId}, 
+		#{patientName}, 
+		#{yochengJinlyoCode}, 
+		NOW(), 
+		#{yochengSayu})
+
+	</insert>
+	
+	<select id="yochengHList" resultType="com.cafe24.oneteammds.yochengvo.Yochenghospital">
+	<!-- 세션 통해 특정 아이디 로그인시 select 조회 컬럼  -->
+		SELECT * FROM 
+			yochenglist
+		WHERE 
+			yochengoutHospitalId = #{session.SID}
+	</select>
+
+</mapper>
