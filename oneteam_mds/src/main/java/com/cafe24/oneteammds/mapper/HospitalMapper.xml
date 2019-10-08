@@ -13,6 +13,7 @@
 			,hName		AS h_name
 			,admId		AS a_id
 			,hrDate		AS hr_date
+			,hLevel     AS h_level
 		FROM 
 			hospital
 		WHERE
