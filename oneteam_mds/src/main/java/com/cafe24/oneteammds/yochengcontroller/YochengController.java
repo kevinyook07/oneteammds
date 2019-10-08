@@ -26,7 +26,7 @@ public class YochengController {
 		model.addAttribute("yochengAdminList", list);
 		
 		
-		return "/yochengAdmin/yochengAdminList/yochengAdminList";
+		return "/yochengAdmin/yochengAdminList/yochengAdminList"; //return 경로 지정
 	}
 	
 	//MDS 진료 정보 요청 내역에서 검색 화면
@@ -38,7 +38,7 @@ public class YochengController {
 		List<Yochenglist> list = yochengService.getYochengAdminListSearch(sk1, sv1);
 		model.addAttribute("yochengAdminList", list);
 		
-		return "/yochengAdmin/yochengAdminList/yochengAdminList";
+		return "/yochengAdmin/yochengAdminList/yochengAdminList"; //return 경로 지정
 	}
 	
 	
