@@ -50,6 +50,7 @@
 	
 	</select>
 	
+	<!-- 관리자에서 병원으로 요청 내역 전송 -->
 	<!-- <insert id=""
  		    parameterType="com.cafe24.oneteammds.vo.">
  	REPLACE INTO 
