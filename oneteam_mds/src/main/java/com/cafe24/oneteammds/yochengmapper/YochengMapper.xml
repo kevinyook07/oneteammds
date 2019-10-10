@@ -25,7 +25,7 @@
 		FROM 
 			yochenglist
 		ORDER BY yochengCode ASC 
-		LIMIT #{startRow},#{rowPerPage}
+		LIMIT #{startRow},#{rowPerPage} <!-- currentPage에서 startRow로 바꾸니까 정상 출력 -->
 	
 	</select>
 	
