@@ -24,8 +24,13 @@ public class YochenghospitalService {
 	public int yochengHinsert(Yochenghospital Yochenghospital) {
 		return yochenghospitalMapper.yochengHinsert(Yochenghospital);
 	}
-	//세션 통해 특정 아이디 로그인시 select 조회 
+	//특정 아이디 로그인시 list select 조회 
 	public List<Yochenghospital> yochengHList(String yochengoutHospitalId){
-		return yochenghospitalMapper.yochengHList(yochengoutHospitalId);
+		return yochenghospitalMapper.yochengHList(yochengoutHospitalId);	
+	}
+	//특정 아이디 항목 선택 후 검색 list select 조회
+	public List<Yochenghospital> yochenghSearch(String search1, String search2, String yochengoutHospitalId){
+		return yochenghospitalMapper.yochenghSearch(search1, search2, yochengoutHospitalId);
+		
 	}
 }

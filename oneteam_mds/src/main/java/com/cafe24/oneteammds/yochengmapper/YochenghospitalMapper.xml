@@ -21,6 +21,7 @@
 		yochengSayu)
 	
 	VALUES (
+	
 		#{yochengCode}, 
 		#{yochengoutHospitalId},
 		#{yochengoutHospitalName}, 
@@ -35,11 +36,23 @@
 	</insert>
 	
 	<select id="yochengHList" resultType="com.cafe24.oneteammds.yochengvo.Yochenghospital">
-	<!-- 세션 통해 특정 아이디 로그인시 select 조회 컬럼  -->
+	<!-- 특정 아이디 로그인시 해당 list select 조회 컬럼  -->
 		SELECT * FROM 
 			yochenglist
 		WHERE 
-			yochengoutHospitalId = #{session.SID}
+			yochengoutHospitalId = #{yochengoutHospitalId}
+	</select>
+	
+	<select id="yochenghSearch" parameterType="String" resultType="com.cafe24.oneteammds.yochengvo.Yochenghospital">
+	<!--  항목 선택 후 해당 로그인 아이디 list select 조회 컬럼 -->	
+		SELECT * FROM 
+			yochenglist
+		WHERE 
+			yochengoutHospitalId = #{yochengoutHospitalId}
+		<if test="search1 neq null and search2 neq ''.toString()">
+		AND
+    		${search1} Like CONCAT('%',#{search2},'%')
+    	</if>
 	</select>
 
 </mapper>

@@ -16,4 +16,6 @@ public interface YochenghospitalMapper {
 	//susinHospitalList select interface
 	public List<Yochenghospital> yochengHList(String yochengoutHospitalId);
 		
+	//yochenghSearch select interface
+	public List<Yochenghospital> yochenghSearch(String search1, String search2, String yochengoutHospitalId);
 }

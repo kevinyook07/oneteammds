@@ -31,10 +31,20 @@ public class YochenghospitalController {
 		yochenghospitalService.yochengHinsert(Yochenghospital);
 		return "redirect:/yochengHospitalList";
 	}
-	// db안에 있는 값을 세션 아이디를 통해 특정 컬럼 만 호출해주는 메서드 리스트 
+	// db안에 있는 값을 아이디를 통해 특정 컬럼 만 호출해주는 메서드 리스트 
 	@GetMapping("/yochengHospitalList")
-	public String yochengHList(Model model, @RequestParam(value="yochengoutHospitalId")String yochengoutHospitalId){
+	public String yochengHList(Model model, @RequestParam(value="yochengoutHospitalId", required = false) String yochengoutHospitalId){
 		model.addAttribute("yochengHList", yochenghospitalService.yochengHList(yochengoutHospitalId));
 		return "/yochenghospital/yochengHospitalList/yochengHospitalList";
+	}
+	// 조건을 선택 후 검색시 리스트 출력 메서드
+	@PostMapping("/yochengHospitalList")
+	public String yochenghSearch(@RequestParam(value="search1", required = false) String search1, 
+								 @RequestParam(value="search2", required = false) String search2,
+								 @RequestParam(value="yochengoutHospitalId", required = false) String yochengoutHospitalId,
+								 Model model) {
+		model.addAttribute("yochengHList", yochenghospitalService.yochenghSearch(search1, search2, yochengoutHospitalId));
+		return "/yochenghospital/yochengHospitalList/yochengHospitalList";
+		
 	}
 }
