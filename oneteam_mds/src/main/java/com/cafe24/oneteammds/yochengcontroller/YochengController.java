@@ -25,6 +25,7 @@ public class YochengController {
 										,@RequestParam(value="currentPage", required = false, defaultValue="1") int currentPage
 										,Yochenglist yochenglist) {
 		
+		//map에 담음.
 		Map<String, Object> map = yochengService.getYochengAdminList(currentPage);
 		
 		
