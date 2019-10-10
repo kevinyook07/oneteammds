@@ -20,19 +20,21 @@
 				<div class="block-body">
 					<div class="container">
 					
-					<div class="col-sm-9">
+					<div class="col-sm-5">
+					<form action="/adminList" method="post">
                           <div class="input-group">
                             <div class="input-group-prepend">
-                              <button data-toggle="dropdown" type="button" class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false">Action <span class="caret"></span></button>
-                              <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 39px, 0px); top: 0px; left: 0px; will-change: transform;"><a href="#" class="dropdown-item">Action</a><a href="#" class="dropdown-item">Another action</a><a href="#" class="dropdown-item">Something else here</a>
-                                <div class="dropdown-divider"></div><a href="#" class="dropdown-item">Separated link</a>
-                              </div>
-                            </div>
-                            <input type="text" class="form-control">
+                              <select class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false" name="sk">
+                              	<option class="dropdown-item" value="adminId">아이디</option>
+                              	<option class="dropdown-item" value="aName">관리자명</option>
+                              </select>
+                    </div>
+                            <input type="text" class="form-control" name="sv">　
+                            <button type="submit" class="btn btn-outline-secondary">검색</button>
                           </div>
-                        </div>
-			
-
+							</div>
+					</form>
+					
 					<!-- <form action="/adminList" method="post" >
 						<select name="sk">
 							<option value="adminId">아이디</option>
