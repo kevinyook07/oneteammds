@@ -7,7 +7,7 @@
 	<div class="page-content">
 	 <!-- **************윗상단 메인 메뉴 ************** -->
 		<div class="page-header">
-		<h2 style="text-align:center">관리자 수신</h2>
+		<h2 style="text-align:center">관리자 → 병원 요청 전송</h2>
 			<div class="container-fluid"></div>
 	<!-- **************윗상단 메인 메뉴END ************** -->
 	<!--************메인 컨텐트 ************ -->		
@@ -19,61 +19,84 @@
        <div class="col-lg-12">
                 <div class="block"></br>
                   <div class="block-body">
-                    <form class="form-horizontal" action="/susinAdminList" method="post">
+                    <form class="form-horizontal" action="yochengwanlyo" method="post"> <!-- action에 병원쪽 요청 리스트 경로가 잡혀야 함. -->
                       <div class="form-group row" >
-                        <label class="col-sm-3 form-control-label">수신 코드</label>
+                        <label class="col-sm-3 form-control-label">요청 코드</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" name="susinCode"
-						th:value="${smokingh.scCode}" readonly="readonly"> <!-- name="scCode"
-						th:value="${smokingh.scCode}" readonly="readonly" -->
+                          <input type="text" class="form-control" name="yochengCode"
+							th:value="${yochenglist.yochengCode}" readonly="readonly">
                         </div>
                       </div>
                       
                       <div class="form-group row" >
-                        <label class="col-sm-3 form-control-label">병원 고유번호</label>
+                        <label class="col-sm-3 form-control-label">요청 보내는 병원 고유번호</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control"> <!-- name="scCode"
-						th:value="${smokingh.scCode}" readonly="readonly" -->
+                          <input type="text" class="form-control" name="yochengoutHospitalId"
+							th:value="${yochenglist.yochengoutHospitalId}" readonly="readonly"> 
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
-                        <label class="col-sm-3 form-control-label">환자 고유번호</label>
+                        <label class="col-sm-3 form-control-label">요청 보내는 병원 이름</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control"> <!-- name="scCode"
-						th:value="${smokingh.scCode}" readonly="readonly" -->
+                          <input type="text" class="form-control" name="yochengoutHospitalName"
+							th:value="${yochenglist.yochengoutHospitalName}" readonly="readonly"> 
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
-                        <label class="col-sm-3 form-control-label">흡연상태코드 명칭</label>
+                        <label class="col-sm-3 form-control-label">요청 받는 병원 고유번호</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control"> <!-- name="scCode"
-						th:value="${smokingh.scCode}" readonly="readonly" -->
+                          <input type="text" class="form-control" name="yochenginHospitalId"
+							th:value="${yochenglist.yochenginHospitalId}" readonly="readonly"> 
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
-                        <label class="col-sm-3 form-control-label">담당의</label>
+                        <label class="col-sm-3 form-control-label">요청 받는 병원 이름</label>
                         <div class="col-sm-9">
-                          <input type="text"  class="form-control"> <!-- name="scCode"
-						th:value="${smokingh.scCode}" readonly="readonly" -->
+                          <input type="text" class="form-control" name="yochenginHospitalName"
+							th:value="${yochenglist.yochenginHospitalName}" readonly="readonly"> 
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
-                        <label class="col-sm-3 form-control-label">등록자 고유번호</label>
+                        <label class="col-sm-3 form-control-label">환자 고유번</label>
                         <div class="col-sm-9">
-                          <input type="text"  class="form-control"> <!-- name="scCode"
-						th:value="${smokingh.scCode}" readonly="readonly" -->
+                          <input type="text" class="form-control" name="patientId"
+							th:value="${yochenglist.patientId}" readonly="readonly"> 
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
-                        <label class="col-sm-3 form-control-label">등록일자 </label>
+                        <label class="col-sm-3 form-control-label">환자 이름</label>
                         <div class="col-sm-9">
-                          <input type="text"  class="form-control"> <!-- name="scCode"
-						th:value="${smokingh.scCode}" readonly="readonly" -->
+                          <input type="text" class="form-control" name="patientName"
+							th:value="${yochenglist.patientName}" readonly="readonly"> 
+                        </div>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">요청 진료 코드</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="yochengJinlyoCode"
+							th:value="${yochenglist.yochengJinlyoCode}" readonly="readonly"> 
+                        </div>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">요청 일자</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="yochengDate"
+							th:value="${yochenglist.yochengDate}" readonly="readonly"> 
+                        </div>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">요청 사유</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="yochengSayu"
+							th:value="${yochenglist.yochengSayu}" readonly="readonly"> 
                         </div>
                       </div>
                       
@@ -81,7 +104,8 @@
                       <div class="line"></div>
                       <div class="form-group row">
                         <div class="col-sm-9 ml-auto">
-                          <button type="submit" class="btn btn-secondary" style="float: right;">등록</button>
+                          <button type="submit" class="btn btn-secondary" style="float: right;">요청 전송</button>
+                          <!-- 요청 전송을 누르면 전송이 완료됐다고 메시지 창 출력해주기 -->
                         </div>
                       </div>
                     </form>

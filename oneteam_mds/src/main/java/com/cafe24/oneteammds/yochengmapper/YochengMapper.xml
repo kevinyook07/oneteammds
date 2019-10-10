@@ -6,7 +6,8 @@
 <!-- mapper namespace 설정 -->  
 <mapper namespace="com.cafe24.oneteammds.yochengmapper.YochengMapper">
 	
-	<!-- select 쿼리문 입력, resultType 설정 -->
+	<!-- 전체 리스트, select 쿼리문 입력, resultType 설정 -->
+	<!-- limit 0,10은 한 페이지에 게시글을 10개만 보여주게 함. -->
 	<select	id="getYochengAdminList" 
  			resultType="com.cafe24.oneteammds.yochengvo.Yochenglist">
 	
@@ -23,8 +24,38 @@
 			, yochengSayu
 		FROM 
 			yochenglist
+		ORDER BY yochengCode ASC 
+		LIMIT #{startRow},#{rowPerPage}
 	
 	</select>
+	
+	<!-- 페이지 처리를 위한 전체행의 갯수 -->
+	<select id="getYochengAdminListAllCount" resultType="int">
+		select
+			count(*)
+		From 
+			yochenglist
+
+	</select>	
+	
+	<!-- <select id="getYochengCode" parameterType="int" resultType="com.cafe24.oneteammds.yochengvo.Yochenglist">
+		SELECT 
+ 			yochengCode
+			, yochengoutHospitalId
+			, yochengoutHospitalName
+			, yochenginHospitalId
+			, yochenginHospitalName
+			, patientId
+			, patientName
+			, yochengJinlyoCode
+			, yochengDate
+			, yochengSayu
+		FROM 
+			yochenglist
+		where				
+			yochengCode = #{yochengCode}
+	</select> -->
+	
 	
 	<!-- select 쿼리문 입력, parameterType=String 설정, resultType 설정 -->
 	<select	id="getYochengAdminListSearch" parameterType="String"
@@ -50,10 +81,32 @@
 	
 	</select>
 	
+	<select id="getYochenglist_ById"
+ 			parameterType="String"
+ 			resultType="com.cafe24.oneteammds.yochengvo.Yochenglist">
+		SELECT 
+ 			yochengCode
+			, yochengoutHospitalId
+			, yochengoutHospitalName
+			, yochenginHospitalId
+			, yochenginHospitalName
+			, patientId
+			, patientName
+			, yochengJinlyoCode
+			, yochengDate
+			, yochengSayu
+		FROM 
+			yochenglist
+		where				
+			patientId = #{patientId}
+ 	</select>
+	
+	
+	
 	<!-- 관리자에서 병원으로 요청 내역 전송 -->
-	<!-- <insert id=""
- 		    parameterType="com.cafe24.oneteammds.vo.">
- 	REPLACE INTO 
+	<insert id="getYochengAdminInsert"
+ 		    parameterType="com.cafe24.oneteammds.yochengvo.Yochenglist">
+ 	INSERT INTO 
  			susinHospitalList
 		SELECT
 			yochengCode
@@ -70,7 +123,7 @@
 			yochenglist
 		WHERE 
 			patientId = #{patientId}
-	</insert> -->
+	</insert>
 	
 	
 	
