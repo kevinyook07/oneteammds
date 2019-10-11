@@ -37,10 +37,12 @@
 	
 	<select id="yochengHList" resultType="com.cafe24.oneteammds.yochengvo.Yochenghospital">
 	<!-- 특정 아이디 로그인시 해당 list select 조회 컬럼  -->
-		SELECT * FROM 
-			yochenglist
-		WHERE 
-			yochengoutHospitalId = #{yochengoutHospitalId}
+		SELECT 
+			*
+		FROM yochenglist
+		
+		WHERE
+		yochengoutHospitalId = #{yochengoutHospitalId}
 	</select>
 	
 	<select id="yochenghSearch" parameterType="String" resultType="com.cafe24.oneteammds.yochengvo.Yochenghospital">
