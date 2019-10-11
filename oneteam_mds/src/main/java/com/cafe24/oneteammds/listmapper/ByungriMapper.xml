@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.ByungriMapper">
  	
- 	<!-- 병원 1-->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 병리검사결과 -->
  	
@@ -117,6 +117,32 @@
 		FROM 
 			byungri
 	</select>
+	
+	<!-- MDS DB - 병리검사결과  검색-->
+	<select id="getByungridbSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Byungri">
+	  	SELECT
+			 ptrCode
+			,hospitalId
+			,patientId
+			,ptName
+			,ptCode
+			,ptrValue
+			,pDoctor
+			,ptdTime
+			,adminId
+			,ptrDate		
+		FROM
+			 byungri
+		<if test="sv != null and sv neq ''.toString()">	
+		WHERE 
+			
+						
+		${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+	
+	</select>
+	
 	
 	<!-- MDS DB - 병리검사결과  삭제-->
  	<delete id="delByungri" parameterType="String">

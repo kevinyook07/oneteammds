@@ -17,7 +17,7 @@ public class YebangService {
 	@Autowired
 	private YebangMapper yebangMapper;
 	
-	// 병원1
+	// 병원
 	
 	// 병원DB - 예방접종내역
 	
@@ -50,6 +50,14 @@ public class YebangService {
 	public List<Yebang> getYebangdbList(){ 
 		return yebangMapper.getYebangdbList(); 
 	}
+	
+	// MDS DB - 예방접종내역 검색
+			public List<Yebang> getYebangdbSearchList(String sk, String sv) {
+
+				List<Yebang> list = yebangMapper.getYebangdbSearchList(sk, sv);
+
+				return list;
+			}
 	
 	// MDS DB - 예방접종내역 삭제
 		public int delYebang(String pibCode, String hospitalId, String patientId) {

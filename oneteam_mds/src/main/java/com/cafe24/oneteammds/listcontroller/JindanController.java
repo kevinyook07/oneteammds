@@ -21,7 +21,7 @@ public class JindanController {
 	@Autowired
 	private JindanService jindanService;
 	
-	// 병원1
+	// 병원
 	
 	// 병원DB - 진단내역
 	
@@ -68,6 +68,7 @@ public class JindanController {
 		return "/jindan/jindanRegist/jindanComplete"; 
 	}
 	
+	// MDS DB - 진단내역 리스트
 	@RequestMapping("/jindandbList")
 	public String getJindandbList(Model model) {
 		
@@ -76,6 +77,7 @@ public class JindanController {
 		return "/jindan/jindan/jindandbList";
 	}
 	
+	// MDS DB - 진단내역 검색
 	@PostMapping("/jindandbList")
 	public String getJindandbSearchList(@RequestParam(value = "sk") String sk
 								   ,@RequestParam(value = "sv") String sv,

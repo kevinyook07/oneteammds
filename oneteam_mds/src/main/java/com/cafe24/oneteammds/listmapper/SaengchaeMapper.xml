@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.SaengchaeMapper">
  	
- 	<!-- 병원 1-->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 생체신호 및 상태 -->
  	
@@ -126,6 +126,33 @@
  		  , vscrDate
 		FROM 
 			saengchae
+	</select>
+	
+	
+	<!-- MDS DB - 생체신호 및 상태  검색 -->
+	<select id="getSaengchaedbSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Saengchae">
+	  	SELECT
+			 vscCode
+			,hospitalId
+			,patientId
+			,vscHeight
+			,vscWeight 
+			,bpMin
+			,bpMax
+			,bheat
+			,pDoctor
+			,vscCheck
+			,adminId
+			,vscrDate
+		FROM
+			 saengchae
+		<if test="sv != null and sv neq ''.toString()">
+		WHERE 
+						
+			${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+	
 	</select>
 	
 	<!-- MDS DB - 생체신호 및 상태 삭제 -->

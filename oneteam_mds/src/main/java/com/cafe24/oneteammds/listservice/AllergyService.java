@@ -16,47 +16,53 @@ public class AllergyService {
 
 	@Autowired
 	private AllergyMapper allergyMapper;
-	
-	// 병원1
-	
+
+	// 병원
+
 	// 병원DB - 알러지 및 부작용
-	
-	// 병원 권한 로그인시 입력되는 ID값 받아서 알러지 및 부작용 리스트  출력 처리
-	public List<Allergyh> getAllergyhList(String hospitalId){
+
+	// 병원 권한 로그인시 입력되는 ID값 받아서 알러지 및 부작용 리스트 출력 처리
+	public List<Allergyh> getAllergyhList(String hospitalId) {
 		return allergyMapper.getAllergyhList(hospitalId);
 	}
-	
+
 	// 병원DB - 알러지 및 부작용 -> 알러지 및 부작용 regist form
-	public Allergyh getAllergyhById(String patientId) { 
-		return allergyMapper.getAllergyhById(patientId); 
+	public Allergyh getAllergyhById(String patientId) {
+		return allergyMapper.getAllergyhById(patientId);
 	}
-	
+
 	// 알러지 및 부작용 regist complete
-	public int getAllergyRegist(Allergy allergy) { 
+	public int getAllergyRegist(Allergy allergy) {
 		return allergyMapper.getAllergyRegist(allergy);
-	} 
-	
+	}
+
 	// 알러지 및 부작용 검색
-		public List<Allergyh> getAllergySearchList(String hospitalId, String sk, String sv) {
+	public List<Allergyh> getAllergySearchList(String hospitalId, String sk, String sv) {
 
-			List<Allergyh> list = allergyMapper.getAllergySearchList(hospitalId, sk, sv);
+		List<Allergyh> list = allergyMapper.getAllergySearchList(hospitalId, sk, sv);
 
-			return list;
-		}
-	
-	// 시스템 DB 
-	
+		return list;
+	}
+
+	// 시스템 DB
+
 	// MDS DB - 알러지 및 부작용
-	public List<Allergy> getAllergydbList(){ 
-		return allergyMapper.getAllergydbList(); 
+	public List<Allergy> getAllergydbList() {
+		return allergyMapper.getAllergydbList();
+	}
+
+	// MDS DB - 알러지 및 부작용 검색
+	public List<Allergy> getAllergydbSearchList(String sk, String sv) {
+
+		List<Allergy> list = allergyMapper.getAllergydbSearchList(sk, sv);
+
+		return list;
 	}
 
 	// MDS DB - 알러지 및 부작용 삭제
-		public int delAllergy(String aseCode, String hospitalId, String patientId) {
+	public int delAllergy(String aseCode, String hospitalId, String patientId) {
 
-			return allergyMapper.delAllergy(aseCode, hospitalId, patientId);
-		}
-
-	
+		return allergyMapper.delAllergy(aseCode, hospitalId, patientId);
+	}
 
 }
