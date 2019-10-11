@@ -74,14 +74,4 @@ public class YochengController {
 		
 		return "/yochengAdmin/yochengAdminList/yochengAdminList";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
