@@ -79,6 +79,32 @@
 			patientId = #{patientId}
 	</insert>
 	
+	<!-- 생체신호 및 상태 검색 -->
+	<select id="getSaengchaeSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Saengchae">
+	  	SELECT
+			 vscCode
+			,hospitalId
+			,patientId
+			,vscHeight
+			,vscWeight 
+			,bpMin
+			,bpMax
+			,bheat
+			,pDoctor
+			,vscCheck
+			,adminId
+			,vscrDate
+		FROM
+			 saengchaeh
+		WHERE 
+			hospitalId = #{hospitalId}
+		<if test="sv != null and sv neq ''.toString()">					
+		and	${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+	
+	</select>
+	
 	<!-- 시스템DB -->
 	
 	<!-- MDS DB - 생체신호 및 상태 -->
@@ -101,5 +127,15 @@
 		FROM 
 			saengchae
 	</select>
+	
+	<!-- MDS DB - 생체신호 및 상태 삭제 -->
+	<delete id="delSaengchae" parameterType="String">
+		DELETE
+		FROM saengchae
+		WHERE
+		vscCode = #{vscCode}
+		and hospitalId = #{hospitalId}
+		and patientId = #{patientId}
+	</delete>
 	
  </mapper>

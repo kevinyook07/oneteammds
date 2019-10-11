@@ -21,10 +21,15 @@ public interface ByungriMapper {
 	public Byungrih getByungrihById(String patientId);
 	  
 	public int getByungriRegist(Byungri byungri);
+	
+	// 병원DB - 병리검사결과 검색
+		public List<Byungrih> getByungriSearchList (String hospitalId, String sk, String sv);
 	  
 	// 시스템DB 
 	
 	// 병리검사결과 regist complete --> MDS DB - 병리검사결과
 	public List<Byungri> getByungridbList();
 	
+	// 병리검사결과 삭제
+		public int delByungri(String ptrCode, String hospitalId, String patientId);
 }

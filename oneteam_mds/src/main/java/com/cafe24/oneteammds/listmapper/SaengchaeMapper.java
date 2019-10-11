@@ -21,10 +21,16 @@ public interface SaengchaeMapper {
 	public Saengchaeh getSaengchaehById(String patientId);
 	  
 	public int getSaengchaeRegist(Saengchae saengchae);
+	
+	// 병원DB - 생체신호 및 상태 검색
+		public List<Saengchaeh> getSaengchaeSearchList (String hospitalId, String sk, String sv);
 	  
 	// 시스템DB 
 	
 	// 병원DB - 생체신호 및 상태 --> 생체신호 및 상태 regist form
 	public List<Saengchae> getSaengchaedbList();
+	
+	// 시스템DB - 생체신호 및 상태 삭제
+		public int delSaengchae(String vscCode, String hospitalId, String patientId);
 	
 }

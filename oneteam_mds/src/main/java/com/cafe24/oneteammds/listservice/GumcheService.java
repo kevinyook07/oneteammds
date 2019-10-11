@@ -36,11 +36,24 @@ public class GumcheService {
 		return gumcheMapper.getGumcheRegist(gumche);
 	} 
 	
+	// 병원DB - 검체검사결과 검색
+			public List<Gumcheh> getGumcheSearchList(String hospitalId, String sk, String sv) {
+				List<Gumcheh> list = gumcheMapper.getGumcheSearchList(hospitalId, sk, sv);
+
+				return list;
+			}
+	
 	// 시스템 DB 
 	
 	// MDS DB - 검체검사결과
 	public List<Gumche> getGumchedbList(){ 
 		return gumcheMapper.getGumchedbList(); 
 	}
+	
+	// MDS DB - 검체검사결과 삭제
+		public int delGumche(String strCode, String hospitalId, String patientId) {
+			
+			return gumcheMapper.delGumche(strCode, hospitalId, patientId);
+		}
 
 }

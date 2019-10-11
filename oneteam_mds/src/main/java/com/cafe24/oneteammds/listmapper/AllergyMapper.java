@@ -21,10 +21,16 @@ public interface AllergyMapper {
 	public Allergyh getAllergyhById(String patientId);
 	  
 	public int getAllergyRegist(Allergy allergy);
+	
+	// 병원DB - 알러지 및 부작용 검색
+		public List<Allergyh> getAllergySearchList (String hospitalId, String sk, String sv);
 	  
 	// 시스템DB 
 	
 	// 알러지 및 부작용 regist complete --> MDS DB - 알러지 및 부작용
 	public List<Allergy> getAllergydbList();
+
+	// 알러지 및 부작용  삭제
+		public int delAllergy(String aseCode, String hospitalId, String patientId);
 	
 }

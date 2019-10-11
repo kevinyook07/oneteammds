@@ -21,10 +21,16 @@ public interface DrinkingMapper {
 	public Drinkingh getDrinkinghById(String patientId);
 	
 	public int getDrinkingRegist(Drinking drinking);
+	
+	// 병원DB - 음주상태 검색
+		public List<Drinkingh> getDrinkingSearchList (String hospitalId, String sk, String sv);
 	  
 	// 시스템DB 
 	
 	// 음주상태 regist complete --> MDS DB - 음주상태
 	public List<Drinking> getDrinkingdbList();
+	
+	// 음주상태 삭제
+		public int delDrinking(String dcCode, String hospitalId, String patientId);
 	
 }

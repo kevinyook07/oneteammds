@@ -36,6 +36,14 @@ public class SmokingService {
 		return smokingMapper.getSmokingRegist(smoking);
 	} 
 	
+	// 흡연상태 검색
+		public List<Smokingh> getSmokringSearchList(String hospitalId, String sk, String sv) {
+
+			List<Smokingh> list = smokingMapper.getSmokingSearchList(hospitalId, sk, sv);
+
+			return list;
+		}
+	
 	// 시스템 DB 
 	
 	// MDS DB - 흡연상태
@@ -43,4 +51,9 @@ public class SmokingService {
 		return smokingMapper.getSmokingdbList(); 
 	}
 
+	// MDS DB - 흡연상태 삭제
+		public int delSmoking(String scCode, String hospitalId, String patientId) {
+
+			return smokingMapper.delSmoking(scCode, hospitalId, patientId);
+		}
 }

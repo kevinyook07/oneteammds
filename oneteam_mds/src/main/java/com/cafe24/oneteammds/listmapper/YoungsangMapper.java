@@ -21,10 +21,16 @@ public interface YoungsangMapper {
 	public Youngsangh getYoungsanghById(String patientId);
 	  
 	public int getYoungsangRegist(Youngsang youngsang);
+	
+	// 병원DB - 영상검사결과 검색
+		public List<Youngsangh> getYoungsangSearchList (String hospitalId, String sk, String sv);
 	  
 	// 시스템DB
 	
 	// 영상검사결과 regist complete --> MDS DB - 영상검사결과
 	public List<Youngsang> getYoungsangdbList();
+	
+	// 영상검사결과 삭제
+		public int delYoungsang(String itrCode, String hospitalId, String patientId);
 	
 }

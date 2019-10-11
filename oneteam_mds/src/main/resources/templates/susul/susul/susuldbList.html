@@ -17,7 +17,17 @@
                 <div class="block">
                   
                   <div class="block-body">
-                    
+                    <div class="block-body">
+                    <form action="/susulhList" method="post">
+		<select name="sk">
+			<option value="hospitalId">병원 고유번호</option>	
+			<option value="patientId">환자고유번호</option>	
+			<option value="sdTime">수술일자</option>										
+		</select>
+		<input type="text" name="sv">
+		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
+		<button type="submit" class="btn btn-secondary">검색</button>
+	</form>
                      <table class="table">
                       <thead>
 		<tr>
@@ -31,6 +41,7 @@
 							<th style="white-space:nowrap;">수술일자</th>
 							<th style="white-space:nowrap;">등록자 고유번호</th>
 							<th style="white-space:nowrap;">등록일자</th>
+							<th style="white-space:nowrap;">삭제</th>
 			
 		</tr>
 		</thead>
@@ -46,6 +57,11 @@
 			<td th:text="${list.sdTime}"></td>
 			<td th:text="${list.adminId}"></td>
 			<td th:text="${list.sbDate}"></td>
+			<td>								
+									<a th:href="@{/delSusul(sbCode=${list.sbCode})}">
+										<button type="submit" class="btn btn-secondary" style="float: right;">삭제</button>
+									</a>
+								</td>
 		</tr>
 		
 	 </tbody>

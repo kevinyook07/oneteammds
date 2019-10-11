@@ -17,7 +17,16 @@
                 <div class="block">
                   
                   <div class="block-body">
-                    
+                     <form action="/yebanghList" method="post">
+		<select name="sk">
+			<option value="hospitalId">병원 고유번호</option>
+			<option value="patientId">환자고유번호</option>
+			<option value="piDate">접종일자</option>										
+		</select>
+		<input type="text" name="sv">
+		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
+		<button type="submit" class="btn btn-secondary">검색</button>
+	</form>
                      <table class="table">
                       <thead>
 		<tr>
@@ -32,6 +41,7 @@
 							<th style="white-space:nowrap;">접종일자</th>
 							<th style="white-space:nowrap;">등록자 고유번호</th>
 							<th style="white-space:nowrap;">등록일자</th>
+							<th style="white-space:nowrap;">삭제</th>
 		</tr>
 		</thead>
 						<tbody>
@@ -47,9 +57,11 @@
 			<td th:text="${list.piDate}"></td>
 			<td th:text="${list.adminId}"></td>
 			<td th:text="${list.pirDate}"></td>
-			<!-- <td>
-				<a th:href="@{/yebangRegist(patientId=${list.patientId})}">DB등록</a>
-			</td> -->
+			<td>								
+									<a th:href="@{/delYebang(pibCode=${list.pibCode})}">
+										<button type="submit" class="btn btn-secondary" style="float: right;">삭제</button>
+									</a>
+								</td>
 			
 		</tr>
 	

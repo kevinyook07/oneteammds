@@ -64,6 +64,27 @@
 			patientId = #{patientId}
 	</insert>
 	
+	<!-- 흡연상태 검색 -->
+	<select id="getSmokingSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Smoking">
+	  	SELECT
+			 scCode
+			,hospitalId
+			,patientId
+			,sccName
+			,pDoctor
+			,adminId
+			,scrDate
+		FROM
+			 smokingh
+		WHERE 
+			hospitalId = #{hospitalId}
+		<if test="sv != null and sv neq ''.toString()">					
+		and	${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+	
+	</select>
+	
 	<!-- 시스템DB -->
 	
 	<!-- MDS DB - 흡연상태 -->
@@ -81,5 +102,15 @@
 		FROM 
 			smoking
 	</select>
+	
+	<!-- MDS DB - 흡연상태 삭제 -->
+	<delete id="delSmoking" parameterType="String">
+		DELETE
+		FROM smoking
+		WHERE
+		scCode = #{scCode}
+		and hospitalId = #{hospitalId}
+		and patientId = #{patientId}
+	</delete>
 	
  </mapper>

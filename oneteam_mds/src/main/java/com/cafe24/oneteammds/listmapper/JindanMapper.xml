@@ -72,6 +72,27 @@
 			patientId = #{patientId}
 	</insert>
 	
+	<!-- 병원DB - 검색 -->
+	<select id="getJindanhSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Jindan">
+	  	SELECT 
+			dbcode 		
+			,hospitalId 	
+			,patientId 		
+			,dName 			
+			,dCode 			
+			,dDate 		
+			,pDoctor 		
+			,adminId 		
+			,drDate 
+		FROM jindanh
+		WHERE 
+			hospitalId = #{hospitalId}
+		<if test="sv != null and sv neq ''.toString()">					
+		and	${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+	</select>
+	
 	<!-- 시스템DB -->
 	
 	<!-- MDS DB - 진단내역 -->
@@ -91,5 +112,38 @@
 		FROM 
 			jindan
 	</select>
+	
+	<!-- MDS DB - 삭제 -->
+	<delete id="delJindan" parameterType="String">
+ 		DELETE 
+		FROM jindan
+		WHERE
+				     dbCode = #{dbCode}
+			        and hospitalId = #{hospitalId}
+			        and patientId = #{patientId}
+ 	</delete>
+ 	
+ 	<!-- 병원DB - 검색 -->
+	<select id="getJindandbSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Jindan">
+	  	SELECT 
+			dbcode 		
+			,hospitalId 	
+			,patientId 		
+			,dName 			
+			,dCode 			
+			,dDate 		
+			,pDoctor 		
+			,adminId 		
+			,drDate 
+		FROM jindan
+		<if test="sv != null and sv neq ''.toString()">
+			WHERE 
+				${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+	</select>
+ 	
+
+	
 
  </mapper>

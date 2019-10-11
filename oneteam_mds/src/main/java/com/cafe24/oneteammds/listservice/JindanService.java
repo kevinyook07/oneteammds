@@ -36,11 +36,30 @@ public class JindanService {
 		return jindanMapper.getJindanRegist(jindan);
 	} 
 	
+	// 병원DB - 검색
+	public List<Jindanh> getJindanhSearchList(String hospitalId, String sk, String sv) {
+		List<Jindanh> list = jindanMapper.getJindanhSearchList(hospitalId, sk, sv);
+
+		return list;
+	}
+	
+	// 병원DB - 검색
+		public List<Jindan> getJindandbSearchList(String patientId, String sk, String sv) {
+			List<Jindan> list = jindanMapper.getJindandbSearchList(patientId, sk, sv);
+
+			return list;
+		}
+	
 	// 시스템 DB 
 	
 	// MDS DB - 진단내역
-	public List<Jindan> getJindandbList(){ 
-		return jindanMapper.getJindandbList(); 
+	public List<Jindan> getJindandbList(String patientId){ 
+		return jindanMapper.getJindandbList(patientId); 
 	}
-	 
+	
+	// MDS DB - 삭제
+	public int delJindan(String dbCode, String hospitalId, String patientId) {
+
+		return jindanMapper.delJindan(dbCode, hospitalId, patientId);
+	}	
 }

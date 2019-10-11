@@ -17,7 +17,16 @@
                 <div class="block">
                   
                   <div class="block-body">
-                    
+                    <form action="/youngsanghList" method="post">
+		<select name="sk">
+			<option value="hospitalId">병원 고유번호</option>	
+			<option value="patientId">환자고유번호</option>			
+			<option value="itdTime">검사일시</option>			
+		</select>
+		<input type="text" name="sv">
+		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
+		<button type="submit" class="btn btn-secondary">검색</button>
+	</form>
                      <table class="table">
                       <thead>
 	
@@ -32,6 +41,7 @@
 							<th style="white-space:nowrap;">검사일시</th>
 							<th style="white-space:nowrap;">등록자 고유번호</th>
 							<th style="white-space:nowrap;">등록일자</th>
+							<th style="white-space:nowrap;">삭제</th>
 			
 		</tr>
 		</thead>
@@ -47,6 +57,11 @@
 			<td th:text="${list.itdTime}"></td>
 			<td th:text="${list.adminId}"></td>
 			<td th:text="${list.itrDate}"></td>
+			<td>								
+									<a th:href="@{/delYoungsang(itrCode=${list.itrCode})}">
+										<button type="submit" class="btn btn-secondary" style="float: right;">삭제</button>
+									</a>
+								</td>
 		</tr>
 		
 	 </tbody>

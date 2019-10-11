@@ -1,14 +1,19 @@
 package com.cafe24.oneteammds.listcontroller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.oneteammds.listservice.SusulService;
 import com.cafe24.oneteammds.listvo.Susul;
+import com.cafe24.oneteammds.listvo.Susulh;
 
 @Controller
 public class SusulController {
@@ -39,6 +44,18 @@ public class SusulController {
 	  
 	  return "susul/susulRegist/susulRegist"; 
 	}
+	
+	// 병원DB - 수술내역 검색
+		@PostMapping("/susulhList")
+		public String getSusulList(@RequestParam(value="hospitalId")String hospitalId
+							   	  ,@RequestParam(value = "sk") String sk
+							   	  ,@RequestParam(value = "sv") String sv,
+              Model model) {
+			List<Susulh> list = susulService.getSusulSearchList(hospitalId, sk, sv);
+			model.addAttribute("susulhList", list);
+
+			return "/susul/susulh/susulhList";
+		}
 	  
 	// 시스템DB
 	
@@ -52,5 +69,26 @@ public class SusulController {
 		
 		return "/susul/susul/susuldbList"; 
 	}
+	
+	// MDS DB - 수술내역 삭제
+		@GetMapping("/delSusul")
+		public String delSusul(@RequestParam(value = "sbCode") String sbCode, Model model) {
+			model.addAttribute("sbCode", sbCode);
+
+			return "susul/sdelete/delSusul";
+		}
+
+		@PostMapping("/delSusul")
+		public String delSusul(@RequestParam(value = "sbCode") String sbCode,
+				@RequestParam(value = "hospitalId") String hospitalId, @RequestParam(value = "patientId") String patientId,
+				Model model) {
+			int result = susulService.delSusul(sbCode, hospitalId, patientId);
+			if (result == 0) {
+				model.addAttribute("result", "비밀번호가 일치하지 않습니다..");
+				model.addAttribute("sbCode", sbCode);
+				return "/susul/sdelete/delSusul";
+			}
+			return "redirect:/susuldbList";
+		}
 	 
 }

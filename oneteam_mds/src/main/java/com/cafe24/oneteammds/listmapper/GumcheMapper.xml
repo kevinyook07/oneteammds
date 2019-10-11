@@ -80,6 +80,31 @@
 			patientId = #{patientId}
 	</insert>
 	
+	<!-- 병원DB - 검체검사결과 검색 -->
+	<select id="getGumcheSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Gumche">
+	  	SELECT 
+			 strCode
+			,hospitalId
+			,patientId
+			,stiName
+			,stiCode
+			,stName
+			,strValue
+			,strrValue
+			,pDoctor
+			,stdTime
+			,adminId
+			,strDate			
+		FROM gumcheh
+		WHERE 
+			hospitalId = #{hospitalId}
+		<if test="sv != null and sv neq ''.toString()">					
+		and	${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+		
+	</select>
+	
 	<!-- 시스템DB -->
 	
 	<!-- MDS DB - 검체검사결과 -->
@@ -103,4 +128,12 @@
 			gumche
 	</select>
 	
+	<delete id="delGumche" parameterType="String">
+ 		DELETE 
+		FROM gumche
+		WHERE
+				     strCode = #{strCode}
+			 and hospitalId = #{hospitalId}
+			  and patientId = #{patientId}
+ 	</delete>
  </mapper>

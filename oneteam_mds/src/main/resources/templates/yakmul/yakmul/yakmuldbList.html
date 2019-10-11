@@ -17,7 +17,17 @@
                 <div class="block">
                   
                   <div class="block-body">
-                    
+                    <form action="/yakmulhList" method="post">
+		<select name="sk">		
+			<option value="hospitalId">병원고유번호</option>
+			<option value="patientId">환자고유번호</option>
+			<option value="mdTime">처방일시</option>
+		
+		</select>
+		<input type="text" name="sv">
+		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
+		<button type="submit" class="btn btn-secondary">검색</button>
+	</form>
                      <table class="table">
                       <thead>
 	
@@ -37,7 +47,8 @@
 					        <th style="white-space:nowrap;">담당의</th>
 					        <th style="white-space:nowrap;">처방일시</th>
 					        <th style="white-space:nowrap;">등록자 고유번호</th>
-					        <th style="white-space:nowrap;">등록일자</th>	
+					        <th style="white-space:nowrap;">등록일자</th>
+					        <th style="white-space:nowrap;">삭제</th>	
 		</tr>
 			</thead>
 						<tbody>
@@ -58,6 +69,11 @@
 			<td th:text="${list.mdTime}"></td>
 			<td th:text="${list.adminId}"></td>
 			<td th:text="${list.mrDate}"></td>
+			<td>								
+									<a th:href="@{/delYakmul(mbCode=${list.mbCode})}">
+										<button type="submit" class="btn btn-secondary" style="float: right;">삭제</button>
+									</a>
+								</td>
 		</tr>
 		
   </tbody>

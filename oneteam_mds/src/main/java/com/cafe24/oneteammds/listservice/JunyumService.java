@@ -36,11 +36,25 @@ public class JunyumService {
 		return junyumMapper.getJunyumRegist(junyum);
 	} 
 	
+	// 법정 전염성 감염병 검색
+		public List<Junyumh> getJunyumSearchList(String hospitalId, String sk, String sv) {
+
+			List<Junyumh> list = junyumMapper.getJunyumSearchList(hospitalId, sk, sv);
+
+			return list;
+		}
+	
 	// 시스템 DB 
 	
 	// MDS DB - 법정 전염성 감염병
 	public List<Junyum> getJunyumdbList(){ 
 		return junyumMapper.getJunyumdbList(); 
 	}
+	
+	// MDS DB - 법정 전염성 감염병 삭제
+		public int delJunyum(String lcidCode, String hospitalId, String patientId) {
+
+			return junyumMapper.delJunyum(lcidCode, hospitalId, patientId);
+		}
 	
 }

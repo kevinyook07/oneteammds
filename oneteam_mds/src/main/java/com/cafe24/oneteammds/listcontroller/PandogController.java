@@ -1,14 +1,19 @@
 package com.cafe24.oneteammds.listcontroller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.oneteammds.listservice.PandogService;
 import com.cafe24.oneteammds.listvo.Pandog;
+import com.cafe24.oneteammds.listvo.Pandogh;
 
 @Controller
 public class PandogController {
@@ -39,6 +44,18 @@ public class PandogController {
 	  
 	  return "pandog/pandogRegist/pandogRegist"; 
 	}
+	
+	// 병원DB - 영상판독정보 검색
+		@PostMapping("/pandoghList")
+		public String getPandogList(@RequestParam(value="hospitalId")String hospitalId
+								   ,@RequestParam(value = "sk") String sk
+								   ,@RequestParam(value = "sv") String sv,
+				Model model) {
+			List<Pandogh> list = pandogService.getPandogSearchList(hospitalId, sk, sv);
+			model.addAttribute("pandoghList", list);
+
+			return "/pandog/pandogh/pandoghList";
+		}
 	  
 	// 시스템DB
 	
@@ -53,4 +70,24 @@ public class PandogController {
 		return "/pandog/pandog/pandogdbList"; 
 	}
 	
+	// MDS DB - 영상판독정보 삭제 
+		@GetMapping("/delPandog")
+		public String delPandog(@RequestParam(value = "iidCode") String iidCode, Model model) {
+			model.addAttribute("iidCode", iidCode);
+
+			return "pandog/pdelete/delPandog";
+		}
+
+		@PostMapping("/delPandog")
+		public String delPandog(@RequestParam(value = "iidCode") String iidCode,
+				@RequestParam(value = "hospitalId") String hospitalId, @RequestParam(value = "patientId") String patientId,
+				Model model) {
+			int result = pandogService.delPandog(iidCode, hospitalId, patientId);
+			if (result == 0) {
+				model.addAttribute("result", "비밀번호가 일치하지 않습니다..");
+				model.addAttribute("iidCode", iidCode);
+				return "/pandog/pdelete/delPandog";
+			}
+			return "redirect:/pandogdbList";
+		}
 }

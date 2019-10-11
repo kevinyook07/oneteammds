@@ -36,11 +36,25 @@ public class YoungsangService {
 		return youngsangMapper.getYoungsangRegist(youngsang);
 	} 
 	
+	// 영상검사결과 검색
+		public List<Youngsangh> getYoungsangSearchList(String hospitalId, String sk, String sv) {
+
+			List<Youngsangh> list = youngsangMapper.getYoungsangSearchList(hospitalId, sk, sv);
+
+			return list;
+		}
+	
 	// 시스템 DB
 	
 	// MDS DB - 영상검사결과
 	public List<Youngsang> getYoungsangdbList(){ 
 		return youngsangMapper.getYoungsangdbList(); 
 	}
+	
+	// MDS DB - 영상검사결과 삭제
+		public int delYoungsang(String itrCode, String hospitalId, String patientId) {
+
+			return youngsangMapper.delYoungsang(itrCode, hospitalId, patientId);
+		}
 
 }

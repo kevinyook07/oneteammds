@@ -21,10 +21,15 @@ public interface YakmulMapper {
 	public Yakmulh getYakmulhById(String patientId);
 	  
 	public int getYakmulRegist(Yakmul yakmul);
+	
+	// 병원DB - 약물처방내역 --> 검색
+		public List<Yakmulh> getYakmulSearchList (String hospitalId, String sk, String sv);
 	  
 	// 시스템DB 
 	
 	// 약물처방내역 regist complete --> MDS DB - 약물처방내역
 	public List<Yakmul> getYakmuldbList();
 	
-}
+	//MDS DB - 약물처방내역 삭제
+		public int delYakmul(String mbCode, String hospitalId, String patientId);
+}	

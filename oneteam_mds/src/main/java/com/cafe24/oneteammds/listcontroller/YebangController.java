@@ -1,14 +1,19 @@
 package com.cafe24.oneteammds.listcontroller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.oneteammds.listservice.YebangService;
 import com.cafe24.oneteammds.listvo.Yebang;
+import com.cafe24.oneteammds.listvo.Yebangh;
 
 @Controller
 public class YebangController {
@@ -39,6 +44,18 @@ public class YebangController {
 	  
 	  return "yebang/yebangRegist/yebangRegist"; 
 	}
+	
+	// 병원DB - 예방접종내역 검색
+		@PostMapping("/yebanghList")
+		public String getYebangList(@RequestParam(value="hospitalId")String hospitalId
+								   ,@RequestParam(value = "sk") String sk
+								   ,@RequestParam(value = "sv") String sv,
+				Model model) {
+			List<Yebangh> list = yebangService.getYebangSearchList(hospitalId, sk, sv);
+			model.addAttribute("yebanghList", list);
+
+			return "/yebang/yebangh/yebanghList"; 
+		}
 	  
 	// 시스템DB
 	
@@ -52,5 +69,27 @@ public class YebangController {
 		
 		return "/yebang/yebang/yebangdbList"; 
 	}
+	
+	// 예방접종내역 삭제
+		@GetMapping("/delYebang")
+		public String delYebang(@RequestParam(value = "pibCode") String pibCode, Model model) {
+			model.addAttribute("pibCode", pibCode);
+
+			return "yebang/ydelete/delYebang";
+		}
+
+		@PostMapping("/delYebang")
+		public String delYebang(@RequestParam(value = "pibCode") String pibCode,
+				@RequestParam(value = "hospitalId") String hospitalId, @RequestParam(value = "patientId") String patientId,
+				Model model) {
+			int result = yebangService.delYebang(pibCode, hospitalId, patientId);
+			if (result == 0) {
+				model.addAttribute("result", "비밀번호가 일치하지 않습니다..");
+				model.addAttribute("pibCode", pibCode);
+				return "/yebang/ydelete/delYebang";
+			}
+			return "redirect:/yebangdbList";
+
+		}
 	
 }

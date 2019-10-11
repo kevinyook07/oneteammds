@@ -1,14 +1,19 @@
 package com.cafe24.oneteammds.listcontroller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.oneteammds.listservice.ByungriService;
 import com.cafe24.oneteammds.listvo.Byungri;
+import com.cafe24.oneteammds.listvo.Byungrih;
 
 @Controller
 public class ByungriController {
@@ -39,6 +44,18 @@ public class ByungriController {
 	  
 	  return "byungri/byungriRegist/byungriRegist"; 
 	}
+	
+	// 병원DB - 병리검사결과 검색
+		@PostMapping("/byungrihList")
+		public String getByungriList(@RequestParam(value="hospitalId")String hospitalId
+								    ,@RequestParam(value = "sk") String sk
+								    ,@RequestParam(value = "sv") String sv,
+				Model model) {
+			List<Byungrih> list = byungriService.getByungriSearchList(hospitalId, sk, sv);
+			model.addAttribute("byungrihList", list);
+
+			return "/byungri/byungrih/byungrihList";
+		}
 	  
 	// 시스템DB
 	
@@ -52,5 +69,26 @@ public class ByungriController {
 		
 		return "/byungri/byungri/byungridbList"; 
 	}
+	
+	// MDS DB - 병리검사결과 삭제
+		@GetMapping("/delByungri")
+		public String delByungri(@RequestParam(value = "ptrCode") String ptrCode, Model model) {
+			model.addAttribute("ptrCode", ptrCode);
+
+			return "/byungri/bdelete/delByungri";
+		}
+
+		@PostMapping("/delByungri")
+		public String delByungri(@RequestParam(value = "ptrCode") String ptrCode,
+				@RequestParam(value = "hospitalId") String hospitalId, @RequestParam(value = "patientId") String patientId,
+				Model model) {
+			int result = byungriService.delByungri(ptrCode, hospitalId, patientId);
+			if (result == 0) {
+				model.addAttribute("result", "비밀번호가 일치하지 않습니다.");
+				model.addAttribute("ptrCode", ptrCode);
+				return "/Byungri/bdelete/delByungri";
+			}
+			return "redirect:/byungridbList";
+		}
 	  
 }

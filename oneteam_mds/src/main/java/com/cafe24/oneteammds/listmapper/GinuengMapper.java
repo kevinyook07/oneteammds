@@ -21,10 +21,17 @@ public interface GinuengMapper {
 	public Ginuengh getGinuenghById(String patientId);
 	  
 	public int getGinuengRegist(Ginueng ginueng);
+	
+	// 병원DB - 기능검사결과
+		public List<Ginuengh> getGinuengSearchList (String hospitalId, String sk, String sv);
 	  
 	// 시스템DB 
 	
 	// 기능검사결과 regist complete --> MDS DB - 기능검사결과
 	public List<Ginueng> getGinuengdbList();
+	
+	// 기능검사결과 삭제
+		public int delGinueng(String ftrCode, String hospitalId, String patientId);
+		
 	
 }

@@ -64,6 +64,27 @@
 			patientId = #{patientId}
 	</insert>
 	
+	<!-- 음주상태 검색 -->
+	<select id="getDrinkingSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Drinking">
+	  	SELECT
+			 dcCode
+			,hospitalId
+			,patientId
+			,dccName
+			,pDoctor
+			,adminId
+			,dcrDate
+		FROM
+			 drinkingh
+		WHERE 
+			hospitalId = #{hospitalId}
+		<if test="sv != null and sv neq ''.toString()">					
+		and	${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+	
+	</select>
+	
 	<!-- 시스템DB -->
 	
 	<!-- MDS DB - 음주상태 -->
@@ -81,5 +102,15 @@
 		FROM 
 			drinking
 	</select>
+	
+	<!-- MDS DB - 음주상태 삭제 -->
+	<delete id="delDrinking" parameterType="String">
+		DELETE
+		FROM drinking
+		WHERE
+		dcCode = #{dcCode}
+		and hospitalId = #{hospitalId}
+		and patientId = #{patientId}
+	</delete>
 	
  </mapper>

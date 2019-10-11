@@ -36,11 +36,27 @@ public class AllergyService {
 		return allergyMapper.getAllergyRegist(allergy);
 	} 
 	
+	// 알러지 및 부작용 검색
+		public List<Allergyh> getAllergySearchList(String hospitalId, String sk, String sv) {
+
+			List<Allergyh> list = allergyMapper.getAllergySearchList(hospitalId, sk, sv);
+
+			return list;
+		}
+	
 	// 시스템 DB 
 	
 	// MDS DB - 알러지 및 부작용
 	public List<Allergy> getAllergydbList(){ 
 		return allergyMapper.getAllergydbList(); 
 	}
+
+	// MDS DB - 알러지 및 부작용 삭제
+		public int delAllergy(String aseCode, String hospitalId, String patientId) {
+
+			return allergyMapper.delAllergy(aseCode, hospitalId, patientId);
+		}
+
+	
 
 }

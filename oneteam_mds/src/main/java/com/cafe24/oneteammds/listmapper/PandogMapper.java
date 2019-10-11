@@ -21,10 +21,16 @@ public interface PandogMapper {
 	public Pandogh getPandoghById(String patientId);
 	  
 	public int getPandogRegist(Pandog pandog);
+	
+	// 병원DB - 영상판독정보 검색
+		public List<Pandogh> getPandogSearchList (String hospitalId, String sk, String sv);
 	  
 	// 시스템DB 
 	
 	// 음주상태 regist complete --> MDS DB - 영상판독정보
 	public List<Pandog> getPandogdbList();
+	
+	// 영상판독정보 삭제
+		public int delPandog(String iidCode, String hospitalId, String patientId);
 	
 }
