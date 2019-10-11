@@ -5,10 +5,29 @@
 
 <!-- mapper namespace 설정 -->  
 <mapper namespace="com.cafe24.oneteammds.yochengmapper.YochengMapper">
+
+	<!-- 요청 리스트가 출력되지 않아 시도했던 yochengAdminList 전체 출력 코드 작업 -->
+	<!-- <select id="yochengAdminList" resultType="com.cafe24.oneteammds.yochengvo.Yochenglist">
+		SELECT
+			yochengCode
+			, yochengoutHospitalId
+			, yochengoutHospitalName
+			, yochenginHospitalId
+			, yochenginHospitalName
+			, patientId
+			, patientName
+			, yochengJinlyoCode
+			, yochengDate
+			, yochengSayu
+		FROM 
+			yochenglist
+	 </select> -->
 	
-	<!-- 전체 리스트, select 쿼리문 입력, resultType 설정 -->
-	<!-- limit 0,10은 한 페이지에 게시글을 10개만 보여주게 함. -->
-	<select	id="getYochengAdminList" 
+	
+	
+	<!-- 페이를 포함한 전체 리스트, select 쿼리문 입력, resultType 설정 -->
+	<!-- LIMIT을 사용하여 결과에서 몇개의 행을 반환할지 제한 할 수가 있다.  limit 0,10은 한 페이지에 게시글을 10개만 보여주게 함. -->
+	<select	id="yochengAdminList" 
  			resultType="com.cafe24.oneteammds.yochengvo.Yochenglist">
 	
 		SELECT
@@ -23,8 +42,8 @@
 			, yochengDate
 			, yochengSayu
 		FROM 
-			yochenglist
-		ORDER BY yochengCode ASC 
+			yochenglist	
+		ORDER BY yochengCode ASC <!-- ASC: 오름차순  -->
 		LIMIT #{startRow},#{rowPerPage} <!-- currentPage에서 startRow로 바꾸니까 정상 출력 됨-->
 	
 	</select>
@@ -38,6 +57,7 @@
 
 	</select>	
 	
+	<!-- 페이지 작업을 yochengCode로 하려고 했던 작업 내용 -->
 	<!-- <select id="getYochengCode" parameterType="int" resultType="com.cafe24.oneteammds.yochengvo.Yochenglist">
 		SELECT 
  			yochengCode
@@ -76,11 +96,11 @@
 			yochenglist
 		<if test="sk1 != null and sv1 neq ''.toString()">
 			where
-				${sk1} like concat('%',#{sv1}, '%')		
+				${sk1} like concat('%',#{sv1}, '%')	
 		</if>	
-	
 	</select>
 	
+	<!-- patientId 값을 가지고 와서 MDS 진료 정보 등록을 위한  쿼리-->
 	<select id="getYochenglist_ById"
  			parameterType="String"
  			resultType="com.cafe24.oneteammds.yochengvo.Yochenglist">

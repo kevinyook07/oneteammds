@@ -12,7 +12,7 @@ public class Yochenglist {
 	private String patientName;
 	private String yochengJinlyoCode;
 	private String yochengDate;
-	private String yochengSayu;
+	private String yochengSayu;	
 	//getter setter 입력
 	public String getYochengCode() {
 		return yochengCode;
@@ -73,8 +73,7 @@ public class Yochenglist {
 	}
 	public void setYochengSayu(String yochengSayu) {
 		this.yochengSayu = yochengSayu;
-	}
-	
+	}	
 	//toString 입력
 	//어노테이션 override
 	@Override
@@ -85,6 +84,5 @@ public class Yochenglist {
 				+ patientName + ", yochengJinlyoCode=" + yochengJinlyoCode + ", yochengDate=" + yochengDate
 				+ ", yochengSayu=" + yochengSayu + "]";
 	}
-		
-
+	
 }

@@ -19,22 +19,38 @@ public class YochengController {
 	@Autowired //어노테이션 autowired 설정
 	private YochengService yochengService;
 	
-	//병원에서 요청이 들어 왔을 경우 조회 화면
+	//페이지 작업을 포함한 MDS 진료정보 요청 화면 출력
 	@GetMapping("/yochengAdminList")
-	public String getYochengAdminList(Model model
+	public String yochengAdminList(Model model
 										,@RequestParam(value="currentPage", required = false, defaultValue="1") int currentPage
 										,Yochenglist yochenglist) {
 		
-		//map에 담음.
+				
+		//map 객체 생성
 		Map<String, Object> map = yochengService.getYochengAdminList(currentPage);
 		
 		
+		/* 요청 리스트가 출력되지 않아 시도했던 yochengAdminList 전체 출력 코드 작업. 
+		  * //전체 리스트 출력
+		 * model.addAttribute("yochengAdminList", map.get("yochengAdminList"));
+		 * System.out.println(map.get("yochengAdminList") + "<-- 요청관리자 리스트");
+		 */
+		
 		//페이지 작업
-		model.addAttribute("getYochengAdminList", map.get("list"));
-		model.addAttribute("currentPage", map.get("currentPage"));
-		model.addAttribute("lastPage", map.get("lastPage"));
-		model.addAttribute("startPageNum", map.get("startPageNum"));
-		model.addAttribute("lastPageNum", map.get("lastPageNum"));
+		model.addAttribute("yochengAdminList", map.get("list")); //yochengAdminList를 map에 담았음.
+		/* System.out.println(map.get("list") + "<-- yochengAdminList"); */ //콘솔창에 list값이 들어가는지 확인
+		
+		model.addAttribute("currentPage", map.get("currentPage")); //currentPage를 map에 담았음.
+		/* System.out.println(map.get("currentPage") + "<-- currentPage"); */ //콘솔창에 currentPage값이 들어가는지 확인
+		
+		model.addAttribute("lastPage", map.get("lastPage")); //lastPage를 map에 담았음.
+		/* System.out.println(map.get("lastPage") + "<-- lastPage"); */ //콘솔창에 lastPage값이 들어가는지 확인
+		
+		model.addAttribute("startPageNum", map.get("startPageNum")); //startPageNum를 map에 담았음.
+		/* System.out.println(map.get("startPageNum") + "<-- startPageNum"); */ //콘솔창에 startPageNum값이 들어가는지 확인
+		
+		model.addAttribute("lastPageNum", map.get("lastPageNum")); //lastPageNum를 map에 담았음.
+		/* System.out.println(map.get("lastPageNum") + "<-- lastPageNum"); */ //콘솔창에 lastPageNum값이 들어가는지 확인
 		
 		
 		return "/yochengAdmin/yochengAdminList/yochengAdminList"; //return 경로 지정
@@ -66,22 +82,7 @@ public class YochengController {
 	public String getYochengwanlyo() {
 		
 		return "/yochengAdmin/yochengwanlyo/yochengwanlyo.html";
-	}
-	
-	@RequestMapping("/")
-	public String yochengAdminList() {
-		
-		
-		return "/yochengAdmin/yochengAdminList/yochengAdminList";
-	}
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 	
 }
