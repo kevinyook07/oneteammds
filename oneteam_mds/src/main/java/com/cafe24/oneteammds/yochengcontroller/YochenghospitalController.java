@@ -29,9 +29,9 @@ public class YochenghospitalController {
 	public String yochengHinsert() {      
 		
 		// 진료 정보 요청 insert form 출력 확인 test
-		/**************************************************************************/
+		/***************************************************************************/
 		System.out.println("yochengHinsert" + "<-- 진료 정보 요청 insert form");
-		/**************************************************************************/
+		/***************************************************************************/
 		
 		return "/yochenghospital/yochengHospitalInsert/yochengHospitalInsert"; 
 	}
