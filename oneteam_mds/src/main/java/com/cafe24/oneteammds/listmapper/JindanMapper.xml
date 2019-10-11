@@ -74,7 +74,7 @@
 	
 	<!-- 병원DB - 검색 -->
 	<select id="getJindanhSearchList" parameterType="String" 
-			resultType="com.cafe24.oneteammds.listvo.Jindan">
+			resultType="com.cafe24.oneteammds.listvo.Jindanh">
 	  	SELECT 
 			dbcode 		
 			,hospitalId 	
@@ -113,17 +113,6 @@
 			jindan
 	</select>
 	
-	<!-- MDS DB - 삭제 -->
-	<delete id="delJindan" parameterType="String">
- 		DELETE 
-		FROM jindan
-		WHERE
-				     dbCode = #{dbCode}
-			        and hospitalId = #{hospitalId}
-			        and patientId = #{patientId}
- 	</delete>
- 	
- 	<!-- 병원DB - 검색 -->
 	<select id="getJindandbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Jindan">
 	  	SELECT 
@@ -137,13 +126,21 @@
 			,adminId 		
 			,drDate 
 		FROM jindan
-		<if test="sv != null and sv neq ''.toString()">
-			WHERE 
-				${sk} Like CONCAT('%',#{sv},'%')		
+		<if test="sv != null and sv neq ''.toString()">	
+		WHERE 
+						
+		${sk} Like CONCAT('%',#{sv},'%')		
 		</if>
 	</select>
- 	
-
 	
-
+	<!-- MDS DB - 삭제 -->
+	<delete id="delJindan" parameterType="String">
+ 		DELETE 
+		FROM jindan
+		WHERE
+				     dbCode = #{dbCode}
+			        and hospitalId = #{hospitalId}
+			        and patientId = #{patientId}
+ 	</delete>
+ 	
  </mapper>

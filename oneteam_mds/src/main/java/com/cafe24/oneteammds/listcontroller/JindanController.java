@@ -46,8 +46,8 @@ public class JindanController {
 	}
 	
 	// 병원DB - 진단내역 검색
-		@PostMapping("/jindanhList")
-		public String getJindanList(@RequestParam(value="hospitalId")String hospitalId
+	@PostMapping("/jindanhList")
+	public String getJindanhSearchList(@RequestParam(value="hospitalId")String hospitalId
 								   ,@RequestParam(value = "sk") String sk
 								   ,@RequestParam(value = "sv") String sv,
 				Model model) {
@@ -60,15 +60,32 @@ public class JindanController {
 	// 시스템DB
 	
 	// 진단내역 regist complete --> MDS DB - 진단내역
-	@RequestMapping("/jindandbList") 
-	public String getJindanRegist(Jindan jindan, Model model) { 
+	@RequestMapping("/jindanComplete") 
+	public String getJindanRegist(Jindan jindan) { 
 		
 		jindanService.getJindanRegist(jindan); 		
 		
-		model.addAttribute("jindandbList", jindanService.getJindandbList()); 
-		
-		return "/jindan/jindan/jindandbList"; 
+		return "/jindan/jindanRegist/jindanComplete"; 
 	}
+	
+	@RequestMapping("/jindandbList")
+	public String getJindandbList(Model model) {
+		
+		model.addAttribute("jindandbList", jindanService.getJindandbList());
+		
+		return "/jindan/jindan/jindandbList";
+	}
+	
+	@PostMapping("/jindandbList")
+	public String getJindandbSearchList(@RequestParam(value = "sk") String sk
+								   ,@RequestParam(value = "sv") String sv,
+				Model model) {
+			List<Jindan> list = jindanService.getJindandbSearchList(sk, sv);
+			model.addAttribute("jindandbList", list);
+
+			return "/jindan/jindan/jindandbList";
+		}
+	
 	
 	// MDS DB - 진단내역 삭제
 		@GetMapping("/delJindan")
@@ -92,10 +109,5 @@ public class JindanController {
 			}
 			return "redirect:/jindandbList";
 		}
-	 
-		
-		
-		
-				
-				
+					
 }

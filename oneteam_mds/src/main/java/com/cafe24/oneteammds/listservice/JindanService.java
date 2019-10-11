@@ -43,12 +43,7 @@ public class JindanService {
 		return list;
 	}
 	
-	// 병원DB - 검색
-		public List<Jindan> getJindandbSearchList(String patientId, String sk, String sv) {
-			List<Jindan> list = jindanMapper.getJindandbSearchList(patientId, sk, sv);
-
-			return list;
-		}
+	
 	
 	// 시스템 DB 
 	
@@ -57,9 +52,16 @@ public class JindanService {
 		return jindanMapper.getJindandbList(); 
 	}
 	
+	public List<Jindan> getJindandbSearchList(String sk, String sv) {
+		List<Jindan> list = jindanMapper.getJindandbSearchList(sk, sv);
+
+		return list;
+	}
+	
 	// MDS DB - 삭제
 	public int delJindan(String dbCode, String hospitalId, String patientId) {
 
 		return jindanMapper.delJindan(dbCode, hospitalId, patientId);
 	}	
+
 }
