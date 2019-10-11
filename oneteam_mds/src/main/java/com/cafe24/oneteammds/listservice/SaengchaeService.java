@@ -17,7 +17,7 @@ public class SaengchaeService {
 	@Autowired
 	private SaengchaeMapper saengchaeMapper;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 생체신호 및 상태
 	
@@ -36,11 +36,25 @@ public class SaengchaeService {
 		return saengchaeMapper.getSaengchaeRegist(saengchae);
 	} 
 	
+	// 생체신호 및 상태 검색
+		public List<Saengchaeh> getSaengchaeSearchList(String hospitalId, String sk, String sv) {
+
+			List<Saengchaeh> list = saengchaeMapper.getSaengchaeSearchList(hospitalId, sk, sv);
+
+			return list;
+		}
+	
 	// 시스템 DB 
 	
 	// MDS DB - 생체신호 및 상태
 	public List<Saengchae> getSaengchaedbList(){ 
 		return saengchaeMapper.getSaengchaedbList(); 
 	}
+	
+	// MDS DB - 생체신호 및 상태 삭제
+		public int delSaengchae(String vscCode, String hospitalId, String patientId) {
+
+			return saengchaeMapper.delSaengchae(vscCode, hospitalId, patientId);
+		}
 
 }

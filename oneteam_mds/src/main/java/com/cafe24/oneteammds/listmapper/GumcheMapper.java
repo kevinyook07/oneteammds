@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Gumcheh;
 @Mapper
 public interface GumcheMapper {
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 검체검사결과
 	
@@ -21,10 +21,17 @@ public interface GumcheMapper {
 	public Gumcheh getGumchehById(String patientId);
 	  
 	public int getGumcheRegist(Gumche gumche);
+	
+	// 병원DB - 검체검사결과 검색
+	public List<Gumcheh> getGumcheSearchList (String hospitalId, String sk, String sv);
 	  
 	// 시스템DB 
 	
 	// 검체검사결과 regist complete --> MDS DB - 검체검사결과
 	public List<Gumche> getGumchedbList();
 	
+	//MDS DB - 검체검사결과 삭제
+		public int delGumche(String strCode, String hospitalId, String patientId);
+
+		
 }

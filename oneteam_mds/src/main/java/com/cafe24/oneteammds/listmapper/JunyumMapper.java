@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Junyumh;
 @Mapper
 public interface JunyumMapper {
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 법정 전염성 감염병
 	
@@ -21,10 +21,16 @@ public interface JunyumMapper {
 	public Junyumh getJunyumhById(String patientId);
 	  
 	public int getJunyumRegist(Junyum junyum);
+	
+	// 병원DB - 법정 전염성 감염병 검색
+		public List<Junyumh> getJunyumSearchList (String hospitalId, String sk, String sv);
 	  
 	// 시스템DB 
 	
 	// 법정 전염성 감염병 regist complete --> MDS DB - 법정 전염성 감염병
 	public List<Junyum> getJunyumdbList();
+	
+	// 법정 전염성 감염병 삭제
+		public int delJunyum(String lcidCode, String hospitalId, String patientId);
 	
 }

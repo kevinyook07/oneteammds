@@ -17,7 +17,7 @@ public class YakmulService {
 	@Autowired
 	private YakmulMapper yakmulMapper;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 약물처방내역
 	
@@ -36,11 +36,24 @@ public class YakmulService {
 		return yakmulMapper.getYakmulRegist(yakmul);
 	} 
 	
+	// 약물처방내역 검색
+		public List<Yakmulh> getYakmulSearchList(String hospitalId, String sk, String sv) {
+			List<Yakmulh> list = yakmulMapper.getYakmulSearchList(hospitalId, sk, sv);
+
+			return list;
+		}
+	
 	// 시스템 DB 
 	
 	// MDS DB - 약물처방내역
 	public List<Yakmul> getYakmuldbList(){ 
 		return yakmulMapper.getYakmuldbList(); 
 	}
+	
+	// MDS DB - 약물처방내역 삭제
+		public int delYakmul(String mbCode, String hospitalId, String patientId) {
+
+			return yakmulMapper.delYakmul(mbCode, hospitalId, patientId);
+		}
 	 
 }

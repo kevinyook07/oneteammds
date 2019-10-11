@@ -14,10 +14,19 @@
 	   	</div>
 	   	  <!-- Form Elements -->
               <div class="col-lg-12">
-                <div class="block">
+                <div class="block">1
                   
                   <div class="block-body">
-                    
+                    <form action="/saengchaehList" method="post">
+		<select name="sk">
+			<option value="hospitalId">병원 고유번호</option>
+			<option value="patientId">환자고유번호</option>
+			<option value="vscCheck">측정일자</option>										
+		</select>
+		<input type="text" name="sv">
+		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
+		<button type="submit" class="btn btn-secondary">검색</button>
+	</form>
                      <table class="table">
                       <thead>
 		<tr>
@@ -32,7 +41,8 @@
 							<th style="white-space:nowrap;">담당의</th>
 							<th style="white-space:nowrap;">측정일자</th>
 							<th style="white-space:nowrap;">등록자 고유번호</th>
-							<th style="white-space:nowrap;">등록일자</th>	
+							<th style="white-space:nowrap;">등록일자</th>
+							<th style="white-space:nowrap;">삭제</th>	
 			
 		</tr>
 		</thead>
@@ -50,6 +60,11 @@
 			<td th:text="${list.vscCheck}"></td>
 			<td th:text="${list.adminId}"></td>
 			<td th:text="${list.vscrDate}"></td>
+			<td>								
+									<a th:href="@{/delSaengchae(vscCode=${list.vscCode})}">
+										<button type="submit" class="btn btn-secondary" style="float: right;">삭제</button>
+									</a>
+								</td>
 		</tr>
 		
 	 </tbody>

@@ -1,14 +1,19 @@
 package com.cafe24.oneteammds.listcontroller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.oneteammds.listservice.DrinkingService;
 import com.cafe24.oneteammds.listvo.Drinking;
+import com.cafe24.oneteammds.listvo.Drinkingh;
 
 @Controller
 public class DrinkingController {
@@ -39,6 +44,19 @@ public class DrinkingController {
 	  
 	  return "drinking/drinkingRegist/drinkingRegist"; 
 	}
+	
+	// 병원DB - 음주상태 검색
+		@PostMapping("drinkinghList")
+		public String getDrinkingList(@RequestParam(value="hospitalId")String hospitalId
+								     ,@RequestParam(value = "sk") String sk
+								     ,@RequestParam(value = "sv") String sv,
+				Model model) {
+			List<Drinkingh> list = drinkingService.getDrinkingSearchList(hospitalId, sk, sv);
+			model.addAttribute("drinkinghList", list);
+
+			return "/drinking/drinkingh/drinkinghList";
+
+		}
 	  
 	// 시스템DB
 	
@@ -52,5 +70,26 @@ public class DrinkingController {
 		
 		return "/drinking/drinking/drinkingdbList"; 
 	}
+	
+	// 음주상태 삭제 1
+		@GetMapping("/delDrinking")
+		public String delDrinking(@RequestParam(value = "dcCode") String dcCode, Model model) {
+			model.addAttribute("dcCode", dcCode);
+
+			return "drinking/ddelete/delDrinking";
+		}
+
+		@PostMapping("/delDrinking")
+		public String delDrinking(@RequestParam(value = "dcCode") String dcCode,
+				@RequestParam(value = "hospitalId") String hospitalId, @RequestParam(value = "patientId") String patientId,
+				Model model) {
+			int result = drinkingService.delDrinking(dcCode, hospitalId, patientId);
+			if (result == 0) {
+				model.addAttribute("result", "비밀번호가 일치하지 않습니다..");
+				model.addAttribute("dcCode", dcCode);
+				return "/drinking/ddelete/delDrinking";
+			}
+			return "redirect:/drinkingdbList";
+		}
 	 
 }

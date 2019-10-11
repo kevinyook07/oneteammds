@@ -17,7 +17,7 @@ public class GinuengService {
 	@Autowired
 	private GinuengMapper ginuengMapper;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 기능검사결과
 	
@@ -36,11 +36,25 @@ public class GinuengService {
 		return ginuengMapper.getGinuengRegist(ginueng);
 	} 
 	
+	// 기능검사결과 검색
+		public List<Ginuengh> getGinuengSearchList(String hospitalId, String sk, String sv) {
+
+			List<Ginuengh> list = ginuengMapper.getGinuengSearchList(hospitalId, sk, sv);
+
+			return list;
+		}
+	
 	// 시스템 DB 
 	
 	// MDS DB - 기능검사결과
 	public List<Ginueng> getGinuengdbList(){ 
 		return ginuengMapper.getGinuengdbList(); 
 	}
+	
+	// MDS DB - 기능검사결과 삭제
+		public int delGinueng(String ftrCode, String hospitalId, String patientId) {
+
+			return ginuengMapper.delGinueng(ftrCode, hospitalId, patientId);
+		}
  
 }

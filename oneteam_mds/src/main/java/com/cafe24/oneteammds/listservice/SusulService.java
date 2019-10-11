@@ -17,7 +17,7 @@ public class SusulService {
 	@Autowired
 	private SusulMapper susulMapper;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 수술내역
 	
@@ -36,6 +36,14 @@ public class SusulService {
 		return susulMapper.getSusulRegist(susul);
 	} 
 	
+	// 수술내역 검색
+		public List<Susulh> getSusulSearchList(String hospitalId, String sk, String sv) {
+
+			List<Susulh> list = susulMapper.getSusulSearchList(hospitalId, sk, sv);
+
+			return list;
+		}
+	
 	// 시스템 DB 
 	
 	// MDS DB - 수술내역
@@ -43,4 +51,9 @@ public class SusulService {
 		return susulMapper.getSusuldbList(); 
 	}
  
+	// MDS DB - 수술내역 삭제
+		public int delSusul(String sbCode, String hospitalId, String patientId) {
+
+			return susulMapper.delSusul(sbCode, hospitalId, patientId);
+		}
 }

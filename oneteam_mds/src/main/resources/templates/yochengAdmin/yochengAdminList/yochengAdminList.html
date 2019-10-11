@@ -7,59 +7,105 @@
 	<div class="page-content">
 	 <!-- **************윗상단 메인 메뉴 ************** -->
 		<div class="page-header">
-		<h2 style="text-align:center">알러지 및 부작용 리스트</h2>
+		<h2 style="text-align:center">진료 정보 요청 내역</h2>
 			<div class="container-fluid"></div>
 	<!-- **************윗상단 메인 메뉴END ************** -->
 	<!--************메인 컨텐트 ************ -->		
 	   	</div>
    	 	<!-- Form Elements -->
 		<div class="col-lg-12">
-			<div class="block">
+			<div class="block" style="overflow: scroll;">
          
        			<div class="block-body">
  					
  					<!-- yochengAdminList 검색 -->
 					<form action="yochengAdminList" method="post">
 						<select name="sk1">
-							<option value="susinCode">수신 코드</option>
-							<option value="hospitalId">병원 고유번호</option>
-							<option value="hospitalName">병원 이름</option>
-							<option value="patientId">환자 고유번호</option>
+							<option value="yochengCode">요청 코드</option>
+							<option value="yochengoutHospitalId">요청 보내는 병원 고유번호</option>	
+							<option value="yochengoutHospitalName">요청 보내는 병원 이름</option>
+							<option value="yochenginHospitalId">요청 받는 병원 고유번호</option>	
+							<option value="yochenginHospitalName">요청 받는 병원 이름</option>
+							<option value="patientId">환자 고유번호</option>	
 							<option value="patientName">환자 이름</option>
-							<option value="susinJinlyoCode">수신 진료 코드</option>										
+							<option value="yochengJinlyoCode">요청 진료 코드</option>	
+							<option value="yochengSayu">요청 사유</option>
 						</select>
-						<input type="text" name="sv1">
-						<button type="submit">검색</button>
+			            <div class="form-row">
+			              <div class="col-10 col-md-3 mb-2 mb-md-0">
+			                <input type="text" class="form-control form-control-lg" placeholder="검색 조건을 입력하세요" name="sv1">
+			              </div>
+			              <div>
+			              	<button type="submit" class="btn btn-block btn-lg btn-primary">검색</button>
+			              </div>
+			            </div>						
 					</form>
+					
 	
 					<!-- yochengAdminList 리스트 -->
-					<table class="table">
+					</br><table class="table">
 						<thead>
 							<tr>
-						        <th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">요청 코드</th>
-								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">병원 고유번호</th>
-								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">병원 이름</th>
-								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">환자 고유번호</th>
-								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">환자 이름</th>
-								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">요청 진료 코드</th>
-								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">요청 일자</th>
-								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">요청 사유</th>
+						        <th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center">요청 코드</th>
+								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center">요청 보내는 병원 고유번호</th>
+								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center">요청 보내는 병원 이름</th>								
+								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center">요청 받는 병원 고유번호</th>
+								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center">요청 받는 병원 이름</th>
+								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center">환자 고유번호</th>
+								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center">환자 이름</th>
+								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center">요청 진료 코드</th>
+								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center" >요청 일자</th>
+								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center">요청 사유</th>
+								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center">요청 전송 체크</th>
+								<th style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center">요청 전송</th>
 		      				</tr>
 						</thead>
 						<!-- DB 값 -->
 						<tbody>
 							<tr th:each="list:${yochengAdminList}"> 
-								<td th:text="${list.susinCode}"></td>
-								<td th:text="${list.hospitalId}"></td>
-								<td th:text="${list.hospitalName}"></td>
-								<td th:text="${list.patientId}"></td>
-								<td th:text="${list.patientName}"></td>
-								<td th:text="${list.susinJinlyoCode}"></td>
-								<td th:text="${list.susinDate}"></td>
-								<td th:text="${list.susinSayu}"></td>
+								<td th:text="${list.yochengCode}" text align="center"></td>
+								<td th:text="${list.yochengoutHospitalId}" text align="center"></td>
+								<td th:text="${list.yochengoutHospitalName}" text align="center"></td>
+								<td th:text="${list.yochenginHospitalId}" text align="center"></td>
+								<td th:text="${list.yochenginHospitalName}" text align="center"></td>
+								<td th:text="${list.patientId}" text align="center"></td>
+								<td th:text="${list.patientName}" text align="center"></td>
+								<td th:text="${list.yochengJinlyoCode}" text align="center"></td>
+								<td th:text="${list.yochengDate}" text align="center"></td>
+								<td th:text="${list.yochengSayu}" text align="center"></td>
+								<td><input id="inlineCheckbox" type="checkbox" value="option1" align="center"></td>
+								<td>
+									<a th:href="@{/totaldbList}">								
+										<button type="submit" class="btn btn-secondary" style="float: right;">전송</button>
+									</a>
+								</td>							
 							</tr>
 						</tbody>
 					</table>
+					
+					
+					<!-- 맨처음 -->	
+					<a th:href="@{/yochengAdminList}">[맨처음]</a>
+					
+					<!-- 이전 -->	
+					<a th:if="${currentPage > 1}" th:href="@{/yochengAdminList(currentPage=${currentPage-1})}">[이전]</a>
+					
+					<!-- 페이지 수 -->	
+					<th:block th:each="num:${#numbers.sequence(startPageNum,lastPageNum)}">
+						<span th:if="${currentPage == num}"
+						th:text="${'['+ num +']'}"></span>
+						<a th:unless="${currentPage == num}"
+						th:text="${'['+ num +']'}"
+						th:href="@{/yochengAdminList(currentPage=${num})}"></a>
+					</th:block>
+					
+					<!-- 다음 -->
+					<a th:if="${currentPage < lastPage}" th:href="@{/yochengAdminList(currentPage=${currentPage+1})}">[다음]</a>
+					
+					<!-- 마지막 -->
+					<a th:href="@{/yochengAdminList(currentPage=${lastPage})}">[마지막]</a>
+					
+					
 					<div class="line"></div>
 				</div>
 			</div>
