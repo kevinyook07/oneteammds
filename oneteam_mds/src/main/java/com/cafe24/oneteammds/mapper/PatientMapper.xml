@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <!-- 계정 오류로 인한 push -->
 <mapper namespace="com.cafe24.oneteammds.mapper.PatientMapper">
+
+	<!-- 환자 권한 로그인 쿼리문 -->
 	<select id="getPatientLogin"
 		parameterType="com.cafe24.oneteammds.vo.Patient" 
 		resultType="com.cafe24.oneteammds.vo.Patient">
@@ -28,6 +30,7 @@
 			and patientPw = #{p_pw}
 	</select>
 	
+	<!-- 환자 권한 로그인 값 가져오는 쿼리문 -->
 	<select id="getPatientById" parameterType="String" 
 			resultType="com.cafe24.oneteammds.vo.Patient">
 		SELECT 
@@ -49,6 +52,7 @@
 				patientId = #{p_id}
 	</select>
 	
+	<!-- 환자 권한 리스트 출력 쿼리문 -->
 	<select id="getPatientList"
 		resultType="com.cafe24.oneteammds.vo.Patient">
 		SELECT 
@@ -69,6 +73,7 @@
 			patient
 	</select>
 	
+	<!-- 환자 권한 리스트 검색 쿼리문 -->
 	<select id="getPatientSearchList"
 		parameterType="String" 
 		resultType="com.cafe24.oneteammds.vo.Patient">
@@ -94,6 +99,7 @@
 		</if>
 	</select>
 	
+	<!-- 환자 권한 회원등록 쿼리문 -->
 	<insert id="addPatient"
 		parameterType="com.cafe24.oneteammds.vo.Patient">
 		INSERT INTO patient( 
@@ -127,7 +133,7 @@
 		)
 	</insert>
 	
-	
+	<!-- 환자 권한 회원 수정 쿼리문 -->
 	<update id="modifyPatient"
 		parameterType="com.cafe24.oneteammds.vo.Patient">
 		UPDATE patient
@@ -144,7 +150,8 @@
 		WHERE
 			patientId	= #{p_id}
 	</update>
-	
+
+	<!-- 환자 권한 회원 삭제 쿼리문 -->
 	<delete id="delPatient"
 		parameterType="com.cafe24.oneteammds.vo.Patient" >
 		DELETE

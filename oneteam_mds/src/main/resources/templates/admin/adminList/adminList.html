@@ -18,15 +18,30 @@
 			<div class="block">
 
 				<div class="block-body">
-
-
+					<div class="container">
+					
+					<div class="col-sm-5">
 					<form action="/adminList" method="post">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <select class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false" name="sk">
+                              	<option class="dropdown-item" value="adminId">아이디</option>
+                              	<option class="dropdown-item" value="aName">관리자명</option>
+                              </select>
+                    </div>
+                            <input type="text" class="form-control" name="sv">　
+                            <button type="submit" class="btn btn-outline-secondary">검색</button>
+                          </div>
+							</div>
+					</form>
+					
+					<!-- <form action="/adminList" method="post" >
 						<select name="sk">
 							<option value="adminId">아이디</option>
 							<option value="aName">관리자명</option>
 						</select> <input type="text" name="sv">
 						<button type="submit">검색</button>
-					</form>
+					</form> -->
 
 					<table class="table">
 						<thead>
@@ -62,6 +77,7 @@
 							</tr>
 						</tbody>
 					</table>
+					</div>
 					<div class="line"></div>
 				</div>
 			</div>
