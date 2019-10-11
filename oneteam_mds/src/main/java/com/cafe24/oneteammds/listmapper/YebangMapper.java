@@ -11,7 +11,7 @@ import com.cafe24.oneteammds.listvo.Yebangh;
 @Mapper
 public interface YebangMapper {
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 예방접종내역
 	

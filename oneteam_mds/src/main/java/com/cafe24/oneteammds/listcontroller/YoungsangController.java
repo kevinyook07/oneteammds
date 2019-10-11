@@ -70,7 +70,7 @@ public class YoungsangController {
 		return "/youngsang/youngsang/youngsangdbList"; 
 	}
 	
-	// MDS DB - 영상검사결과 삭제
+	// MDS DB - 영상검사결과 삭제 1
 		@GetMapping("/delYoungsang")
 		public String delYoungsang(@RequestParam(value = "itrCode") String itrCode, Model model) {
 			model.addAttribute("itrCode", itrCode);

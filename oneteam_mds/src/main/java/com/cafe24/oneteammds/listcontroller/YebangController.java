@@ -70,7 +70,7 @@ public class YebangController {
 		return "/yebang/yebang/yebangdbList"; 
 	}
 	
-	// 예방접종내역 삭제
+	// 예방접종내역 삭제 1
 		@GetMapping("/delYebang")
 		public String delYebang(@RequestParam(value = "pibCode") String pibCode, Model model) {
 			model.addAttribute("pibCode", pibCode);

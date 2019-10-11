@@ -70,7 +70,7 @@ public class SmokingController {
 		return "/smoking/smoking/smokingdbList"; 
 	}
 	
-	// 흡연상태 삭제
+	// 흡연상태 삭제 1
 		@GetMapping("/delSmoking")
 		public String delSmoking(@RequestParam(value = "scCode") String scCode, Model model) {
 			model.addAttribute("scCode", scCode);

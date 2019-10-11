@@ -70,7 +70,7 @@ public class SaengchaeController {
 		return "/saengchae/saengchae/saengchaedbList"; 
 	}
 	
-	// 병원DB - 생체신호 및 상태 삭제
+	// 병원DB - 생체신호 및 상태 삭제 1
 		@GetMapping("/delSaengchae")
 		public String delSaengchae(@RequestParam(value = "vscCode") String vscCode, Model model) {
 			model.addAttribute("vscCode", vscCode);

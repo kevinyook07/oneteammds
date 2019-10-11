@@ -17,7 +17,7 @@ public class JindanService {
 	@Autowired
 	private JindanMapper jindanMapper;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 진단내역
 	
@@ -53,8 +53,8 @@ public class JindanService {
 	// 시스템 DB 
 	
 	// MDS DB - 진단내역
-	public List<Jindan> getJindandbList(String patientId){ 
-		return jindanMapper.getJindandbList(patientId); 
+	public List<Jindan> getJindandbList(){ 
+		return jindanMapper.getJindandbList(); 
 	}
 	
 	// MDS DB - 삭제

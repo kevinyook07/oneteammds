@@ -71,7 +71,7 @@ public class GumcheController {
 		return "/gumche/gumche/gumchedbList"; 
 	}
 	
-	// MDS DB - 검체검사결과 삭제
+	// MDS DB - 검체검사결과 삭제 1
 		@GetMapping("/delGumche")
 		public String delGumche(@RequestParam(value = "strCode") String strCode, Model model) {
 			model.addAttribute("strCode", strCode);

@@ -17,7 +17,7 @@ public class DrinkingService {
 	@Autowired
 	private DrinkingMapper drinkingMapper;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 음주상태
 	

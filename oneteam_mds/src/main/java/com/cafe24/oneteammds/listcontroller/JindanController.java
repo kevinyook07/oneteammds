@@ -21,7 +21,7 @@ public class JindanController {
 	@Autowired
 	private JindanService jindanService;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 진단내역
 	
@@ -61,10 +61,11 @@ public class JindanController {
 	
 	// 진단내역 regist complete --> MDS DB - 진단내역
 	@RequestMapping("/jindandbList") 
-	public String getJindanRegist(@RequestParam(value="patientId")String patientId 
-            , Model model) { 
-		  		  
-		model.addAttribute("jindandbList", jindanService.getJindandbList(patientId)); 
+	public String getJindanRegist(Jindan jindan, Model model) { 
+		
+		jindanService.getJindanRegist(jindan); 		
+		
+		model.addAttribute("jindandbList", jindanService.getJindandbList()); 
 		
 		return "/jindan/jindan/jindandbList"; 
 	}
@@ -93,19 +94,7 @@ public class JindanController {
 		}
 	 
 		
-		// 시스템DB
-		@PostMapping("/jindandbList")
-		public String getJindandbList(@RequestParam(value="patientId")String patientId 
-									 ,@RequestParam(value = "sk") String sk
-									 ,@RequestParam(value = "sv") String sv,
-				Model model) {
-
-			List<Jindan> list = jindanService.getJindandbSearchList(patientId, sk, sv);
-
-			model.addAttribute("jindandbList", list);
-
-			return "/jindan/jindan/jindandbList";
-		}
+		
 		
 				
 				

@@ -71,7 +71,7 @@ public class YakmulController {
 		return "/yakmul/yakmul/yakmuldbList"; 
 	}
 	
-	//MDS DB - 약물처방내역 삭제
+	//MDS DB - 약물처방내역 삭제 1
 		@GetMapping("/delYakmul")
 		public String delYakmul(@RequestParam(value = "mbCode") String mbCode, Model model) {
 			model.addAttribute("mbCode", mbCode);

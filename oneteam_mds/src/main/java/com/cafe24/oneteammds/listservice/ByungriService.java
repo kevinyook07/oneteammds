@@ -17,7 +17,7 @@ public class ByungriService {
 	@Autowired
 	private ByungriMapper byungriMapper;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 병리검사결과
 	

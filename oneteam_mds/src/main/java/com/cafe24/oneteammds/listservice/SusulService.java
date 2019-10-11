@@ -17,7 +17,7 @@ public class SusulService {
 	@Autowired
 	private SusulMapper susulMapper;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 수술내역
 	

@@ -70,7 +70,7 @@ public class GinuengController {
 		return "/ginueng/ginueng/ginuengdbList"; 
 	}
 	
-	// MDS DB - 기능검사결과 삭제
+	// MDS DB - 기능검사결과 삭제 1
 		@GetMapping("/delGinueng")
 		public String delGinueng(@RequestParam(value = "ftrCode") String ftrCode, Model model) {
 			model.addAttribute("ftrCode", ftrCode);

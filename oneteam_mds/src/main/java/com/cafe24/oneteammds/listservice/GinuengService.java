@@ -17,7 +17,7 @@ public class GinuengService {
 	@Autowired
 	private GinuengMapper ginuengMapper;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 기능검사결과
 	

@@ -71,7 +71,7 @@ public class AllergyController {
 		return "/allergy/allergy/allergydbList"; 
 	}
 	
-	// MDS DB - 알러지 및 부작용 삭제
+	// MDS DB - 알러지 및 부작용 삭제1
 		@GetMapping("/delAllergy")
 		public String delAllergy(@RequestParam(value = "aseCode") String aseCode, Model model) {
 			model.addAttribute("aseCode", aseCode);

@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Drinkingh;
 @Mapper
 public interface DrinkingMapper {
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 음주상태
 	

@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Byungrih;
 @Mapper
 public interface ByungriMapper {
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 병리검사결과
 	

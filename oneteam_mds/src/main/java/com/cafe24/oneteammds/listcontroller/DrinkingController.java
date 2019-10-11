@@ -71,7 +71,7 @@ public class DrinkingController {
 		return "/drinking/drinking/drinkingdbList"; 
 	}
 	
-	// 음주상태 삭제
+	// 음주상태 삭제 1
 		@GetMapping("/delDrinking")
 		public String delDrinking(@RequestParam(value = "dcCode") String dcCode, Model model) {
 			model.addAttribute("dcCode", dcCode);

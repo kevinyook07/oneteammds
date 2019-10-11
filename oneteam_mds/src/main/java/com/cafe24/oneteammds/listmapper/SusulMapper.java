@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Susulh;
 @Mapper
 public interface SusulMapper {
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 수술내역
 	

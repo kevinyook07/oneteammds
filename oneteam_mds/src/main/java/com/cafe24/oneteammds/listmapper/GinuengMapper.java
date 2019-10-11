@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Ginuengh;
 @Mapper
 public interface GinuengMapper {
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 기능검사결과
 	

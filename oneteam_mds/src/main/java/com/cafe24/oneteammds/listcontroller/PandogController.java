@@ -70,7 +70,7 @@ public class PandogController {
 		return "/pandog/pandog/pandogdbList"; 
 	}
 	
-	// MDS DB - 영상판독정보 삭제 
+	// MDS DB - 영상판독정보 삭제  1
 		@GetMapping("/delPandog")
 		public String delPandog(@RequestParam(value = "iidCode") String iidCode, Model model) {
 			model.addAttribute("iidCode", iidCode);

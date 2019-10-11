@@ -70,7 +70,7 @@ public class SusulController {
 		return "/susul/susul/susuldbList"; 
 	}
 	
-	// MDS DB - 수술내역 삭제
+	// MDS DB - 수술내역 삭제 1
 		@GetMapping("/delSusul")
 		public String delSusul(@RequestParam(value = "sbCode") String sbCode, Model model) {
 			model.addAttribute("sbCode", sbCode);

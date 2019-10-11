@@ -70,7 +70,7 @@ public class JunyumController {
 		return "/junyum/junyum/junyumdbList"; 
 	}
 	
-	// MDS DB - 법정 전염성 감염병 삭제
+	// MDS DB - 법정 전염성 감염병 삭제 1 
 		@GetMapping("/delJunyum")
 		public String delJunyum(@RequestParam(value = "lcidCode") String lcidCode, Model model) {
 			model.addAttribute("lcidCode", lcidCode);

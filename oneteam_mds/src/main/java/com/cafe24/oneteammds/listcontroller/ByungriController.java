@@ -70,7 +70,7 @@ public class ByungriController {
 		return "/byungri/byungri/byungridbList"; 
 	}
 	
-	// MDS DB - 병리검사결과 삭제
+	// MDS DB - 병리검사결과 삭제 1
 		@GetMapping("/delByungri")
 		public String delByungri(@RequestParam(value = "ptrCode") String ptrCode, Model model) {
 			model.addAttribute("ptrCode", ptrCode);

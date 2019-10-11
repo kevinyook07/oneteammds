@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Pandogh;
 @Mapper
 public interface PandogMapper {
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 영상판독정보
 	
