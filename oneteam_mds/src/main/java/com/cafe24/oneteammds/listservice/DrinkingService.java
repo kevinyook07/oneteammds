@@ -17,7 +17,7 @@ public class DrinkingService {
 	@Autowired
 	private DrinkingMapper drinkingMapper;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 음주상태
 	
@@ -36,11 +36,25 @@ public class DrinkingService {
 		return drinkingMapper.getDrinkingRegist(drinking);
 	} 
 	
+	// 음주상태 검색
+		public List<Drinkingh> getDrinkingSearchList(String hospitalId, String sk, String sv) {
+
+			List<Drinkingh> list = drinkingMapper.getDrinkingSearchList(hospitalId, sk, sv);
+
+			return list;
+		}
+	
 	// 시스템 DB 
 	
 	// MDS DB - 음주상태
 	public List<Drinking> getDrinkingdbList(){ 
 		return drinkingMapper.getDrinkingdbList(); 
 	}
+	
+	// MDS DB - 음주상태 삭제
+		public int delDrinking(String dcCode, String hospitalId, String patientId) {
+
+			return drinkingMapper.delDrinking(dcCode, hospitalId, patientId);
+		}
 	 
 }

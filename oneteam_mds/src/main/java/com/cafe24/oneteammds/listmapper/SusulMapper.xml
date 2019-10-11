@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.SusulMapper">
  	
- 	<!-- 병원 -->
+ 	<!-- 병원 1-->
  	
  	<!-- 병원DB - 수술내역 -->
  	
@@ -73,6 +73,30 @@
 			patientId = #{patientId}
 	</insert>
 	
+	<!-- 수술내역 검색 -->
+	<select id="getSusulSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Susul">
+	  	SELECT
+			 sbCode
+			,hospitalId
+			,patientId
+			,sName
+			,sCode
+			,aKind
+			,pDoctor
+			,sdTime
+			,adminId
+			,sbDate
+		FROM
+			 susulh
+		WHERE 
+			hospitalId = #{hospitalId}
+		<if test="sv != null and sv neq ''.toString()">					
+		and	${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+	
+	</select>
+	
 	<!-- 시스템DB -->
 	
 	<!-- MDS DB - 수술내역 -->
@@ -93,5 +117,15 @@
 		FROM 
 			susul
 	</select>
+	
+	<!-- MDS DB - 수술내역 삭제 -->
+	<delete id="delSusul" parameterType="String">
+		DELETE
+		FROM susul
+		WHERE
+		sbCode = #{sbCode}
+		and hospitalId = #{hospitalId}
+		and patientId = #{patientId}
+	</delete>
 	
  </mapper>

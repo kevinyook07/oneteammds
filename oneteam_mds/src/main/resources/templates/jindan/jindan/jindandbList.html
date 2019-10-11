@@ -13,11 +13,20 @@
 	<!--************메인 컨텐트 ************ -->		
 	   	</div>
 	   	  <!-- Form Elements -->
-              <div class="col-lg-12">
+              <div class="col-lg-12">1
                 <div class="block">
                   
                   <div class="block-body">
-                    
+     <form action="/jindandbList" method="post">
+		<select name="sk">	
+			<option value="hospitalId">병원고유번호</option>
+			<option value="patientId">환자고유번호</option>
+				
+		</select>
+		<input type="text" name="sv">		
+		
+		<button type="submit" class="btn btn-secondary">검색</button>
+	</form>
                      <table class="table">
                       <thead>
 		<tr>
@@ -30,6 +39,7 @@
 					        <th style="white-space:nowrap;">담당의</th>
 					        <th style="white-space:nowrap;">등록자 고유번호</th>
 					        <th style="white-space:nowrap;">등록일자</th>
+					        <th style="white-space:nowrap;">삭제</th>
 		</tr>
 		</thead>
 						<tbody>
@@ -43,6 +53,11 @@
 			<td th:text="${list.pDoctor}"></td>
 			<td th:text="${list.adminId}"></td>
 			<td th:text="${list.drDate}"></td>
+			<td>								
+									<a th:href="@{/delJindan(dbCode=${list.dbCode})}">
+										<button type="submit" class="btn btn-secondary" style="float: right;">삭제</button>
+									</a>
+								</td>
 		</tr>
 		
 	  </tbody>

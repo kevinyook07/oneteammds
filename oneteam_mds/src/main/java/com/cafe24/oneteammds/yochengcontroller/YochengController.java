@@ -81,8 +81,17 @@ public class YochengController {
 	@RequestMapping("/yochengwanlyo")
 	public String getYochengwanlyo() {
 		
-		return "/yochengAdmin/yochengwanlyo/yochengwanlyo.html";
+		return "/yochengAdmin/yochengwanlyo/yochengwanlyo";
+
 	}	
+	
+	@RequestMapping("/")
+	public String yochengAdminList() {
+		
+		
+		return "/yochengAdmin/yochengAdminList/yochengAdminList";
+	}
 	
 	
 }
+

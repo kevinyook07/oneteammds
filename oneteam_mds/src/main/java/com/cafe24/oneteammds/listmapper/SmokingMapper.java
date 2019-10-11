@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Smokingh;
 @Mapper
 public interface SmokingMapper {
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 흡연상태
 	
@@ -21,10 +21,16 @@ public interface SmokingMapper {
 	public Smokingh getSmokinghById(String patientId);
 	  
 	public int getSmokingRegist(Smoking smoking);
+	
+	// 병원DB - 흡연상태 검색
+		public List<Smokingh> getSmokingSearchList (String hospitalId, String sk, String sv);
 	  
 	// 시스템DB 
 	
 	// 흡연상태 regist complete --> MDS DB - 흡연상태
 	public List<Smoking> getSmokingdbList();
+	
+	// 흡연상태 삭제
+		public int delSmoking(String scCode, String hospitalId, String patientId);
 	
 }

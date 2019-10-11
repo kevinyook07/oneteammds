@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.PandogMapper">
  	
- 	<!-- 병원 -->
+ 	<!-- 병원 1-->
  	
  	<!-- 병원DB - 영상판독정보 -->
  	
@@ -76,6 +76,31 @@
 			patientId = #{patientId}
 	</insert>
 	
+	<!-- 영상판독정보 검색 -->
+	<select id="getPandogSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Pandog">
+	  	SELECT
+			 iidCode
+			,hospitalId
+			,patientId
+			,liContent
+			,iUrl
+			,idName
+			,pDoctor
+			,ifdTime
+			,iliDate
+			,adminId
+			,iidrDate
+		FROM
+			 pandogh
+		WHERE 
+			hospitalId = #{hospitalId}
+		<if test="sv != null and sv neq ''.toString()">					
+		and	${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+	
+	</select>
+	
 	<!-- 시스템DB -->
 	
 	<!-- MDS DB - 영상판독정보 -->
@@ -97,5 +122,15 @@
 		FROM 
 			pandog
 	</select>
+	
+	<!-- MDS DB - 영상판독정보 삭제 -->
+	<delete id="delPandog" parameterType="String">
+		DELETE
+		FROM pandog
+		WHERE
+		iidCode = #{iidCode}
+		and hospitalId = #{hospitalId}
+		and patientId = #{patientId}
+	</delete>
 	
  </mapper>

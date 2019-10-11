@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Jindanh;
 @Mapper
 public interface JindanMapper {
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 진단내역
 	
@@ -21,10 +21,18 @@ public interface JindanMapper {
 	public Jindanh getJindanhById(String patientId);
 	  
 	public int getJindanRegist(Jindan jindan);
+	
+	// 병원DB - 검색
+	public List<Jindanh> getJindanhSearchList (String hospitalId, String sk, String sv);
 	  
 	// 시스템DB 
 	
 	// 진단내역 regist complete --> MDS DB - 진단내역
 	public List<Jindan> getJindandbList();	 
 	
+	public List<Jindan> getJindandbSearchList (String sk, String sv);
+	
+	// 시스템DB - 삭제
+	public int delJindan(String dbCode, String hospitalId, String patientId);
+
 }

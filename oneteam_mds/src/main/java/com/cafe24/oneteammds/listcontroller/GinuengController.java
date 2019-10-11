@@ -1,14 +1,19 @@
 package com.cafe24.oneteammds.listcontroller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.oneteammds.listservice.GinuengService;
 import com.cafe24.oneteammds.listvo.Ginueng;
+import com.cafe24.oneteammds.listvo.Ginuengh;
 
 @Controller
 public class GinuengController {
@@ -39,6 +44,18 @@ public class GinuengController {
 	  
 	  return "ginueng/ginuengRegist/ginuengRegist"; 
 	}
+	
+	// 병원DB - 기능검사결과 검색
+		@PostMapping("/ginuenghList")
+		public String getGinuengList(@RequestParam(value="hospitalId")String hospitalId
+								    ,@RequestParam(value = "sk") String sk
+								    ,@RequestParam(value = "sv") String sv,
+				Model model) {
+			List<Ginuengh> list = ginuengService.getGinuengSearchList(hospitalId, sk, sv);
+			model.addAttribute("ginuenghList", list);
+
+			return "/ginueng/ginuengh/ginuenghList";
+		}
 	  
 	// 시스템DB
 	
@@ -52,5 +69,27 @@ public class GinuengController {
 		
 		return "/ginueng/ginueng/ginuengdbList"; 
 	}
+	
+	// MDS DB - 기능검사결과 삭제 1
+		@GetMapping("/delGinueng")
+		public String delGinueng(@RequestParam(value = "ftrCode") String ftrCode, Model model) {
+			model.addAttribute("ftrCode", ftrCode);
+
+			return "/ginueng/gdelete/delGinueng";
+		}
+
+		@PostMapping("/delGinueng")
+		public String delGinueng(@RequestParam(value = "ftrCode") String ftrCode,
+				@RequestParam(value = "hospitalId") String hospitalId, @RequestParam(value = "patientId") String patientId,
+				Model model) {
+			int result = ginuengService.delGinueng(ftrCode, hospitalId, patientId);
+			if (result == 0) {
+				model.addAttribute("result", "비밀번호가 일치하지 않습니다.");
+				model.addAttribute("ftrCode", ftrCode);
+				return "/ginueng/gdelete/delGinueng";
+			}
+			return "redirect:/ginuengdbList";
+		}
+		
 	
 }

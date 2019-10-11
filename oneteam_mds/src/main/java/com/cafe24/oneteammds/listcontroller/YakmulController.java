@@ -1,14 +1,19 @@
 package com.cafe24.oneteammds.listcontroller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.oneteammds.listservice.YakmulService;
 import com.cafe24.oneteammds.listvo.Yakmul;
+import com.cafe24.oneteammds.listvo.Yakmulh;
 
 @Controller
 public class YakmulController {
@@ -39,6 +44,19 @@ public class YakmulController {
 	  
 	  return "yakmul/yakmulRegist/yakmulRegist"; 
 	}
+	
+	// 병원DB - 약물처방내역 검색
+		@PostMapping("/yakmulhList")
+		public String getYakmulList(@RequestParam(value="hospitalId")String hospitalId
+								   ,@RequestParam(value = "sk") String sk
+								   ,@RequestParam(value = "sv") String sv,
+				Model model) {	
+			List<Yakmulh> list = yakmulService.getYakmulSearchList(hospitalId, sk, sv);
+			model.addAttribute("yakmulhList", list);
+
+			return "/yakmul/yakmulh/yakmulhList";
+
+		}
 	  
 	// 시스템DB
 	
@@ -52,5 +70,27 @@ public class YakmulController {
 		
 		return "/yakmul/yakmul/yakmuldbList"; 
 	}
+	
+	//MDS DB - 약물처방내역 삭제 1
+		@GetMapping("/delYakmul")
+		public String delYakmul(@RequestParam(value = "mbCode") String mbCode, Model model) {
+			model.addAttribute("mbCode", mbCode);
+
+			return "/yakmul/ydelete/delYakmul";
+		}
+
+		@PostMapping("/delYakmul")
+		public String delYakmul(@RequestParam(value = "mbCode") String mbCode,
+				@RequestParam(value = "hospitalId") String hospitalId, @RequestParam(value = "patientId") String patientId,
+				Model model) {
+			int result = yakmulService.delYakmul(mbCode, hospitalId, patientId);
+			if (result == 0) {
+				model.addAttribute("result", "비밀번호가 일치하지 않습니다.");
+				model.addAttribute("mbCode", mbCode);
+				return "/yakmul/ydelete/delYakmul";
+			}
+			return "redirect:/yakmuldbList";
+		}
+		
 	  
 }

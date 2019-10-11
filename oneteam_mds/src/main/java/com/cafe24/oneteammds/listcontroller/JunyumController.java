@@ -1,14 +1,19 @@
 package com.cafe24.oneteammds.listcontroller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.oneteammds.listservice.JunyumService;
 import com.cafe24.oneteammds.listvo.Junyum;
+import com.cafe24.oneteammds.listvo.Junyumh;
 
 @Controller
 public class JunyumController {
@@ -39,6 +44,18 @@ public class JunyumController {
 	  
 	  return "junyum/junyumRegist/junyumRegist"; 
 	}
+	
+	// 병원DB - 법정 전염성 감염병 검색
+		@PostMapping("/junyumhList")
+		public String getJunyumList(@RequestParam(value="hospitalId")String hospitalId
+								   ,@RequestParam(value = "sk") String sk
+								   ,@RequestParam(value = "sv") String sv,
+				Model model) {
+			List<Junyumh> list = junyumService.getJunyumSearchList(hospitalId, sk, sv);
+			model.addAttribute("junyumhList", list);
+
+			return "/junyum/junyumh/junyumhList";
+		}
 	  
 	// 시스템DB
 	
@@ -52,5 +69,27 @@ public class JunyumController {
 		
 		return "/junyum/junyum/junyumdbList"; 
 	}
+	
+	// MDS DB - 법정 전염성 감염병 삭제 1 
+		@GetMapping("/delJunyum")
+		public String delJunyum(@RequestParam(value = "lcidCode") String lcidCode, Model model) {
+			model.addAttribute("lcidCode", lcidCode);
+
+			return "junyum/jdelete/delJunyum";
+		}
+
+		@PostMapping("/delJunyum")
+		public String delJunyum(@RequestParam(value = "lcidCode") String lcidCode,
+				@RequestParam(value = "hospitalId") String hospitalId, @RequestParam(value = "patientId") String patientId,
+				Model model) {
+			int result = junyumService.delJunyum(lcidCode, hospitalId, patientId);
+			if (result == 0) {
+				model.addAttribute("result", "비밀번호가 일치하지 않습니다.");
+				model.addAttribute("lcidCode", lcidCode);
+				return "/junyum/jdelete/delJunyum";
+			}
+			return "redirect:/junyumdbList";
+
+		}
 	 
 }

@@ -17,7 +17,7 @@ public class PandogService {
 	@Autowired
 	private PandogMapper pandogMapper;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 영상판독정보
 	
@@ -36,11 +36,25 @@ public class PandogService {
 		return pandogMapper.getPandogRegist(pandog);
 	} 
 	
+	// 영상판독정보 검색
+		public List<Pandogh> getPandogSearchList(String hospitalId, String sk, String sv) {
+
+			List<Pandogh> list = pandogMapper.getPandogSearchList(hospitalId, sk, sv);
+
+			return list;
+		}
+	
 	// 시스템 DB 
 	
 	// MDS DB - 영상판독정보
 	public List<Pandog> getPandogdbList(){ 
 		return pandogMapper.getPandogdbList(); 
 	}
+	
+	// MDS DB - 영상판독정보 삭제
+		public int delPandog(String iidCode, String hospitalId, String patientId) {
+
+			return pandogMapper.delPandog(iidCode, hospitalId, patientId);
+		}
  
 }
