@@ -68,29 +68,42 @@ public class YochengController {
 		return "/yochengAdmin/yochengAdminList/yochengAdminList"; //return 경로 지정
 	}
 	
-	//MDS 진료 정보 등록
-	@RequestMapping("/yochengAdminInsert")
-	public String getYochengAdminInsert(@RequestParam(value="patientId",required=false)String patientId, Model model) { //requestParam으로 patientId 값을 받음.
-		
-		model.addAttribute("yochenglist", yochengService.getYochenglist_ById(patientId));
-		
-		return "/yochengAdmin/yochengAdminInsert/yochengAdminInsert";
-	}
+	/*
+	 * //MDS 진료 정보 등록
+	 * 
+	 * @RequestMapping("/balsinInsert") 
+	 * public String
+	 * getYochengAdminInsert(@RequestParam(value="patientId",required=false)String
+	 * patientId, Model model) { //requestParam으로 patientId 값을 받음.
+	 * 
+	 * model.addAttribute("yochenglist",
+	 * yochengService.getYochenglistById(patientId));
+	 * 
+	 * return "/balsin/balsinInsert/balsinInsert"; }
+	 */
 	
 	//요청 완료 화면 출력
 	@RequestMapping("/yochengwanlyo")
 	public String getYochengwanlyo() {
 		
+		
 		return "/yochengAdmin/yochengwanlyo/yochengwanlyo";
-
 	}	
 	
-	@RequestMapping("/")
-	public String yochengAdminList() {
+	@RequestMapping("/yochengAdminInsert")
+	public String getYochengAdminInsert() {
 		
-		
-		return "/yochengAdmin/yochengAdminList/yochengAdminList";
+		return "/yochengAdmin/yochengAdminInsert/yochengAdminInsert";
 	}
+	
+	@RequestMapping("/balsinInsert")
+	public String getBalsinInsert() {
+		
+		return "/balsin/balsinInsert/balsinInsert";
+	}
+	
+	 
+	 
 	
 	
 }

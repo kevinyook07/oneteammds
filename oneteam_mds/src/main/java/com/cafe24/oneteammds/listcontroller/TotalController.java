@@ -45,7 +45,7 @@ public class TotalController {
 	}
 	
 	// 병원 DB 전체 regist
-	@RequestMapping("/totalRegist") 
+	@RequestMapping("/totalRegist")
 	public String getTotalById(@RequestParam(value="patientId")String patientId 
 			                 , @RequestParam(value="hospitalId")String hospitalId
 			                 , Model model) {
