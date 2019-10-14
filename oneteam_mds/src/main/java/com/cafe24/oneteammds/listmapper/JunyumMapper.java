@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Junyumh;
 @Mapper
 public interface JunyumMapper {
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 법정 전염성 감염병
 

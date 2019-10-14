@@ -44,52 +44,73 @@ public class TotalService {
 
 	@Autowired
 	private TotalMapper totalMapper;
-	
+
 	// 병원
-	
-	// 병원 권한 로그인시 입력되는 ID값 받아서 전체 진료정보 리스트  출력 처리
-	public List<Totalh> getTotalhList(String hospitalId){
+
+	// 병원 권한 로그인시 입력되는 ID값 받아서 전체 진료정보 리스트 출력 처리
+	public List<Totalh> getTotalhList(String hospitalId) {
 		return totalMapper.getTotalhList(hospitalId);
 	}
-	
-	public Totalh getTotalhById(String patientId, String hospitalId) { 
-		return totalMapper.getTotalhById(patientId, hospitalId); 
+
+	public Totalh getTotalhById(String patientId, String hospitalId) {
+		return totalMapper.getTotalhById(patientId, hospitalId);
 	}
-	  
+
 	public int getTotalRegist(Total total) {
 		return totalMapper.getTotalRegist(total);
 	}
-	
-	//시스템 DB 
-	public List<Total> getTotaldbList(){ 
-		return totalMapper.getTotaldbList(); 
+
+	// 전체 검색
+	public List<Totalh> getTotalSearchList(String hospitalId, String sk, String sv) {
+		List<Totalh> list = totalMapper.getTotalSearchList(hospitalId, sk, sv);
+
+		return list;
+	}
+
+	// 시스템 DB
+	public List<Total> getTotaldbList() {
+		return totalMapper.getTotaldbList();
 	}
 	
+	// MDS DB - 약물처방내역 검색
+		public List<Total> getTotaldbSearchList(String sk, String sv) {
+			List<Total> list = totalMapper.getTotaldbSearchList(sk, sv);
+
+			return list;
+		}
+
+		// MDS DB - 약물처방내역 삭제
+		public int delTotal(String dbCode, String hospitalId, String patientId) {
+
+			return totalMapper.delTotal(dbCode, hospitalId, patientId);
+		}
+
 	// 진단내역 상세
 	public Jindanh getJindanhByCode(String dbCode) {
 		return totalMapper.getJindanhByCode(dbCode);
 	}
+
 	public int getJindanRegist2(Jindan jindan) {
 		return totalMapper.getJindanRegist2(jindan);
 	}
-	
-	public Jindan getJindandbDesc(String dbCode){
+
+	public Jindan getJindandbDesc(String dbCode) {
 		return totalMapper.getJindandbDesc(dbCode);
 	}
-	
+
 	// 약물처방내역 상세
 	public Yakmulh getYakmulhByCode(String mbCode) {
 		return totalMapper.getYakmulhByCode(mbCode);
 	}
-	
+
 	public int getYakmulRegist2(Yakmul yakmul) {
 		return totalMapper.getYakmulRegist2(yakmul);
 	}
-	
-	public Yakmul getYakmuldbDesc(String mbCode){
+
+	public Yakmul getYakmuldbDesc(String mbCode) {
 		return totalMapper.getYakmuldbDesc(mbCode);
 	}
-	
+
 	// 검체검사결과 상세
 	public Gumcheh getGumchehByCode(String strCode) {
 		return totalMapper.getGumchehByCode(strCode);
@@ -102,7 +123,7 @@ public class TotalService {
 	public Gumche getGumchedbDesc(String strCode) {
 		return totalMapper.getGumchedbDesc(strCode);
 	}
-	
+
 	// 검체검사결과 상세
 	public Byungrih getByungrihByCode(String ptrCode) {
 		return totalMapper.getByungrihByCode(ptrCode);
@@ -115,7 +136,7 @@ public class TotalService {
 	public Byungri getByungridbDesc(String ptrCode) {
 		return totalMapper.getByungridbDesc(ptrCode);
 	}
-	
+
 	// 영상검사결과 상세
 	public Youngsangh getYoungsanghByCode(String itrCode) {
 		return totalMapper.getYoungsanghByCode(itrCode);
@@ -128,7 +149,7 @@ public class TotalService {
 	public Youngsang getYoungsangdbDesc(String itrCode) {
 		return totalMapper.getYoungsangdbDesc(itrCode);
 	}
-	
+
 	// 영상판독정보 상세
 	public Pandogh getPandoghByCode(String iidCode) {
 		return totalMapper.getPandoghByCode(iidCode);
@@ -141,7 +162,7 @@ public class TotalService {
 	public Pandog getPandogdbDesc(String iidCode) {
 		return totalMapper.getPandogdbDesc(iidCode);
 	}
-	
+
 	// 기능검사결과 상세
 	public Ginuengh getGinuenghByCode(String ftrCode) {
 		return totalMapper.getGinuenghByCode(ftrCode);
@@ -154,7 +175,7 @@ public class TotalService {
 	public Ginueng getGinuengdbDesc(String ftrCode) {
 		return totalMapper.getGinuengdbDesc(ftrCode);
 	}
-	
+
 	// 수술내역 상세
 	public Susulh getSusulhByCode(String sbCode) {
 		return totalMapper.getSusulhByCode(sbCode);
@@ -167,7 +188,7 @@ public class TotalService {
 	public Susul getSusuldbDesc(String sbCode) {
 		return totalMapper.getSusuldbDesc(sbCode);
 	}
-	
+
 	// 알러지 및 부작용 상세
 	public Allergyh getAllergyhByCode(String aseCode) {
 		return totalMapper.getAllergyhByCode(aseCode);
@@ -180,7 +201,7 @@ public class TotalService {
 	public Allergy getAllergydbDesc(String aseCode) {
 		return totalMapper.getAllergydbDesc(aseCode);
 	}
-	
+
 	// 예방접종내역 상세
 	public Yebangh getYebanghByCode(String pibCode) {
 		return totalMapper.getYebanghByCode(pibCode);
@@ -193,7 +214,7 @@ public class TotalService {
 	public Yebang getYebangdbDesc(String pibCode) {
 		return totalMapper.getYebangdbDesc(pibCode);
 	}
-	
+
 	// 생체신호 및 상태 상세
 	public Saengchaeh getSaengchaehByCode(String vscCode) {
 		return totalMapper.getSaengchaehByCode(vscCode);
@@ -206,7 +227,7 @@ public class TotalService {
 	public Saengchae getSaengchaedbDesc(String vscCode) {
 		return totalMapper.getSaengchaedbDesc(vscCode);
 	}
-	
+
 	// 흡연상태 상세
 	public Smokingh getSmokinghByCode(String scCode) {
 		return totalMapper.getSmokinghByCode(scCode);
@@ -219,7 +240,7 @@ public class TotalService {
 	public Smoking getSmokingdbDesc(String scCode) {
 		return totalMapper.getSmokingdbDesc(scCode);
 	}
-	
+
 	// 음주상태 상세
 	public Drinkingh getDrinkinghByCode(String dcCode) {
 		return totalMapper.getDrinkinghByCode(dcCode);
@@ -232,7 +253,7 @@ public class TotalService {
 	public Drinking getDrinkingdbDesc(String dcCode) {
 		return totalMapper.getDrinkingdbDesc(dcCode);
 	}
-	
+
 	// 법정 전염성 감염병 상세
 	public Junyumh getJunyumhByCode(String lcidCode) {
 		return totalMapper.getJunyumhByCode(lcidCode);
@@ -245,15 +266,12 @@ public class TotalService {
 	public Junyum getJunyumdbDesc(String lcidCode) {
 		return totalMapper.getJunyumdbDesc(lcidCode);
 	}
-	
-	public Total getTotalReplace(String dbCode, String mbCode, String strCode, String ptrCode
-							   , String itrCode, String iidCode, String ftrCode, String sbCode
-							   , String aseCode, String pibCode, String vscCode, String scCode
-							   , String dcCode, String lcidCode) {
-		return totalMapper.getTotalReplace(dbCode, mbCode, strCode, ptrCode
-										 , itrCode, iidCode, ftrCode, sbCode
-										 , aseCode, pibCode, vscCode, scCode
-										 , dcCode, lcidCode);
+
+	public Total getTotalReplace(String dbCode, String mbCode, String strCode, String ptrCode, String itrCode,
+			String iidCode, String ftrCode, String sbCode, String aseCode, String pibCode, String vscCode,
+			String scCode, String dcCode, String lcidCode) {
+		return totalMapper.getTotalReplace(dbCode, mbCode, strCode, ptrCode, itrCode, iidCode, ftrCode, sbCode, aseCode,
+				pibCode, vscCode, scCode, dcCode, lcidCode);
 	}
-	
+
 }

@@ -17,7 +17,7 @@ public class SaengchaeService {
 	@Autowired
 	private SaengchaeMapper saengchaeMapper;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 생체신호 및 상태
 

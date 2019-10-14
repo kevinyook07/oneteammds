@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Smokingh;
 @Mapper
 public interface SmokingMapper {
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 흡연상태
 

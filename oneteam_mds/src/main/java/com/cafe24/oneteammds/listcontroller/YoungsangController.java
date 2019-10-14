@@ -21,7 +21,7 @@ public class YoungsangController {
 	@Autowired
 	private YoungsangService youngsangService;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 영상검사결과
 

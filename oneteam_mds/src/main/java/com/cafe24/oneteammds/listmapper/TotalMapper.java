@@ -48,13 +48,21 @@ public interface TotalMapper {
 	// 병원 DB 전체 regist
 	public Totalh getTotalhById(String patientId, String hospitalId);
 	
+	public int getTotalRegist(Total total);
+
+	// 병원DB - 전체 --> 검색
+	public List<Totalh> getTotalSearchList(String hospitalId, String sk, String sv);
+	
 	// 시스템DB
 	
     // 시스템 DB 전체리스트
-	public int getTotalRegist(Total total);
-	
 	public List<Total> getTotaldbList();
-	
+
+	// MDS DB - 전체 검색
+	public List<Total> getTotaldbSearchList(String sk, String sv);
+
+	// MDS DB - 전체 삭제
+	public int delTotal(String dbCode, String hospitalId, String patientId);
 	
 	// 진단내역 상세
 	public Jindanh getJindanhByCode(String dbCode);

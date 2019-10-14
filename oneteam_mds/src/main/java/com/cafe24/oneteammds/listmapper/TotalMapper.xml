@@ -328,6 +328,111 @@
 			AND 
 				jdh.patientId = jyh.patientId
  	</insert>
+ 	
+ 	<!-- 병원 전체 검색 -->
+ 	<select	id="getTotalSearchList" parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Total">
+		SELECT
+			jdh.dbCode, jdh.hospitalId, jdh.patientId, jdh.dName, jdh.dCode, jdh.dDate, jdh.pDoctor, jdh.adminId, jdh.drDate
+ 		  , ymh.mbCode,ymh.mmName, ymh.mmCode, ymh.miName, ymh.miCode, ymh.mVolume, ymh.mdUnit, ymh.mdNumber, ymh.mPeriod, ymh.mUsage, ymh.mdTime, ymh.mrDate
+ 		  , gch.strCode,gch.stiName, gch.stiCode, gch.stName, gch.strValue, gch.strrValue, gch.stdTime, gch.strDate
+ 		  , brh.ptrCode, brh.ptName, brh.ptCode, brh.ptrValue, brh.ptdTime, brh.ptrDate
+ 		  , ysh.itrCode, ysh.itName, ysh.itCode, ysh.itrValue, ysh.itdTime, ysh.itrDate
+ 		  , pdh.iidCode, pdh.liContent, pdh.iUrl, pdh.idName, pdh.ifdTime, pdh.iliDate, pdh.iidrDate
+ 		  , gnh.ftrCode, gnh.ftName, gnh.ftCode, gnh.ftrValue, gnh.ftdTime, gnh.ftrDate
+ 		  , ssh.sbCode, ssh.sName, ssh.sCode, ssh.aKind, ssh.sdTime, ssh.sbDate
+ 		  , algh.aseCode, algh.asemFactor, algh.asemfCode, algh.aseName, algh.aseReaction, algh.asedTime, algh.aserDate
+ 		  , ybh.pibCode, ybh.piName, ybh.piCode, ybh.pivName, ybh.piBalance, ybh.piDate, ybh.pirDate
+ 		  , sch.vscCode, sch.vscHeight, sch.vscWeight, sch.bpMin, sch.bpMax, sch.bheat, sch.vscCheck, sch.vscrDate
+ 		  , smkh.scCode, smkh.sccName, smkh.scrDate
+ 		  , drkh.dcCode, drkh.dccName, drkh.dcrDate
+ 		  , jyh.lcidCode, jyh.lcidName, jyh.lcidpGroup, jyh.lcidtResult, jyh.lcidinOut, jyh.lcidArea, jyh.lcidoDate, jyh.lciddDate, jyh.lcidrDate, jyh.lcidDate
+		FROM
+			jindanh jdh
+		JOIN
+			yakmulh ymh
+			ON
+				jdh.hospitalId = ymh.hospitalId
+			AND
+				jdh.patientId = ymh.patientId
+		JOIN
+			gumcheh gch
+			ON
+				jdh.hospitalId = gch.hospitalId
+			AND
+				jdh.patientId = gch.patientId
+		JOIN
+			byungrih brh
+			ON 
+				jdh.hospitalId = brh.hospitalId
+			AND 
+				jdh.patientId = brh.patientId
+		JOIN 
+			youngsangh ysh
+			ON 
+				jdh.hospitalId = ysh.hospitalId
+			AND 
+				jdh.patientId = ysh.patientId
+		JOIN 
+			pandogh pdh
+			ON 
+				jdh.hospitalId = pdh.hospitalId
+			AND 
+				jdh.patientId = pdh.patientId
+		JOIN 
+			ginuengh gnh
+			ON 
+				jdh.hospitalId = gnh.hospitalId
+			AND 
+				jdh.patientId = gnh.patientId
+		JOIN 
+			susulh ssh
+			ON
+				jdh.hospitalId = ssh.hospitalId
+			AND 
+				jdh.patientId = ssh.patientId	 
+		JOIN 
+			allergyh algh
+			ON 
+				jdh.hospitalId = algh.hospitalId
+			AND 
+				jdh.patientId = algh.patientId	
+		JOIN 
+			yebangh ybh
+			ON 
+				jdh.hospitalId = ybh.hospitalId
+			AND 
+				jdh.patientId = ybh.patientId
+		JOIN 
+			saengchaeh sch
+			ON 
+				jdh.hospitalId = sch.hospitalId
+			AND 
+				jdh.patientId = sch.patientId
+		JOIN 
+			smokingh smkh
+			ON 
+				jdh.hospitalId = smkh.hospitalId
+			AND 
+				jdh.patientId = smkh.patientId
+		JOIN 
+			drinkingh drkh
+			ON 
+				jdh.hospitalId = drkh.hospitalId
+			AND 
+				jdh.patientId = drkh.patientId
+		JOIN 
+			junyumh jyh
+			ON 
+				jdh.hospitalId = jyh.hospitalId
+			AND 
+				jdh.patientId = jyh.patientId
+		 WHERE
+			jdh.hospitalId = #{hospitalId}
+			<if test="sv != null and sv neq ''.toString()">					
+		and	${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+ 	</select>
 	
 	<!-- 시스템DB -->
 	<select id="getTotaldbList"
@@ -366,6 +471,58 @@
 		FROM 
 			total
 	</select>
+	
+	<!-- 시스템DB 전체 검색 -->
+	<select	id="getTotaldbSearchList" parameterType="String"
+ 			resultType="com.cafe24.oneteammds.listvo.Total">
+		SELECT 
+ 			hospitalId
+ 		  , patientId
+ 		  , dbCode
+ 		  , drDate
+ 		  , mbCode
+ 		  , mrDate
+ 		  , strCode
+ 		  , strDate
+ 		  , ptrCode
+ 		  , ptrDate
+ 		  , itrCode
+ 		  , itrDate
+ 		  , iidCode
+ 		  , iidrDate
+ 		  , ftrCode
+ 		  , ftrDate
+ 		  , sbCode
+ 		  , sbDate
+ 		  , aseCode
+ 		  , aserDate
+ 		  , pibCode
+ 		  , pirDate
+ 		  , vscCode
+ 		  , vscrDate
+ 		  , scCode
+ 		  , scrDate
+ 		  , dcCode
+ 		  , dcrDate
+ 		  , lcidCode
+ 		  , lcidDate
+		FROM 
+			total
+		<if test="sv != null and sv neq ''.toString()">	
+		 WHERE
+		${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+ 	</select>
+ 	
+ 	<!-- 시스템DB 전체 삭제 -->
+ 	<delete id="delTotal" parameterType="String">
+ 		DELETE 
+		FROM total
+		WHERE				     
+				  hospitalId = #{hospitalId}
+			  and patientId = #{patientId}
+ 	</delete>
+ 	
 	
 	<!-- 진단내역 상세 -->
 	

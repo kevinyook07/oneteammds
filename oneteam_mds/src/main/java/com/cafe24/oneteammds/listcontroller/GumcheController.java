@@ -22,7 +22,7 @@ public class GumcheController {
 	@Autowired
 	private GumcheService gumcheService;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 검체검사결과
 	

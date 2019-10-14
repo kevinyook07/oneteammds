@@ -4,7 +4,7 @@
 		layout:decorate="~{layout/default}">
 
 <th:block layout:fragment="customContents">
-	<div class="page-content">
+	<div class="page-content">1
 	 <!-- **************윗상단 메인 메뉴 ************** -->
 		<div class="page-header">
 		<h2 style="text-align:center">병원 진료정보 전체항목 리스트</h2>
@@ -17,7 +17,15 @@
                 <div class="block">
                   
                   <div class="block-body">
-                    
+                    <form action="/totalhList" method="post">
+		<select name="sk">		
+			<option value="jdh.patientId">환자고유번호</option>			
+		
+		</select>
+		<input type="text" name="sv">
+		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
+		<button type="submit" class="btn btn-secondary">검색</button>
+	</form>
                      <table class="table">
                       <thead>
 		<tr>

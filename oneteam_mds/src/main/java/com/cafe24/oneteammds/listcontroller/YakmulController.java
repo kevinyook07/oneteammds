@@ -21,7 +21,7 @@ public class YakmulController {
 	@Autowired
 	private YakmulService yakmulService;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 약물처방내역
 
