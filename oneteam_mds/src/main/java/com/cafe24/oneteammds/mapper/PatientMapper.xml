@@ -137,18 +137,46 @@
 	<update id="modifyPatient"
 		parameterType="com.cafe24.oneteammds.vo.Patient">
 		UPDATE patient
-		SET  
-			 patientPw	= #{p_pw}
-			,pName		= #{p_name}
-			,pGender	= #{p_gender}
-			,pBirth		= #{p_birth}
-			,pPhone		= #{p_phone}
-			,pAddr		= #{p_addr}
-			,gName		= #{g_name}
-			,gPhone		= #{g_phone}
-			,pLevel		= #{p_level}
-		WHERE
-			patientId	= #{p_id}
+		<trim prefix="SET" prefixOverrides=",">
+		
+			<if test="p_pw != null and p_pw neq ''.toString()">
+			 	patientPw	= #{p_pw}
+			</if>
+			
+			<if test="p_name != null and p_name neq ''.toString()">
+				,pName		= #{p_name}
+			</if>
+			
+			<if test="p_gender != null and p_gender neq ''.toString()">
+				,pGender	= #{p_gender}
+			</if>
+			
+			<if test="p_birth != null and p_birth neq ''.toString()">
+				,pBirth		= #{p_birth}
+			</if>
+			
+			<if test="p_phone != null and p_phone neq ''.toString()">
+				,pPhone		= #{p_phone}
+			</if>
+			
+			<if test="p_addr != null and p_addr neq ''.toString()">
+				,pAddr		= #{p_addr}
+			</if>
+			
+			<if test="g_name != null and g_name neq ''.toString()">
+				,gName		= #{g_name}
+			</if>
+			
+			<if test="g_phone != null and g_phone neq ''.toString()">
+				,gPhone		= #{g_phone}
+			</if>
+			
+			<if test="p_level != null and p_level neq ''.toString()">
+				,pLevel		= #{p_level}
+			</if>
+		</trim>
+			WHERE
+				patientId	= #{p_id}
 	</update>
 
 	<!-- 환자 권한 회원 삭제 쿼리문 -->
