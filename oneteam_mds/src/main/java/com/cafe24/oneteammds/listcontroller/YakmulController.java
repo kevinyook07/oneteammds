@@ -80,12 +80,14 @@ public class YakmulController {
 
 	// MDS DB - 약물처방내역 검색
 	@PostMapping("/yakmuldbList")
-	public String getYakmuldbList(@RequestParam(value = "sk") String sk
-								 ,@RequestParam(value = "sv") String sv
+	public String getYakmuldbList(@RequestParam(value = "sk1") String sk1
+							     ,@RequestParam(value = "sk2") String sk2
+						   	     ,@RequestParam(value = "sv1") String sv1
+						   	     ,@RequestParam(value = "sv2") String sv2
 								 ,@RequestParam(value = "start_date") String start_date
 								 ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Yakmul> list = yakmulService.getYakmuldbSearchList(sk, sv, start_date, finish_date);
+		List<Yakmul> list = yakmulService.getYakmuldbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("yakmuldbList", list);
 
 		return "/yakmul/yakmul/yakmuldbList";

@@ -52,9 +52,9 @@ public class JunyumService {
 	}
 
 	// MDS DB - 법정 전염성 감염병 검색
-	public List<Junyum> getJunyumdbSearchList(String sk, String sv, String start_date, String finish_date) {
+	public List<Junyum> getJunyumdbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
 
-		List<Junyum> list = junyumMapper.getJunyumdbSearchList(sk, sv, start_date, finish_date);
+		List<Junyum> list = junyumMapper.getJunyumdbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}

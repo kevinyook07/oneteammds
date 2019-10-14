@@ -145,10 +145,13 @@
 			,aserDate
 		FROM
 			 allergy
-		<if test="sv != null and sv neq ''.toString()">	
-		</if>	 
-		WHERE 								
-			${sk} Like CONCAT('%',#{sv},'%')				
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		</if>
+		<if test="sv2 != null and sv2 neq ''.toString()">	
+		</if>
+		WHERE 					
+		${sk1} Like CONCAT('%',#{sv1},'%') 
+		and ${sk2} Like CONCAT('%',#{sv2},'%')				
 		<if test="start_date neq null and start_date neq ''.toString()">
 			AND aserDate >= #{start_date} 		
 		</if>

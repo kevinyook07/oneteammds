@@ -52,9 +52,9 @@ public class YoungsangService {
 	}
 
 	// MDS DB - 영상검사결과 검색
-	public List<Youngsang> getYoungsangdbSearchList(String sk, String sv, String start_date, String finish_date) {
+	public List<Youngsang> getYoungsangdbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
 
-		List<Youngsang> list = youngsangMapper.getYoungsangdbSearchList(sk, sv, start_date, finish_date);
+		List<Youngsang> list = youngsangMapper.getYoungsangdbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}

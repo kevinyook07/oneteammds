@@ -79,12 +79,14 @@ public class YebangController {
 
 	// MDS DB - 예방접종내역 검색
 	@PostMapping("/yebangdbList")
-	public String getYebangdbList(@RequestParam(value = "sk") String sk
-								 ,@RequestParam(value = "sv") String sv
+	public String getYebangdbList(@RequestParam(value = "sk1") String sk1
+							     ,@RequestParam(value = "sk2") String sk2
+						   	     ,@RequestParam(value = "sv1") String sv1
+						   	     ,@RequestParam(value = "sv2") String sv2
 								 ,@RequestParam(value = "start_date") String start_date
 								 ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Yebang> list = yebangService.getYebangdbSearchList(sk, sv, start_date, finish_date);
+		List<Yebang> list = yebangService.getYebangdbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("yebangdbList", list);
 
 		return "/yebang/yebang/yebangdbList";

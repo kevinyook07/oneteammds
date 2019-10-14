@@ -73,8 +73,8 @@ public class TotalService {
 	}
 	
 	// MDS DB - 약물처방내역 검색
-		public List<Total> getTotaldbSearchList(String sk, String sv, String start_date, String finish_date) {
-			List<Total> list = totalMapper.getTotaldbSearchList(sk, sv, start_date, finish_date);
+		public List<Total> getTotaldbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
+			List<Total> list = totalMapper.getTotaldbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 
 			return list;
 		}

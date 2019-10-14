@@ -52,9 +52,9 @@ public class AllergyService {
 	}
 
 	// MDS DB - 알러지 및 부작용 검색
-	public List<Allergy> getAllergydbSearchList(String sk, String sv, String start_date, String finish_date) {
+	public List<Allergy> getAllergydbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
 
-		List<Allergy> list = allergyMapper.getAllergydbSearchList(sk, sv, start_date, finish_date);
+		List<Allergy> list = allergyMapper.getAllergydbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}

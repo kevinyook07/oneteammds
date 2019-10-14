@@ -79,12 +79,14 @@ public class SaengchaeController {
 
 	// MDS DB - 생체신호 및 상태 검색
 	@PostMapping("/saengchaedbList")
-	public String getSaengchaedbList(@RequestParam(value = "sk") String sk
-									,@RequestParam(value = "sv") String sv
+	public String getSaengchaedbList(@RequestParam(value = "sk1") String sk1
+								    ,@RequestParam(value = "sk2") String sk2
+							   	    ,@RequestParam(value = "sv1") String sv1
+							   	    ,@RequestParam(value = "sv2") String sv2
 									,@RequestParam(value = "start_date") String start_date
 									,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Saengchae> list = saengchaeService.getSaengchaedbSearchList(sk, sv, start_date, finish_date);
+		List<Saengchae> list = saengchaeService.getSaengchaedbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("saengchaedbList", list);
 
 		return "/saengchae/saengchae/saengchaedbList";

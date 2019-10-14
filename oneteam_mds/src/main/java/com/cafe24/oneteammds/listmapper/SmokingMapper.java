@@ -31,7 +31,7 @@ public interface SmokingMapper {
 	public List<Smoking> getSmokingdbList();
 
 	// MDS DB - 흡연상태 검색
-	public List<Smoking> getSmokingdbSearchList(String sk, String sv, String start_date, String finish_date);
+	public List<Smoking> getSmokingdbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// MDS DB - 흡연상태 삭제
 	public int delSmoking(String scCode, String hospitalId, String patientId);

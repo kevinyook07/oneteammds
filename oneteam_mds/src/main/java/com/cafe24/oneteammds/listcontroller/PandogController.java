@@ -79,12 +79,14 @@ public class PandogController {
 
 	// MDS DB - 영상판독정보 검색
 	@PostMapping("/pandogdbList")
-	public String getPandogdbList(@RequestParam(value = "sk") String sk
-								 ,@RequestParam(value = "sv") String sv
+	public String getPandogdbList(@RequestParam(value = "sk1") String sk1
+								 ,@RequestParam(value = "sk2") String sk2
+							   	 ,@RequestParam(value = "sv1") String sv1
+							   	 ,@RequestParam(value = "sv2") String sv2
 								 ,@RequestParam(value = "start_date") String start_date
 								 ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Pandog> list = pandogService.getPandogdbSearchList(sk, sv, start_date, finish_date);
+		List<Pandog> list = pandogService.getPandogdbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("pandogdbList", list);
 
 		return "/pandog/pandog/pandogdbList";

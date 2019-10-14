@@ -31,7 +31,7 @@ public interface GumcheMapper {
 	public List<Gumche> getGumchedbList();
 
 	// MDS DB - 검체검사결과 검색
-	public List<Gumche> getGumchedbSearchList(String sk, String sv, String start_date, String finish_date);
+	public List<Gumche> getGumchedbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// MDS DB - 검체검사결과 삭제
 	public int delGumche(String strCode, String hospitalId, String patientId);

@@ -94,12 +94,14 @@ public class TotalController {
 
 	// MDS DB - 전체 검색
 	@PostMapping("/totaldbList")
-	public String getTotaldbList(@RequestParam(value = "sk") String sk
-								,@RequestParam(value = "sv") String sv
+	public String getTotaldbList(@RequestParam(value = "sk1") String sk1
+						   		,@RequestParam(value = "sk2") String sk2
+						   		,@RequestParam(value = "sv1") String sv1
+						   		,@RequestParam(value = "sv2") String sv2
 								,@RequestParam(value = "start_date") String start_date
 								,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Total> list = totalService.getTotaldbSearchList(sk, sv, start_date, finish_date);
+		List<Total> list = totalService.getTotaldbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("totaldbList", list);
 
 		return "/total/total/totaldbList";
