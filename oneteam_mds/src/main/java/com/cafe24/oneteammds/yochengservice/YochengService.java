@@ -23,10 +23,10 @@ public class YochengService {
 		
 		//페이지 구성할 행의 갯수
 		//1~10번까지 페이지가 보임.
-		final int ROW_PER_PAGE = 10;
+		final int ROW_PER_PAGE = 5;
 		
 		//보여줄 첫번째 페이지번호 초기화
-		//1부터 10번까지 보여줌. 6번 클릭시 2~11번까지 보여줌
+		//1부터 5번까지 보여줌. 3번 클릭시 12~17번까지 보여줌
 		int startPageNum = 1;
 		
 		//보여줄 페이지 번호의 갯수 초기화
@@ -45,7 +45,7 @@ public class YochengService {
 		int startRow = (currentPage-1)*ROW_PER_PAGE;
 		
 		map.put("startRow", startRow); 
-		map.put("rowPerPage", ROW_PER_PAGE); //10개 고정으로 보여줌
+		map.put("rowPerPage", ROW_PER_PAGE); //5개 고정으로 보여줌
 		
 		//전체행의 갯수를 가져오는 쿼리
 		//lastPage를 구하기 위해 전체 행의 갯수를 가져온다
@@ -55,12 +55,21 @@ public class YochengService {
 		//yochengAdminList는 double소수점까지 구함. 그래서  Math.ceil을 써서 올림 함.
 		int lastPage = (int)(Math.ceil(yochengAdminListCount/ROW_PER_PAGE));
 		
-		if(currentPage >= (lastPage-4)) {
+		if(currentPage >= (lastPage-3)) {
 			lastPageNum = lastPage;
 		}
-			
+		
+		
+
+		/* <리스트가 출력 되지 않아 yochengAdminList()로 출력한 작업
+		 * List<Yochenglist> list = yochengMapper.yochengAdminList();
+		 * resultMap.put("yochengAdminList", list);
+		 */
+		
+		//resultMap 객체를 생성하고 return. return은 호출된 곳으로 return 된다
 		Map<String, Object> resultMap = new HashMap<String,Object>();
-		resultMap.put("list", yochengMapper.getYochengAdminList(map));		
+				
+		resultMap.put("list", yochengMapper.yochengAdminList(map));		
 		resultMap.put("currentPage", currentPage);
 		resultMap.put("lastPage", lastPage);
 		resultMap.put("startPageNum", startPageNum);
@@ -70,20 +79,21 @@ public class YochengService {
 		return resultMap;
 	}
 	
-	//접근 지정자 설정 후 getYochengCode 메서드 입력, return 값 입력 // return은 호출된 곳으로 return 된다.
-	public Yochenglist getYochengCode(int yochengCode) {
-		
-		return yochengMapper.getYochengCode(yochengCode);
-	}
+	/*페이지 작업을 yochengCode로 하려고 했던 작업 내용
+	 * //접근 지정자 설정 후 getYochengCode 메서드 입력, return 값 입력 // return은 호출된 곳으로 return
+	 * 된다. public Yochenglist getYochengCode(int yochengCode) {
+	 * 
+	 * return yochengMapper.getYochengCode(yochengCode); }
+	 */
 	
 	
-	//접근 지정자 설정 후 getYochengAdminListSearch 메서드 입력, return 값 입력 // return은 호출된 곳으로 return 된다.
+	//검색. 접근 지정자 설정 후 getYochengAdminListSearch 메서드 입력, return 값 입력 // return은 호출된 곳으로 return 된다.
 	public List<Yochenglist> getYochengAdminListSearch(String sk1, String sv1){
 		
 		return yochengMapper.getYochengAdminListSearch(sk1, sv1);
 	}
 	
-	//접근 지정자 설정 후 getYochenglist_ById 메서드 입력, return 값 입력 // return은 호출된 곳으로 return 된다.
+	//MDS 진료 정보 등록. 접근 지정자 설정 후 getYochenglist_ById 메서드 입력, return 값 입력 // return은 호출된 곳으로 return 된다.
 	public Yochenglist getYochenglist_ById(String patientId) {
 		
 		return yochengMapper.getYochenglist_ById(patientId);
