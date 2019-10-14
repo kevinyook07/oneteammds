@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cafe24.oneteammds.yochengmapper.YochengMapper;
+
 import com.cafe24.oneteammds.yochengvo.Yochenglist;
 
 @Service //어노테이션 service 설정
@@ -94,9 +95,9 @@ public class YochengService {
 	}
 	
 	//MDS 진료 정보 등록. 접근 지정자 설정 후 getYochenglist_ById 메서드 입력, return 값 입력 // return은 호출된 곳으로 return 된다.
-	public Yochenglist getYochenglist_ById(String patientId) {
+	public Yochenglist getYochenglistById(String patientId) {
 		
-		return yochengMapper.getYochenglist_ById(patientId);
+		return yochengMapper.getYochenglistById(patientId);
 	}
 	
 	

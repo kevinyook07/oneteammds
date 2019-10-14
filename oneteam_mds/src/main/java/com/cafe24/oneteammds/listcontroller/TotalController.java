@@ -50,12 +50,14 @@ public class TotalController {
 
 	// 병원 DB 전체 regist
 	@RequestMapping("/totalRegist")
-	public String getTotalById(@RequestParam(value = "patientId") String patientId,
-			@RequestParam(value = "hospitalId") String hospitalId, Model model) {
 
-		model.addAttribute("totalh", totalService.getTotalhById(patientId, hospitalId));
-
-		return "total/totalRegist/totalRegist";
+	public String getTotalById(@RequestParam(value="patientId")String patientId 
+			                 , @RequestParam(value="hospitalId")String hospitalId
+			                 , Model model) {
+	  
+	  model.addAttribute("totalh", totalService.getTotalhById(patientId, hospitalId));
+	  
+	  return "total/totalRegist/totalRegist"; 
 	}
 
 	// 병원DB - 전체 검색
