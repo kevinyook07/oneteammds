@@ -16,45 +16,53 @@ public class DrinkingService {
 
 	@Autowired
 	private DrinkingMapper drinkingMapper;
-	
-	// 병원1
-	
+
+	// 병원
+
 	// 병원DB - 음주상태
-	
-	// 병원 권한 로그인시 입력되는 ID값 받아서 음주상태 리스트  출력 처리
-	public List<Drinkingh> getDrinkinghList(String hospitalId){
+
+	// 병원 권한 로그인시 입력되는 ID값 받아서 음주상태 리스트 출력 처리
+	public List<Drinkingh> getDrinkinghList(String hospitalId) {
 		return drinkingMapper.getDrinkinghList(hospitalId);
 	}
-	
+
 	// 병원DB - 음주상태 -> 음주상태 regist form
-	public Drinkingh getDrinkinghById(String patientId) { 
-		return drinkingMapper.getDrinkinghById(patientId); 
+	public Drinkingh getDrinkinghById(String patientId) {
+		return drinkingMapper.getDrinkinghById(patientId);
 	}
-	
+
 	// 음주상태 regist complete
-	public int getDrinkingRegist(Drinking drinking) { 
+	public int getDrinkingRegist(Drinking drinking) {
 		return drinkingMapper.getDrinkingRegist(drinking);
-	} 
-	
-	// 음주상태 검색
-		public List<Drinkingh> getDrinkingSearchList(String hospitalId, String sk, String sv) {
-
-			List<Drinkingh> list = drinkingMapper.getDrinkingSearchList(hospitalId, sk, sv);
-
-			return list;
-		}
-	
-	// 시스템 DB 
-	
-	// MDS DB - 음주상태
-	public List<Drinking> getDrinkingdbList(){ 
-		return drinkingMapper.getDrinkingdbList(); 
 	}
-	
-	// MDS DB - 음주상태 삭제
-		public int delDrinking(String dcCode, String hospitalId, String patientId) {
 
-			return drinkingMapper.delDrinking(dcCode, hospitalId, patientId);
-		}
-	 
+	// 음주상태 검색
+	public List<Drinkingh> getDrinkingSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
+
+		List<Drinkingh> list = drinkingMapper.getDrinkingSearchList(hospitalId, sk, sv, start_date, finish_date);
+
+		return list;
+	}
+
+	// 시스템 DB
+
+	// MDS DB - 음주상태
+	public List<Drinking> getDrinkingdbList() {
+		return drinkingMapper.getDrinkingdbList();
+	}
+
+	// MDS DB - 음주상태 검색
+	public List<Drinking> getDrinkingdbSearchList(String sk, String sv, String start_date, String finish_date) {
+
+		List<Drinking> list = drinkingMapper.getDrinkingdbSearchList(sk, sv, start_date, finish_date);
+
+		return list;
+	}
+
+	// MDS DB - 음주상태 삭제
+	public int delDrinking(String dcCode, String hospitalId, String patientId) {
+
+		return drinkingMapper.delDrinking(dcCode, hospitalId, patientId);
+	}
+
 }

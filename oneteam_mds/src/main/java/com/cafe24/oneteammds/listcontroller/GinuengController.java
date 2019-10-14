@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cafe24.oneteammds.listservice.GinuengService;
 import com.cafe24.oneteammds.listvo.Ginueng;
 import com.cafe24.oneteammds.listvo.Ginuengh;
+import com.cafe24.oneteammds.listvo.Jindan;
 
 @Controller
 public class GinuengController {
@@ -49,9 +50,11 @@ public class GinuengController {
 		@PostMapping("/ginuenghList")
 		public String getGinuengList(@RequestParam(value="hospitalId")String hospitalId
 								    ,@RequestParam(value = "sk") String sk
-								    ,@RequestParam(value = "sv") String sv,
+								    ,@RequestParam(value = "sv") String sv
+								    ,@RequestParam(value = "start_date") String start_date
+									,@RequestParam(value = "finish_date") String finish_date,							    
 				Model model) {
-			List<Ginuengh> list = ginuengService.getGinuengSearchList(hospitalId, sk, sv);
+			List<Ginuengh> list = ginuengService.getGinuengSearchList(hospitalId, sk, sv, start_date, finish_date);
 			model.addAttribute("ginuenghList", list);
 
 			return "/ginueng/ginuengh/ginuenghList";
@@ -60,17 +63,37 @@ public class GinuengController {
 	// 시스템DB
 	
 	// 기능검사결과 regist complete --> MDS DB - 기능검사결과
-	@RequestMapping("/ginuengdbList") 
-	public String getGinuengRegist(Ginueng ginueng, Model model) { 
-		  
-		ginuengService.getGinuengRegist(ginueng);
-		  
-		model.addAttribute("ginuengdbList", ginuengService.getGinuengdbList()); 
+		@RequestMapping("/ginuengComplete") 
+		public String getGinuengRegist(Ginueng ginueng) { 
+			
+			ginuengService.getGinuengRegist(ginueng); 		
+			
+			return "/ginueng/ginuengRegist/ginuengComplete"; 
+		}
 		
-		return "/ginueng/ginueng/ginuengdbList"; 
+		@RequestMapping("/ginuengdbList")
+		public String getGinuengdbList(Model model) {
+			
+			model.addAttribute("ginuengdbList", ginuengService.getGinuengdbList());
+			
+			return "/ginueng/ginueng/ginuengdbList";
+		}
+	
+	// MDS DB - 기능검사결과 검색
+	@PostMapping("/ginuengdbList")
+	public String getGinuengdbList(
+							    @RequestParam(value = "sk") String sk
+							   ,@RequestParam(value = "sv") String sv
+							   ,@RequestParam(value = "start_date") String start_date
+							   ,@RequestParam(value = "finish_date") String finish_date,
+			Model model) {
+		List<Ginueng> list = ginuengService.getGinuengdbSearchList(sk, sv, start_date, finish_date);
+		model.addAttribute("ginuengdbList", list);
+
+		return "/ginueng/ginueng/ginuengdbList";
 	}
 	
-	// MDS DB - 기능검사결과 삭제 1
+	// MDS DB - 기능검사결과 삭제 
 		@GetMapping("/delGinueng")
 		public String delGinueng(@RequestParam(value = "ftrCode") String ftrCode, Model model) {
 			model.addAttribute("ftrCode", ftrCode);

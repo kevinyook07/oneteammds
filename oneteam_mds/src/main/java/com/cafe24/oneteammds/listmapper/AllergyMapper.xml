@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.AllergyMapper">
  	
- 	<!-- 병원1 -->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 알러지 및 부작용 -->
  	
@@ -97,6 +97,12 @@
 			hospitalId = #{hospitalId}
 		<if test="sv != null and sv neq ''.toString()">					
 		and	${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND aserDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND aserDate <![CDATA[<=]]> #{finish_date} 
 		</if>	
 	</select>
 	
@@ -120,6 +126,35 @@
  		  , aserDate
 		FROM 
 			allergy
+	</select>
+	
+	<!-- MDS DB - 알러지 및 부작용 검색 -->
+	<select id="getAllergydbSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Allergy">
+	  	SELECT
+			 aseCode
+			,hospitalId
+			,patientId
+			,asemFactor
+			,asemfCode
+			,aseName
+			,aseReaction
+			,pDoctor
+			,asedTime
+			,adminId
+			,aserDate
+		FROM
+			 allergy
+		<if test="sv != null and sv neq ''.toString()">	
+		</if>	 
+		WHERE 								
+			${sk} Like CONCAT('%',#{sv},'%')				
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND aserDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND aserDate <![CDATA[<=]]> #{finish_date} 
+		</if>	
 	</select>
 	
 	<!-- MDS DB - 알러지 및 부작용 삭제 -->

@@ -11,20 +11,20 @@
 			<div class="container-fluid"></div>
 	<!-- **************윗상단 메인 메뉴END ************** -->
 	<!--************메인 컨텐트 ************ -->		
-	   	</div>1
+	   	</div>
 	   	  <!-- Form Elements -->
               <div class="col-lg-12">
                 <div class="block">
                   
                   <div class="block-body">
-                    <form action="/youngsanghList" method="post">
+                    <form action="/youngsangdbList" method="post">
 		<select name="sk">
 			<option value="hospitalId">병원 고유번호</option>	
-			<option value="patientId">환자고유번호</option>			
-			<option value="itdTime">검사일시</option>			
+			<option value="patientId">환자고유번호</option>						
 		</select>
 		<input type="text" name="sv">
-		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
+		<input type="date" name="start_date">~
+     	<input type="date" name="finish_date">
 		<button type="submit" class="btn btn-secondary">검색</button>
 	</form>
                      <table class="table">

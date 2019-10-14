@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.SusulMapper">
  	
- 	<!-- 병원 1-->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 수술내역 -->
  	
@@ -94,7 +94,12 @@
 		<if test="sv != null and sv neq ''.toString()">					
 		and	${sk} Like CONCAT('%',#{sv},'%')		
 		</if>
-	
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND sbDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND sbDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- 시스템DB -->
@@ -116,6 +121,35 @@
  		  , sbDate
 		FROM 
 			susul
+	</select>
+	
+	
+	<!-- MDS DB - 수술내역 검색 -->
+	<select id="getSusuldbSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Susul">
+	  	SELECT
+			 sbCode
+			,hospitalId
+			,patientId
+			,sName
+			,sCode
+			,aKind
+			,pDoctor
+			,sdTime
+			,adminId
+			,sbDate
+		FROM
+			 susul
+		<if test="sv != null and sv neq ''.toString()">	 
+		</if>
+		WHERE 								
+			${sk} Like CONCAT('%',#{sv},'%')				
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND sbDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND sbDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- MDS DB - 수술내역 삭제 -->

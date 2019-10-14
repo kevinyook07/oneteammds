@@ -16,52 +16,51 @@ public class JindanService {
 
 	@Autowired
 	private JindanMapper jindanMapper;
-	
-	// 병원1
-	
+
+	// 병원
+
 	// 병원DB - 진단내역
-	
-	// 병원 권한 로그인시 입력되는 ID값 받아서 진단내역 리스트  출력 처리
-	public List<Jindanh> getJindanhList(String hospitalId){
+
+	// 병원 권한 로그인시 입력되는 ID값 받아서 진단내역 리스트 출력 처리
+	public List<Jindanh> getJindanhList(String hospitalId) {
 		return jindanMapper.getJindanhList(hospitalId);
 	}
-	
+
 	// 병원DB - 진단내역 -> 진단내역 regist form
-	public Jindanh getJindanhById(String patientId) { 
-		return jindanMapper.getJindanhById(patientId); 
+	public Jindanh getJindanhById(String patientId) {
+		return jindanMapper.getJindanhById(patientId);
 	}
-	
+
 	// 진단내역 regist complete
-	public int getJindanRegist(Jindan jindan) { 
+	public int getJindanRegist(Jindan jindan) {
 		return jindanMapper.getJindanRegist(jindan);
-	} 
-	
+	}
+
 	// 병원DB - 검색
-	public List<Jindanh> getJindanhSearchList(String hospitalId, String sk, String sv) {
-		List<Jindanh> list = jindanMapper.getJindanhSearchList(hospitalId, sk, sv);
+	public List<Jindanh> getJindanhSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
+		List<Jindanh> list = jindanMapper.getJindanhSearchList(hospitalId, sk, sv, start_date, finish_date);
 
 		return list;
 	}
-	
-	
-	
-	// 시스템 DB 
-	
+
+	// 시스템 DB
+
 	// MDS DB - 진단내역
-	public List<Jindan> getJindandbList(){ 
-		return jindanMapper.getJindandbList(); 
+	public List<Jindan> getJindandbList() {
+		return jindanMapper.getJindandbList();
 	}
-	
-	public List<Jindan> getJindandbSearchList(String sk, String sv) {
-		List<Jindan> list = jindanMapper.getJindandbSearchList(sk, sv);
+
+	// MDS DB - 진단내역 검색
+	public List<Jindan> getJindandbSearchList(String sk, String sv, String start_date, String finish_date) {
+		List<Jindan> list = jindanMapper.getJindandbSearchList(sk, sv, start_date, finish_date);
 
 		return list;
 	}
-	
-	// MDS DB - 삭제
+
+	// MDS DB - 진단내역 삭제
 	public int delJindan(String dbCode, String hospitalId, String patientId) {
 
 		return jindanMapper.delJindan(dbCode, hospitalId, patientId);
-	}	
+	}
 
 }

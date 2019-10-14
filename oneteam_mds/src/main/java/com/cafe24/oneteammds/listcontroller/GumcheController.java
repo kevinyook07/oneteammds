@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cafe24.oneteammds.listservice.GumcheService;
 import com.cafe24.oneteammds.listvo.Gumche;
 import com.cafe24.oneteammds.listvo.Gumcheh;
+import com.cafe24.oneteammds.listvo.Jindan;
 
 @Controller
 public class GumcheController {
@@ -49,9 +50,11 @@ public class GumcheController {
 		@PostMapping("/gumchehList")
 		public String getGumcheList(@RequestParam(value="hospitalId")String hospitalId
 								   ,@RequestParam(value = "sk") String sk
-								   ,@RequestParam(value = "sv") String sv,
+								   ,@RequestParam(value = "sv") String sv
+								   ,@RequestParam(value = "start_date") String start_date
+								   ,@RequestParam(value = "finish_date") String finish_date,
 				Model model) {
-			List<Gumcheh> list = gumcheService.getGumcheSearchList(hospitalId, sk, sv);
+			List<Gumcheh> list = gumcheService.getGumcheSearchList(hospitalId, sk, sv, start_date, finish_date);
 			model.addAttribute("gumchehList", list);
 
 			return "/gumche/gumcheh/gumchehList";
@@ -61,17 +64,39 @@ public class GumcheController {
 	// 시스템DB
 	
 	// 검체검사결과 regist complete --> MDS DB - 검체검사결과
-	@RequestMapping("/gumchedbList") 
-	public String getGumcheRegist(Gumche gumche, Model model) { 
-		  
-		gumcheService.getGumcheRegist(gumche);
-		  
-		model.addAttribute("gumchedbList", gumcheService.getGumchedbList()); 
+		@RequestMapping("/gumcheComplete") 
+		public String getGumcheRegist(Gumche gumche) { 
+			
+			gumcheService.getGumcheRegist(gumche); 		
+			
+			return "/gumche/gumcheRegist/gumcheComplete"; 
+		}
 		
-		return "/gumche/gumche/gumchedbList"; 
+		// MDS DB - 검체검사결과 리스트
+		@RequestMapping("/gumchedbList")
+		public String getGumchedbList(Model model) {
+			
+			model.addAttribute("gumchedbList", gumcheService.getGumchedbList());
+			
+			return "/gumche/gumche/gumchedbList";
+		}
+	
+	
+	// MDS DB - 검체검사결과 검색
+	@PostMapping("/gumchedbList")
+	public String getGumchedbList(@RequestParam(value = "sk") String sk
+							   	,@RequestParam(value = "sv") String sv
+							   	,@RequestParam(value = "start_date") String start_date
+							   	,@RequestParam(value = "finish_date") String finish_date,
+			Model model) {
+		List<Gumche> list = gumcheService.getGumchedbSearchList(sk, sv, start_date, finish_date);
+		model.addAttribute("gumchedbList", list);
+
+		return "/gumche/gumche/gumchedbList";
+
 	}
 	
-	// MDS DB - 검체검사결과 삭제 1
+	// MDS DB - 검체검사결과 삭제 
 		@GetMapping("/delGumche")
 		public String delGumche(@RequestParam(value = "strCode") String strCode, Model model) {
 			model.addAttribute("strCode", strCode);

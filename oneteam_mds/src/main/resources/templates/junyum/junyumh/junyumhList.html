@@ -3,7 +3,7 @@
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 		layout:decorate="~{layout/default}">
 
-<th:block layout:fragment="customContents">1
+<th:block layout:fragment="customContents">
 	<div class="page-content">
 	 <!-- **************윗상단 메인 메뉴 ************** -->
 		<div class="page-header">
@@ -19,10 +19,11 @@
                   <div class="block-body">
                     <form action="/junyumhList" method="post">
 		<select name="sk">
-			<option value="patientId">환자고유번호</option>	
-			<option value="lcidoDate">발병일자</option>																
+			<option value="patientId">환자고유번호</option>																				
 		</select>
 		<input type="text" name="sv">
+		<input type="date" name="start_date">~
+     	<input type="date" name="finish_date">
 		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
 		<button type="submit" class="btn btn-secondary">검색</button>
 	</form>

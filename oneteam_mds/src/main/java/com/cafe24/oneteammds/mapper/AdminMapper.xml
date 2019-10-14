@@ -107,14 +107,35 @@
 	<update id="modifyAdmin"
 		parameterType="com.cafe24.oneteammds.vo.Admin">
 		UPDATE admin
-		SET
-		adminPw = #{a_pw}
-		,aName = #{a_name}
-		,aBirth = #{a_birth}
-		,aGender = #{a_gender}
-		,aAddr = #{a_addr}
-		,aPhone = #{a_phone}
-		,aLevel = #{a_level}
+		<trim prefix="SET" prefixOverrides=",">
+			<if test="a_pw != null and a_pw neq ''.toString()">
+			adminPw = #{a_pw}
+			</if>
+		
+			<if test="a_name != null and a_name neq ''.toString()">
+			,aName = #{a_name}
+			</if>
+		
+			<if test="a_birth != null and a_birth neq ''.toString()">
+			,aBirth = #{a_birth}
+			</if>
+			
+			<if test="a_gender != null and a_gender neq ''.toString()">
+			,aGender = #{a_gender}
+			</if>
+			
+			<if test="a_addr != null and a_addr neq ''.toString()">
+			,aAddr = #{a_addr}
+			</if>
+			
+			<if test="a_phone != null and a_phone neq ''.toString()">
+			,aPhone = #{a_phone}
+			</if>
+			
+			<if test="a_level != null and a_level neq ''.toString()">
+			,aLevel = #{a_level}
+			</if>
+		</trim>
 		WHERE
 		adminId = #{a_id}
 	</update>

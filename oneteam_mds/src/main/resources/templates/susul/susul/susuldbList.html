@@ -6,7 +6,7 @@
 <th:block layout:fragment="customContents">
 	<div class="page-content">
 	 <!-- **************윗상단 메인 메뉴 ************** -->
-		<div class="page-header">1
+		<div class="page-header">
 		<h2 style="text-align:center">수술내역 리스트</h2>
 			<div class="container-fluid"></div>
 	<!-- **************윗상단 메인 메뉴END ************** -->
@@ -16,16 +16,15 @@
               <div class="col-lg-12">
                 <div class="block">
                   
-                  <div class="block-body">
-                    <div class="block-body">
-                    <form action="/susulhList" method="post">
+                  <div class="block-body">                
+                    <form action="/susuldbList" method="post">
 		<select name="sk">
 			<option value="hospitalId">병원 고유번호</option>	
-			<option value="patientId">환자고유번호</option>	
-			<option value="sdTime">수술일자</option>										
+			<option value="patientId">환자고유번호</option>										
 		</select>
 		<input type="text" name="sv">
-		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
+		<input type="date" name="start_date">~
+     	<input type="date" name="finish_date">
 		<button type="submit" class="btn btn-secondary">검색</button>
 	</form>
                      <table class="table">

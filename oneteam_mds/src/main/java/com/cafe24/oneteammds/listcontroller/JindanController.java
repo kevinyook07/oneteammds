@@ -21,7 +21,7 @@ public class JindanController {
 	@Autowired
 	private JindanService jindanService;
 	
-	// 병원1
+	// 병원
 	
 	// 병원DB - 진단내역
 	
@@ -49,9 +49,11 @@ public class JindanController {
 	@PostMapping("/jindanhList")
 	public String getJindanhSearchList(@RequestParam(value="hospitalId")String hospitalId
 								   ,@RequestParam(value = "sk") String sk
-								   ,@RequestParam(value = "sv") String sv,
+								   ,@RequestParam(value = "sv") String sv
+								   ,@RequestParam(value = "start_date") String start_date
+								   ,@RequestParam(value = "finish_date") String finish_date,
 				Model model) {
-			List<Jindanh> list = jindanService.getJindanhSearchList(hospitalId, sk, sv);
+			List<Jindanh> list = jindanService.getJindanhSearchList(hospitalId, sk, sv, start_date, finish_date);
 			model.addAttribute("jindanhList", list);
 
 			return "/jindan/jindanh/jindanhList";
@@ -68,6 +70,7 @@ public class JindanController {
 		return "/jindan/jindanRegist/jindanComplete"; 
 	}
 	
+	// MDS DB - 진단내역 리스트
 	@RequestMapping("/jindandbList")
 	public String getJindandbList(Model model) {
 		
@@ -76,11 +79,14 @@ public class JindanController {
 		return "/jindan/jindan/jindandbList";
 	}
 	
+	// MDS DB - 진단내역 검색
 	@PostMapping("/jindandbList")
 	public String getJindandbSearchList(@RequestParam(value = "sk") String sk
-								   ,@RequestParam(value = "sv") String sv,
+								   	   ,@RequestParam(value = "sv") String sv
+								   	   ,@RequestParam(value = "start_date") String start_date
+								   	   ,@RequestParam(value = "finish_date") String finish_date,
 				Model model) {
-			List<Jindan> list = jindanService.getJindandbSearchList(sk, sv);
+			List<Jindan> list = jindanService.getJindandbSearchList(sk, sv, start_date, finish_date);
 			model.addAttribute("jindandbList", list);
 
 			return "/jindan/jindan/jindandbList";
