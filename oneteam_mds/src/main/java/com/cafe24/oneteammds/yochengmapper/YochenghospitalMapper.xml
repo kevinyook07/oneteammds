@@ -56,5 +56,5 @@
     		${search1} Like CONCAT('%',#{search2},'%')
     	</if>
 	</select>
-
+	
 </mapper>

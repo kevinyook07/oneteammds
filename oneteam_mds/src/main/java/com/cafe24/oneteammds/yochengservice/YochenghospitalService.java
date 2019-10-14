@@ -1,9 +1,7 @@
 package com.cafe24.oneteammds.yochengservice;
 
 
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +29,5 @@ public class YochenghospitalService {
 	//특정 아이디 항목 선택 후 검색 list select 조회
 	public List<Yochenghospital> yochenghSearch(String search1, String search2, String yochengoutHospitalId){
 		return yochenghospitalMapper.yochenghSearch(search1, search2, yochengoutHospitalId);
-		
 	}
 }
