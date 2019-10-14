@@ -50,9 +50,11 @@ public class JunyumController {
 		@PostMapping("/junyumhList")
 		public String getJunyumList(@RequestParam(value="hospitalId")String hospitalId
 								   ,@RequestParam(value = "sk") String sk
-								   ,@RequestParam(value = "sv") String sv,
+								   ,@RequestParam(value = "sv") String sv
+								   ,@RequestParam(value = "start_date") String start_date
+								   ,@RequestParam(value = "finish_date") String finish_date,
 				Model model) {
-			List<Junyumh> list = junyumService.getJunyumSearchList(hospitalId, sk, sv);
+			List<Junyumh> list = junyumService.getJunyumSearchList(hospitalId, sk, sv, start_date, finish_date);
 			model.addAttribute("junyumhList", list);
 
 			return "/junyum/junyumh/junyumhList";
@@ -82,9 +84,11 @@ public class JunyumController {
 	@PostMapping("/junyumdbList")
 	public String getJunyumdbList(
 							  @RequestParam(value = "sk") String sk
-							   ,@RequestParam(value = "sv") String sv,
+							 ,@RequestParam(value = "sv") String sv
+							 ,@RequestParam(value = "start_date") String start_date
+							 ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Junyum> list = junyumService.getJunyumdbSearchList(sk, sv);
+		List<Junyum> list = junyumService.getJunyumdbSearchList(sk, sv, start_date, finish_date);
 		model.addAttribute("junyumdbList", list);
 
 		return "/junyum/junyum/junyumdbList";

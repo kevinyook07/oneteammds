@@ -46,8 +46,12 @@ public class PandogController {
 	// 병원DB - 영상판독정보 검색
 	@PostMapping("/pandoghList")
 	public String getPandogList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Pandogh> list = pandogService.getPandogSearchList(hospitalId, sk, sv);
+								@RequestParam(value = "sk") String sk
+							   ,@RequestParam(value = "sv") String sv
+							   ,@RequestParam(value = "start_date") String start_date
+							   ,@RequestParam(value = "finish_date") String finish_date
+							   , Model model) {
+		List<Pandogh> list = pandogService.getPandogSearchList(hospitalId, sk, sv, start_date, finish_date);
 		model.addAttribute("pandoghList", list);
 
 		return "/pandog/pandogh/pandoghList";
@@ -76,9 +80,11 @@ public class PandogController {
 	// MDS DB - 영상판독정보 검색
 	@PostMapping("/pandogdbList")
 	public String getPandogdbList(@RequestParam(value = "sk") String sk
-								 ,@RequestParam(value = "sv") String sv,
+								 ,@RequestParam(value = "sv") String sv
+								 ,@RequestParam(value = "start_date") String start_date
+								 ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Pandog> list = pandogService.getPandogdbSearchList(sk, sv);
+		List<Pandog> list = pandogService.getPandogdbSearchList(sk, sv, start_date, finish_date);
 		model.addAttribute("pandogdbList", list);
 
 		return "/pandog/pandog/pandogdbList";

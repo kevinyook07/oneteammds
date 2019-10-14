@@ -24,7 +24,7 @@ public interface YebangMapper {
 	public int getYebangRegist(Yebang yebang);
 
 	// 병원DB - 예방접종내역 검색
-	public List<Yebangh> getYebangSearchList(String hospitalId, String sk, String sv);
+	public List<Yebangh> getYebangSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
 
 	// 시스템DB
 
@@ -32,7 +32,7 @@ public interface YebangMapper {
 	public List<Yebang> getYebangdbList();
 
 	// MDS DB - 예방접종내역 검색
-	public List<Yebang> getYebangdbSearchList(String sk, String sv);
+	public List<Yebang> getYebangdbSearchList(String sk, String sv, String start_date, String finish_date);
 
 	// MDS DB - 예방접종내역 삭제
 	public int delYebang(String pibCode, String hospitalId, String patientId);

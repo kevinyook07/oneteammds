@@ -23,7 +23,7 @@ public interface JunyumMapper {
 	public int getJunyumRegist(Junyum junyum);
 
 	// 병원DB - 법정 전염성 감염병 검색
-	public List<Junyumh> getJunyumSearchList(String hospitalId, String sk, String sv);
+	public List<Junyumh> getJunyumSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
 
 	// 시스템DB
 
@@ -31,7 +31,7 @@ public interface JunyumMapper {
 	public List<Junyum> getJunyumdbList();
 
 	// MDS DB - 법정 전염성 감염병 검색
-	public List<Junyum> getJunyumdbSearchList(String sk, String sv);
+	public List<Junyum> getJunyumdbSearchList(String sk, String sv, String start_date, String finish_date);
 
 	// MDS DB - 법정 전염성 감염병 삭제
 	public int delJunyum(String lcidCode, String hospitalId, String patientId);

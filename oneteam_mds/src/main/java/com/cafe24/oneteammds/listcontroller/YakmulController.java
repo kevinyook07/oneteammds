@@ -46,8 +46,12 @@ public class YakmulController {
 	// 병원DB - 약물처방내역 검색
 	@PostMapping("/yakmulhList")
 	public String getYakmulList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Yakmulh> list = yakmulService.getYakmulSearchList(hospitalId, sk, sv);
+								@RequestParam(value = "sk") String sk
+							   ,@RequestParam(value = "sv") String sv
+							   ,@RequestParam(value = "start_date") String start_date
+							   ,@RequestParam(value = "finish_date") String finish_date							   
+							   , Model model) {
+		List<Yakmulh> list = yakmulService.getYakmulSearchList(hospitalId, sk, sv, start_date, finish_date);
 		model.addAttribute("yakmulhList", list);
 
 		return "/yakmul/yakmulh/yakmulhList";
@@ -76,9 +80,12 @@ public class YakmulController {
 
 	// MDS DB - 약물처방내역 검색
 	@PostMapping("/yakmuldbList")
-	public String getYakmuldbList(@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv,
+	public String getYakmuldbList(@RequestParam(value = "sk") String sk
+								 ,@RequestParam(value = "sv") String sv
+								 ,@RequestParam(value = "start_date") String start_date
+								 ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Yakmul> list = yakmulService.getYakmuldbSearchList(sk, sv);
+		List<Yakmul> list = yakmulService.getYakmuldbSearchList(sk, sv, start_date, finish_date);
 		model.addAttribute("yakmuldbList", list);
 
 		return "/yakmul/yakmul/yakmuldbList";

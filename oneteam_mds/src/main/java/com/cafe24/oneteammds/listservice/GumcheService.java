@@ -37,8 +37,8 @@ public class GumcheService {
 	}
 
 	// 병원DB - 검체검사결과 검색
-	public List<Gumcheh> getGumcheSearchList(String hospitalId, String sk, String sv) {
-		List<Gumcheh> list = gumcheMapper.getGumcheSearchList(hospitalId, sk, sv);
+	public List<Gumcheh> getGumcheSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
+		List<Gumcheh> list = gumcheMapper.getGumcheSearchList(hospitalId, sk, sv, start_date, finish_date);
 
 		return list;
 	}
@@ -51,8 +51,8 @@ public class GumcheService {
 	}
 
 	// MDS DB - 검체검사결과 검색
-	public List<Gumche> getGumchedbSearchList(String sk, String sv) {
-		List<Gumche> list = gumcheMapper.getGumchedbSearchList(sk, sv);
+	public List<Gumche> getGumchedbSearchList(String sk, String sv, String start_date, String finish_date) {
+		List<Gumche> list = gumcheMapper.getGumchedbSearchList(sk, sv, start_date, finish_date);
 
 		return list;
 	}

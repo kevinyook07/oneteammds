@@ -23,7 +23,7 @@ public interface SusulMapper {
 	public int getSusulRegist(Susul susul);
 
 	// 병원DB - 수술내역 검색
-	public List<Susulh> getSusulSearchList(String hospitalId, String sk, String sv);
+	public List<Susulh> getSusulSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
 
 	// 시스템DB
 
@@ -31,7 +31,7 @@ public interface SusulMapper {
 	public List<Susul> getSusuldbList();
 
 	// MDS DB - 수술내역 검색
-	public List<Susul> getSusuldbSearchList(String sk, String sv);
+	public List<Susul> getSusuldbSearchList(String sk, String sv, String start_date, String finish_date);
 
 	// MDS DB - 수술내역 삭제
 	public int delSusul(String sbCode, String hospitalId, String patientId);

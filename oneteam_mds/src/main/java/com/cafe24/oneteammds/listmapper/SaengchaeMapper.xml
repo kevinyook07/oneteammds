@@ -102,7 +102,12 @@
 		<if test="sv != null and sv neq ''.toString()">					
 		and	${sk} Like CONCAT('%',#{sv},'%')		
 		</if>
-	
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND vscrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND vscrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- 시스템DB -->
@@ -148,11 +153,15 @@
 		FROM
 			 saengchae
 		<if test="sv != null and sv neq ''.toString()">
-		WHERE 
-						
-			${sk} Like CONCAT('%',#{sv},'%')		
 		</if>
-	
+		WHERE 						
+			${sk} Like CONCAT('%',#{sv},'%')				
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND vscrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND vscrDate <![CDATA[<=]]> #{finish_date} 
+		</if>	
 	</select>
 	
 	<!-- MDS DB - 생체신호 및 상태 삭제 -->

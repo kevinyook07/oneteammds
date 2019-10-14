@@ -50,9 +50,11 @@ public class GinuengController {
 		@PostMapping("/ginuenghList")
 		public String getGinuengList(@RequestParam(value="hospitalId")String hospitalId
 								    ,@RequestParam(value = "sk") String sk
-								    ,@RequestParam(value = "sv") String sv,
+								    ,@RequestParam(value = "sv") String sv
+								    ,@RequestParam(value = "start_date") String start_date
+									,@RequestParam(value = "finish_date") String finish_date,							    
 				Model model) {
-			List<Ginuengh> list = ginuengService.getGinuengSearchList(hospitalId, sk, sv);
+			List<Ginuengh> list = ginuengService.getGinuengSearchList(hospitalId, sk, sv, start_date, finish_date);
 			model.addAttribute("ginuenghList", list);
 
 			return "/ginueng/ginuengh/ginuenghList";
@@ -81,9 +83,11 @@ public class GinuengController {
 	@PostMapping("/ginuengdbList")
 	public String getGinuengdbList(
 							    @RequestParam(value = "sk") String sk
-							    ,@RequestParam(value = "sv") String sv,
+							   ,@RequestParam(value = "sv") String sv
+							   ,@RequestParam(value = "start_date") String start_date
+							   ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Ginueng> list = ginuengService.getGinuengdbSearchList(sk, sv);
+		List<Ginueng> list = ginuengService.getGinuengdbSearchList(sk, sv, start_date, finish_date);
 		model.addAttribute("ginuengdbList", list);
 
 		return "/ginueng/ginueng/ginuengdbList";

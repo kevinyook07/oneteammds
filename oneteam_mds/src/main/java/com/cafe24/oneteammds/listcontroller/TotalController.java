@@ -35,7 +35,7 @@ public class TotalController {
 	@Autowired
 	private TotalService totalService;
 
-	// 병원1
+	// 병원
 
 	// 병원 DB 전체리스트
 
@@ -60,9 +60,13 @@ public class TotalController {
 
 	// 병원DB - 전체 검색
 	@PostMapping("/totalhList")
-	public String getTotalList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Totalh> list = totalService.getTotalSearchList(hospitalId, sk, sv);
+	public String getTotalList(@RequestParam(value = "hospitalId") String hospitalId
+							  ,@RequestParam(value = "sk") String sk
+							  ,@RequestParam(value = "sv") String sv
+							  ,@RequestParam(value = "start_date") String start_date
+							  ,@RequestParam(value = "finish_date") String finish_date
+							  , Model model) {
+		List<Totalh> list = totalService.getTotalSearchList(hospitalId, sk, sv, start_date, finish_date);
 		model.addAttribute("totalhList", list);
 
 		return "/total/totalh/totalhList";
@@ -90,9 +94,12 @@ public class TotalController {
 
 	// MDS DB - 전체 검색
 	@PostMapping("/totaldbList")
-	public String getTotaldbList(@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv,
+	public String getTotaldbList(@RequestParam(value = "sk") String sk
+								,@RequestParam(value = "sv") String sv
+								,@RequestParam(value = "start_date") String start_date
+								,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Total> list = totalService.getTotaldbSearchList(sk, sv);
+		List<Total> list = totalService.getTotaldbSearchList(sk, sv, start_date, finish_date);
 		model.addAttribute("totaldbList", list);
 
 		return "/total/total/totaldbList";
@@ -100,25 +107,26 @@ public class TotalController {
 	}
 
 	// MDS DB - 전체 삭제
-	@GetMapping("/delTotal")
-	public String delTotal(@RequestParam(value = "dbCode") String dbCode, Model model) {
-		model.addAttribute("dbCode", dbCode);
-
-		return "/total/tdelete/delTotal";
-	}
-
-	@PostMapping("/delTotal")
-	public String delTotal(@RequestParam(value = "dbCode") String dbCode,
-			@RequestParam(value = "hospitalId") String hospitalId, @RequestParam(value = "patientId") String patientId,
-			Model model) {
-		int result = totalService.delTotal(dbCode, hospitalId, patientId);
-		if (result == 0) {
-			model.addAttribute("result", "비밀번호가 일치하지 않습니다.");
+		@GetMapping("/delTotal")
+		public String delTotal(@RequestParam(value = "dbCode") String dbCode, Model model) {
 			model.addAttribute("dbCode", dbCode);
+
 			return "/total/tdelete/delTotal";
 		}
-		return "redirect:/totaldbList";
-	}
+
+		@PostMapping("/delTotal")
+		public String delTotal(@RequestParam(value = "dbCode") String dbCode,
+				@RequestParam(value = "hospitalId") String hospitalId, @RequestParam(value = "patientId") String patientId,
+				Model model) {
+			int result = totalService.delTotal(dbCode, hospitalId, patientId);
+			if (result == 0) {
+				model.addAttribute("result", "비밀번호가 일치하지 않습니다.");
+				model.addAttribute("dbCode", dbCode);
+				return "/total/tdelete/delTotal";
+			}
+			return "redirect:/totaldbList";
+		}
+
 
 	// 진단내역 상세
 	@RequestMapping("/jindandbDesc")

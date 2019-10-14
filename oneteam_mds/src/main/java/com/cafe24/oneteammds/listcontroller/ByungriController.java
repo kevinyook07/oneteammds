@@ -45,9 +45,13 @@ public class ByungriController {
 
 	// 병원DB - 병리검사결과 검색
 	@PostMapping("/byungrihList")
-	public String getByungriList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Byungrih> list = byungriService.getByungriSearchList(hospitalId, sk, sv);
+	public String getByungriList(@RequestParam(value = "hospitalId") String hospitalId
+								,@RequestParam(value = "sk") String sk
+								,@RequestParam(value = "sv") String sv
+								,@RequestParam(value = "start_date") String start_date
+								,@RequestParam(value = "finish_date") String finish_date
+								, Model model) {
+		List<Byungrih> list = byungriService.getByungriSearchList(hospitalId, sk, sv, start_date, finish_date);
 		model.addAttribute("byungrihList", list);
 
 		return "/byungri/byungrih/byungrihList";
@@ -75,9 +79,11 @@ public class ByungriController {
 	// MDS DB - 병리검사결과 검색
 	@PostMapping("/byungridbList")
 	public String getByungridbList(@RequestParam(value = "sk") String sk
-								,@RequestParam(value = "sv") String sv,
+								,@RequestParam(value = "sv") String sv
+								,@RequestParam(value = "start_date") String start_date
+								,@RequestParam(value = "finish_date") String finish_date,							
 			Model model) {
-		List<Byungri> list = byungriService.getByungridbSearchList(sk, sv);
+		List<Byungri> list = byungriService.getByungridbSearchList(sk, sv, start_date, finish_date);
 		model.addAttribute("byungridbList", list);
 
 		return "/byungri/byungri/byungridbList";

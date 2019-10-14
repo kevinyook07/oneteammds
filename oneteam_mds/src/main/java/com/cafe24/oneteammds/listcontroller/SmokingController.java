@@ -45,9 +45,13 @@ public class SmokingController {
 
 	// 병원DB - 흡연상태 검색
 	@PostMapping("/smokinghList")
-	public String getSmokingList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Smokingh> list = smokingService.getSmokringSearchList(hospitalId, sk, sv);
+	public String getSmokingList(@RequestParam(value = "hospitalId") String hospitalId
+								,@RequestParam(value = "sk") String sk
+								,@RequestParam(value = "sv") String sv
+								,@RequestParam(value = "start_date") String start_date
+								,@RequestParam(value = "finish_date") String finish_date
+								, Model model) {
+		List<Smokingh> list = smokingService.getSmokringSearchList(hospitalId, sk, sv, start_date, finish_date);
 		model.addAttribute("smokinghList", list);
 
 		return "/smoking/smokingh/smokinghList";
@@ -75,9 +79,12 @@ public class SmokingController {
 
 	// MDS DB - 흡연상태 검색
 	@PostMapping("/smokingdbList")
-	public String getSmokingdbList(@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv,
+	public String getSmokingdbList(@RequestParam(value = "sk") String sk
+								  ,@RequestParam(value = "sv") String sv
+								  ,@RequestParam(value = "start_date") String start_date
+								  ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Smoking> list = smokingService.getSmokringdbSearchList(sk, sv);
+		List<Smoking> list = smokingService.getSmokringdbSearchList(sk, sv, start_date, finish_date);
 		model.addAttribute("smokingdbList", list);
 
 		return "/smoking/smoking/smokingdbList";

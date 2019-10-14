@@ -37,9 +37,9 @@ public class YoungsangService {
 	}
 
 	// 영상검사결과 검색
-	public List<Youngsangh> getYoungsangSearchList(String hospitalId, String sk, String sv) {
+	public List<Youngsangh> getYoungsangSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
 
-		List<Youngsangh> list = youngsangMapper.getYoungsangSearchList(hospitalId, sk, sv);
+		List<Youngsangh> list = youngsangMapper.getYoungsangSearchList(hospitalId, sk, sv, start_date, finish_date);
 
 		return list;
 	}
@@ -52,9 +52,9 @@ public class YoungsangService {
 	}
 
 	// MDS DB - 영상검사결과 검색
-	public List<Youngsang> getYoungsangdbSearchList(String sk, String sv) {
+	public List<Youngsang> getYoungsangdbSearchList(String sk, String sv, String start_date, String finish_date) {
 
-		List<Youngsang> list = youngsangMapper.getYoungsangdbSearchList(sk, sv);
+		List<Youngsang> list = youngsangMapper.getYoungsangdbSearchList(sk, sv, start_date, finish_date);
 
 		return list;
 	}

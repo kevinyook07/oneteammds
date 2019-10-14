@@ -37,9 +37,9 @@ public class SaengchaeService {
 	}
 
 	// 생체신호 및 상태 검색
-	public List<Saengchaeh> getSaengchaeSearchList(String hospitalId, String sk, String sv) {
+	public List<Saengchaeh> getSaengchaeSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
 
-		List<Saengchaeh> list = saengchaeMapper.getSaengchaeSearchList(hospitalId, sk, sv);
+		List<Saengchaeh> list = saengchaeMapper.getSaengchaeSearchList(hospitalId, sk, sv, start_date, finish_date);
 
 		return list;
 	}
@@ -52,9 +52,9 @@ public class SaengchaeService {
 	}
 
 	// 생체신호 및 상태 검색
-	public List<Saengchae> getSaengchaedbSearchList(String sk, String sv) {
+	public List<Saengchae> getSaengchaedbSearchList(String sk, String sv, String start_date, String finish_date) {
 
-		List<Saengchae> list = saengchaeMapper.getSaengchaedbSearchList(sk, sv);
+		List<Saengchae> list = saengchaeMapper.getSaengchaedbSearchList(sk, sv, start_date, finish_date);
 
 		return list;
 	}

@@ -37,9 +37,9 @@ public class SusulService {
 	}
 
 	// 수술내역 검색
-	public List<Susulh> getSusulSearchList(String hospitalId, String sk, String sv) {
+	public List<Susulh> getSusulSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
 
-		List<Susulh> list = susulMapper.getSusulSearchList(hospitalId, sk, sv);
+		List<Susulh> list = susulMapper.getSusulSearchList(hospitalId, sk, sv, start_date, finish_date);
 
 		return list;
 	}
@@ -52,9 +52,9 @@ public class SusulService {
 	}
 
 	// MDS DB - 수술내역 검색
-	public List<Susul> getSusuldbSearchList(String sk, String sv) {
+	public List<Susul> getSusuldbSearchList(String sk, String sv, String start_date, String finish_date) {
 
-		List<Susul> list = susulMapper.getSusuldbSearchList(sk, sv);
+		List<Susul> list = susulMapper.getSusuldbSearchList(sk, sv, start_date, finish_date);
 
 		return list;
 	}

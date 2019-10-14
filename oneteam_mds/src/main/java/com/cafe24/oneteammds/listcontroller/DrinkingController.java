@@ -45,9 +45,13 @@ public class DrinkingController {
 
 	// 병원DB - 음주상태 검색
 	@PostMapping("drinkinghList")
-	public String getDrinkingList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Drinkingh> list = drinkingService.getDrinkingSearchList(hospitalId, sk, sv);
+	public String getDrinkingList(@RequestParam(value = "hospitalId") String hospitalId
+								 ,@RequestParam(value = "sk") String sk
+								 ,@RequestParam(value = "sv") String sv
+								 ,@RequestParam(value = "start_date") String start_date
+								 ,@RequestParam(value = "finish_date") String finish_date
+								 , Model model) {
+		List<Drinkingh> list = drinkingService.getDrinkingSearchList(hospitalId, sk, sv, start_date, finish_date);
 		model.addAttribute("drinkinghList", list);
 
 		return "/drinking/drinkingh/drinkinghList";
@@ -76,9 +80,11 @@ public class DrinkingController {
 	// MDS DB - 음주상태 검색
 	@PostMapping("drinkingdbList")
 	public String getDrinkingdbList(@RequestParam(value = "sk") String sk
-								   ,@RequestParam(value = "sv") String sv,
+								   ,@RequestParam(value = "sv") String sv
+								   ,@RequestParam(value = "start_date") String start_date
+								   ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Drinking> list = drinkingService.getDrinkingdbSearchList(sk, sv);
+		List<Drinking> list = drinkingService.getDrinkingdbSearchList(sk, sv, start_date, finish_date);
 		model.addAttribute("drinkingdbList", list);
 
 		return "/drinking/drinking/drinkingdbList";

@@ -23,7 +23,7 @@ public interface YoungsangMapper {
 	public int getYoungsangRegist(Youngsang youngsang);
 
 	// 병원DB - 영상검사결과 검색
-	public List<Youngsangh> getYoungsangSearchList(String hospitalId, String sk, String sv);
+	public List<Youngsangh> getYoungsangSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
 
 	// 시스템DB
 
@@ -31,7 +31,7 @@ public interface YoungsangMapper {
 	public List<Youngsang> getYoungsangdbList();
 
 	// MDS DB - 영상검사결과 검색
-	public List<Youngsang> getYoungsangdbSearchList(String sk, String sv);
+	public List<Youngsang> getYoungsangdbSearchList(String sk, String sv, String start_date, String finish_date);
 
 	// MDS DB - 영상검사결과 삭제
 	public int delYoungsang(String itrCode, String hospitalId, String patientId);

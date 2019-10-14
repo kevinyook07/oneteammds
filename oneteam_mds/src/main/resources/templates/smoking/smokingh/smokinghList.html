@@ -19,10 +19,11 @@
                   <div class="block-body">
                     <form action="/smokinghList" method="post">
 		<select name="sk">	
-			<option value="patientId">환자고유번호</option>
-			<option value="scrDate">등록일자</option>													
+			<option value="patientId">환자고유번호</option>															
 		</select>
 		<input type="text" name="sv">
+		<input type="date" name="start_date">~
+     	<input type="date" name="finish_date">
 		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
 		<button type="submit" class="btn btn-secondary">검색</button>
 	</form>

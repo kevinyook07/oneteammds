@@ -46,8 +46,12 @@ public class SusulController {
 	// 병원DB - 수술내역 검색
 	@PostMapping("/susulhList")
 	public String getSusulList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Susulh> list = susulService.getSusulSearchList(hospitalId, sk, sv);
+							   @RequestParam(value = "sk") String sk
+							  ,@RequestParam(value = "sv") String sv
+							  ,@RequestParam(value = "start_date") String start_date
+							  ,@RequestParam(value = "finish_date") String finish_date
+							  , Model model) {
+		List<Susulh> list = susulService.getSusulSearchList(hospitalId, sk, sv, start_date, finish_date);
 		model.addAttribute("susulhList", list);
 
 		return "/susul/susulh/susulhList";
@@ -75,9 +79,12 @@ public class SusulController {
 
 	// MDS DB - 수술내역 검색
 	@PostMapping("/susuldbList")
-	public String getSusuldbList(@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv,
+	public String getSusuldbList(@RequestParam(value = "sk") String sk
+								,@RequestParam(value = "sv") String sv
+								,@RequestParam(value = "start_date") String start_date
+								,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Susul> list = susulService.getSusuldbSearchList(sk, sv);
+		List<Susul> list = susulService.getSusuldbSearchList(sk, sv, start_date, finish_date);
 		model.addAttribute("susuldbList", list);
 
 		return "/susul/susul/susuldbList";

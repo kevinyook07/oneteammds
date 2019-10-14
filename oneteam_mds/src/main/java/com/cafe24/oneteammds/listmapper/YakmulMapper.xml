@@ -117,6 +117,12 @@
 		<if test="sv != null and sv neq ''.toString()">					
 		and	${sk} Like CONCAT('%',#{sv},'%')		
 		</if>
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND mrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND mrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	
@@ -169,11 +175,15 @@
 				,adminId
 				,mrDate				
 			FROM yakmul
-		<if test="sv != null and sv neq ''.toString()">		
-		WHERE 
-			
-							
-			${sk} Like CONCAT('%',#{sv},'%')		
+		<if test="sv != null and sv neq ''.toString()">	
+		</if>	
+		WHERE 					
+			${sk} Like CONCAT('%',#{sv},'%')			
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND mrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND mrDate <![CDATA[<=]]> #{finish_date} 
 		</if>
 	</select>
 	

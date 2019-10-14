@@ -23,7 +23,7 @@ public interface ByungriMapper {
 	public int getByungriRegist(Byungri byungri);
 
 	// 병원DB - 병리검사결과 검색
-	public List<Byungrih> getByungriSearchList(String hospitalId, String sk, String sv);
+	public List<Byungrih> getByungriSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
 
 	// 시스템DB
 
@@ -31,7 +31,7 @@ public interface ByungriMapper {
 	public List<Byungri> getByungridbList();
 
 	// MDS DB - 병리검사결과 검색
-	public List<Byungri> getByungridbSearchList(String sk, String sv);
+	public List<Byungri> getByungridbSearchList(String sk, String sv, String start_date, String finish_date);
 
 	// MDS DB - 병리검사결과 삭제
 	public int delByungri(String ptrCode, String hospitalId, String patientId);

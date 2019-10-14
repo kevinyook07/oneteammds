@@ -37,8 +37,8 @@ public class ByungriService {
 	}
 
 	// 병리검사결과 검색
-	public List<Byungrih> getByungriSearchList(String hospitalId, String sk, String sv) {
-		List<Byungrih> list = byungriMapper.getByungriSearchList(hospitalId, sk, sv);
+	public List<Byungrih> getByungriSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
+		List<Byungrih> list = byungriMapper.getByungriSearchList(hospitalId, sk, sv, start_date, finish_date);
 
 		return list;
 	}
@@ -51,8 +51,8 @@ public class ByungriService {
 	}
 
 	// MDS DB - 병리검사결과 검색
-	public List<Byungri> getByungridbSearchList(String sk, String sv) {
-		List<Byungri> list = byungriMapper.getByungridbSearchList(sk, sv);
+	public List<Byungri> getByungridbSearchList(String sk, String sv, String start_date, String finish_date) {
+		List<Byungri> list = byungriMapper.getByungridbSearchList(sk, sv, start_date, finish_date);
 
 		return list;
 	}

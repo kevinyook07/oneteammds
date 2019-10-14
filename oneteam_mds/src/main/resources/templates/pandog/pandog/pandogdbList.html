@@ -20,10 +20,11 @@
                     <form action="/pandogdbList" method="post">
 		<select name="sk">
 			<option value="hospitalId">병원 고유번호</option>
-			<option value="patientId">환자고유번호</option>	
-			<option value="ifdTime">영상 촬영일시</option>								
+			<option value="patientId">환자고유번호</option>										
 		</select>
 		<input type="text" name="sv">
+		<input type="date" name="start_date">~
+     	<input type="date" name="finish_date">
 		<button type="submit" class="btn btn-secondary">검색</button>
 	</form>
                      <table class="table">

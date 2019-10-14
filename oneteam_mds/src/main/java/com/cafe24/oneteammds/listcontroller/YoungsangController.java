@@ -45,9 +45,13 @@ public class YoungsangController {
 
 	// 병원DB - 영상검사결과 검색
 	@PostMapping("/youngsanghList")
-	public String getYoungsangList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Youngsangh> list = youngsangService.getYoungsangSearchList(hospitalId, sk, sv);
+	public String getYoungsangList(@RequestParam(value = "hospitalId") String hospitalId
+								  ,@RequestParam(value = "sk") String sk
+								  ,@RequestParam(value = "sv") String sv
+								  ,@RequestParam(value = "start_date") String start_date
+								  ,@RequestParam(value = "finish_date") String finish_date
+								  , Model model) {
+		List<Youngsangh> list = youngsangService.getYoungsangSearchList(hospitalId, sk, sv, start_date, finish_date);
 		model.addAttribute("youngsanghList", list);
 
 		return "/youngsang/youngsangh/youngsanghList";
@@ -75,9 +79,12 @@ public class YoungsangController {
 
 	// MDS DB - 영상검사결과 검색
 	@PostMapping("/youngsangdbList")
-	public String getYoungsangdbList(@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv,
+	public String getYoungsangdbList(@RequestParam(value = "sk") String sk
+									,@RequestParam(value = "sv") String sv
+									,@RequestParam(value = "start_date") String start_date
+									,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Youngsang> list = youngsangService.getYoungsangdbSearchList(sk, sv);
+		List<Youngsang> list = youngsangService.getYoungsangdbSearchList(sk, sv, start_date, finish_date);
 		model.addAttribute("youngsangdbList", list);
 
 		return "/youngsang/youngsang/youngsangdbList";

@@ -23,7 +23,7 @@ public interface PandogMapper {
 	public int getPandogRegist(Pandog pandog);
 
 	// 병원DB - 영상판독정보 검색
-	public List<Pandogh> getPandogSearchList(String hospitalId, String sk, String sv);
+	public List<Pandogh> getPandogSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
 
 	// 시스템DB
 
@@ -31,7 +31,7 @@ public interface PandogMapper {
 	public List<Pandog> getPandogdbList();
 
 	// MDS DB - 영상판독정보 검색
-	public List<Pandog> getPandogdbSearchList(String sk, String sv);
+	public List<Pandog> getPandogdbSearchList(String sk, String sv, String start_date, String finish_date);
 
 	// MDS DB - 영상판독정보 삭제
 	public int delPandog(String iidCode, String hospitalId, String patientId);

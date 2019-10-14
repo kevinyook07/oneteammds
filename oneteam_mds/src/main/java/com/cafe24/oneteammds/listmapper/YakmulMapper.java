@@ -23,7 +23,7 @@ public interface YakmulMapper {
 	public int getYakmulRegist(Yakmul yakmul);
 
 	// 병원DB - 약물처방내역 --> 검색
-	public List<Yakmulh> getYakmulSearchList(String hospitalId, String sk, String sv);
+	public List<Yakmulh> getYakmulSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
 
 	// 시스템DB
 
@@ -31,7 +31,7 @@ public interface YakmulMapper {
 	public List<Yakmul> getYakmuldbList();
 
 	// MDS DB - 약물처방내역 검색
-	public List<Yakmul> getYakmuldbSearchList(String sk, String sv);
+	public List<Yakmul> getYakmuldbSearchList(String sk, String sv, String start_date, String finish_date);
 
 	// MDS DB - 약물처방내역 삭제
 	public int delYakmul(String mbCode, String hospitalId, String patientId);

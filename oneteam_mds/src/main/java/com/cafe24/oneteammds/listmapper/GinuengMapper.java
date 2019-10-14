@@ -23,7 +23,7 @@ public interface GinuengMapper {
 	public int getGinuengRegist(Ginueng ginueng);
 
 	// 병원DB - 기능검사결과
-	public List<Ginuengh> getGinuengSearchList(String hospitalId, String sk, String sv);
+	public List<Ginuengh> getGinuengSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
 
 	// 시스템DB
 
@@ -31,7 +31,7 @@ public interface GinuengMapper {
 	public List<Ginueng> getGinuengdbList();
 
 	// MDS DB - 기능검사결과 검색
-	public List<Ginueng> getGinuengdbSearchList(String sk, String sv);
+	public List<Ginueng> getGinuengdbSearchList(String sk, String sv, String start_date, String finish_date);
 
 	// MDS DB - 기능검사결과 삭제
 	public int delGinueng(String ftrCode, String hospitalId, String patientId);

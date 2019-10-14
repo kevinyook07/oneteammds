@@ -98,7 +98,12 @@
 		<if test="sv != null and sv neq ''.toString()">					
 		and	${sk} Like CONCAT('%',#{sv},'%')		
 		</if>
-	
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND pirDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND pirDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- 시스템DB -->
@@ -141,12 +146,15 @@
 		FROM
 			 yebang
 		<if test="sv != null and sv neq ''.toString()">	 
-		WHERE 
-			
-							
-			${sk} Like CONCAT('%',#{sv},'%')		
 		</if>
-	
+		WHERE 									
+			${sk} Like CONCAT('%',#{sv},'%')				
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND pirDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND pirDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- MDS DB - 예방접종내역 삭제 -->

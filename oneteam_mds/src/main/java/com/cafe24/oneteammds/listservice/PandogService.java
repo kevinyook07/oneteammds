@@ -37,9 +37,9 @@ public class PandogService {
 	}
 
 	// 영상판독정보 검색
-	public List<Pandogh> getPandogSearchList(String hospitalId, String sk, String sv) {
+	public List<Pandogh> getPandogSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
 
-		List<Pandogh> list = pandogMapper.getPandogSearchList(hospitalId, sk, sv);
+		List<Pandogh> list = pandogMapper.getPandogSearchList(hospitalId, sk, sv, start_date, finish_date);
 
 		return list;
 	}
@@ -52,9 +52,9 @@ public class PandogService {
 	}
 
 	// MDS DB - 영상판독정보 검색
-	public List<Pandog> getPandogdbSearchList(String sk, String sv) {
+	public List<Pandog> getPandogdbSearchList(String sk, String sv, String start_date, String finish_date) {
 
-		List<Pandog> list = pandogMapper.getPandogdbSearchList(sk, sv);
+		List<Pandog> list = pandogMapper.getPandogdbSearchList(sk, sv, start_date, finish_date);
 
 		return list;
 	}

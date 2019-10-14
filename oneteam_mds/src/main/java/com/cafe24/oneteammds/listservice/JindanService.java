@@ -37,8 +37,8 @@ public class JindanService {
 	}
 
 	// 병원DB - 검색
-	public List<Jindanh> getJindanhSearchList(String hospitalId, String sk, String sv) {
-		List<Jindanh> list = jindanMapper.getJindanhSearchList(hospitalId, sk, sv);
+	public List<Jindanh> getJindanhSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
+		List<Jindanh> list = jindanMapper.getJindanhSearchList(hospitalId, sk, sv, start_date, finish_date);
 
 		return list;
 	}
@@ -51,8 +51,8 @@ public class JindanService {
 	}
 
 	// MDS DB - 진단내역 검색
-	public List<Jindan> getJindandbSearchList(String sk, String sv) {
-		List<Jindan> list = jindanMapper.getJindandbSearchList(sk, sv);
+	public List<Jindan> getJindandbSearchList(String sk, String sv, String start_date, String finish_date) {
+		List<Jindan> list = jindanMapper.getJindandbSearchList(sk, sv, start_date, finish_date);
 
 		return list;
 	}

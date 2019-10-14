@@ -23,7 +23,7 @@ public interface JindanMapper {
 	public int getJindanRegist(Jindan jindan);
 	
 	// 병원DB - 검색
-	public List<Jindanh> getJindanhSearchList (String hospitalId, String sk, String sv);
+	public List<Jindanh> getJindanhSearchList (String hospitalId, String sk, String sv, String start_date, String finish_date);
 	  
 	// 시스템DB 
 	
@@ -31,7 +31,7 @@ public interface JindanMapper {
 	public List<Jindan> getJindandbList();	 
 	
 	// MDS DB - 진단내역 검색
-	public List<Jindan> getJindandbSearchList (String sk, String sv);
+	public List<Jindan> getJindandbSearchList (String sk, String sv, String start_date, String finish_date);
 	
 	// 시스템DB - 삭제
 	public int delJindan(String dbCode, String hospitalId, String patientId);

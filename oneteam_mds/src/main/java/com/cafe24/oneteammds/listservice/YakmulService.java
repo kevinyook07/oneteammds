@@ -37,8 +37,8 @@ public class YakmulService {
 	}
 
 	// 약물처방내역 검색
-	public List<Yakmulh> getYakmulSearchList(String hospitalId, String sk, String sv) {
-		List<Yakmulh> list = yakmulMapper.getYakmulSearchList(hospitalId, sk, sv);
+	public List<Yakmulh> getYakmulSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
+		List<Yakmulh> list = yakmulMapper.getYakmulSearchList(hospitalId, sk, sv, start_date, finish_date);
 
 		return list;
 	}
@@ -51,8 +51,8 @@ public class YakmulService {
 	}
 
 	// MDS DB - 약물처방내역 검색
-	public List<Yakmul> getYakmuldbSearchList(String sk, String sv) {
-		List<Yakmul> list = yakmulMapper.getYakmuldbSearchList(sk, sv);
+	public List<Yakmul> getYakmuldbSearchList(String sk, String sv, String start_date, String finish_date) {
+		List<Yakmul> list = yakmulMapper.getYakmuldbSearchList(sk, sv, start_date, finish_date);
 
 		return list;
 	}
