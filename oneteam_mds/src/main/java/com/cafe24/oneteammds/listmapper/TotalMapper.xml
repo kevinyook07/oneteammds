@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.TotalMapper">
  	
- 	<!-- 병원 -->
+ 	<!-- 병원1 -->
  	
  	<!-- 병원 권한 로그인시 입력되는 ID값 받아서 전체 진료정보 리스트  출력 처리 -->
  	<select	id="getTotalhList" 

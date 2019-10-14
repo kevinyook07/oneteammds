@@ -45,7 +45,7 @@ public class TotalService {
 	@Autowired
 	private TotalMapper totalMapper;
 
-	// 병원
+	// 병원1
 
 	// 병원 권한 로그인시 입력되는 ID값 받아서 전체 진료정보 리스트 출력 처리
 	public List<Totalh> getTotalhList(String hospitalId) {

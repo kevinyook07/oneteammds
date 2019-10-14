@@ -17,7 +17,7 @@ public class YebangService {
 	@Autowired
 	private YebangMapper yebangMapper;
 	
-	// 병원1
+	// 병원
 	
 	// 병원DB - 예방접종내역
 	

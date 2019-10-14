@@ -38,7 +38,7 @@ import com.cafe24.oneteammds.listvo.Youngsangh;
 @Mapper
 public interface TotalMapper {
 	
-	// 병원
+	// 병원1
 	
 	// 병원 DB 전체리스트
 	

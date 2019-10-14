@@ -22,8 +22,8 @@ public class JunyumController {
 	@Autowired
 	private JunyumService junyumService;
 	
-	// 병원1
-	
+	// 병원
+
 	// 병원DB - 법정 전염성 감염병
 	
 	// 병원 권한 로그인시 입력되는 ID값 받아서 법정 전염성 감염병 리스트  출력 처리

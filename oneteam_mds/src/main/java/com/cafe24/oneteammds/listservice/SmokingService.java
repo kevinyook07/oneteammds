@@ -17,7 +17,7 @@ public class SmokingService {
 	@Autowired
 	private SmokingMapper smokingMapper;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 흡연상태
 

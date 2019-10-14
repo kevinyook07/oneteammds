@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Jindanh;
 @Mapper
 public interface JindanMapper {
 	
-	// 병원1
+	// 병원
 	
 	// 병원DB - 진단내역
 	

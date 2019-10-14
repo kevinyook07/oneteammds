@@ -17,7 +17,7 @@ public class YakmulService {
 	@Autowired
 	private YakmulMapper yakmulMapper;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 약물처방내역
 

@@ -17,7 +17,7 @@ public class JindanService {
 	@Autowired
 	private JindanMapper jindanMapper;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 진단내역
 

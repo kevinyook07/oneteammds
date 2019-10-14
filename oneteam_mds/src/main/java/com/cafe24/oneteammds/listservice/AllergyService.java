@@ -17,7 +17,7 @@ public class AllergyService {
 	@Autowired
 	private AllergyMapper allergyMapper;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 알러지 및 부작용
 
