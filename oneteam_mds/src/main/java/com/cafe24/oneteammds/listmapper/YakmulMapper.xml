@@ -93,7 +93,7 @@
 	
 	<!-- 병원DB - 약물처방내역  검색 --> 
 	<select id="getYakmulSearchList" parameterType="String" 
-			resultType="com.cafe24.oneteammds.listvo.Yakmul">
+			resultType="com.cafe24.oneteammds.listvo.Yakmulh">
 	  	SELECT 
 				 mbCode
 				,hospitalId
