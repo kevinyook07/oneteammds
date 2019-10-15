@@ -12,20 +12,19 @@
  	<select	id="getJindanhList" 
  			resultType="com.cafe24.oneteammds.listvo.Jindanh">
  		SELECT 
- 			dbCode
- 		  , hospitalId
- 		  , patientId
- 		  , dName
- 		  , dCode
- 		  , dDate
- 		  , pDoctor
- 		  , adminId
- 		  , drDate
-
+ 			jdh.dbCode, jdh.hospitalId, jdh.patientId,pit.pName	, jdh.dName, jdh.dCode, jdh.dDate, jdh.pDoctor, jdh.adminId, jdh.drDate		  
+		  
+		   	   
 		FROM 
-			jindanh
-		WHERE
-			hospitalId = #{session.SID}
+			jindanh jdh
+		JOIN
+			patient pit
+			ON
+				jdh.hospitalId = pit.hospitalId
+			AND
+				jdh.patientId = pit.patientId													
+		WHERE			
+			jdh.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 진단내역 -> 진단내역 regist form -->
@@ -76,19 +75,19 @@
 	<select id="getJindanhSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Jindanh">
 	  	SELECT 
-			dbcode 		
-			,hospitalId 	
-			,patientId 		
-			,dName 			
-			,dCode 			
-			,dDate 		
-			,pDoctor 		
-			,adminId 		
-			,drDate 
-		FROM jindanh
+ 			jdh.dbCode, jdh.hospitalId, jdh.patientId, jdh.dName, jdh.dCode, jdh.dDate, jdh.pDoctor, jdh.adminId, jdh.drDate		  
+		   ,pit.pName		   
+		FROM 
+			jindanh jdh
+		 JOIN
+			patient pit
+			ON
+				jdh.hospitalId = pit.hospitalId
+			or
+				jdh.patientId = pit.patientId							
 		WHERE 
-			hospitalId = #{hospitalId}						
-		<if test="sv != null and sv neq ''.toString()">					
+			jdh.hospitalId = #{hospitalId}						  					
+		<!-- <if test="sv != null and sv neq ''.toString()">					
 		and	${sk} Like CONCAT('%',#{sv},'%')
 		</if>
 		<if test="start_date neq null and start_date neq ''.toString()">
@@ -96,7 +95,7 @@
 		</if>
 		<if test="finish_date neq null and finish_date neq ''.toString()">
 			AND drDate <![CDATA[<=]]> #{finish_date} 
-		</if>			
+		</if>			 -->
 	</select>
 	
 	<!-- 시스템DB -->

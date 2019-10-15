@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Youngsangh;
 @Mapper
 public interface YoungsangMapper {
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 영상검사결과
 

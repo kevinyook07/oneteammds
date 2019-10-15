@@ -17,7 +17,7 @@ public class GumcheService {
 	@Autowired
 	private GumcheMapper gumcheMapper;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 검체검사결과
 

@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Gumcheh;
 @Mapper
 public interface GumcheMapper {
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 검체검사결과
 

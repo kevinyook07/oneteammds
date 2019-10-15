@@ -22,7 +22,7 @@ public class GinuengController {
 	@Autowired
 	private GinuengService ginuengService;
 	
-	// 병원
+	// 병원1
 	
 	// 병원DB - 기능검사결과
 	

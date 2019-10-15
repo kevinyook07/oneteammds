@@ -35,7 +35,7 @@ public class TotalController {
 	@Autowired
 	private TotalService totalService;
 
-	// 병원
+	// 병원1
 
 	// 병원 DB 전체리스트
 

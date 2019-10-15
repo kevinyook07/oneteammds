@@ -21,7 +21,7 @@ public class YebangController {
 	@Autowired
 	private YebangService yebangService;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 예방접종내역
 

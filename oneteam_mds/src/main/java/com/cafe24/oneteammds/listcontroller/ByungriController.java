@@ -21,7 +21,7 @@ public class ByungriController {
 	@Autowired
 	private ByungriService byungriService;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 병리검사결과
 

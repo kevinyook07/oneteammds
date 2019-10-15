@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Allergyh;
 @Mapper
 public interface AllergyMapper {
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 알러지 및 부작용
 

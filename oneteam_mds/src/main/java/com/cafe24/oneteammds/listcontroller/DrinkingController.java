@@ -21,7 +21,7 @@ public class DrinkingController {
 	@Autowired
 	private DrinkingService drinkingService;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 음주상태
 

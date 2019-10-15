@@ -22,7 +22,7 @@ public class JunyumController {
 	@Autowired
 	private JunyumService junyumService;
 	
-	// 병원
+	// 병원1
 
 	// 병원DB - 법정 전염성 감염병
 	

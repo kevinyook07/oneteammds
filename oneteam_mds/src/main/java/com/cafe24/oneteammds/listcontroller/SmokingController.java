@@ -21,7 +21,7 @@ public class SmokingController {
 	@Autowired
 	private SmokingService smokingService;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 흡연상태
 

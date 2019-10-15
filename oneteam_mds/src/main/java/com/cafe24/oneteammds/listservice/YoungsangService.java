@@ -17,7 +17,7 @@ public class YoungsangService {
 	@Autowired
 	private YoungsangMapper youngsangMapper;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 영상검사결과
 

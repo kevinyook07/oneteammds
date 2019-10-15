@@ -17,7 +17,7 @@ public class PandogService {
 	@Autowired
 	private PandogMapper pandogMapper;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 영상판독정보
 

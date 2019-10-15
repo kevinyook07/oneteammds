@@ -21,7 +21,7 @@ public class SusulController {
 	@Autowired
 	private SusulService susulService;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 수술내역
 

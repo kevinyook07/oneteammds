@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Yakmulh;
 @Mapper
 public interface YakmulMapper {
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 약물처방내역
 
