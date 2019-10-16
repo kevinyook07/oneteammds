@@ -40,7 +40,6 @@
 					        <th style="white-space:nowrap;">담당의</th>
 					        <th style="white-space:nowrap;">등록자 고유번호</th>
 					        <th style="white-space:nowrap;">등록일자</th>
-					        <th style="white-space:nowrap;">발신</th>
 		</tr>
 		</thead>
 						<tbody>
@@ -52,11 +51,6 @@
 			<td th:text="${list.pDoctor}"></td>
 			<td th:text="${list.adminId}"></td>
 			<td th:text="${list.drDate}"></td>
-			<td>
-				<a th:href="@{/balsinInsert}">							
-					<button type="submit" class="btn btn-secondary" style="float: right;">발신</button>
-				</a>
-			</td>
 		</tr>
 		
 	 </tbody>

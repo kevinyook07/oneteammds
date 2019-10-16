@@ -7,7 +7,7 @@
 	<div class="page-content">
 	 <!-- **************윗상단 메인 메뉴 ************** -->
 		<div class="page-header">
-		<h2 style="text-align:center">관리자 → 병원 요청 전송</h2>
+		<h2 style="text-align:center">관리자 → 병원 전송</h2>
 			<div class="container-fluid"></div>
 	<!-- **************윗상단 메인 메뉴END ************** -->
 	<!--************메인 컨텐트 ************ -->		
@@ -23,103 +23,103 @@
                       <div class="form-group row" >
                         <label class="col-sm-3 form-control-label">요청 코드</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"> <!-- name="yochengCode"
-							th:value="${balsinInsert.yochengCode}" readonly="readonly"> -->
+                          <input type="text" class="form-control" name="yochengCode">
+							<!-- th:value="${yochengAdminInsert.yochengCode}" readonly="readonly"> -->
                         </div>
                       </div>
                       
                       <div class="form-group row" >
                         <label class="col-sm-3 form-control-label">요청 보내는 병원 이름</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"> <!-- name="yochengoutHospitalName"
-							th:value="${balsinInsert.yochengCode}" readonly="readonly"> --> 
+                          <input type="text" class="form-control" name="yochengoutHospitalName">
+							<!-- th:value="${yochengAdminInsert.yochengoutHospitalName}" readonly="readonly"> --> 
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">요청 받는 병원 이름</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"> <!-- name="yochenginHospitalName"
-							th:value="${balsinInsert.yochenginHospitalName}" readonly="readonly"> --> 
+                          <input type="text" class="form-control" name="yochenginHospitalName">
+							<!-- th:value="${yochengAdminInsert.yochenginHospitalName}" readonly="readonly"> -->
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">환자 고유 번호</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"> <!-- name="patientId"
-							th:value="${balsinInsert.patientId}" readonly="readonly"> --> 
+                          <input type="text" class="form-control" name="patientId">
+							<!-- th:value="${yochengAdminInsert.patientId}" readonly="readonly"> -->
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">환자 이름</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"><!--  name="patientName"
-							th:value="${balsinInsert.patientName}" readonly="readonly"> --> 
+                          <input type="text" class="form-control" name="patientName">
+							<!-- th:value="${yochengAdminInsert.patientName}" readonly="readonly"> -->
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">요청 진료 코드</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"> <!-- name="yochengJinlyoCode"
-							th:value="${balsinInsert.yochengJinlyoCode}" readonly="readonly"> --> 
+                          <input type="text" class="form-control" name="yochengJinlyoCode">
+							<!-- th:value="${yochengAdminInsert.yochengJinlyoCode}" readonly="readonly"> --> 
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">알러지 및 부작용 코드</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"> <!-- name="aseCode"
-							th:value="${balsinInsert.aseCode}" readonly="readonly"> --> 
+                          <input type="text" class="form-control" name="aseCode">
+							<!-- th:value="${yochengAdminInsert.aseCode}" readonly="readonly"> -->
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">알러지 및 부작용 요인</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"> <!-- name="asemFactor"
-							th:value="${balsinInsert.asemFactor}" readonly="readonly"> --> 
+                          <input type="text" class="form-control" name="asemFactor">
+							<!-- th:value="${yochengAdminInsert.asemFactor}" readonly="readonly"> -->
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">알러지 및 부작용 요인 코드</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"> <!-- name="asemfCode"
-							th:value="${balsinInsert.asemfCode}" readonly="readonly"> --> 
+                          <input type="text" class="form-control" name="asemfCode">
+							<!-- th:value="${yochengAdminInsert.asemfCode}" readonly="readonly"> --> 
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">알러지 및 부작용명</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"> <!-- name="aseName"
-							th:value="${balsinInsert.aseName}" readonly="readonly"> --> 
+                          <input type="text" class="form-control" name="aseName">
+							<!-- th:value="${yochengAdminInsert.aseName}" readonly="readonly"> -->
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">반응</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"> <!-- name="aseReaction"
-							th:value="${balsinInsert.aseReaction}" readonly="readonly"> --> 
+                          <input type="text" class="form-control" name="aseReaction">
+							<!-- th:value="${yochengAdminInsert.aseReaction}" readonly="readonly"> -->
                         </div>
                       </div>
                       <div class="line"></div>
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">담당의</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"> <!-- name="pDoctor"
-							th:value="${balsinInsert.pDoctor}" readonly="readonly"> --> 
+                          <input type="text" class="form-control" name="pDoctor">
+							<!-- th:value="${yochengAdminInsert.pDoctor}" readonly="readonly"> -->
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">알러지 및 부작용 등록일자</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="1"> <!-- name="asedTime"
-							th:value="${balsinInsert.asedTime}" readonly="readonly"> --> 
+                          <input type="text" class="form-control" name="asedTime">
+							<!-- th:value="${yochengAdminInsert.asedTime}" readonly="readonly"> -->
                         </div>
                       </div>
                       
@@ -128,7 +128,7 @@
                       <div class="form-group row">
                         <div class="col-sm-9 ml-auto">
                           <button type="submit" class="btn btn-secondary" style="float: right;">요청 전송</button>
-                          <!-- 요청 전송을 누르면 전송이 완료됐다고 메시지 창 출력해주기 -->
+                          <!-- 요청 전송을 누르면 전송이 완료됐다고 메시지 창 출력 -->
                         </div>
                       </div>
                     </form>

@@ -1,4 +1,4 @@
-package com.cafe24.oneteammds.yochengvo;
+package com.cafe24.oneteammds.yochenglistvo;
 
 public class YochengAllergy {
 	private String yochengCode;
@@ -100,7 +100,5 @@ public class YochengAllergy {
 				+ asemFactor + ", asemfCode=" + asemfCode + ", aseName=" + aseName + ", aseReaction=" + aseReaction
 				+ ", pDoctor=" + pDoctor + ", asedTime=" + asedTime + "]";
 	}
-	
-	
 	
 }

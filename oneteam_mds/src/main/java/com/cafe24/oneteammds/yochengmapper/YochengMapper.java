@@ -31,11 +31,9 @@ public interface YochengMapper {
 	//MDS 진료 정보 등록. YochengMapper.xml에서 id값 getYochenglist_ById를 받음.
 	public Yochenglist getYochenglistById(String patientId);	
 	
-	//YochengMapper.xml에서 id값 getYochengAdminInsert를 받음.
-	public int getYochengAdminInsert(Yochenglist yochenglist);
 	
 	
-	
+
 	
 	
 	

@@ -90,11 +90,7 @@ public class YochengController {
 		return "/yochengAdmin/yochengwanlyo/yochengwanlyo";
 	}	
 	
-	@RequestMapping("/yochengAdminInsert")
-	public String getYochengAdminInsert() {
-		
-		return "/yochengAdmin/yochengAdminInsert/yochengAdminInsert";
-	}
+	
 	
 	@RequestMapping("/balsinInsert")
 	public String getBalsinInsert() {

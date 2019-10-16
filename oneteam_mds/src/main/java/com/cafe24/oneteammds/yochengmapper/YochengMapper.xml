@@ -145,13 +145,6 @@
 				patientId = #{patientId}
 	</insert>
 	
-	<insert id="getYochengById" parameterType="com.cafe24.oneteammds.yochengvo.Yochenglist">
-		replace into
-				
-	
-	
-	</insert>
-	
 	
 	
 	
