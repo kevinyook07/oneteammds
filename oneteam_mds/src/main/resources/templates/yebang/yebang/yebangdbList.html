@@ -4,7 +4,7 @@
 		layout:decorate="~{layout/default}">
 
 <th:block layout:fragment="customContents">
-	<div class="page-content">1
+	<div class="page-content">
 	 <!-- **************윗상단 메인 메뉴 ************** -->
 		<div class="page-header">
 		<h2 style="text-align:center">예방접종내역 리스트</h2>
@@ -17,14 +17,13 @@
                 <div class="block">
                   
                   <div class="block-body">
-                     <form action="/yebanghList" method="post">
+                     <form action="/yebangdbList" method="post">
 		<select name="sk">
 			<option value="hospitalId">병원 고유번호</option>
 			<option value="patientId">환자고유번호</option>
 			<option value="piDate">접종일자</option>										
 		</select>
 		<input type="text" name="sv">
-		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
 		<button type="submit" class="btn btn-secondary">검색</button>
 	</form>
                      <table class="table">

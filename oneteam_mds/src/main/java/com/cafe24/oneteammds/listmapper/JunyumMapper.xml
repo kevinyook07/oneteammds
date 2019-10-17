@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.JunyumMapper">
  	
- 	<!-- 병원 1-->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 법정 전염성 감염병 -->
  	
@@ -136,6 +136,36 @@
  		  , lcidDate
 		FROM 
 			junyum
+	</select>
+	
+	
+	<!-- MDS DB - 법정 전염성 감염병 검색 -->
+	<select id="getJunyumdbSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Junyum">
+	  	SELECT
+			 lcidCode
+			,hospitalId
+			,patientId
+			,lcidName
+			,lcidpGroup
+			,lcidtResult
+			,lcidinOut
+			,lcidArea
+			,pDoctor
+			,lcidoDate
+			,lciddDate
+			,lcidrDate
+			,adminId
+			,lcidDate
+		FROM
+			 junyum
+		<if test="sv != null and sv neq ''.toString()">	 
+		WHERE 
+			
+							
+			${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+	
 	</select>
 	
 	<!-- MDS DB - 법정 전염성 감염병 삭제 -->

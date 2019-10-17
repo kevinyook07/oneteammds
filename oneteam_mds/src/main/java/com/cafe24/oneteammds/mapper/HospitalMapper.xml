@@ -83,9 +83,15 @@
 	<!-- 병원 권한 회원 수정 쿼리문 -->
 	<update id="modifyHospital" parameterType="com.cafe24.oneteammds.vo.Hospital">
 		UPDATE hospital
-		SET
-			 hospitalPw = #{h_pw}
-			,hName = #{h_name}
+		<trim prefix="SET" prefixOverrides=",">
+			<if test="h_pw != null and h_pw neq ''.toString()">
+			 	hospitalPw = #{h_pw}
+			</if>
+			
+			<if test="h_name != null and h_name neq ''.toString()">
+				,hName = #{h_name}
+			</if>
+		</trim>
 		WHERE 
 			 hospitalId = #{h_id}
 	</update>

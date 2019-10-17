@@ -9,28 +9,31 @@ import com.cafe24.oneteammds.listvo.Drinkingh;
 
 @Mapper
 public interface DrinkingMapper {
-	
-	// 병원1
-	
+
+	// 병원
+
 	// 병원DB - 음주상태
-	
-	// 병원 권한 로그인시 입력되는 ID값 받아서 음주상태 리스트  출력 처리
+
+	// 병원 권한 로그인시 입력되는 ID값 받아서 음주상태 리스트 출력 처리
 	public List<Drinkingh> getDrinkinghList(String hospitalId);
-	
+
 	// 병원DB - 음주상태 --> 음주상태 regist form
 	public Drinkingh getDrinkinghById(String patientId);
-	
+
 	public int getDrinkingRegist(Drinking drinking);
-	
+
 	// 병원DB - 음주상태 검색
-		public List<Drinkingh> getDrinkingSearchList (String hospitalId, String sk, String sv);
-	  
-	// 시스템DB 
-	
+	public List<Drinkingh> getDrinkingSearchList(String hospitalId, String sk, String sv);
+
+	// 시스템DB
+
 	// 음주상태 regist complete --> MDS DB - 음주상태
 	public List<Drinking> getDrinkingdbList();
-	
-	// 음주상태 삭제
-		public int delDrinking(String dcCode, String hospitalId, String patientId);
-	
+
+	// MDS DB - 음주상태 검색
+	public List<Drinking> getDrinkingdbSearchList(String sk, String sv);
+
+	// MDS DB - 음주상태 삭제
+	public int delDrinking(String dcCode, String hospitalId, String patientId);
+
 }

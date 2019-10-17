@@ -9,28 +9,31 @@ import com.cafe24.oneteammds.listvo.Allergyh;
 
 @Mapper
 public interface AllergyMapper {
-	
-	// 병원1
-	
+
+	// 병원
+
 	// 병원DB - 알러지 및 부작용
-	
-	// 병원 권한 로그인시 입력되는 ID값 받아서 알러지 및 부작용 리스트  출력 처리
+
+	// 병원 권한 로그인시 입력되는 ID값 받아서 알러지 및 부작용 리스트 출력 처리
 	public List<Allergyh> getAllergyhList(String hospitalId);
-	
+
 	// 병원DB - 알러지 및 부작용 --> 알러지 및 부작용 regist form
 	public Allergyh getAllergyhById(String patientId);
-	  
+
 	public int getAllergyRegist(Allergy allergy);
-	
+
 	// 병원DB - 알러지 및 부작용 검색
-		public List<Allergyh> getAllergySearchList (String hospitalId, String sk, String sv);
-	  
-	// 시스템DB 
-	
+	public List<Allergyh> getAllergySearchList(String hospitalId, String sk, String sv);
+
+	// 시스템DB
+
 	// 알러지 및 부작용 regist complete --> MDS DB - 알러지 및 부작용
 	public List<Allergy> getAllergydbList();
 
-	// 알러지 및 부작용  삭제
-		public int delAllergy(String aseCode, String hospitalId, String patientId);
-	
+	// MDS DB - 알러지 및 부작용 검색
+	public List<Allergy> getAllergydbSearchList(String sk, String sv);
+
+	// MDS DB - 알러지 및 부작용 삭제
+	public int delAllergy(String aseCode, String hospitalId, String patientId);
+
 }

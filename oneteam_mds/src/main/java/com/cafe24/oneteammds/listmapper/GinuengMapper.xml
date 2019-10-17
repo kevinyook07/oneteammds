@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.GinuengMapper">
  	
- 	<!-- 병원 1-->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 기능검사결과 -->
  	
@@ -116,6 +116,31 @@
  		  , ftrDate
 		FROM 
 			ginueng
+	</select>
+	
+	<!-- MDS DB - 기능검사결과 검색 -->
+	<select id="getGinuengdbSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Ginueng">
+	  	SELECT
+			 ftrCode
+			,hospitalId
+			,patientId
+			,ftName
+			,ftCode
+			,ftrValue
+			,pDoctor
+			,ftdTime
+			,adminId
+			,ftrDate
+		FROM
+			 ginueng
+		<if test="sv != null and sv neq ''.toString()">		 
+		WHERE 
+			
+						
+			${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+		
 	</select>
 	
 	<!-- MDS DB - 기능검사결과 삭제 -->

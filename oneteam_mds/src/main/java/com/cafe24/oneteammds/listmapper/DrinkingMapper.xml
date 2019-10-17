@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.DrinkingMapper">
  	
- 	<!-- 병원1 -->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 음주상태 -->
  	
@@ -101,6 +101,28 @@
  		  , dcrDate
 		FROM 
 			drinking
+	</select>
+	
+	<!-- MDS DB - 음주상태 검색 -->
+	<select id="getDrinkingdbSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Drinking">
+	  	SELECT
+			 dcCode
+			,hospitalId
+			,patientId
+			,dccName
+			,pDoctor
+			,adminId
+			,dcrDate
+		FROM
+			 drinking
+		<if test="sv != null and sv neq ''.toString()">	 
+		WHERE 
+			
+							
+			${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
+	
 	</select>
 	
 	<!-- MDS DB - 음주상태 삭제 -->
