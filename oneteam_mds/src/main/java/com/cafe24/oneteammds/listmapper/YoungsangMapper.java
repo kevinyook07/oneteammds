@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Youngsangh;
 @Mapper
 public interface YoungsangMapper {
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 영상검사결과
 
@@ -31,7 +31,7 @@ public interface YoungsangMapper {
 	public List<Youngsang> getYoungsangdbList();
 
 	// MDS DB - 영상검사결과 검색
-	public List<Youngsang> getYoungsangdbSearchList(String sk, String sv, String start_date, String finish_date);
+	public List<Youngsang> getYoungsangdbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// MDS DB - 영상검사결과 삭제
 	public int delYoungsang(String itrCode, String hospitalId, String patientId);

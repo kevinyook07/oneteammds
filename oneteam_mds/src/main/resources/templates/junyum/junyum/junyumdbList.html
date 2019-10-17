@@ -4,7 +4,7 @@
 		layout:decorate="~{layout/default}">
 
 <th:block layout:fragment="customContents">
-	<div class="page-content">
+	<div class="page-content">1
 	 <!-- **************윗상단 메인 메뉴 ************** -->
 		<div class="page-header">
 		<h2 style="text-align:center">법정 전염성 감염병 리스트</h2>
@@ -18,11 +18,14 @@
                   
                   <div class="block-body">
                     <form action="/junyumdbList" method="post">
-		<select name="sk">
-			<option value="hospitalId">병원 고유번호</option>
-			<option value="patientId">환자고유번호</option>																	
-		</select>
-		<input type="text" name="sv">
+		<select id="sk1" name="sk1"></br>
+			<option value="hospitalId">병원고유번호</option>
+			</select>	
+			<input type="text" name="sv1"></br>
+		<select id="sk2" name="sk2">		
+			<option value="patientId">환자고유번호</option>			
+		</select>		
+		<input type="text" name="sv2"></br>
 		<input type="date" name="start_date">~
      	<input type="date" name="finish_date">
 		<button type="submit" class="btn btn-secondary">검색</button>

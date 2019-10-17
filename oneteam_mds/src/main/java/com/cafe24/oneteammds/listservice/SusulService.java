@@ -17,7 +17,7 @@ public class SusulService {
 	@Autowired
 	private SusulMapper susulMapper;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 수술내역
 
@@ -52,9 +52,9 @@ public class SusulService {
 	}
 
 	// MDS DB - 수술내역 검색
-	public List<Susul> getSusuldbSearchList(String sk, String sv, String start_date, String finish_date) {
+	public List<Susul> getSusuldbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
 
-		List<Susul> list = susulMapper.getSusuldbSearchList(sk, sv, start_date, finish_date);
+		List<Susul> list = susulMapper.getSusuldbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}

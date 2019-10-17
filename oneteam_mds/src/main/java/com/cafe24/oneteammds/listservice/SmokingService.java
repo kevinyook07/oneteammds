@@ -17,7 +17,7 @@ public class SmokingService {
 	@Autowired
 	private SmokingMapper smokingMapper;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 흡연상태
 
@@ -52,9 +52,9 @@ public class SmokingService {
 	}
 
 	// MDS DB - 흡연상태 검색
-	public List<Smoking> getSmokringdbSearchList(String sk, String sv, String start_date, String finish_date) {
+	public List<Smoking> getSmokringdbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
 
-		List<Smoking> list = smokingMapper.getSmokingdbSearchList(sk, sv, start_date, finish_date);
+		List<Smoking> list = smokingMapper.getSmokingdbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}

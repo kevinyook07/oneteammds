@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.TotalMapper">
  	
- 	<!-- 병원 -->
+ 	<!-- 병원 1-->
  	
  	<!-- 병원 권한 로그인시 입력되는 ID값 받아서 전체 진료정보 리스트  출력 처리 -->
  	<select	id="getTotalhList" 
@@ -514,10 +514,13 @@
  		  , lcidDate
 		FROM 
 			total
-		<if test="sv != null and sv neq ''.toString()">	
+		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
-		 WHERE
-		${sk} Like CONCAT('%',#{sv},'%')				
+		<if test="sv2 != null and sv2 neq ''.toString()">	
+		</if>
+		WHERE 					
+		${sk1} Like CONCAT('%',#{sv1},'%') 
+		and ${sk2} Like CONCAT('%',#{sv2},'%')				
 		<if test="start_date neq null and start_date neq ''.toString()">
 			AND drDate >= #{start_date} 		
 		</if>

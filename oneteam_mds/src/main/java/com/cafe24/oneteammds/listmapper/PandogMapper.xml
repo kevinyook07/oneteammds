@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.PandogMapper">
  	
- 	<!-- 병원 -->
+ 	<!-- 병원1 -->
  	
  	<!-- 병원DB - 영상판독정보 -->
  	
@@ -146,10 +146,13 @@
 			,iidrDate
 		FROM
 			 pandog
-		<if test="sv != null and sv neq ''.toString()">	
-		</if> 
-		WHERE 								
-			${sk} Like CONCAT('%',#{sv},'%')				
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		</if>
+		<if test="sv2 != null and sv2 neq ''.toString()">	
+		</if>
+		WHERE 					
+		${sk1} Like CONCAT('%',#{sv1},'%') 
+		and ${sk2} Like CONCAT('%',#{sv2},'%')				
 		<if test="start_date neq null and start_date neq ''.toString()">
 			AND iidrDate >= #{start_date} 		
 		</if>

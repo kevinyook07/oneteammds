@@ -22,7 +22,7 @@ public class JunyumController {
 	@Autowired
 	private JunyumService junyumService;
 	
-	// 병원
+	// 병원1
 
 	// 병원DB - 법정 전염성 감염병
 	
@@ -82,13 +82,14 @@ public class JunyumController {
 	
 	// MDS DB - 법정 전염성 감염병 검색	
 	@PostMapping("/junyumdbList")
-	public String getJunyumdbList(
-							  @RequestParam(value = "sk") String sk
-							 ,@RequestParam(value = "sv") String sv
-							 ,@RequestParam(value = "start_date") String start_date
-							 ,@RequestParam(value = "finish_date") String finish_date,
+	public String getJunyumdbList(@RequestParam(value = "sk1") String sk1
+							     ,@RequestParam(value = "sk2") String sk2
+						   	     ,@RequestParam(value = "sv1") String sv1
+						   	     ,@RequestParam(value = "sv2") String sv2
+							     ,@RequestParam(value = "start_date") String start_date
+							     ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Junyum> list = junyumService.getJunyumdbSearchList(sk, sv, start_date, finish_date);
+		List<Junyum> list = junyumService.getJunyumdbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("junyumdbList", list);
 
 		return "/junyum/junyum/junyumdbList";

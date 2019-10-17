@@ -21,7 +21,7 @@ public class SmokingController {
 	@Autowired
 	private SmokingService smokingService;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 흡연상태
 
@@ -79,12 +79,14 @@ public class SmokingController {
 
 	// MDS DB - 흡연상태 검색
 	@PostMapping("/smokingdbList")
-	public String getSmokingdbList(@RequestParam(value = "sk") String sk
-								  ,@RequestParam(value = "sv") String sv
+	public String getSmokingdbList(@RequestParam(value = "sk1") String sk1
+							      ,@RequestParam(value = "sk2") String sk2
+						   	      ,@RequestParam(value = "sv1") String sv1
+						   	      ,@RequestParam(value = "sv2") String sv2
 								  ,@RequestParam(value = "start_date") String start_date
 								  ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Smoking> list = smokingService.getSmokringdbSearchList(sk, sv, start_date, finish_date);
+		List<Smoking> list = smokingService.getSmokringdbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("smokingdbList", list);
 
 		return "/smoking/smoking/smokingdbList";

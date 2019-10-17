@@ -21,7 +21,7 @@ public class YoungsangController {
 	@Autowired
 	private YoungsangService youngsangService;
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 영상검사결과
 
@@ -79,12 +79,14 @@ public class YoungsangController {
 
 	// MDS DB - 영상검사결과 검색
 	@PostMapping("/youngsangdbList")
-	public String getYoungsangdbList(@RequestParam(value = "sk") String sk
-									,@RequestParam(value = "sv") String sv
+	public String getYoungsangdbList(@RequestParam(value = "sk1") String sk1
+								    ,@RequestParam(value = "sk2") String sk2
+							   	    ,@RequestParam(value = "sv1") String sv1
+							   	    ,@RequestParam(value = "sv2") String sv2
 									,@RequestParam(value = "start_date") String start_date
 									,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Youngsang> list = youngsangService.getYoungsangdbSearchList(sk, sv, start_date, finish_date);
+		List<Youngsang> list = youngsangService.getYoungsangdbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("youngsangdbList", list);
 
 		return "/youngsang/youngsang/youngsangdbList";

@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Saengchaeh;
 @Mapper
 public interface SaengchaeMapper {
 
-	// 병원
+	// 병원1
 
 	// 병원DB - 생체신호 및 상태
 
@@ -31,7 +31,7 @@ public interface SaengchaeMapper {
 	public List<Saengchae> getSaengchaedbList();
 
 	// MDS DB - 생체신호 및 상태 검색
-	public List<Saengchae> getSaengchaedbSearchList(String sk, String sv, String start_date, String finish_date);
+	public List<Saengchae> getSaengchaedbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// MDS DB - 생체신호 및 상태 삭제
 	public int delSaengchae(String vscCode, String hospitalId, String patientId);
