@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.YakmulMapper">
  	
- 	<!-- 병원1 -->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 약물처방내역 -->
  	
@@ -12,26 +12,33 @@
  	<select	id="getYakmulhList" 
  			resultType="com.cafe24.oneteammds.listvo.Yakmulh">
  		SELECT 
- 			mbCode
- 		  , hospitalId
- 		  , patientId
- 		  , mmName
- 		  , mmCode
- 		  , miName
- 		  , miCode
- 		  , mVolume
- 		  , mdUnit
- 		  , mdNumber
- 		  , mPeriod
- 		  , mUsage
- 		  , pDoctor
- 		  , mdTime
- 		  , adminId
- 		  , mrDate
+ 		   ymh.mbCode
+ 		  ,ymh.hospitalId
+ 		  ,ymh.patientId
+ 		  ,ymh.mmName
+ 		  ,ymh.mmCode
+ 		  ,ymh.miName
+ 		  ,ymh.miCode
+ 		  ,ymh.mVolume
+ 		  ,ymh.mdUnit
+ 		  ,ymh.mdNumber
+ 		  ,ymh.mPeriod
+ 		  ,ymh.mUsage
+ 		  ,ymh.pDoctor
+ 		  ,ymh.mdTime
+ 		  ,ymh.adminId
+ 		  ,ymh.mrDate
+ 		  ,pit.pName
 		FROM 
-			yakmulh
+			yakmulh ymh
+		JOIN
+			patient pit
+			ON
+				ymh.hospitalId = pit.hospitalId
+			AND
+				ymh.patientId = pit.patientId	
 		WHERE
-			hospitalId = #{session.SID}
+			ymh.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 약물처방내역 -> 약물처방내역 regist form -->
@@ -95,27 +102,38 @@
 	<select id="getYakmulSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Yakmulh">
 	  	SELECT 
-				 mbCode
-				,hospitalId
-				,patientId
-				,mmName
-				,mmCode
-				,miName
-				,miCode
-				,mVolume
-				,mdUnit
-				,mdNumber
-				,mPeriod
-				,mUsage
-				,pDoctor
-				,mdTime
-				,adminId
-				,mrDate				
-			FROM yakmulh	
+ 		   ymh.mbCode
+ 		  ,ymh.hospitalId
+ 		  ,ymh.patientId
+ 		  ,ymh.mmName
+ 		  ,ymh.mmCode
+ 		  ,ymh.miName
+ 		  ,ymh.miCode
+ 		  ,ymh.mVolume
+ 		  ,ymh.mdUnit
+ 		  ,ymh.mdNumber
+ 		  ,ymh.mPeriod
+ 		  ,ymh.mUsage
+ 		  ,ymh.pDoctor
+ 		  ,ymh.mdTime
+ 		  ,ymh.adminId
+ 		  ,ymh.mrDate
+ 		  ,pit.pName
+		FROM 
+			yakmulh ymh
+		JOIN
+			patient pit
+			ON
+				ymh.hospitalId = pit.hospitalId
+			AND
+				ymh.patientId = pit.patientId	
 		WHERE 
-			hospitalId = #{hospitalId}
-		<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+			ymh.hospitalId = #{hospitalId}
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
+		</if>
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
 		</if>
 		<if test="start_date neq null and start_date neq ''.toString()">
 			AND mrDate >= #{start_date} 		
@@ -133,24 +151,31 @@
 	<select id="getYakmuldbList"
 			resultType="com.cafe24.oneteammds.listvo.Yakmul">
 		SELECT 
- 			mbCode
- 		  , hospitalId
- 		  , patientId
- 		  , mmName
- 		  , mmCode
- 		  , miName
- 		  , miCode
- 		  , mVolume
- 		  , mdUnit
- 		  , mdNumber
- 		  , mPeriod
- 		  , mUsage
- 		  , pDoctor
- 		  , mdTime
- 		  , adminId
- 		  , mrDate
+ 		   ym.mbCode
+ 		  ,ym.hospitalId
+ 		  ,ym.patientId
+ 		  ,ym.mmName
+ 		  ,ym.mmCode
+ 		  ,ym.miName
+ 		  ,ym.miCode
+ 		  ,ym.mVolume
+ 		  ,ym.mdUnit
+ 		  ,ym.mdNumber
+ 		  ,ym.mPeriod
+ 		  ,ym.mUsage
+ 		  ,ym.pDoctor
+ 		  ,ym.mdTime
+ 		  ,ym.adminId
+ 		  ,ym.mrDate
+ 		  ,pit.pName
 		FROM 
-			yakmul
+			yakmul ym
+		JOIN
+			patient pit
+			ON
+				ym.hospitalId = pit.hospitalId
+			AND
+				ym.patientId = pit.patientId	
 	</select>
 	
 	
@@ -158,23 +183,31 @@
 	<select id="getYakmuldbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Yakmul">
 	  	SELECT 
-				 mbCode
-				,hospitalId
-				,patientId
-				,mmName
-				,mmCode
-				,miName
-				,miCode
-				,mVolume
-				,mdUnit
-				,mdNumber
-				,mPeriod
-				,mUsage
-				,pDoctor
-				,mdTime
-				,adminId
-				,mrDate				
-			FROM yakmul
+ 		   ym.mbCode
+ 		  ,ym.hospitalId
+ 		  ,ym.patientId
+ 		  ,ym.mmName
+ 		  ,ym.mmCode
+ 		  ,ym.miName
+ 		  ,ym.miCode
+ 		  ,ym.mVolume
+ 		  ,ym.mdUnit
+ 		  ,ym.mdNumber
+ 		  ,ym.mPeriod
+ 		  ,ym.mUsage
+ 		  ,ym.pDoctor
+ 		  ,ym.mdTime
+ 		  ,ym.adminId
+ 		  ,ym.mrDate
+ 		  ,pit.pName
+		FROM 
+			yakmul ym
+		JOIN
+			patient pit
+			ON
+				ym.hospitalId = pit.hospitalId
+			AND
+				ym.patientId = pit.patientId
 		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
 		<if test="sv2 != null and sv2 neq ''.toString()">	

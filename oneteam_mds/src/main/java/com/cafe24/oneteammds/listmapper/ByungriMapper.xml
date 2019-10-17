@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.ByungriMapper">
  	
- 	<!-- 병원 1-->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 병리검사결과 -->
  	
@@ -12,20 +12,27 @@
  	<select	id="getByungrihList" 
  			resultType="com.cafe24.oneteammds.listvo.Byungrih">
  		SELECT 
- 			ptrCode
- 		  , hospitalId
- 		  , patientId
- 		  , ptName
- 		  , ptCode
- 		  , ptrValue
- 		  , pDoctor
- 		  , ptdTime
- 		  , adminId
- 		  , ptrDate
+ 		   brh.ptrCode
+ 		  ,brh.hospitalId
+ 		  ,brh.patientId
+ 		  ,brh.ptName
+ 		  ,brh.ptCode
+ 		  ,brh.ptrValue
+ 		  ,brh.pDoctor
+ 		  ,brh.ptdTime
+ 		  ,brh.adminId
+ 		  ,brh.ptrDate
+ 		  ,pit.pName
 		FROM 
-			byungrih
+			byungrih brh
+		JOIN
+			patient pit
+			ON
+				brh.hospitalId = pit.hospitalId
+			AND
+				brh.patientId = pit.patientId	
 		WHERE
-			hospitalId = #{session.SID}
+			brh.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 병리검사결과 -> 병리검사결과 regist form -->
@@ -76,23 +83,33 @@
 	<!-- 병리검사결과 검색 -->
 	<select id="getByungriSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Byungri">
-	  	SELECT
-			 ptrCode
-			,hospitalId
-			,patientId
-			,ptName
-			,ptCode
-			,ptrValue
-			,pDoctor
-			,ptdTime
-			,adminId
-			,ptrDate		
-		FROM
-			 byungrih
+	  	SELECT 
+ 		   brh.ptrCode
+ 		  ,brh.hospitalId
+ 		  ,brh.patientId
+ 		  ,brh.ptName
+ 		  ,brh.ptCode
+ 		  ,brh.ptrValue
+ 		  ,brh.pDoctor
+ 		  ,brh.ptdTime
+ 		  ,brh.adminId
+ 		  ,brh.ptrDate
+ 		  ,pit.pName
+		FROM 
+			byungrih brh
+		JOIN
+			patient pit
+			ON
+				brh.hospitalId = pit.hospitalId
+			AND
+				brh.patientId = pit.patientId
 		WHERE 
-			hospitalId = #{hospitalId}
-		<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+			brh.hospitalId = #{hospitalId}
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
+		</if>
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
 		</if>
 		<if test="start_date neq null and start_date neq ''.toString()">
 			AND ptrDate >= #{start_date} 		
@@ -109,36 +126,50 @@
 	<select id="getByungridbList"
 			resultType="com.cafe24.oneteammds.listvo.Byungri">
 		SELECT 
- 			ptrCode
- 		  , hospitalId
- 		  , patientId
- 		  , ptName
- 		  , ptCode
- 		  , ptrValue
- 		  , pDoctor
- 		  , ptdTime
- 		  , adminId
- 		  , ptrDate
+ 		   br.ptrCode
+ 		  ,br.hospitalId
+ 		  ,br.patientId
+ 		  ,br.ptName
+ 		  ,br.ptCode
+ 		  ,br.ptrValue
+ 		  ,br.pDoctor
+ 		  ,br.ptdTime
+ 		  ,br.adminId
+ 		  ,br.ptrDate
+ 		  ,pit.pName	  
 		FROM 
-			byungri
+			byungri br
+		JOIN
+			patient pit
+			ON
+				br.hospitalId = pit.hospitalId
+			AND
+				br.patientId = pit.patientId	
 	</select>
 	
 	<!-- MDS DB - 병리검사결과  검색-->
 	<select id="getByungridbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Byungri">
-	  	SELECT
-			 ptrCode
-			,hospitalId
-			,patientId
-			,ptName
-			,ptCode
-			,ptrValue
-			,pDoctor
-			,ptdTime
-			,adminId
-			,ptrDate		
-		FROM
-			 byungri
+	  	SELECT 
+ 		   br.ptrCode
+ 		  ,br.hospitalId
+ 		  ,br.patientId
+ 		  ,br.ptName
+ 		  ,br.ptCode
+ 		  ,br.ptrValue
+ 		  ,br.pDoctor
+ 		  ,br.ptdTime
+ 		  ,br.adminId
+ 		  ,br.ptrDate
+ 		  ,pit.pName	  
+		FROM 
+			byungri br
+		JOIN
+			patient pit
+			ON
+				br.hospitalId = pit.hospitalId
+			AND
+				br.patientId = pit.patientId
 		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
 		<if test="sv2 != null and sv2 neq ''.toString()">	

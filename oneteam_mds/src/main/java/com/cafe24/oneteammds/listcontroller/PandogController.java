@@ -21,7 +21,7 @@ public class PandogController {
 	@Autowired
 	private PandogService pandogService;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 영상판독정보
 
@@ -45,13 +45,15 @@ public class PandogController {
 
 	// 병원DB - 영상판독정보 검색
 	@PostMapping("/pandoghList")
-	public String getPandogList(@RequestParam(value = "hospitalId") String hospitalId,
-								@RequestParam(value = "sk") String sk
-							   ,@RequestParam(value = "sv") String sv
+	public String getPandogList(@RequestParam(value = "hospitalId") String hospitalId
+							   ,@RequestParam(value = "sk1") String sk1
+							   ,@RequestParam(value = "sk2") String sk2
+						   	   ,@RequestParam(value = "sv1") String sv1
+						   	   ,@RequestParam(value = "sv2") String sv2
 							   ,@RequestParam(value = "start_date") String start_date
 							   ,@RequestParam(value = "finish_date") String finish_date
 							   , Model model) {
-		List<Pandogh> list = pandogService.getPandogSearchList(hospitalId, sk, sv, start_date, finish_date);
+		List<Pandogh> list = pandogService.getPandogSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("pandoghList", list);
 
 		return "/pandog/pandogh/pandoghList";

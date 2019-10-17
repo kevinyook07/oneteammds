@@ -17,7 +17,7 @@ public class SusulService {
 	@Autowired
 	private SusulMapper susulMapper;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 수술내역
 
@@ -37,9 +37,9 @@ public class SusulService {
 	}
 
 	// 수술내역 검색
-	public List<Susulh> getSusulSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
+	public List<Susulh> getSusulSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
 
-		List<Susulh> list = susulMapper.getSusulSearchList(hospitalId, sk, sv, start_date, finish_date);
+		List<Susulh> list = susulMapper.getSusulSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}

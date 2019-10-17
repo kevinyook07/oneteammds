@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Byungrih;
 @Mapper
 public interface ByungriMapper {
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 병리검사결과
 
@@ -23,7 +23,7 @@ public interface ByungriMapper {
 	public int getByungriRegist(Byungri byungri);
 
 	// 병원DB - 병리검사결과 검색
-	public List<Byungrih> getByungriSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
+	public List<Byungrih> getByungriSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// 시스템DB
 

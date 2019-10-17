@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Pandogh;
 @Mapper
 public interface PandogMapper {
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 영상판독정보
 
@@ -23,7 +23,7 @@ public interface PandogMapper {
 	public int getPandogRegist(Pandog pandog);
 
 	// 병원DB - 영상판독정보 검색
-	public List<Pandogh> getPandogSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
+	public List<Pandogh> getPandogSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// 시스템DB
 

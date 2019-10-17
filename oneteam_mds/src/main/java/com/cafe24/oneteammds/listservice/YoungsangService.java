@@ -17,7 +17,7 @@ public class YoungsangService {
 	@Autowired
 	private YoungsangMapper youngsangMapper;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 영상검사결과
 
@@ -37,9 +37,9 @@ public class YoungsangService {
 	}
 
 	// 영상검사결과 검색
-	public List<Youngsangh> getYoungsangSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
+	public List<Youngsangh> getYoungsangSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
 
-		List<Youngsangh> list = youngsangMapper.getYoungsangSearchList(hospitalId, sk, sv, start_date, finish_date);
+		List<Youngsangh> list = youngsangMapper.getYoungsangSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}

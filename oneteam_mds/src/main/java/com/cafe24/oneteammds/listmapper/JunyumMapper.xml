@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.JunyumMapper">
  	
- 	<!-- 병원 1-->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 법정 전염성 감염병 -->
  	
@@ -12,24 +12,31 @@
  	<select	id="getJunyumhList" 
  			resultType="com.cafe24.oneteammds.listvo.Junyumh">
  		SELECT 
- 			lcidCode
- 		  , hospitalId
- 		  , patientId
- 		  , lcidName
- 		  , lcidpGroup
- 		  , lcidtResult
- 		  , lcidinOut
- 		  , lcidArea
- 		  , pDoctor
- 		  , lcidoDate
- 		  , lciddDate
- 		  , lcidrDate
- 		  , adminId
- 		  , lcidDate
+ 		   jyh.lcidCode
+ 		  ,jyh.hospitalId
+ 		  ,jyh.patientId
+ 		  ,jyh.lcidName
+ 		  ,jyh.lcidpGroup
+ 		  ,jyh.lcidtResult
+ 		  ,jyh.lcidinOut
+ 		  ,jyh.lcidArea
+ 		  ,jyh.pDoctor
+ 		  ,jyh.lcidoDate
+ 		  ,jyh.lciddDate
+ 		  ,jyh.lcidrDate
+ 		  ,jyh.adminId
+ 		  ,jyh.lcidDate
+ 		  ,pit.pName
 		FROM 
-			junyumh
+			junyumh jyh
+		JOIN
+			patient pit
+			ON
+				jyh.hospitalId = pit.hospitalId
+			AND
+				jyh.patientId = pit.patientId	
 		WHERE
-			hospitalId = #{session.SID}
+			jyh.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 법정 전염성 감염병 -> 법정 전염성 감염병 regist form -->
@@ -88,27 +95,37 @@
 	<!-- 법정 전염성 감염병 검색 -->
 	<select id="getJunyumSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Junyum">
-	  	SELECT
-			 lcidCode
-			,hospitalId
-			,patientId
-			,lcidName
-			,lcidpGroup
-			,lcidtResult
-			,lcidinOut
-			,lcidArea
-			,pDoctor
-			,lcidoDate
-			,lciddDate
-			,lcidrDate
-			,adminId
-			,lcidDate
-		FROM
-			 junyumh
+	  	SELECT 
+ 		   jyh.lcidCode
+ 		  ,jyh.hospitalId
+ 		  ,jyh.patientId
+ 		  ,jyh.lcidName
+ 		  ,jyh.lcidpGroup
+ 		  ,jyh.lcidtResult
+ 		  ,jyh.lcidinOut
+ 		  ,jyh.lcidArea
+ 		  ,jyh.pDoctor
+ 		  ,jyh.lcidoDate
+ 		  ,jyh.lciddDate
+ 		  ,jyh.lcidrDate
+ 		  ,jyh.adminId
+ 		  ,jyh.lcidDate
+ 		  ,pit.pName
+		FROM 
+			junyumh jyh
+		JOIN
+			patient pit
+			ON
+				jyh.hospitalId = pit.hospitalId
+			AND
+				jyh.patientId = pit.patientId
 		WHERE 
-			hospitalId = #{hospitalId}
-		<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+			jyh.hospitalId = #{hospitalId}
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
+		</if>
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
 		</if>
 		<if test="start_date neq null and start_date neq ''.toString()">
 			AND lcidDate >= #{start_date} 		
@@ -125,45 +142,59 @@
 	<select id="getJunyumdbList"
 			resultType="com.cafe24.oneteammds.listvo.Junyum">
 		SELECT 
- 			lcidCode
- 		  , hospitalId
- 		  , patientId
- 		  , lcidName
- 		  , lcidpGroup
- 		  , lcidtResult
- 		  , lcidinOut
- 		  , lcidArea
- 		  , pDoctor
- 		  , lcidoDate
- 		  , lciddDate
- 		  , lcidrDate
- 		  , adminId
- 		  , lcidDate
+ 		   jy.lcidCode
+ 		  ,jy.hospitalId
+ 		  ,jy.patientId
+ 		  ,jy.lcidName
+ 		  ,jy.lcidpGroup
+ 		  ,jy.lcidtResult
+ 		  ,jy.lcidinOut
+ 		  ,jy.lcidArea
+ 		  ,jy.pDoctor
+ 		  ,jy.lcidoDate
+ 		  ,jy.lciddDate
+ 		  ,jy.lcidrDate
+ 		  ,jy.adminId
+ 		  ,jy.lcidDate
+ 		  ,pit.pName		  
 		FROM 
-			junyum
+			junyum jy
+		JOIN
+			patient pit
+			ON
+				jy.hospitalId = pit.hospitalId
+			AND
+				jy.patientId = pit.patientId	
 	</select>
 	
 	
 	<!-- MDS DB - 법정 전염성 감염병 검색 -->
 	<select id="getJunyumdbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Junyum">
-	  	SELECT
-			 lcidCode
-			,hospitalId
-			,patientId
-			,lcidName
-			,lcidpGroup
-			,lcidtResult
-			,lcidinOut
-			,lcidArea
-			,pDoctor
-			,lcidoDate
-			,lciddDate
-			,lcidrDate
-			,adminId
-			,lcidDate
-		FROM
-			 junyum
+	  	SELECT 
+ 		   jy.lcidCode
+ 		  ,jy.hospitalId
+ 		  ,jy.patientId
+ 		  ,jy.lcidName
+ 		  ,jy.lcidpGroup
+ 		  ,jy.lcidtResult
+ 		  ,jy.lcidinOut
+ 		  ,jy.lcidArea
+ 		  ,jy.pDoctor
+ 		  ,jy.lcidoDate
+ 		  ,jy.lciddDate
+ 		  ,jy.lcidrDate
+ 		  ,jy.adminId
+ 		  ,jy.lcidDate
+ 		  ,pit.pName		  
+		FROM 
+			junyum jy
+		JOIN
+			patient pit
+			ON
+				jy.hospitalId = pit.hospitalId
+			AND
+				jy.patientId = pit.patientId
 		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
 		<if test="sv2 != null and sv2 neq ''.toString()">	

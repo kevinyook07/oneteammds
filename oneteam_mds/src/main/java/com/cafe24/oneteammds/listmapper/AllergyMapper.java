@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Allergyh;
 @Mapper
 public interface AllergyMapper {
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 알러지 및 부작용
 
@@ -23,7 +23,7 @@ public interface AllergyMapper {
 	public int getAllergyRegist(Allergy allergy);
 
 	// 병원DB - 알러지 및 부작용 검색
-	public List<Allergyh> getAllergySearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
+	public List<Allergyh> getAllergySearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// 시스템DB
 

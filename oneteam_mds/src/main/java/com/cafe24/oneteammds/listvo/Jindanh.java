@@ -102,8 +102,5 @@ public class Jindanh {
 				+ dName + ", dCode=" + dCode + ", dDate=" + dDate + ", pDoctor=" + pDoctor + ", adminId=" + adminId
 				+ ", drDate=" + drDate + ", pName=" + pName + "]";
 	}
-
-	
-	
 	
 }

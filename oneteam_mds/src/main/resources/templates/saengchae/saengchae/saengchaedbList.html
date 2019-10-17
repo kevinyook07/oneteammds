@@ -4,7 +4,7 @@
 		layout:decorate="~{layout/default}">
 
 <th:block layout:fragment="customContents">
-	<div class="page-content">1
+	<div class="page-content">
 	 <!-- **************윗상단 메인 메뉴 ************** -->
 		<div class="page-header">
 		<h2 style="text-align:center">생체신호 및 상태 리스트</h2>
@@ -19,11 +19,12 @@
                   <div class="block-body">
                     <form action="/saengchaedbList" method="post">
 		<select id="sk1" name="sk1"></br>
-			<option value="hospitalId">병원고유번호</option>
+			<option value="pit.hospitalId">병원고유번호</option>
 			</select>	
 			<input type="text" name="sv1"></br>
 		<select id="sk2" name="sk2">		
-			<option value="patientId">환자고유번호</option>			
+			<option value="pit.patientId">환자고유번호</option>
+			<option value="pName">환자 이름</option>			
 		</select>		
 		<input type="text" name="sv2"></br>
 		<input type="date" name="start_date">~
@@ -36,6 +37,7 @@
 			 <th style="white-space:nowrap;">생체신호 및 상태 코드</th>
 							<th style="white-space:nowrap;">병원고유번호</th>
 							<th style="white-space:nowrap;">환자고유번호</th>
+							<th style="white-space:nowrap;">환자 이름</th>
 							<th style="white-space:nowrap;">키</th>
 							<th style="white-space:nowrap;">몸무게</th>
 							<th style="white-space:nowrap;">혈압(확장기)</th>
@@ -54,6 +56,7 @@
 			<td th:text="${list.vscCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.vscHeight}"></td>
 			<td th:text="${list.vscWeight }"></td>
 			<td th:text="${list.bpMin}"></td>

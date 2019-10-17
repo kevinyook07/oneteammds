@@ -17,7 +17,7 @@ public class YebangService {
 	@Autowired
 	private YebangMapper yebangMapper;
 	
-	// 병원1
+	// 병원
 	
 	// 병원DB - 예방접종내역
 	
@@ -37,9 +37,9 @@ public class YebangService {
 	} 
 	
 	// 예방접종내역 검색
-		public List<Yebangh> getYebangSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
+		public List<Yebangh> getYebangSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
 
-			List<Yebangh> list = yebangMapper.getYebangSearchList(hospitalId, sk, sv, start_date, finish_date);
+			List<Yebangh> list = yebangMapper.getYebangSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 
 			return list;
 		}

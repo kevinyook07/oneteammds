@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.SaengchaeMapper">
  	
- 	<!-- 병원1 -->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 생체신호 및 상태 -->
  	
@@ -12,22 +12,29 @@
  	<select	id="getSaengchaehList" 
  			resultType="com.cafe24.oneteammds.listvo.Saengchaeh">
  		SELECT 
- 			vscCode
- 		  , hospitalId
- 		  , patientId
- 		  , vscHeight
- 		  , vscWeight
- 		  , bpMin
- 		  , bpMax
- 		  , bheat
- 		  , pDoctor
- 		  , vscCheck
- 		  , adminId
- 		  , vscrDate
+ 		   sch.vscCode
+ 		  ,sch.hospitalId
+ 		  ,sch.patientId
+ 		  ,sch.vscHeight
+ 		  ,sch.vscWeight
+ 		  ,sch.bpMin
+ 		  ,sch.bpMax
+ 		  ,sch.bheat
+ 		  ,sch.pDoctor
+ 		  ,sch.vscCheck
+ 		  ,sch.adminId
+ 		  ,sch.vscrDate
+ 		  ,pit.pName
 		FROM 
-			saengchaeh
+			saengchaeh sch
+		JOIN
+			patient pit
+			ON
+				sch.hospitalId = pit.hospitalId
+			AND
+				sch.patientId = pit.patientId	
 		WHERE
-			hospitalId = #{session.SID}
+			sch.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 생체신호 및 상태 -> 생체신호 및 상태 regist form -->
@@ -82,25 +89,35 @@
 	<!-- 생체신호 및 상태 검색 -->
 	<select id="getSaengchaeSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Saengchae">
-	  	SELECT
-			 vscCode
-			,hospitalId
-			,patientId
-			,vscHeight
-			,vscWeight 
-			,bpMin
-			,bpMax
-			,bheat
-			,pDoctor
-			,vscCheck
-			,adminId
-			,vscrDate
-		FROM
-			 saengchaeh
+	  	SELECT 
+ 		   sch.vscCode
+ 		  ,sch.hospitalId
+ 		  ,sch.patientId
+ 		  ,sch.vscHeight
+ 		  ,sch.vscWeight
+ 		  ,sch.bpMin
+ 		  ,sch.bpMax
+ 		  ,sch.bheat
+ 		  ,sch.pDoctor
+ 		  ,sch.vscCheck
+ 		  ,sch.adminId
+ 		  ,sch.vscrDate
+ 		  ,pit.pName
+		FROM 
+			saengchaeh sch
+		JOIN
+			patient pit
+			ON
+				sch.hospitalId = pit.hospitalId
+			AND
+				sch.patientId = pit.patientId
 		WHERE 
-			hospitalId = #{hospitalId}
-		<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+			sch.hospitalId = #{hospitalId}
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
+		</if>
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
 		</if>
 		<if test="start_date neq null and start_date neq ''.toString()">
 			AND vscrDate >= #{start_date} 		
@@ -117,41 +134,55 @@
 	<select id="getSaengchaedbList"
 			resultType="com.cafe24.oneteammds.listvo.Saengchae">
 		SELECT 
- 			vscCode
- 		  , hospitalId
- 		  , patientId
- 		  , vscHeight
- 		  , vscWeight
- 		  , bpMin
- 		  , bpMax
- 		  , bheat
- 		  , pDoctor
- 		  , vscCheck
- 		  , adminId
- 		  , vscrDate
+ 		   sc.vscCode
+ 		  ,sc.hospitalId
+ 		  ,sc.patientId
+ 		  ,sc.vscHeight
+ 		  ,sc.vscWeight
+ 		  ,sc.bpMin
+ 		  ,sc.bpMax
+ 		  ,sc.bheat
+ 		  ,sc.pDoctor
+ 		  ,sc.vscCheck
+ 		  ,sc.adminId
+ 		  ,sc.vscrDate
+ 		  ,pit.pName
 		FROM 
-			saengchae
+			saengchae sc
+		JOIN
+			patient pit
+			ON
+				sc.hospitalId = pit.hospitalId
+			AND
+				sc.patientId = pit.patientId	
 	</select>
 	
 	
 	<!-- MDS DB - 생체신호 및 상태  검색 -->
 	<select id="getSaengchaedbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Saengchae">
-	  	SELECT
-			 vscCode
-			,hospitalId
-			,patientId
-			,vscHeight
-			,vscWeight 
-			,bpMin
-			,bpMax
-			,bheat
-			,pDoctor
-			,vscCheck
-			,adminId
-			,vscrDate
-		FROM
-			 saengchae
+	  	SELECT 
+ 		   sc.vscCode
+ 		  ,sc.hospitalId
+ 		  ,sc.patientId
+ 		  ,sc.vscHeight
+ 		  ,sc.vscWeight
+ 		  ,sc.bpMin
+ 		  ,sc.bpMax
+ 		  ,sc.bheat
+ 		  ,sc.pDoctor
+ 		  ,sc.vscCheck
+ 		  ,sc.adminId
+ 		  ,sc.vscrDate
+ 		  ,pit.pName
+		FROM 
+			saengchae sc
+		JOIN
+			patient pit
+			ON
+				sc.hospitalId = pit.hospitalId
+			AND
+				sc.patientId = pit.patientId
 		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
 		<if test="sv2 != null and sv2 neq ''.toString()">	

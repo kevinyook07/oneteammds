@@ -17,7 +17,7 @@ public class ByungriService {
 	@Autowired
 	private ByungriMapper byungriMapper;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 병리검사결과
 
@@ -37,8 +37,8 @@ public class ByungriService {
 	}
 
 	// 병리검사결과 검색
-	public List<Byungrih> getByungriSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
-		List<Byungrih> list = byungriMapper.getByungriSearchList(hospitalId, sk, sv, start_date, finish_date);
+	public List<Byungrih> getByungriSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
+		List<Byungrih> list = byungriMapper.getByungriSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}

@@ -17,7 +17,7 @@ public class PandogService {
 	@Autowired
 	private PandogMapper pandogMapper;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 영상판독정보
 
@@ -37,9 +37,9 @@ public class PandogService {
 	}
 
 	// 영상판독정보 검색
-	public List<Pandogh> getPandogSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
+	public List<Pandogh> getPandogSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
 
-		List<Pandogh> list = pandogMapper.getPandogSearchList(hospitalId, sk, sv, start_date, finish_date);
+		List<Pandogh> list = pandogMapper.getPandogSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}

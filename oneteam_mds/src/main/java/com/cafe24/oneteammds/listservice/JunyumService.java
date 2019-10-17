@@ -17,7 +17,7 @@ public class JunyumService {
 	@Autowired
 	private JunyumMapper junyumMapper;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 법정 전염성 감염병
 
@@ -37,9 +37,9 @@ public class JunyumService {
 	}
 
 	// 법정 전염성 감염병 검색
-	public List<Junyumh> getJunyumSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
+	public List<Junyumh> getJunyumSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
 
-		List<Junyumh> list = junyumMapper.getJunyumSearchList(hospitalId, sk, sv, start_date, finish_date);
+		List<Junyumh> list = junyumMapper.getJunyumSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}

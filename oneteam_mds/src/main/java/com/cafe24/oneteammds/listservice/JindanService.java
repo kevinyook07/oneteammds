@@ -17,7 +17,7 @@ public class JindanService {
 	@Autowired
 	private JindanMapper jindanMapper;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 진단내역
 
@@ -37,8 +37,8 @@ public class JindanService {
 	}
 
 	// 병원DB - 검색
-	public List<Jindanh> getJindanhSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
-		List<Jindanh> list = jindanMapper.getJindanhSearchList(hospitalId, sk, sv, start_date, finish_date);
+	public List<Jindanh> getJindanhSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
+		List<Jindanh> list = jindanMapper.getJindanhSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}

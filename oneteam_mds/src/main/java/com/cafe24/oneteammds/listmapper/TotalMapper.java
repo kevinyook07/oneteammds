@@ -38,7 +38,7 @@ import com.cafe24.oneteammds.listvo.Youngsangh;
 @Mapper
 public interface TotalMapper {
 	
-	// 병원1
+	// 병원
 	
 	// 병원 DB 전체리스트
 	
@@ -51,7 +51,7 @@ public interface TotalMapper {
 	public int getTotalRegist(Total total);
 
 	// 병원DB - 전체 --> 검색
-	public List<Totalh> getTotalSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
+	public List<Totalh> getTotalSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 	
 	// 시스템DB
 	

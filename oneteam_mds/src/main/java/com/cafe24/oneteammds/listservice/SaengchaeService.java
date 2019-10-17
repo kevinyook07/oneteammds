@@ -17,7 +17,7 @@ public class SaengchaeService {
 	@Autowired
 	private SaengchaeMapper saengchaeMapper;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 생체신호 및 상태
 
@@ -37,9 +37,9 @@ public class SaengchaeService {
 	}
 
 	// 생체신호 및 상태 검색
-	public List<Saengchaeh> getSaengchaeSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date) {
+	public List<Saengchaeh> getSaengchaeSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
 
-		List<Saengchaeh> list = saengchaeMapper.getSaengchaeSearchList(hospitalId, sk, sv, start_date, finish_date);
+		List<Saengchaeh> list = saengchaeMapper.getSaengchaeSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}

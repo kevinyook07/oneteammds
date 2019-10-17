@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.GumcheMapper">
  	
- 	<!-- 병원 1-->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 검체검사결과 -->
  	
@@ -13,22 +13,29 @@
  	<select	id="getGumchehList" 
  			resultType="com.cafe24.oneteammds.listvo.Gumcheh">
  		SELECT 
- 			strCode
- 		  , hospitalId
- 		  , patientId
- 		  , stiName
- 		  , stiCode
- 		  , stName
- 		  , strValue
- 		  , strrValue
- 		  , pDoctor
- 		  , stdTime
- 		  , adminId
- 		  , strDate
+ 		   gch.strCode
+ 		  ,gch.hospitalId
+ 		  ,gch.patientId
+ 		  ,gch.stiName
+ 		  ,gch.stiCode
+ 		  ,gch.stName
+ 		  ,gch.strValue
+ 		  ,gch.strrValue
+ 		  ,gch.pDoctor
+ 		  ,gch.stdTime
+ 		  ,gch.adminId
+ 		  ,gch.strDate
+ 		  ,pit.pName
 		FROM 
-			gumcheh
+			gumcheh gch
+		JOIN
+			patient pit
+			ON
+				gch.hospitalId = pit.hospitalId
+			AND
+				gch.patientId = pit.patientId	
 		WHERE
-			hospitalId = #{session.SID}
+			gch.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 검체검사결과 -> 검체검사결과 regist form -->
@@ -84,23 +91,34 @@
 	<select id="getGumcheSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Gumche">
 	  	SELECT 
-			 strCode
-			,hospitalId
-			,patientId
-			,stiName
-			,stiCode
-			,stName
-			,strValue
-			,strrValue
-			,pDoctor
-			,stdTime
-			,adminId
-			,strDate			
-		FROM gumcheh
+ 		   gch.strCode
+ 		  ,gch.hospitalId
+ 		  ,gch.patientId
+ 		  ,gch.stiName
+ 		  ,gch.stiCode
+ 		  ,gch.stName
+ 		  ,gch.strValue
+ 		  ,gch.strrValue
+ 		  ,gch.pDoctor
+ 		  ,gch.stdTime
+ 		  ,gch.adminId
+ 		  ,gch.strDate
+ 		  ,pit.pName
+		FROM 
+			gumcheh gch
+		JOIN
+			patient pit
+			ON
+				gch.hospitalId = pit.hospitalId
+			AND
+				gch.patientId = pit.patientId
 		WHERE 
-			hospitalId = #{hospitalId}
-		<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+			gch.hospitalId = #{hospitalId}
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
+		</if>
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
 		</if>
 		<if test="start_date neq null and start_date neq ''.toString()">
 			AND strDate >= #{start_date} 		
@@ -117,20 +135,27 @@
 	<select id="getGumchedbList"
 			resultType="com.cafe24.oneteammds.listvo.Gumche">
 		SELECT 
- 			strCode
- 		  , hospitalId
- 		  , patientId
- 		  , stiName
- 		  , stiCode
- 		  , stName
- 		  , strValue
- 		  , strrValue
- 		  , pDoctor
- 		  , stdTime
- 		  , adminId
- 		  , strDate
+ 		   gc.strCode
+ 		  ,gc.hospitalId
+ 		  ,gc.patientId
+ 		  ,gc.stiName
+ 		  ,gc.stiCode
+ 		  ,gc.stName
+ 		  ,gc.strValue
+ 		  ,gc.strrValue
+ 		  ,gc.pDoctor
+ 		  ,gc.stdTime
+ 		  ,gc.adminId
+ 		  ,gc.strDate
+ 		  ,pit.pName	  
 		FROM 
-			gumche
+			gumche gc
+		JOIN
+			patient pit
+			ON
+				gc.hospitalId = pit.hospitalId
+			AND
+				gc.patientId = pit.patientId	
 	</select>
 	
 	
@@ -138,19 +163,27 @@
 	<select id="getGumchedbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Gumche">
 	  	SELECT 
-			 strCode
-			,hospitalId
-			,patientId
-			,stiName
-			,stiCode
-			,stName
-			,strValue
-			,strrValue
-			,pDoctor
-			,stdTime
-			,adminId
-			,strDate			
-		FROM gumche
+ 		   gc.strCode
+ 		  ,gc.hospitalId
+ 		  ,gc.patientId
+ 		  ,gc.stiName
+ 		  ,gc.stiCode
+ 		  ,gc.stName
+ 		  ,gc.strValue
+ 		  ,gc.strrValue
+ 		  ,gc.pDoctor
+ 		  ,gc.stdTime
+ 		  ,gc.adminId
+ 		  ,gc.strDate
+ 		  ,pit.pName
+		FROM 
+			gumche gc
+		JOIN
+			patient pit
+			ON
+				gc.hospitalId = pit.hospitalId
+			AND
+				gc.patientId = pit.patientId
 		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
 		<if test="sv2 != null and sv2 neq ''.toString()">	

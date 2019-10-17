@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.TotalMapper">
  	
- 	<!-- 병원 1-->
+ 	<!-- 병원 -->
  	
  	<!-- 병원 권한 로그인시 입력되는 ID값 받아서 전체 진료정보 리스트  출력 처리 -->
  	<select	id="getTotalhList" 
@@ -24,6 +24,7 @@
  		  , smkh.scCode, smkh.sccName, smkh.scrDate
  		  , drkh.dcCode, drkh.dccName, drkh.dcrDate
  		  , jyh.lcidCode, jyh.lcidName, jyh.lcidpGroup, jyh.lcidtResult, jyh.lcidinOut, jyh.lcidArea, jyh.lcidoDate, jyh.lciddDate, jyh.lcidrDate, jyh.lcidDate
+ 		  , pit.pName
 		FROM
 			jindanh jdh
 		JOIN
@@ -104,6 +105,12 @@
 				jdh.hospitalId = jyh.hospitalId
 			AND 
 				jdh.patientId = jyh.patientId
+		JOIN
+			patient pit
+			ON
+				jdh.hospitalId = pit.hospitalId
+			AND
+				jdh.patientId = pit.patientId		
 		 WHERE
 			jdh.hospitalId = #{session.SID}
  	</select>
@@ -347,6 +354,7 @@
  		  , smkh.scCode, smkh.sccName, smkh.scrDate
  		  , drkh.dcCode, drkh.dccName, drkh.dcrDate
  		  , jyh.lcidCode, jyh.lcidName, jyh.lcidpGroup, jyh.lcidtResult, jyh.lcidinOut, jyh.lcidArea, jyh.lcidoDate, jyh.lciddDate, jyh.lcidrDate, jyh.lcidDate
+ 		  , pit.pName
 		FROM
 			jindanh jdh
 		JOIN
@@ -427,10 +435,19 @@
 				jdh.hospitalId = jyh.hospitalId
 			AND 
 				jdh.patientId = jyh.patientId
+		JOIN
+			patient pit
+			ON
+				jdh.hospitalId = pit.hospitalId
+			AND
+				jdh.patientId = pit.patientId
 		 WHERE
 			jdh.hospitalId = #{hospitalId}
-			<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
+		</if>
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
 		</if>
 		<if test="start_date neq null and start_date neq ''.toString()">
 			AND jdh.drDate >= #{start_date} 		
@@ -444,76 +461,258 @@
 	<select id="getTotaldbList"
 			resultType="com.cafe24.oneteammds.listvo.Total">
 		SELECT 
- 			hospitalId
- 		  , patientId
- 		  , dbCode
- 		  , drDate
- 		  , mbCode
- 		  , mrDate
- 		  , strCode
- 		  , strDate
- 		  , ptrCode
- 		  , ptrDate
- 		  , itrCode
- 		  , itrDate
- 		  , iidCode
- 		  , iidrDate
- 		  , ftrCode
- 		  , ftrDate
- 		  , sbCode
- 		  , sbDate
- 		  , aseCode
- 		  , aserDate
- 		  , pibCode
- 		  , pirDate
- 		  , vscCode
- 		  , vscrDate
- 		  , scCode
- 		  , scrDate
- 		  , dcCode
- 		  , dcrDate
- 		  , lcidCode
- 		  , lcidDate
+ 		   tt.hospitalId
+ 		  ,tt.patientId
+ 		  ,jd.dbCode
+ 		  ,jd.drDate
+ 		  ,ym.mbCode
+ 		  ,ym.mrDate
+ 		  ,gc.strCode
+ 		  ,gc.strDate
+ 		  ,br.ptrCode
+ 		  ,br.ptrDate
+ 		  ,ys.itrCode
+ 		  ,ys.itrDate
+ 		  ,pd.iidCode
+ 		  ,pd.iidrDate
+ 		  ,gn.ftrCode
+ 		  ,gn.ftrDate
+ 		  ,ss.sbCode
+ 		  ,ss.sbDate
+ 		  ,alg.aseCode
+ 		  ,alg.aserDate
+ 		  ,yb.pibCode
+ 		  ,yb.pirDate
+ 		  ,sc.vscCode
+ 		  ,sc.vscrDate
+ 		  ,smk.scCode
+ 		  ,smk.scrDate
+ 		  ,drk.dcCode
+ 		  ,drk.dcrDate
+ 		  ,jy.lcidCode
+ 		  ,jy.lcidDate	  
+ 		  ,pit.pName
 		FROM 
-			total
+			total tt
+		JOIN
+			jindan jd
+			ON
+				tt.hospitalId = jd.hospitalId
+			AND
+				tt.patientId = jd.patientId
+		JOIN
+			yakmul ym
+			ON
+				tt.hospitalId = ym.hospitalId
+			AND
+				tt.patientId = ym.patientId
+		JOIN
+			gumche gc
+			ON
+				tt.hospitalId = gc.hospitalId
+			AND
+				tt.patientId = gc.patientId
+		JOIN
+			byungri br
+			ON 
+				tt.hospitalId = br.hospitalId
+			AND 
+				tt.patientId = br.patientId
+		JOIN 
+			youngsang ys
+			ON 
+				tt.hospitalId = ys.hospitalId
+			AND 
+				tt.patientId = ys.patientId
+		JOIN 
+			pandog pd
+			ON 
+				tt.hospitalId = pd.hospitalId
+			AND 
+				tt.patientId = pd.patientId
+		JOIN 
+			ginueng gn
+			ON 
+				tt.hospitalId = gn.hospitalId
+			AND 
+				tt.patientId = gn.patientId
+		JOIN 
+			susul ss
+			ON
+				tt.hospitalId = ss.hospitalId
+			AND 
+				tt.patientId = ss.patientId	 
+		JOIN 
+			allergy alg
+			ON 
+				tt.hospitalId = alg.hospitalId
+			AND 
+				tt.patientId = alg.patientId	
+		JOIN 
+			yebang yb
+			ON 
+				tt.hospitalId = yb.hospitalId
+			AND 
+				tt.patientId = yb.patientId
+		JOIN 
+			saengchae sc
+			ON 
+				tt.hospitalId = sc.hospitalId
+			AND 
+				tt.patientId = sc.patientId
+		JOIN 
+			smoking smk
+			ON 
+				tt.hospitalId = smk.hospitalId
+			AND 
+				tt.patientId = smk.patientId
+		JOIN 
+			drinking drk
+			ON 
+				tt.hospitalId = drk.hospitalId
+			AND 
+				tt.patientId = drk.patientId
+		JOIN 
+			junyum jy
+			ON 
+				tt.hospitalId = jy.hospitalId
+			AND 
+				tt.patientId = jy.patientId
+		JOIN
+			patient pit
+			ON
+				tt.hospitalId = pit.hospitalId
+			AND
+				tt.patientId = pit.patientId	
 	</select>
 	
 	<!-- 시스템DB 전체 검색 -->
 	<select	id="getTotaldbSearchList" parameterType="String"
  			resultType="com.cafe24.oneteammds.listvo.Total">
 		SELECT 
- 			hospitalId
- 		  , patientId
- 		  , dbCode
- 		  , drDate
- 		  , mbCode
- 		  , mrDate
- 		  , strCode
- 		  , strDate
- 		  , ptrCode
- 		  , ptrDate
- 		  , itrCode
- 		  , itrDate
- 		  , iidCode
- 		  , iidrDate
- 		  , ftrCode
- 		  , ftrDate
- 		  , sbCode
- 		  , sbDate
- 		  , aseCode
- 		  , aserDate
- 		  , pibCode
- 		  , pirDate
- 		  , vscCode
- 		  , vscrDate
- 		  , scCode
- 		  , scrDate
- 		  , dcCode
- 		  , dcrDate
- 		  , lcidCode
- 		  , lcidDate
+ 		   tt.hospitalId
+ 		  ,tt.patientId
+ 		  ,jd.dbCode
+ 		  ,jd.drDate
+ 		  ,ym.mbCode
+ 		  ,ym.mrDate
+ 		  ,gc.strCode
+ 		  ,gc.strDate
+ 		  ,br.ptrCode
+ 		  ,br.ptrDate
+ 		  ,ys.itrCode
+ 		  ,ys.itrDate
+ 		  ,pd.iidCode
+ 		  ,pd.iidrDate
+ 		  ,gn.ftrCode
+ 		  ,gn.ftrDate
+ 		  ,ss.sbCode
+ 		  ,ss.sbDate
+ 		  ,alg.aseCode
+ 		  ,alg.aserDate
+ 		  ,yb.pibCode
+ 		  ,yb.pirDate
+ 		  ,sc.vscCode
+ 		  ,sc.vscrDate
+ 		  ,smk.scCode
+ 		  ,smk.scrDate
+ 		  ,drk.dcCode
+ 		  ,drk.dcrDate
+ 		  ,jy.lcidCode
+ 		  ,jy.lcidDate	  
+ 		  ,pit.pName
 		FROM 
-			total
+			total tt
+		JOIN
+			jindan jd
+			ON
+				tt.hospitalId = jd.hospitalId
+			AND
+				tt.patientId = jd.patientId
+		JOIN
+			yakmul ym
+			ON
+				tt.hospitalId = ym.hospitalId
+			AND
+				tt.patientId = ym.patientId
+		JOIN
+			gumche gc
+			ON
+				tt.hospitalId = gc.hospitalId
+			AND
+				tt.patientId = gc.patientId
+		JOIN
+			byungri br
+			ON 
+				tt.hospitalId = br.hospitalId
+			AND 
+				tt.patientId = br.patientId
+		JOIN 
+			youngsang ys
+			ON 
+				tt.hospitalId = ys.hospitalId
+			AND 
+				tt.patientId = ys.patientId
+		JOIN 
+			pandog pd
+			ON 
+				tt.hospitalId = pd.hospitalId
+			AND 
+				tt.patientId = pd.patientId
+		JOIN 
+			ginueng gn
+			ON 
+				tt.hospitalId = gn.hospitalId
+			AND 
+				tt.patientId = gn.patientId
+		JOIN 
+			susul ss
+			ON
+				tt.hospitalId = ss.hospitalId
+			AND 
+				tt.patientId = ss.patientId	 
+		JOIN 
+			allergy alg
+			ON 
+				tt.hospitalId = alg.hospitalId
+			AND 
+				tt.patientId = alg.patientId	
+		JOIN 
+			yebang yb
+			ON 
+				tt.hospitalId = yb.hospitalId
+			AND 
+				tt.patientId = yb.patientId
+		JOIN 
+			saengchae sc
+			ON 
+				tt.hospitalId = sc.hospitalId
+			AND 
+				tt.patientId = sc.patientId
+		JOIN 
+			smoking smk
+			ON 
+				tt.hospitalId = smk.hospitalId
+			AND 
+				tt.patientId = smk.patientId
+		JOIN 
+			drinking drk
+			ON 
+				tt.hospitalId = drk.hospitalId
+			AND 
+				tt.patientId = drk.patientId
+		JOIN 
+			junyum jy
+			ON 
+				tt.hospitalId = jy.hospitalId
+			AND 
+				tt.patientId = jy.patientId
+		JOIN
+			patient pit
+			ON
+				tt.hospitalId = pit.hospitalId
+			AND
+				tt.patientId = pit.patientId
 		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
 		<if test="sv2 != null and sv2 neq ''.toString()">	

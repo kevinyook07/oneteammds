@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Ginuengh;
 @Mapper
 public interface GinuengMapper {
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 기능검사결과
 
@@ -23,7 +23,7 @@ public interface GinuengMapper {
 	public int getGinuengRegist(Ginueng ginueng);
 
 	// 병원DB - 기능검사결과
-	public List<Ginuengh> getGinuengSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
+	public List<Ginuengh> getGinuengSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// 시스템DB
 

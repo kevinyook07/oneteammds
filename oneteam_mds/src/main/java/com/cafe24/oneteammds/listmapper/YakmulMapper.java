@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Yakmulh;
 @Mapper
 public interface YakmulMapper {
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 약물처방내역
 
@@ -23,7 +23,7 @@ public interface YakmulMapper {
 	public int getYakmulRegist(Yakmul yakmul);
 
 	// 병원DB - 약물처방내역 --> 검색
-	public List<Yakmulh> getYakmulSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
+	public List<Yakmulh> getYakmulSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// 시스템DB
 

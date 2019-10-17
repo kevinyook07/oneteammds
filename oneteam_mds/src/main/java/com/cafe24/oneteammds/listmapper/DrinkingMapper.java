@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Drinkingh;
 @Mapper
 public interface DrinkingMapper {
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 음주상태
 
@@ -23,7 +23,7 @@ public interface DrinkingMapper {
 	public int getDrinkingRegist(Drinking drinking);
 
 	// 병원DB - 음주상태 검색
-	public List<Drinkingh> getDrinkingSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
+	public List<Drinkingh> getDrinkingSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// 시스템DB
 

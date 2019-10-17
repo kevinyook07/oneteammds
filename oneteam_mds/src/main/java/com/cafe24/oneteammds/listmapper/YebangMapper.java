@@ -11,7 +11,7 @@ import com.cafe24.oneteammds.listvo.Yebangh;
 @Mapper
 public interface YebangMapper {
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 예방접종내역
 
@@ -24,7 +24,7 @@ public interface YebangMapper {
 	public int getYebangRegist(Yebang yebang);
 
 	// 병원DB - 예방접종내역 검색
-	public List<Yebangh> getYebangSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
+	public List<Yebangh> getYebangSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// 시스템DB
 

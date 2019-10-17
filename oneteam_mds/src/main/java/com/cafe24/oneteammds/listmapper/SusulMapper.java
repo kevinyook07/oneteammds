@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Susulh;
 @Mapper
 public interface SusulMapper {
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 수술내역
 
@@ -23,7 +23,7 @@ public interface SusulMapper {
 	public int getSusulRegist(Susul susul);
 
 	// 병원DB - 수술내역 검색
-	public List<Susulh> getSusulSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
+	public List<Susulh> getSusulSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// 시스템DB
 

@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.listmapper.SmokingMapper">
  	
- 	<!-- 병원1 -->
+ 	<!-- 병원 -->
  	
  	<!-- 병원DB - 흡연상태 -->
  	
@@ -12,17 +12,24 @@
  	<select	id="getSmokinghList" 
  			resultType="com.cafe24.oneteammds.listvo.Smokingh">
  		SELECT 
- 			scCode
- 		  , hospitalId
- 		  , patientId
- 		  , sccName
- 		  , pDoctor
- 		  , adminId
- 		  , scrDate
+ 		   smkh.scCode
+ 		  ,smkh.hospitalId
+ 		  ,smkh.patientId
+ 		  ,smkh.sccName
+ 		  ,smkh.pDoctor
+ 		  ,smkh.adminId
+ 		  ,smkh.scrDate
+ 		  ,pit.pName
 		FROM 
-			smokingh
+			smokingh smkh
+		JOIN
+			patient pit
+			ON
+				smkh.hospitalId = pit.hospitalId
+			AND
+				smkh.patientId = pit.patientId	
 		WHERE
-			hospitalId = #{session.SID}
+			smkh.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 흡연상태 -> 흡연상태 regist form -->
@@ -67,20 +74,30 @@
 	<!-- 흡연상태 검색 -->
 	<select id="getSmokingSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Smoking">
-	  	SELECT
-			 scCode
-			,hospitalId
-			,patientId
-			,sccName
-			,pDoctor
-			,adminId
-			,scrDate
-		FROM
-			 smokingh
+	  	SELECT 
+ 		   smkh.scCode
+ 		  ,smkh.hospitalId
+ 		  ,smkh.patientId
+ 		  ,smkh.sccName
+ 		  ,smkh.pDoctor
+ 		  ,smkh.adminId
+ 		  ,smkh.scrDate
+ 		  ,pit.pName
+		FROM 
+			smokingh smkh
+		JOIN
+			patient pit
+			ON
+				smkh.hospitalId = pit.hospitalId
+			AND
+				smkh.patientId = pit.patientId
 		WHERE 
-			hospitalId = #{hospitalId}
-		<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+			smkh.hospitalId = #{hospitalId}
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
+		</if>
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
 		</if>
 		<if test="start_date neq null and start_date neq ''.toString()">
 			AND scrDate >= #{start_date} 		
@@ -97,30 +114,44 @@
 	<select id="getSmokingdbList"
 			resultType="com.cafe24.oneteammds.listvo.Smoking">
 		SELECT 
- 			scCode
- 		  , hospitalId
- 		  , patientId
- 		  , sccName
- 		  , pDoctor
- 		  , adminId
- 		  , scrDate
+ 		   smk.scCode
+ 		  ,smk.hospitalId
+ 		  ,smk.patientId
+ 		  ,smk.sccName
+ 		  ,smk.pDoctor
+ 		  ,smk.adminId
+ 		  ,smk.scrDate
+ 		  ,pit.pName
 		FROM 
-			smoking
+			smoking smk
+		JOIN
+			patient pit
+			ON
+				smk.hospitalId = pit.hospitalId
+			AND
+				smk.patientId = pit.patientId	
 	</select>
 	
 	<!-- MDS DB - 흡연상태  검색 -->
 	<select id="getSmokingdbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Smoking">
-	  	SELECT
-			 scCode
-			,hospitalId
-			,patientId
-			,sccName
-			,pDoctor
-			,adminId
-			,scrDate
-		FROM
-			 smoking
+	  	SELECT 
+ 		   smk.scCode
+ 		  ,smk.hospitalId
+ 		  ,smk.patientId
+ 		  ,smk.sccName
+ 		  ,smk.pDoctor
+ 		  ,smk.adminId
+ 		  ,smk.scrDate
+ 		  ,pit.pName
+		FROM 
+			smoking smk
+		JOIN
+			patient pit
+			ON
+				smk.hospitalId = pit.hospitalId
+			AND
+				smk.patientId = pit.patientId
 		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
 		<if test="sv2 != null and sv2 neq ''.toString()">	

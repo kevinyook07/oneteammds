@@ -22,7 +22,7 @@ public class GinuengController {
 	@Autowired
 	private GinuengService ginuengService;
 	
-	// 병원1
+	// 병원
 	
 	// 병원DB - 기능검사결과
 	
@@ -49,12 +49,14 @@ public class GinuengController {
 	// 병원DB - 기능검사결과 검색
 		@PostMapping("/ginuenghList")
 		public String getGinuengList(@RequestParam(value="hospitalId")String hospitalId
-								    ,@RequestParam(value = "sk") String sk
-								    ,@RequestParam(value = "sv") String sv
+								    ,@RequestParam(value = "sk1") String sk1
+								    ,@RequestParam(value = "sk2") String sk2
+							   	    ,@RequestParam(value = "sv1") String sv1
+							   	    ,@RequestParam(value = "sv2") String sv2
 								    ,@RequestParam(value = "start_date") String start_date
 									,@RequestParam(value = "finish_date") String finish_date,							    
 				Model model) {
-			List<Ginuengh> list = ginuengService.getGinuengSearchList(hospitalId, sk, sv, start_date, finish_date);
+			List<Ginuengh> list = ginuengService.getGinuengSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 			model.addAttribute("ginuenghList", list);
 
 			return "/ginueng/ginuengh/ginuenghList";

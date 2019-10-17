@@ -21,7 +21,7 @@ public class AllergyController {
 	@Autowired
 	private AllergyService allergyService;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 알러지 및 부작용
 
@@ -46,12 +46,14 @@ public class AllergyController {
 	// 병원DB - 알러지 및 부작용 검색
 	@PostMapping("/allergyhList")
 	public String getAllergyList(@RequestParam(value = "hospitalId") String hospitalId
-								,@RequestParam(value = "sk") String sk
-								,@RequestParam(value = "sv") String sv
+								,@RequestParam(value = "sk1") String sk1
+							    ,@RequestParam(value = "sk2") String sk2
+						   	    ,@RequestParam(value = "sv1") String sv1
+						   	    ,@RequestParam(value = "sv2") String sv2
 								,@RequestParam(value = "start_date") String start_date
 								,@RequestParam(value = "finish_date") String finish_date
 			, Model model) {
-		List<Allergyh> list = allergyService.getAllergySearchList(hospitalId, sk, sv, start_date, finish_date);
+		List<Allergyh> list = allergyService.getAllergySearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("allergyhList", list);
 
 		return "/allergy/allergyh/allergyhList";

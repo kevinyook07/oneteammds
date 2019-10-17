@@ -10,7 +10,7 @@ import com.cafe24.oneteammds.listvo.Saengchaeh;
 @Mapper
 public interface SaengchaeMapper {
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 생체신호 및 상태
 
@@ -23,7 +23,7 @@ public interface SaengchaeMapper {
 	public int getSaengchaeRegist(Saengchae saengchae);
 
 	// 병원DB - 생체신호 및 상태 검색
-	public List<Saengchaeh> getSaengchaeSearchList(String hospitalId, String sk, String sv, String start_date, String finish_date);
+	public List<Saengchaeh> getSaengchaeSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// 시스템DB
 

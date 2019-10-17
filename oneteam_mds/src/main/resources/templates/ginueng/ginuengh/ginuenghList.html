@@ -6,7 +6,7 @@
 <th:block layout:fragment="customContents">
 	<div class="page-content">
 	 <!-- **************윗상단 메인 메뉴 ************** -->
-		<div class="page-header">1
+		<div class="page-header">
 		<h2 style="text-align:center">기능검사결과 리스트</h2>
 			<div class="container-fluid"></div>
 	<!-- **************윗상단 메인 메뉴END ************** -->
@@ -18,10 +18,14 @@
                   
                   <div class="block-body">
                     <form action="/ginuenghList" method="post">
-		<select name="sk">
-			<option value="patientId">환자고유번호</option>														
+		<select id="sk1" name="sk1"></br>
+			<option value="pName">환자 이름</option>		
+			</select>	
+			<input type="text" name="sv1"></br>
+		<select id="sk2" name="sk2">		
+			<option value="pit.patientId">환자고유번호</option>			
 		</select>
-		<input type="text" name="sv">
+		<input type="text" name="sv2"></br>
 		<input type="date" name="start_date">~
      	<input type="date" name="finish_date">
 		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
@@ -33,6 +37,7 @@
 			<th style="white-space:nowrap;">기능검사결과 코드</th>
 							<th style="white-space:nowrap;">병원고유번호</th>
 							<th style="white-space:nowrap;">환자고유번호</th>
+							<th style="white-space:nowrap;">환자 이름</th>
 							<th style="white-space:nowrap;">검사명</th>
 							<th style="white-space:nowrap;">검사코드</th>
 							<th style="white-space:nowrap;">검사결과값</th>
@@ -47,6 +52,7 @@
 			<td th:text="${list.ftrCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.ftName}"></td>
 			<td th:text="${list.ftCode}"></td>
 			<td th:text="${list.ftrValue}"></td>

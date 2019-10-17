@@ -19,11 +19,14 @@
                   <div class="block-body">
                     
                     <form action="/jindanhList" method="post">
-		<select name="sk">	
-			<option value="patientId">환자고유번호</option>
-			<option value="pName">환자이름</option>					
-		</select>	
-		<input type="text" name="sv">
+		<select id="sk1" name="sk1"></br>
+			<option value="pName">환자 이름</option>		
+			</select>	
+			<input type="text" name="sv1"></br>
+		<select id="sk2" name="sk2">		
+			<option value="pit.patientId">환자고유번호</option>			
+		</select>		
+		<input type="text" name="sv2"></br>	
 		<input type="date" name="start_date">~
      	<input type="date" name="finish_date">    	
 		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
