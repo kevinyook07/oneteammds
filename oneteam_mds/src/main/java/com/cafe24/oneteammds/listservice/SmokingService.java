@@ -52,9 +52,9 @@ public class SmokingService {
 	}
 
 	// MDS DB - 흡연상태 검색
-	public List<Smoking> getSmokringdbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
+	public List<Smoking> getSmokringdbSearchList(String sk1, String sk2, String sk3, String sv1, String sv2, String sv3, String start_date, String finish_date) {
 
-		List<Smoking> list = smokingMapper.getSmokingdbSearchList(sk1, sk2, sv1, sv2, start_date, finish_date);
+		List<Smoking> list = smokingMapper.getSmokingdbSearchList(sk1, sk2, sk3, sv1, sv2, sv3, start_date, finish_date);
 
 		return list;
 	}

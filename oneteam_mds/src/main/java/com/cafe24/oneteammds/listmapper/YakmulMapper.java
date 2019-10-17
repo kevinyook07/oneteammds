@@ -31,7 +31,7 @@ public interface YakmulMapper {
 	public List<Yakmul> getYakmuldbList();
 
 	// MDS DB - 약물처방내역 검색
-	public List<Yakmul> getYakmuldbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
+	public List<Yakmul> getYakmuldbSearchList(String sk1, String sk2, String sk3, String sv1, String sv2, String sv3, String start_date, String finish_date);
 
 	// MDS DB - 약물처방내역 삭제
 	public int delYakmul(String mbCode, String hospitalId, String patientId);
