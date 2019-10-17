@@ -18,12 +18,20 @@
                   
                   <div class="block-body">
                     <form action="/totaldbList" method="post">
-		<select name="sk">		
-			<option value="hospitalId">병원고유번호</option>
-			<option value="patientId">환자고유번호</option>
-					
-		</select>
-		<input type="text" name="sv">
+		<select id="sk1" name="sk1"></br>
+			<option value="pit.hospitalId">병원고유번호</option>
+			</select>	
+			<input type="text" name="sv1"></br>
+		<select id="sk2" name="sk2">		
+			<option value="pit.patientId">환자고유번호</option>
+			</select>		
+		<input type="text" name="sv2"></br>
+		<select id="sk3" name="sk3">		
+		<option value="pName">환자 이름</option>					
+		</select>		
+		<input type="text" name="sv3"></br>
+		<input type="date" name="start_date">~
+     	<input type="date" name="finish_date">
 		<button type="submit" class="btn btn-secondary">검색</button>
 	</form>
                      <table class="table">
@@ -35,6 +43,7 @@
 			<th style="white-space:nowrap;">진단내역코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -44,6 +53,7 @@
 			<td th:text="${list.dbCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.drDate}"></td>
 			<td>
 				<a th:href="@{/jindandbDesc(dbCode=${list.dbCode})}">상세</a>
@@ -58,6 +68,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">약물처방내역코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -65,6 +76,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.mbCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.mrDate}"></td>
 			<td>
 				<a th:href="@{/yakmuldbDesc(mbCode=${list.mbCode})}">상세</a>
@@ -79,6 +91,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">검체검사결과코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -86,6 +99,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.strCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.strDate}"></td>
 			<td>
 				<a th:href="@{/gumchedbDesc(strCode=${list.strCode})}">상세</a>
@@ -100,6 +114,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">병리검사결과코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -107,6 +122,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.ptrCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.ptrDate}"></td>
 			<td>
 				<a th:href="@{/byungridbDesc(ptrCode=${list.ptrCode})}">상세</a>
@@ -121,6 +137,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">영상검사결과코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -128,6 +145,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.itrCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.itrDate}"></td>
 			<td>
 				<a th:href="@{/youngsangdbDesc(itrCode=${list.itrCode})}">상세</a>
@@ -142,6 +160,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">영상판독정보코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -149,6 +168,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.iidCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.iidrDate}"></td>
 			<td>
 				<a th:href="@{/pandogdbDesc(iidCode=${list.iidCode})}">상세</a>
@@ -163,6 +183,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">기능검사결과코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -170,6 +191,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.ftrCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.ftrDate}"></td>
 			<td>
 				<a th:href="@{/ginuengdbDesc(ftrCode=${list.ftrCode})}">상세</a>
@@ -184,6 +206,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">수술내역코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -191,6 +214,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.sbCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.sbDate}"></td>
 			<td>
 				<a th:href="@{/susuldbDesc(sbCode=${list.sbCode})}">상세</a>
@@ -205,6 +229,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">알러지및부작용코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -212,6 +237,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.aseCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.aserDate}"></td>
 			<td>
 				<a th:href="@{/allergydbDesc(aseCode=${list.aseCode})}">상세</a>
@@ -226,6 +252,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">예방접종내역코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -233,6 +260,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.pibCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.pirDate}"></td>
 			<td>
 				<a th:href="@{/yebangdbDesc(pibCode=${list.pibCode})}">상세</a>
@@ -247,6 +275,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">생체신호및상태코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -254,6 +283,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.vscCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.vscrDate}"></td>
 			<td>
 				<a th:href="@{/saengchaedbDesc(vscCode=${list.vscCode})}">상세</a>
@@ -268,6 +298,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">흡연상태코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -275,6 +306,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.scCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.scrDate}"></td>
 			<td>
 				<a th:href="@{/smokingdbDesc(scCode=${list.scCode})}">상세</a>
@@ -289,6 +321,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">음주상태코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -296,6 +329,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.dcCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.dcrDate}"></td>
 			<td>
 				<a th:href="@{/drinkingdbDesc(dcCode=${list.dcCode})}">상세</a>
@@ -310,6 +344,7 @@
 		</tr>
 		<tr>
 			<th style="white-space:nowrap;">법정전염성감염병코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 			<th style="white-space:nowrap;">상세보기</th>
 		</tr>
@@ -317,6 +352,7 @@
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.lcidCode}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.lcidDate}"></td>
 			<td>
 				<a th:href="@{/junyumdbDesc(lcidCode=${list.lcidCode})}">상세</a>
@@ -332,12 +368,14 @@
 		<tr>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 		</tr>
 		</thead>
 						<tbody>
 		<tr th:each="list:${totaldbList}">
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<td>
 				<a th:href="@{/totaldbDesc(dbCode=${list.dbCode}
 										 , mbCode=${list.mbCode}

@@ -18,11 +18,16 @@
                   
                   <div class="block-body">
                     <form action="/totalhList" method="post">
-		<select name="sk">		
-			<option value="jdh.patientId">환자고유번호</option>			
-		
-		</select>
-		<input type="text" name="sv">
+		<select id="sk1" name="sk1"></br>
+			<option value="pName">환자 이름</option>		
+			</select>	
+			<input type="text" name="sv1"></br>
+		<select id="sk2" name="sk2">		
+			<option value="pit.patientId">환자고유번호</option>			
+		</select>		
+		<input type="text" name="sv2"></br>
+		<input type="date" name="start_date">~
+     	<input type="date" name="finish_date">
 		<input type="hidden" name="hospitalId" th:value="${param?.hospitalId?.toString()}">
 		<button type="submit" class="btn btn-secondary">검색</button>
 	</form>
@@ -32,9 +37,10 @@
 			<th style="white-space:nowrap;">진단내역</th>
 		</tr>
 		<tr>
-			<th style="white-space:nowrap;">진단내역코드</th>
+			<th style="white-space:nowrap;">진단내역코드</th>		
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -43,6 +49,7 @@
 			<td th:text="${list.dbCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.dName}"></td>
 			<td th:text="${list.dCode}"></td>
 			<td th:text="${list.dDate}"></td>
@@ -64,6 +71,7 @@
 			<th style="white-space:nowrap;">약물처방내역코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -72,6 +80,7 @@
 			<td th:text="${list.mbCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.mmName}"></td>
 			<td th:text="${list.mmCode}"></td>
 			<td th:text="${list.miName}"></td>
@@ -98,6 +107,7 @@
 			<th style="white-space:nowrap;">검체검사결과코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -106,6 +116,7 @@
 			<td th:text="${list.strCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.stiName}"></td>
 			<td th:text="${list.stiCode}"></td>
 			<td th:text="${list.stName}"></td>
@@ -128,6 +139,7 @@
 			<th style="white-space:nowrap;">병리검사결과코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -136,6 +148,7 @@
 			<td th:text="${list.ptrCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.ptName}"></td>
 			<td th:text="${list.ptCode}"></td>
 			<td th:text="${list.ptrValue}"></td>
@@ -156,6 +169,7 @@
 			<th style="white-space:nowrap;">영상검사결과코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -164,6 +178,7 @@
 			<td th:text="${list.itrCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.itName}"></td>
 			<td th:text="${list.itCode}"></td>
 			<td th:text="${list.itrValue}"></td>
@@ -184,6 +199,7 @@
 			<th style="white-space:nowrap;">영상판독정보코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -192,6 +208,7 @@
 			<td th:text="${list.iidCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.liContent}"></td>
 			<td th:text="${list.iUrl}"></td>
 			<td th:text="${list.idName}"></td>
@@ -213,6 +230,7 @@
 			<th style="white-space:nowrap;">기능검사결과코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -221,6 +239,7 @@
 			<td th:text="${list.ftrCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.ftName}"></td>
 			<td th:text="${list.ftCode}"></td>
 			<td th:text="${list.ftrValue}"></td>
@@ -241,6 +260,7 @@
 			<th style="white-space:nowrap;">수술내역코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -249,6 +269,7 @@
 			<td th:text="${list.sbCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.sName}"></td>
 			<td th:text="${list.sCode}"></td>
 			<td th:text="${list.aKind}"></td>
@@ -269,6 +290,7 @@
 			<th style="white-space:nowrap;">알러지및부작용코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -277,6 +299,7 @@
 			<td th:text="${list.aseCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.asemFactor}"></td>
 			<td th:text="${list.asemfCode}"></td>
 			<td th:text="${list.aseName}"></td>
@@ -298,6 +321,7 @@
 			<th style="white-space:nowrap;">예방접종내역코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -306,6 +330,7 @@
 			<td th:text="${list.pibCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.piName}"></td>
 			<td th:text="${list.piCode}"></td>
 			<td th:text="${list.pivName}"></td>
@@ -327,6 +352,7 @@
 			<th style="white-space:nowrap;">생체신호및상태코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -335,6 +361,7 @@
 			<td th:text="${list.vscCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.vscHeight}"></td>
 			<td th:text="${list.vscWeight}"></td>
 			<td th:text="${list.bpMin}"></td>
@@ -357,6 +384,7 @@
 			<th style="white-space:nowrap;">흡연상태코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -365,6 +393,7 @@
 			<td th:text="${list.scCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.sccName}"></td> -->
 			<td th:text="${list.scrDate}"></td>
 			<td>
@@ -382,6 +411,7 @@
 			<th style="white-space:nowrap;">음주상태코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -390,6 +420,7 @@
 			<td th:text="${list.dcCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.dccName}"></td> -->
 			<td th:text="${list.dcrDate}"></td>
 			<td>
@@ -407,6 +438,7 @@
 			<th style="white-space:nowrap;">법정전염성감염병코드</th>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 			<th style="white-space:nowrap;">등록일자</th>
 		</tr>
 		</thead>
@@ -415,6 +447,7 @@
 			<td th:text="${list.lcidCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<!-- <td th:text="${list.lcidName}"></td>
 			<td th:text="${list.lcidpGroup}"></td>
 			<td th:text="${list.lcidtResult}"></td>
@@ -438,12 +471,14 @@
 		<tr>
 			<th style="white-space:nowrap;">병원고유번호</th>
 			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
 		</tr>
 		</thead>
 						<tbody>
 		<tr th:each="list:${totalhList}">
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<td>
 				<a th:href="@{/totalRegist(patientId=${list.patientId}, hospitalId=${list.hospitalId})}">MDS시스템DB전체등록</a>
 			</td>

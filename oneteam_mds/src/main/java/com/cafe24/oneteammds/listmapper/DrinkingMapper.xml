@@ -12,17 +12,24 @@
  	<select	id="getDrinkinghList" 
  			resultType="com.cafe24.oneteammds.listvo.Drinkingh">
  		SELECT 
- 			dcCode
- 		  , hospitalId
- 		  , patientId
- 		  , dccName
- 		  , pDoctor
- 		  , adminId
- 		  , dcrDate
+ 		   drkh.dcCode
+ 		  ,drkh.hospitalId
+ 		  ,drkh.patientId
+ 		  ,drkh.dccName
+ 		  ,drkh.pDoctor
+ 		  ,drkh.adminId
+ 		  ,drkh.dcrDate
+ 		  ,pit.pName
 		FROM 
-			drinkingh
+			drinkingh drkh
+		JOIN
+			patient pit
+			ON
+				drkh.hospitalId = pit.hospitalId
+			AND
+				drkh.patientId = pit.patientId	
 		WHERE
-			hospitalId = #{session.SID}
+			drkh.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 음주상태 -> 음주상태 regist form -->
@@ -67,22 +74,37 @@
 	<!-- 음주상태 검색 -->
 	<select id="getDrinkingSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Drinking">
-	  	SELECT
-			 dcCode
-			,hospitalId
-			,patientId
-			,dccName
-			,pDoctor
-			,adminId
-			,dcrDate
-		FROM
-			 drinkingh
+	  	SELECT 
+ 		   drkh.dcCode
+ 		  ,drkh.hospitalId
+ 		  ,drkh.patientId
+ 		  ,drkh.dccName
+ 		  ,drkh.pDoctor
+ 		  ,drkh.adminId
+ 		  ,drkh.dcrDate
+ 		  ,pit.pName
+		FROM 
+			drinkingh drkh
+		JOIN
+			patient pit
+			ON
+				drkh.hospitalId = pit.hospitalId
+			AND
+				drkh.patientId = pit.patientId
 		WHERE 
-			hospitalId = #{hospitalId}
-		<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+			drkh.hospitalId = #{hospitalId}
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
 		</if>
-	
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
+		</if>
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND dcrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND dcrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- 시스템DB -->
@@ -92,37 +114,60 @@
 	<select id="getDrinkingdbList"
 			resultType="com.cafe24.oneteammds.listvo.Drinking">
 		SELECT 
- 			dcCode
- 		  , hospitalId
- 		  , patientId
- 		  , dccName
- 		  , pDoctor
- 		  , adminId
- 		  , dcrDate
+ 		   drk.dcCode
+ 		  ,drk.hospitalId
+ 		  ,drk.patientId
+ 		  ,drk.dccName
+ 		  ,drk.pDoctor
+ 		  ,drk.adminId
+ 		  ,drk.dcrDate
+ 		  ,pit.pName	  
 		FROM 
-			drinking
+			drinking drk
+		JOIN
+			patient pit
+			ON
+				drk.hospitalId = pit.hospitalId
+			AND
+				drk.patientId = pit.patientId	
 	</select>
 	
 	<!-- MDS DB - 음주상태 검색 -->
 	<select id="getDrinkingdbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Drinking">
-	  	SELECT
-			 dcCode
-			,hospitalId
-			,patientId
-			,dccName
-			,pDoctor
-			,adminId
-			,dcrDate
-		FROM
-			 drinking
-		<if test="sv != null and sv neq ''.toString()">	 
-		WHERE 
-			
-							
-			${sk} Like CONCAT('%',#{sv},'%')		
+	  	SELECT 
+ 		   drk.dcCode
+ 		  ,drk.hospitalId
+ 		  ,drk.patientId
+ 		  ,drk.dccName
+ 		  ,drk.pDoctor
+ 		  ,drk.adminId
+ 		  ,drk.dcrDate
+ 		  ,pit.pName	  
+		FROM 
+			drinking drk
+		JOIN
+			patient pit
+			ON
+				drk.hospitalId = pit.hospitalId
+			AND
+				drk.patientId = pit.patientId
+		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
-	
+		<if test="sv2 != null and sv2 neq ''.toString()">	
+		</if>
+		<if test="sv3 != null and sv3 neq ''.toString()">	
+		</if>
+		WHERE 					
+		${sk1} Like CONCAT('%',#{sv1},'%') 
+		and ${sk2} Like CONCAT('%',#{sv2},'%')
+		and ${sk3} Like CONCAT('%',#{sv3},'%')				
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND dcrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND dcrDate <![CDATA[<=]]> #{finish_date} 
+		</if>	
 	</select>
 	
 	<!-- MDS DB - 음주상태 삭제 -->

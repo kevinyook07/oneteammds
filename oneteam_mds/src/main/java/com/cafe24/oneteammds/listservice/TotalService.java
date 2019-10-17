@@ -45,7 +45,7 @@ public class TotalService {
 	@Autowired
 	private TotalMapper totalMapper;
 
-	// 병원1
+	// 병원
 
 	// 병원 권한 로그인시 입력되는 ID값 받아서 전체 진료정보 리스트 출력 처리
 	public List<Totalh> getTotalhList(String hospitalId) {
@@ -61,8 +61,8 @@ public class TotalService {
 	}
 
 	// 전체 검색
-	public List<Totalh> getTotalSearchList(String hospitalId, String sk, String sv) {
-		List<Totalh> list = totalMapper.getTotalSearchList(hospitalId, sk, sv);
+	public List<Totalh> getTotalSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
+		List<Totalh> list = totalMapper.getTotalSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}
@@ -73,8 +73,8 @@ public class TotalService {
 	}
 	
 	// MDS DB - 약물처방내역 검색
-		public List<Total> getTotaldbSearchList(String sk, String sv) {
-			List<Total> list = totalMapper.getTotaldbSearchList(sk, sv);
+		public List<Total> getTotaldbSearchList(String sk1, String sk2, String sk3, String sv1, String sv2, String sv3, String start_date, String finish_date) {
+			List<Total> list = totalMapper.getTotaldbSearchList(sk1, sk2, sk3, sv1, sv2, sv3, start_date, finish_date);
 
 			return list;
 		}

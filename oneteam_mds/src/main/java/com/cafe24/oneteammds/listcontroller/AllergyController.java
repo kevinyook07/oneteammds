@@ -21,7 +21,7 @@ public class AllergyController {
 	@Autowired
 	private AllergyService allergyService;
 
-	// 병원1
+	// 병원
 
 	// 병원DB - 알러지 및 부작용
 
@@ -45,9 +45,15 @@ public class AllergyController {
 
 	// 병원DB - 알러지 및 부작용 검색
 	@PostMapping("/allergyhList")
-	public String getAllergyList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Allergyh> list = allergyService.getAllergySearchList(hospitalId, sk, sv);
+	public String getAllergyList(@RequestParam(value = "hospitalId") String hospitalId
+								,@RequestParam(value = "sk1") String sk1
+							    ,@RequestParam(value = "sk2") String sk2
+						   	    ,@RequestParam(value = "sv1") String sv1
+						   	    ,@RequestParam(value = "sv2") String sv2
+								,@RequestParam(value = "start_date") String start_date
+								,@RequestParam(value = "finish_date") String finish_date
+			, Model model) {
+		List<Allergyh> list = allergyService.getAllergySearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("allergyhList", list);
 
 		return "/allergy/allergyh/allergyhList";
@@ -61,29 +67,34 @@ public class AllergyController {
 	public String getAllergyRegist(Allergy allergy) {
 
 		allergyService.getAllergyRegist(allergy);
-		
+
 		return "/allergy/allergyRegist/allergyComplete";
 	}
-	
+
 	@RequestMapping("/allergydbList")
 	public String getAllergydbList(Model model) {
-		
+
 		model.addAttribute("allergydbList", allergyService.getAllergydbList());
-		
+
 		return "/allergy/allergy/allergydbList";
 	}
-	
+
 	// MDS DB - 알러지 및 부작용 검색
 	@PostMapping("/allergydbList")
-	public String getAllergydbSearchList(@RequestParam(value = "sk") String sk
-								   ,@RequestParam(value = "sv") String sv,
-				Model model) {
-			List<Allergy> list = allergyService.getAllergydbSearchList(sk, sv);
-			model.addAttribute("allergydbList", list);
+	public String getAllergydbSearchList(@RequestParam(value = "sk1") String sk1
+									    ,@RequestParam(value = "sk2") String sk2
+									    ,@RequestParam(value = "sk3") String sk3
+									   	,@RequestParam(value = "sv1") String sv1
+									   	,@RequestParam(value = "sv2") String sv2
+									   	,@RequestParam(value = "sv3") String sv3
+										,@RequestParam(value = "start_date") String start_date
+										,@RequestParam(value = "finish_date") String finish_date,						
+			Model model) {
+		List<Allergy> list = allergyService.getAllergydbSearchList(sk1, sk2, sk3, sv1, sv2, sv3, start_date, finish_date);
+		model.addAttribute("allergydbList", list);
 
-			return "/allergy/allergy/allergydbList";
-		}
-	
+		return "/allergy/allergy/allergydbList";
+	}
 
 	// MDS DB - 알러지 및 부작용 삭제
 	@GetMapping("/delAllergy")

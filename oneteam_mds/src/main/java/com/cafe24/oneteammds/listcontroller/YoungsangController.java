@@ -45,9 +45,15 @@ public class YoungsangController {
 
 	// 병원DB - 영상검사결과 검색
 	@PostMapping("/youngsanghList")
-	public String getYoungsangList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Youngsangh> list = youngsangService.getYoungsangSearchList(hospitalId, sk, sv);
+	public String getYoungsangList(@RequestParam(value = "hospitalId") String hospitalId
+								  ,@RequestParam(value = "sk1") String sk1
+								  ,@RequestParam(value = "sk2") String sk2
+							   	  ,@RequestParam(value = "sv1") String sv1
+							   	  ,@RequestParam(value = "sv2") String sv2
+								  ,@RequestParam(value = "start_date") String start_date
+								  ,@RequestParam(value = "finish_date") String finish_date
+								  , Model model) {
+		List<Youngsangh> list = youngsangService.getYoungsangSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("youngsanghList", list);
 
 		return "/youngsang/youngsangh/youngsanghList";
@@ -75,9 +81,16 @@ public class YoungsangController {
 
 	// MDS DB - 영상검사결과 검색
 	@PostMapping("/youngsangdbList")
-	public String getYoungsangdbList(@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv,
+	public String getYoungsangdbList(@RequestParam(value = "sk1") String sk1
+								    ,@RequestParam(value = "sk2") String sk2
+								    ,@RequestParam(value = "sk3") String sk3
+								   	,@RequestParam(value = "sv1") String sv1
+								   	,@RequestParam(value = "sv2") String sv2
+								   	,@RequestParam(value = "sv3") String sv3
+									,@RequestParam(value = "start_date") String start_date
+									,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Youngsang> list = youngsangService.getYoungsangdbSearchList(sk, sv);
+		List<Youngsang> list = youngsangService.getYoungsangdbSearchList(sk1, sk2, sk3, sv1, sv2, sv3, start_date, finish_date);
 		model.addAttribute("youngsangdbList", list);
 
 		return "/youngsang/youngsang/youngsangdbList";

@@ -37,9 +37,9 @@ public class JunyumService {
 	}
 
 	// 법정 전염성 감염병 검색
-	public List<Junyumh> getJunyumSearchList(String hospitalId, String sk, String sv) {
+	public List<Junyumh> getJunyumSearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date) {
 
-		List<Junyumh> list = junyumMapper.getJunyumSearchList(hospitalId, sk, sv);
+		List<Junyumh> list = junyumMapper.getJunyumSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 
 		return list;
 	}
@@ -52,9 +52,9 @@ public class JunyumService {
 	}
 
 	// MDS DB - 법정 전염성 감염병 검색
-	public List<Junyum> getJunyumdbSearchList(String sk, String sv) {
+	public List<Junyum> getJunyumdbSearchList(String sk1, String sk2, String sk3, String sv1, String sv2, String sv3, String start_date, String finish_date) {
 
-		List<Junyum> list = junyumMapper.getJunyumdbSearchList(sk, sv);
+		List<Junyum> list = junyumMapper.getJunyumdbSearchList(sk1, sk2, sk3, sv1, sv2, sv3, start_date, finish_date);
 
 		return list;
 	}

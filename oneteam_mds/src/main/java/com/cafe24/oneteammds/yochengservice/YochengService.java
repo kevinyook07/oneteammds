@@ -98,18 +98,14 @@ public class YochengService {
 	}
 	
 	//MDS 진료 정보 등록. 접근 지정자 설정 후 getYochenglist_ById 메서드 입력, return 값 입력 // return은 호출된 곳으로 return 된다.
-	public Yochenglist getYochenglist_ById(String patientId) {
+	public Yochenglist getYochenglistById(String patientId) {
 		
-		return yochengMapper.getYochenglist_ById(patientId);
+		return yochengMapper.getYochenglistById(patientId);
 	}
 	
 	
 	
-	//접근 지정자 설정 후 getYochengAdminInsert 메서드 입력, return 값 입력 // return은 호출된 곳으로 return 된다.
-	public int getYochengAdminInsert(Yochenglist yochenglist) {
-		
-		return yochengMapper.getYochengAdminInsert(yochenglist);
-	}
+	
 	
 	
 	

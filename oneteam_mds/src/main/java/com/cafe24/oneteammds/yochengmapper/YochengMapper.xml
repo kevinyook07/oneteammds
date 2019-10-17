@@ -101,7 +101,7 @@
 	</select>
 	
 	<!-- patientId 값을 가지고 와서 MDS 진료 정보 등록을 위한  쿼리-->
-	<select id="getYochenglist_ById"
+	<select id="getYochenglistById"
  			parameterType="String"
  			resultType="com.cafe24.oneteammds.yochengvo.Yochenglist">
 		SELECT 
@@ -126,26 +126,24 @@
 	<!-- 관리자에서 병원으로 요청 내역 전송 -->
 	<insert id="getYochengAdminInsert"
  		    parameterType="com.cafe24.oneteammds.yochengvo.Yochenglist">
- 	INSERT INTO 
- 			susinHospitalList
-		SELECT
-			yochengCode
-			, yochengoutHospitalId
-			, yochengoutHospitalName
-			, yochenginHospitalId
-			, yochenginHospitalName
-			, patientId
-			, patientName
-			, yochengJinlyoCode
-			, yochengDate
-			, yochengSayu
-		FROM 
-			yochenglist
-		WHERE 
-			patientId = #{patientId}
+	 	INSERT INTO 
+	 			susinHospitalList
+			SELECT
+				yochengCode
+				, yochengoutHospitalId
+				, yochengoutHospitalName
+				, yochenginHospitalId
+				, yochenginHospitalName
+				, patientId
+				, patientName
+				, yochengJinlyoCode
+				, yochengDate
+				, yochengSayu
+			FROM 
+				yochenglist
+			WHERE 
+				patientId = #{patientId}
 	</insert>
-	
-	
 	
 	
 	

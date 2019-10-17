@@ -49,10 +49,14 @@ public class GumcheController {
 	// 병원DB - 검체검사결과 검색
 		@PostMapping("/gumchehList")
 		public String getGumcheList(@RequestParam(value="hospitalId")String hospitalId
-								   ,@RequestParam(value = "sk") String sk
-								   ,@RequestParam(value = "sv") String sv,
+								   ,@RequestParam(value = "sk1") String sk1
+								   ,@RequestParam(value = "sk2") String sk2
+								   ,@RequestParam(value = "sv1") String sv1
+								   ,@RequestParam(value = "sv2") String sv2
+								   ,@RequestParam(value = "start_date") String start_date
+								   ,@RequestParam(value = "finish_date") String finish_date,
 				Model model) {
-			List<Gumcheh> list = gumcheService.getGumcheSearchList(hospitalId, sk, sv);
+			List<Gumcheh> list = gumcheService.getGumcheSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 			model.addAttribute("gumchehList", list);
 
 			return "/gumche/gumcheh/gumchehList";
@@ -82,10 +86,16 @@ public class GumcheController {
 	
 	// MDS DB - 검체검사결과 검색
 	@PostMapping("/gumchedbList")
-	public String getGumchedbList(@RequestParam(value = "sk") String sk
-							   ,@RequestParam(value = "sv") String sv,
+	public String getGumchedbList(@RequestParam(value = "sk1") String sk1
+								 ,@RequestParam(value = "sk2") String sk2
+								 ,@RequestParam(value = "sk3") String sk3
+								 ,@RequestParam(value = "sv1") String sv1
+								 ,@RequestParam(value = "sv2") String sv2
+								 ,@RequestParam(value = "sv3") String sv3
+							   	 ,@RequestParam(value = "start_date") String start_date
+							   	 ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Gumche> list = gumcheService.getGumchedbSearchList(sk, sv);
+		List<Gumche> list = gumcheService.getGumchedbSearchList(sk1, sk2, sk3, sv1, sv2, sv3, start_date, finish_date);
 		model.addAttribute("gumchedbList", list);
 
 		return "/gumche/gumche/gumchedbList";

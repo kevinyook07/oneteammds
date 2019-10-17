@@ -45,9 +45,15 @@ public class DrinkingController {
 
 	// 병원DB - 음주상태 검색
 	@PostMapping("drinkinghList")
-	public String getDrinkingList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Drinkingh> list = drinkingService.getDrinkingSearchList(hospitalId, sk, sv);
+	public String getDrinkingList(@RequestParam(value = "hospitalId") String hospitalId
+								 ,@RequestParam(value = "sk1") String sk1
+								 ,@RequestParam(value = "sk2") String sk2
+							   	 ,@RequestParam(value = "sv1") String sv1
+							   	 ,@RequestParam(value = "sv2") String sv2
+								 ,@RequestParam(value = "start_date") String start_date
+								 ,@RequestParam(value = "finish_date") String finish_date
+								 , Model model) {
+		List<Drinkingh> list = drinkingService.getDrinkingSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("drinkinghList", list);
 
 		return "/drinking/drinkingh/drinkinghList";
@@ -75,10 +81,16 @@ public class DrinkingController {
 
 	// MDS DB - 음주상태 검색
 	@PostMapping("drinkingdbList")
-	public String getDrinkingdbList(@RequestParam(value = "sk") String sk
-								   ,@RequestParam(value = "sv") String sv,
+	public String getDrinkingdbList(@RequestParam(value = "sk1") String sk1
+			   					   ,@RequestParam(value = "sk2") String sk2
+			   					   ,@RequestParam(value = "sk3") String sk3
+								   ,@RequestParam(value = "sv1") String sv1
+								   ,@RequestParam(value = "sv2") String sv2
+								   ,@RequestParam(value = "sv3") String sv3
+								   ,@RequestParam(value = "start_date") String start_date
+								   ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Drinking> list = drinkingService.getDrinkingdbSearchList(sk, sv);
+		List<Drinking> list = drinkingService.getDrinkingdbSearchList(sk1, sk2, sk3, sv1, sv2, sv3, start_date, finish_date);
 		model.addAttribute("drinkingdbList", list);
 
 		return "/drinking/drinking/drinkingdbList";

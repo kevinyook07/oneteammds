@@ -12,20 +12,27 @@
  	<select	id="getGinuenghList" 
  			resultType="com.cafe24.oneteammds.listvo.Ginuengh">
  		SELECT 
- 			ftrCode
- 		  , hospitalId
- 		  , patientId
- 		  , ftName
- 		  , ftCode
- 		  , ftrValue
- 		  , pDoctor
- 		  , ftdTime
- 		  , adminId
- 		  , ftrDate
+ 		   gnh.ftrCode
+ 		  ,gnh.hospitalId
+ 		  ,gnh.patientId
+ 		  ,gnh.ftName
+ 		  ,gnh.ftCode
+ 		  ,gnh.ftrValue
+ 		  ,gnh.pDoctor
+ 		  ,gnh.ftdTime
+ 		  ,gnh.adminId
+ 		  ,gnh.ftrDate
+ 		  ,pit.pName
 		FROM 
-			ginuengh
+			ginuengh gnh
+		JOIN
+			patient pit
+			ON
+				gnh.hospitalId = pit.hospitalId
+			AND
+				gnh.patientId = pit.patientId	
 		WHERE
-			hospitalId = #{session.SID}
+			gnh.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 기능검사결과 -> 기능검사결과 regist form -->
@@ -76,25 +83,40 @@
 	<!-- 기능검사결과 검색 -->
 	<select id="getGinuengSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Ginueng">
-	  	SELECT
-			 ftrCode
-			,hospitalId
-			,patientId
-			,ftName
-			,ftCode
-			,ftrValue
-			,pDoctor
-			,ftdTime
-			,adminId
-			,ftrDate
-		FROM
-			 ginuengh
+	  	SELECT 
+ 		   gnh.ftrCode
+ 		  ,gnh.hospitalId
+ 		  ,gnh.patientId
+ 		  ,gnh.ftName
+ 		  ,gnh.ftCode
+ 		  ,gnh.ftrValue
+ 		  ,gnh.pDoctor
+ 		  ,gnh.ftdTime
+ 		  ,gnh.adminId
+ 		  ,gnh.ftrDate
+ 		  ,pit.pName
+		FROM 
+			ginuengh gnh
+		JOIN
+			patient pit
+			ON
+				gnh.hospitalId = pit.hospitalId
+			AND
+				gnh.patientId = pit.patientId
 		WHERE 
-			hospitalId = #{hospitalId}
-		<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+			gnh.hospitalId = #{hospitalId}
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
 		</if>
-		
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
+		</if>
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND ftrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND ftrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- 시스템DB -->
@@ -104,43 +126,66 @@
 	<select id="getGinuengdbList"
 			resultType="com.cafe24.oneteammds.listvo.Ginueng">
 		SELECT 
- 			ftrCode
- 		  , hospitalId
- 		  , patientId
- 		  , ftName
- 		  , ftCode
- 		  , ftrValue
- 		  , pDoctor
- 		  , ftdTime
- 		  , adminId
- 		  , ftrDate
+ 		   gn.ftrCode
+ 		  ,gn.hospitalId
+ 		  ,gn.patientId
+ 		  ,gn.ftName
+ 		  ,gn.ftCode
+ 		  ,gn.ftrValue
+ 		  ,gn.pDoctor
+ 		  ,gn.ftdTime
+ 		  ,gn.adminId
+ 		  ,gn.ftrDate
+ 		  ,pit.pName	  
 		FROM 
-			ginueng
+			ginueng gn
+		JOIN
+			patient pit
+			ON
+				gn.hospitalId = pit.hospitalId
+			AND
+				gn.patientId = pit.patientId	
 	</select>
 	
 	<!-- MDS DB - 기능검사결과 검색 -->
 	<select id="getGinuengdbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Ginueng">
-	  	SELECT
-			 ftrCode
-			,hospitalId
-			,patientId
-			,ftName
-			,ftCode
-			,ftrValue
-			,pDoctor
-			,ftdTime
-			,adminId
-			,ftrDate
-		FROM
-			 ginueng
-		<if test="sv != null and sv neq ''.toString()">		 
-		WHERE 
-			
-						
-			${sk} Like CONCAT('%',#{sv},'%')		
+	  	SELECT 
+ 		   gn.ftrCode
+ 		  ,gn.hospitalId
+ 		  ,gn.patientId
+ 		  ,gn.ftName
+ 		  ,gn.ftCode
+ 		  ,gn.ftrValue
+ 		  ,gn.pDoctor
+ 		  ,gn.ftdTime
+ 		  ,gn.adminId
+ 		  ,gn.ftrDate
+ 		  ,pit.pName	  
+		FROM 
+			ginueng gn
+		JOIN
+			patient pit
+			ON
+				gn.hospitalId = pit.hospitalId
+			AND
+				gn.patientId = pit.patientId
+		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
-		
+		<if test="sv2 != null and sv2 neq ''.toString()">	
+		</if>
+		<if test="sv3 != null and sv3 neq ''.toString()">	
+		</if>
+		WHERE 					
+		${sk1} Like CONCAT('%',#{sv1},'%') 
+		and ${sk2} Like CONCAT('%',#{sv2},'%')
+		and ${sk3} Like CONCAT('%',#{sv3},'%')				
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND ftrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND ftrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- MDS DB - 기능검사결과 삭제 -->

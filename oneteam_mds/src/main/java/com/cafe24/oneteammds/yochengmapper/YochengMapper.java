@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+
 import com.cafe24.oneteammds.yochengvo.Yochenglist;
 
 @Mapper //어노테이션 mapper 설정
@@ -32,11 +33,11 @@ public interface YochengMapper {
 	public List<Yochenglist> getYochengAdminListSearch(String sk1, String sv1);
 	
 	//MDS 진료 정보 등록. YochengMapper.xml에서 id값 getYochenglist_ById를 받음.
-	public Yochenglist getYochenglist_ById(String patientId);	
+	public Yochenglist getYochenglistById(String patientId);	
 	
-	//YochengMapper.xml에서 id값 getYochengAdminInsert를 받음.
-	public int getYochengAdminInsert(Yochenglist yochenglist);
 	
+	
+
 	
 	
 	

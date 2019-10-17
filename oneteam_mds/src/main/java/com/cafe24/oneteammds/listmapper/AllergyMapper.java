@@ -23,7 +23,7 @@ public interface AllergyMapper {
 	public int getAllergyRegist(Allergy allergy);
 
 	// 병원DB - 알러지 및 부작용 검색
-	public List<Allergyh> getAllergySearchList(String hospitalId, String sk, String sv);
+	public List<Allergyh> getAllergySearchList(String hospitalId, String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
 
 	// 시스템DB
 
@@ -31,7 +31,7 @@ public interface AllergyMapper {
 	public List<Allergy> getAllergydbList();
 
 	// MDS DB - 알러지 및 부작용 검색
-	public List<Allergy> getAllergydbSearchList(String sk, String sv);
+	public List<Allergy> getAllergydbSearchList(String sk1, String sk2, String sk3, String sv1, String sv2, String sv3, String start_date, String finish_date);
 
 	// MDS DB - 알러지 및 부작용 삭제
 	public int delAllergy(String aseCode, String hospitalId, String patientId);

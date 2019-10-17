@@ -12,20 +12,27 @@
  	<select	id="getYoungsanghList" 
  			resultType="com.cafe24.oneteammds.listvo.Youngsangh">
  		SELECT 
- 			itrCode
- 		  , hospitalId
- 		  , patientId
- 		  , itName
- 		  , itCode
- 		  , itrValue
- 		  , pDoctor
- 		  , itdTime
- 		  , adminId
- 		  , itrDate
+ 		   ysh.itrCode
+ 		  ,ysh.hospitalId
+ 		  ,ysh.patientId
+ 		  ,ysh.itName
+ 		  ,ysh.itCode
+ 		  ,ysh.itrValue
+ 		  ,ysh.pDoctor
+ 		  ,ysh.itdTime
+ 		  ,ysh.adminId
+ 		  ,ysh.itrDate
+ 		  ,pit.pName
 		FROM 
-			youngsangh
+			youngsangh ysh
+		JOIN
+			patient pit
+			ON
+				ysh.hospitalId = pit.hospitalId
+			AND
+				ysh.patientId = pit.patientId	
 		WHERE
-			hospitalId = #{session.SID}
+			ysh.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 영상검사결과 -> 영상검사결과 regist form -->
@@ -76,25 +83,40 @@
 	<!-- 영상검사결과 검색 -->
 	<select id="getYoungsangSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Youngsang">
-	  	SELECT
-			 itrCode
-			,hospitalId
-			,patientId
-			,itName
-			,itCode
-			,itrValue
-			,pDoctor
-			,itdTime
-			,adminId
-			,itrDate
-		FROM
-			 youngsangh
+	  	SELECT 
+ 		   ysh.itrCode
+ 		  ,ysh.hospitalId
+ 		  ,ysh.patientId
+ 		  ,ysh.itName
+ 		  ,ysh.itCode
+ 		  ,ysh.itrValue
+ 		  ,ysh.pDoctor
+ 		  ,ysh.itdTime
+ 		  ,ysh.adminId
+ 		  ,ysh.itrDate
+ 		  ,pit.pName
+		FROM 
+			youngsangh ysh
+		JOIN
+			patient pit
+			ON
+				ysh.hospitalId = pit.hospitalId
+			AND
+				ysh.patientId = pit.patientId
 		WHERE 
-			hospitalId = #{hospitalId}
-		<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+			ysh.hospitalId = #{hospitalId}
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
 		</if>
-	
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
+		</if>
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND itrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND itrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- 시스템DB -->
@@ -104,43 +126,66 @@
 	<select id="getYoungsangdbList"
 			resultType="com.cafe24.oneteammds.listvo.Youngsang">
 		SELECT 
- 			itrCode
- 		  , hospitalId
- 		  , patientId
- 		  , itName
- 		  , itCode
- 		  , itrValue
- 		  , pDoctor
- 		  , itdTime
- 		  , adminId
- 		  , itrDate
+ 		   ys.itrCode
+ 		  ,ys.hospitalId
+ 		  ,ys.patientId
+ 		  ,ys.itName
+ 		  ,ys.itCode
+ 		  ,ys.itrValue
+ 		  ,ys.pDoctor
+ 		  ,ys.itdTime
+ 		  ,ys.adminId
+ 		  ,ys.itrDate
+ 		  ,pit.pName
 		FROM 
-			youngsang
+			youngsang ys
+		JOIN
+			patient pit
+			ON
+				ys.hospitalId = pit.hospitalId
+			AND
+				ys.patientId = pit.patientId	
 	</select>
 	
 	<!-- MDS DB - 영상검사결과 검색 -->
 	<select id="getYoungsangdbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Youngsang">
-	  	SELECT
-			 itrCode
-			,hospitalId
-			,patientId
-			,itName
-			,itCode
-			,itrValue
-			,pDoctor
-			,itdTime
-			,adminId
-			,itrDate
-		FROM
-			 youngsang
-		<if test="sv != null and sv neq ''.toString()">	 
-		WHERE 
-			
-							
-			${sk} Like CONCAT('%',#{sv},'%')		
+	  	SELECT 
+ 		   ys.itrCode
+ 		  ,ys.hospitalId
+ 		  ,ys.patientId
+ 		  ,ys.itName
+ 		  ,ys.itCode
+ 		  ,ys.itrValue
+ 		  ,ys.pDoctor
+ 		  ,ys.itdTime
+ 		  ,ys.adminId
+ 		  ,ys.itrDate
+ 		  ,pit.pName
+		FROM 
+			youngsang ys
+		JOIN
+			patient pit
+			ON
+				ys.hospitalId = pit.hospitalId
+			AND
+				ys.patientId = pit.patientId
+		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
-	
+		<if test="sv2 != null and sv2 neq ''.toString()">	
+		</if>
+		<if test="sv3 != null and sv3 neq ''.toString()">	
+		</if>
+		WHERE 					
+		${sk1} Like CONCAT('%',#{sv1},'%') 
+		and ${sk2} Like CONCAT('%',#{sv2},'%')
+		and ${sk3} Like CONCAT('%',#{sv3},'%')			
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND itrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND itrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- MDS DB - 영상검사결과 삭제 -->

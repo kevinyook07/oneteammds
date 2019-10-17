@@ -45,9 +45,15 @@ public class YakmulController {
 
 	// 병원DB - 약물처방내역 검색
 	@PostMapping("/yakmulhList")
-	public String getYakmulList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Yakmulh> list = yakmulService.getYakmulSearchList(hospitalId, sk, sv);
+	public String getYakmulList(@RequestParam(value = "hospitalId") String hospitalId
+							   ,@RequestParam(value = "sk1") String sk1
+							   ,@RequestParam(value = "sk2") String sk2
+						   	   ,@RequestParam(value = "sv1") String sv1
+						   	   ,@RequestParam(value = "sv2") String sv2
+							   ,@RequestParam(value = "start_date") String start_date
+							   ,@RequestParam(value = "finish_date") String finish_date							   
+							   , Model model) {
+		List<Yakmulh> list = yakmulService.getYakmulSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("yakmulhList", list);
 
 		return "/yakmul/yakmulh/yakmulhList";
@@ -76,9 +82,16 @@ public class YakmulController {
 
 	// MDS DB - 약물처방내역 검색
 	@PostMapping("/yakmuldbList")
-	public String getYakmuldbList(@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv,
+	public String getYakmuldbList(@RequestParam(value = "sk1") String sk1
+							     ,@RequestParam(value = "sk2") String sk2
+							     ,@RequestParam(value = "sk3") String sk3
+							   	 ,@RequestParam(value = "sv1") String sv1
+							   	 ,@RequestParam(value = "sv2") String sv2
+							   	 ,@RequestParam(value = "sv3") String sv3
+								 ,@RequestParam(value = "start_date") String start_date
+								 ,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Yakmul> list = yakmulService.getYakmuldbSearchList(sk, sv);
+		List<Yakmul> list = yakmulService.getYakmuldbSearchList(sk1, sk2, sk3, sv1, sv2, sv3, start_date, finish_date);
 		model.addAttribute("yakmuldbList", list);
 
 		return "/yakmul/yakmul/yakmuldbList";

@@ -12,21 +12,28 @@
  	<select	id="getPandoghList" 
  			resultType="com.cafe24.oneteammds.listvo.Pandogh">
  		SELECT 
- 			iidCode
- 		  , hospitalId
- 		  , patientId
- 		  , liContent
- 		  , iUrl
- 		  , idName
- 		  , pDoctor
- 		  , ifdTime
- 		  , iliDate
- 		  , adminId
- 		  , iidrDate
+ 		   pdh.iidCode
+ 		  ,pdh.hospitalId
+ 		  ,pdh.patientId
+ 		  ,pdh.liContent
+ 		  ,pdh.iUrl
+ 		  ,pdh.idName
+ 		  ,pdh.pDoctor
+ 		  ,pdh.ifdTime
+ 		  ,pdh.iliDate
+ 		  ,pdh.adminId
+ 		  ,pdh.iidrDate
+ 		  ,pit.pName
 		FROM 
-			pandogh
+			pandogh pdh
+		JOIN
+			patient pit
+			ON
+				pdh.hospitalId = pit.hospitalId
+			AND
+				pdh.patientId = pit.patientId	
 		WHERE
-			hospitalId = #{session.SID}
+			pdh.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 영상판독정보 -> 영상판독정보 regist form -->
@@ -79,26 +86,41 @@
 	<!-- 영상판독정보 검색 -->
 	<select id="getPandogSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Pandog">
-	  	SELECT
-			 iidCode
-			,hospitalId
-			,patientId
-			,liContent
-			,iUrl
-			,idName
-			,pDoctor
-			,ifdTime
-			,iliDate
-			,adminId
-			,iidrDate
-		FROM
-			 pandogh
+	  	SELECT 
+ 		   pdh.iidCode
+ 		  ,pdh.hospitalId
+ 		  ,pdh.patientId
+ 		  ,pdh.liContent
+ 		  ,pdh.iUrl
+ 		  ,pdh.idName
+ 		  ,pdh.pDoctor
+ 		  ,pdh.ifdTime
+ 		  ,pdh.iliDate
+ 		  ,pdh.adminId
+ 		  ,pdh.iidrDate
+ 		  ,pit.pName
+		FROM 
+			pandogh pdh
+		JOIN
+			patient pit
+			ON
+				pdh.hospitalId = pit.hospitalId
+			AND
+				pdh.patientId = pit.patientId
 		WHERE 
-			hospitalId = #{hospitalId}
-		<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+			pdh.hospitalId = #{hospitalId}
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
 		</if>
-	
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
+		</if>
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND iidrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND iidrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- 시스템DB -->
@@ -108,46 +130,69 @@
 	<select id="getPandogdbList"
 			resultType="com.cafe24.oneteammds.listvo.Pandog">
 		SELECT 
- 			iidCode
- 		  , hospitalId
- 		  , patientId
- 		  , liContent
- 		  , iUrl
- 		  , idName
- 		  , pDoctor
- 		  , ifdTime
- 		  , iliDate
- 		  , adminId
- 		  , iidrDate
+ 		   pd.iidCode
+ 		  ,pd.hospitalId
+ 		  ,pd.patientId
+ 		  ,pd.liContent
+ 		  ,pd.iUrl
+ 		  ,pd.idName
+ 		  ,pd.pDoctor
+ 		  ,pd.ifdTime
+ 		  ,pd.iliDate
+ 		  ,pd.adminId
+ 		  ,pd.iidrDate 		 
+ 		  ,pit.pName
 		FROM 
-			pandog
+			pandog pd
+		JOIN
+			patient pit
+			ON
+				pd.hospitalId = pit.hospitalId
+			AND
+				pd.patientId = pit.patientId	
 	</select>
 	
 	
 	<!--  MDS DB - 영상판독정보 검색 -->
 	<select id="getPandogdbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Pandog">
-	  	SELECT
-			 iidCode
-			,hospitalId
-			,patientId
-			,liContent
-			,iUrl
-			,idName
-			,pDoctor
-			,ifdTime
-			,iliDate
-			,adminId
-			,iidrDate
-		FROM
-			 pandog
-		<if test="sv != null and sv neq ''.toString()">	 
-		WHERE 
-			
-							
-			${sk} Like CONCAT('%',#{sv},'%')		
+	  	SELECT 
+ 		   pd.iidCode
+ 		  ,pd.hospitalId
+ 		  ,pd.patientId
+ 		  ,pd.liContent
+ 		  ,pd.iUrl
+ 		  ,pd.idName
+ 		  ,pd.pDoctor
+ 		  ,pd.ifdTime
+ 		  ,pd.iliDate
+ 		  ,pd.adminId
+ 		  ,pd.iidrDate 		 
+ 		  ,pit.pName
+		FROM 
+			pandog pd
+		JOIN
+			patient pit
+			ON
+				pd.hospitalId = pit.hospitalId
+			AND
+				pd.patientId = pit.patientId
+		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
-	
+		<if test="sv2 != null and sv2 neq ''.toString()">	
+		</if>
+		<if test="sv3 != null and sv3 neq ''.toString()">	
+		</if>
+		WHERE 					
+		${sk1} Like CONCAT('%',#{sv1},'%') 
+		and ${sk2} Like CONCAT('%',#{sv2},'%')
+		and ${sk3} Like CONCAT('%',#{sv3},'%')				
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND iidrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND iidrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- MDS DB - 영상판독정보 삭제 -->

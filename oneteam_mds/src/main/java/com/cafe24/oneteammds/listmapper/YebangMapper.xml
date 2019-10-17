@@ -12,21 +12,28 @@
  	<select	id="getYebanghList" 
  			resultType="com.cafe24.oneteammds.listvo.Yebangh">
  		SELECT 
- 			pibCode
- 		  , hospitalId
- 		  , patientId
- 		  , piName
- 		  , piCode
- 		  , pivName
- 		  , piBalance
- 		  , pDoctor
- 		  , piDate
- 		  , adminId
- 		  , pirDate
+ 		   ybh.pibCode
+ 		  ,ybh.hospitalId
+ 		  ,ybh.patientId
+ 		  ,ybh.piName
+ 		  ,ybh.piCode
+ 		  ,ybh.pivName
+ 		  ,ybh.piBalance
+ 		  ,ybh.pDoctor
+ 		  ,ybh.piDate
+ 		  ,ybh.adminId
+ 		  ,ybh.pirDate
+ 		  ,pit.pName
 		FROM 
-			yebangh
+			yebangh ybh
+		JOIN
+			patient pit
+			ON
+				ybh.hospitalId = pit.hospitalId
+			AND
+				ybh.patientId = pit.patientId	
 		WHERE
-			hospitalId = #{session.SID}
+			ybh.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 예방접종내역 -> 예방접종내역 regist form -->
@@ -79,26 +86,41 @@
 	<!-- 예방접종내역 검색 -->
 	<select id="getYebangSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Yebang">
-	  	SELECT
-			 pibCode
-			,hospitalId
-			,patientId
-			,piName
-			,piCode
-			,pivName
-			,piBalance
-			,pDoctor
-			,piDate
-			,adminId
-			,pirDate
-		FROM
-			 yebangh
+	  	SELECT 
+ 		   ybh.pibCode
+ 		  ,ybh.hospitalId
+ 		  ,ybh.patientId
+ 		  ,ybh.piName
+ 		  ,ybh.piCode
+ 		  ,ybh.pivName
+ 		  ,ybh.piBalance
+ 		  ,ybh.pDoctor
+ 		  ,ybh.piDate
+ 		  ,ybh.adminId
+ 		  ,ybh.pirDate
+ 		  ,pit.pName
+		FROM 
+			yebangh ybh
+		JOIN
+			patient pit
+			ON
+				ybh.hospitalId = pit.hospitalId
+			AND
+				ybh.patientId = pit.patientId
 		WHERE 
-			hospitalId = #{hospitalId}
-		<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+			ybh.hospitalId = #{hospitalId}
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
 		</if>
-	
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
+		</if>
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND pirDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND pirDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- 시스템DB -->
@@ -108,45 +130,68 @@
 	<select id="getYebangdbList"
 			resultType="com.cafe24.oneteammds.listvo.Yebang">
 		SELECT 
- 			pibCode
- 		  , hospitalId
- 		  , patientId
- 		  , piName
- 		  , piCode
- 		  , pivName
- 		  , piBalance
- 		  , pDoctor
- 		  , piDate
- 		  , adminId
- 		  , pirDate
+ 		   yb.pibCode
+ 		  ,yb.hospitalId
+ 		  ,yb.patientId
+ 		  ,yb.piName
+ 		  ,yb.piCode
+ 		  ,yb.pivName
+ 		  ,yb.piBalance
+ 		  ,yb.pDoctor
+ 		  ,yb.piDate
+ 		  ,yb.adminId
+ 		  ,yb.pirDate
+ 		  ,pit.pName
 		FROM 
-			yebang
+			yebang yb
+		JOIN
+			patient pit
+			ON
+				yb.hospitalId = pit.hospitalId
+			AND
+				yb.patientId = pit.patientId	
 	</select>
 	
 	<!-- MDS DB - 예방접종내역 검색 -->
 	<select id="getYebangdbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Yebang">
-	  	SELECT
-			 pibCode
-			,hospitalId
-			,patientId
-			,piName
-			,piCode
-			,pivName
-			,piBalance
-			,pDoctor
-			,piDate
-			,adminId
-			,pirDate
-		FROM
-			 yebang
-		<if test="sv != null and sv neq ''.toString()">	 
-		WHERE 
-			
-							
-			${sk} Like CONCAT('%',#{sv},'%')		
+	  	SELECT 
+ 		   yb.pibCode
+ 		  ,yb.hospitalId
+ 		  ,yb.patientId
+ 		  ,yb.piName
+ 		  ,yb.piCode
+ 		  ,yb.pivName
+ 		  ,yb.piBalance
+ 		  ,yb.pDoctor
+ 		  ,yb.piDate
+ 		  ,yb.adminId
+ 		  ,yb.pirDate
+ 		  ,pit.pName
+		FROM 
+			yebang yb
+		JOIN
+			patient pit
+			ON
+				yb.hospitalId = pit.hospitalId
+			AND
+				yb.patientId = pit.patientId
+		<if test="sv1 != null and sv1 neq ''.toString()">	
 		</if>
-	
+		<if test="sv2 != null and sv2 neq ''.toString()">	
+		</if>
+		<if test="sv3 != null and sv3 neq ''.toString()">	
+		</if>
+		WHERE 					
+		${sk1} Like CONCAT('%',#{sv1},'%') 
+		and ${sk2} Like CONCAT('%',#{sv2},'%')
+		and ${sk3} Like CONCAT('%',#{sv3},'%')				
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND pirDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND pirDate <![CDATA[<=]]> #{finish_date} 
+		</if>
 	</select>
 	
 	<!-- MDS DB - 예방접종내역 삭제 -->

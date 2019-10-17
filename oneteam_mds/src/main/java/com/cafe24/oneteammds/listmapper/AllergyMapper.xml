@@ -12,21 +12,28 @@
  	<select	id="getAllergyhList" 
  			resultType="com.cafe24.oneteammds.listvo.Allergyh">
  		SELECT 
- 			aseCode
- 		  , hospitalId
- 		  , patientId
- 		  , asemFactor
- 		  , asemfCode
- 		  , aseName
- 		  , aseReaction
- 		  , pDoctor
- 		  , asedTime
- 		  , adminId
- 		  , aserDate
+ 		   algh.aseCode
+ 		  ,algh.hospitalId
+ 		  ,algh.patientId
+ 		  ,algh.asemFactor
+ 		  ,algh.asemfCode
+ 		  ,algh.aseName
+ 		  ,algh.aseReaction
+ 		  ,algh.pDoctor
+ 		  ,algh.asedTime
+ 		  ,algh.adminId
+ 		  ,algh.aserDate
+ 		  ,pit.pName
 		FROM 
-			allergyh
+			allergyh algh
+		JOIN
+			patient pit
+			ON
+				algh.hospitalId = pit.hospitalId
+			AND
+				algh.patientId = pit.patientId	
 		WHERE
-			hospitalId = #{session.SID}
+			algh.hospitalId = #{session.SID}
  	</select>
  	
  	<!-- 병원DB - 알러지 및 부작용 -> 알러지 및 부작용 regist form -->
@@ -79,24 +86,40 @@
 	<!-- 알러지 및 부작용 검색 -->
 	<select id="getAllergySearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Allergy">
-	  	SELECT
-			 aseCode
-			,hospitalId
-			,patientId
-			,asemFactor
-			,asemfCode
-			,aseName
-			,aseReaction
-			,pDoctor
-			,asedTime
-			,adminId
-			,aserDate
-		FROM
-			 allergyh
+	  	SELECT 
+ 		   algh.aseCode
+ 		  ,algh.hospitalId
+ 		  ,algh.patientId
+ 		  ,algh.asemFactor
+ 		  ,algh.asemfCode
+ 		  ,algh.aseName
+ 		  ,algh.aseReaction
+ 		  ,algh.pDoctor
+ 		  ,algh.asedTime
+ 		  ,algh.adminId
+ 		  ,algh.aserDate
+ 		  ,pit.pName
+		FROM 
+			allergyh algh
+		JOIN
+			patient pit
+			ON
+				algh.hospitalId = pit.hospitalId
+			AND
+				algh.patientId = pit.patientId
 		WHERE 
-			hospitalId = #{hospitalId}
-		<if test="sv != null and sv neq ''.toString()">					
-		and	${sk} Like CONCAT('%',#{sv},'%')		
+			algh.hospitalId = #{hospitalId}
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		and ${sk1} Like CONCAT('%',#{sv1},'%')
+		</if>
+		<if test="sv2 != null and sv2 neq ''.toString()">
+		AND ${sk2} Like CONCAT('%',#{sv2},'%')
+		</if>
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND aserDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND aserDate <![CDATA[<=]]> #{finish_date} 
 		</if>	
 	</select>
 	
@@ -107,43 +130,67 @@
 	<select id="getAllergydbList"
 			resultType="com.cafe24.oneteammds.listvo.Allergy">
 		SELECT 
- 			aseCode
- 		  , hospitalId
- 		  , patientId
- 		  , asemFactor
- 		  , asemfCode
- 		  , aseName
- 		  , aseReaction
- 		  , pDoctor
- 		  , asedTime
- 		  , adminId
- 		  , aserDate
+ 		   alg.aseCode
+ 		  ,alg.hospitalId
+ 		  ,alg.patientId
+ 		  ,alg.asemFactor
+ 		  ,alg.asemfCode
+ 		  ,alg.aseName
+ 		  ,alg.aseReaction
+ 		  ,alg.pDoctor
+ 		  ,alg.asedTime
+ 		  ,alg.adminId
+ 		  ,alg.aserDate
+ 		  ,pit.pName
 		FROM 
-			allergy
+			allergy alg
+		JOIN
+			patient pit
+			ON
+				alg.hospitalId = pit.hospitalId
+			AND
+				alg.patientId = pit.patientId	
 	</select>
 	
 	<!-- MDS DB - 알러지 및 부작용 검색 -->
 	<select id="getAllergydbSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Allergy">
-	  	SELECT
-			 aseCode
-			,hospitalId
-			,patientId
-			,asemFactor
-			,asemfCode
-			,aseName
-			,aseReaction
-			,pDoctor
-			,asedTime
-			,adminId
-			,aserDate
-		FROM
-			 allergy
-		<if test="sv != null and sv neq ''.toString()">		 
-		WHERE 
-		
-						
-			${sk} Like CONCAT('%',#{sv},'%')		
+	  	SELECT 
+ 		   alg.aseCode
+ 		  ,alg.hospitalId
+ 		  ,alg.patientId
+ 		  ,alg.asemFactor
+ 		  ,alg.asemfCode
+ 		  ,alg.aseName
+ 		  ,alg.aseReaction
+ 		  ,alg.pDoctor
+ 		  ,alg.asedTime
+ 		  ,alg.adminId
+ 		  ,alg.aserDate
+ 		  ,pit.pName
+		FROM 
+			allergy alg
+		JOIN
+			patient pit
+			ON
+				alg.hospitalId = pit.hospitalId
+			AND
+				alg.patientId = pit.patientId
+		<if test="sv1 != null and sv1 neq ''.toString()">	
+		</if>
+		<if test="sv2 != null and sv2 neq ''.toString()">	
+		</if>
+		<if test="sv3 != null and sv3 neq ''.toString()">	
+		</if>
+		WHERE 					
+		${sk1} Like CONCAT('%',#{sv1},'%') 
+		and ${sk2} Like CONCAT('%',#{sv2},'%')
+		and ${sk3} Like CONCAT('%',#{sv3},'%')				
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND aserDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND aserDate <![CDATA[<=]]> #{finish_date} 
 		</if>	
 	</select>
 	

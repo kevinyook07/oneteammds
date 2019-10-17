@@ -35,7 +35,7 @@ public class TotalController {
 	@Autowired
 	private TotalService totalService;
 
-	// 병원1
+	// 병원
 
 	// 병원 DB 전체리스트
 
@@ -50,19 +50,27 @@ public class TotalController {
 
 	// 병원 DB 전체 regist
 	@RequestMapping("/totalRegist")
-	public String getTotalById(@RequestParam(value = "patientId") String patientId,
-			@RequestParam(value = "hospitalId") String hospitalId, Model model) {
 
-		model.addAttribute("totalh", totalService.getTotalhById(patientId, hospitalId));
-
-		return "total/totalRegist/totalRegist";
+	public String getTotalById(@RequestParam(value="patientId")String patientId 
+			                 , @RequestParam(value="hospitalId")String hospitalId
+			                 , Model model) {
+	  
+	  model.addAttribute("totalh", totalService.getTotalhById(patientId, hospitalId));
+	  
+	  return "total/totalRegist/totalRegist"; 
 	}
 
 	// 병원DB - 전체 검색
 	@PostMapping("/totalhList")
-	public String getTotalList(@RequestParam(value = "hospitalId") String hospitalId,
-			@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv, Model model) {
-		List<Totalh> list = totalService.getTotalSearchList(hospitalId, sk, sv);
+	public String getTotalList(@RequestParam(value = "hospitalId") String hospitalId
+							  ,@RequestParam(value = "sk1") String sk1
+							  ,@RequestParam(value = "sk2") String sk2
+						   	  ,@RequestParam(value = "sv1") String sv1
+						   	  ,@RequestParam(value = "sv2") String sv2
+							  ,@RequestParam(value = "start_date") String start_date
+							  ,@RequestParam(value = "finish_date") String finish_date
+							  , Model model) {
+		List<Totalh> list = totalService.getTotalSearchList(hospitalId, sk1, sk2, sv1, sv2, start_date, finish_date);
 		model.addAttribute("totalhList", list);
 
 		return "/total/totalh/totalhList";
@@ -90,9 +98,16 @@ public class TotalController {
 
 	// MDS DB - 전체 검색
 	@PostMapping("/totaldbList")
-	public String getTotaldbList(@RequestParam(value = "sk") String sk, @RequestParam(value = "sv") String sv,
+	public String getTotaldbList(@RequestParam(value = "sk1") String sk1
+						   		,@RequestParam(value = "sk2") String sk2
+						   		,@RequestParam(value = "sk3") String sk3
+							   	,@RequestParam(value = "sv1") String sv1
+							   	,@RequestParam(value = "sv2") String sv2
+							   	,@RequestParam(value = "sv3") String sv3
+								,@RequestParam(value = "start_date") String start_date
+								,@RequestParam(value = "finish_date") String finish_date,
 			Model model) {
-		List<Total> list = totalService.getTotaldbSearchList(sk, sv);
+		List<Total> list = totalService.getTotaldbSearchList(sk1, sk2, sk3, sv1, sv2, sv3, start_date, finish_date);
 		model.addAttribute("totaldbList", list);
 
 		return "/total/total/totaldbList";
@@ -100,25 +115,26 @@ public class TotalController {
 	}
 
 	// MDS DB - 전체 삭제
-	@GetMapping("/delTotal")
-	public String delTotal(@RequestParam(value = "dbCode") String dbCode, Model model) {
-		model.addAttribute("dbCode", dbCode);
-
-		return "/total/tdelete/delTotal";
-	}
-
-	@PostMapping("/delTotal")
-	public String delTotal(@RequestParam(value = "dbCode") String dbCode,
-			@RequestParam(value = "hospitalId") String hospitalId, @RequestParam(value = "patientId") String patientId,
-			Model model) {
-		int result = totalService.delTotal(dbCode, hospitalId, patientId);
-		if (result == 0) {
-			model.addAttribute("result", "비밀번호가 일치하지 않습니다.");
+		@GetMapping("/delTotal")
+		public String delTotal(@RequestParam(value = "dbCode") String dbCode, Model model) {
 			model.addAttribute("dbCode", dbCode);
+
 			return "/total/tdelete/delTotal";
 		}
-		return "redirect:/totaldbList";
-	}
+
+		@PostMapping("/delTotal")
+		public String delTotal(@RequestParam(value = "dbCode") String dbCode,
+				@RequestParam(value = "hospitalId") String hospitalId, @RequestParam(value = "patientId") String patientId,
+				Model model) {
+			int result = totalService.delTotal(dbCode, hospitalId, patientId);
+			if (result == 0) {
+				model.addAttribute("result", "비밀번호가 일치하지 않습니다.");
+				model.addAttribute("dbCode", dbCode);
+				return "/total/tdelete/delTotal";
+			}
+			return "redirect:/totaldbList";
+		}
+
 
 	// 진단내역 상세
 	@RequestMapping("/jindandbDesc")

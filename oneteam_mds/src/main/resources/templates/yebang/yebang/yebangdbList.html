@@ -18,12 +18,20 @@
                   
                   <div class="block-body">
                      <form action="/yebangdbList" method="post">
-		<select name="sk">
-			<option value="hospitalId">병원 고유번호</option>
-			<option value="patientId">환자고유번호</option>
-			<option value="piDate">접종일자</option>										
-		</select>
-		<input type="text" name="sv">
+		<select id="sk1" name="sk1"></br>
+			<option value="pit.hospitalId">병원고유번호</option>
+			</select>	
+			<input type="text" name="sv1"></br>
+		<select id="sk2" name="sk2">		
+			<option value="pit.patientId">환자고유번호</option>
+			</select>		
+		<input type="text" name="sv2"></br>
+		<select id="sk3" name="sk3">		
+		<option value="pName">환자 이름</option>					
+		</select>		
+		<input type="text" name="sv3"></br>
+		<input type="date" name="start_date">~
+     	<input type="date" name="finish_date">
 		<button type="submit" class="btn btn-secondary">검색</button>
 	</form>
                      <table class="table">
@@ -32,6 +40,7 @@
 			<th style="white-space:nowrap;">예방접종내역 코드</th>
 							<th style="white-space:nowrap;">병원고유번호</th>
 							<th style="white-space:nowrap;">환자고유번호</th>
+							<th style="white-space:nowrap;">환자 이름</th>
 							<th style="white-space:nowrap;">예방접종명</th>
 							<th style="white-space:nowrap;">예방접종코드</th>
 							<th style="white-space:nowrap;">백신명</th>
@@ -48,6 +57,7 @@
 			<td th:text="${list.pibCode}"></td>
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
 			<td th:text="${list.piName}"></td>
 			<td th:text="${list.piCode}"></td>
 			<td th:text="${list.pivName}"></td>
