@@ -82,15 +82,15 @@
 	                    <li><a href="yochengAdminList">!)진료 정보 수신 요청 내역</a></li> <!-- 진료정보 요청 경로지정 -->
               		</ul>
 				</li>
-				<li><a href="#exampledropdownDropdown10" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '병원'}"> <i class="icon-padnote"></i>진료 정보 요청</a>
+				<li><a href="#exampledropdownDropdown10" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '병원'}"><i class="icon-padnote"></i>진료 정보 요청</a>
 				<ul id="exampledropdownDropdown10" class="collapse list-unstyled ">
 					<li><a th:href="@{/yochengHospitalInsert (yochengoutHospitalId=${session.SID})}">진료 정보 요청</a></li>
                     <li><a th:href="@{/yochengHospitalList   (yochengoutHospitalId=${session.SID})}">진료 정보 요청 내역 </a></li>
-                    <li><a href="#">!)진료 정보 수신 리스트 </a></li>
+                    <li><a th:href="@{/susinHospitalList     (yochengoutHospitalId=${session.SID})}">진료 정보 수신 리스트 </a></li>
                     <!-- <li><a href="susinHospitalInsert">!)타 병원으로 환자 전원 조치 요청 보냄</a></li>
                     <li><a href="#">!)환자 전원 조치 요청 보냄 내역</a></li>  -->
 				</ul>
-               	<li><a href="chatting" th:if="${session.SLEVEL == '관리자' }"> <i class="icon-settings"></i>채팅방</a></li>
+               	<li><a href="chatting" th:if="${session.SLEVEL == '관리자' }"> <i class="icon-email"></i>채팅</a></li></i>
       		</ul>
 			
                  <!-- <li><a href="#exampledropdownDropdown10" aria-expanded="false" data-toggle="collapse"> <i class="icon-padnote"></i>!)진료 정보 요청</a>
