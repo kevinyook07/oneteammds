@@ -20,12 +20,16 @@ public interface YochengMapper {
 	//페이지 처리를 위한 전체행의 갯수. YochengMapper.xml에서 id값 getYochengAdminListAllCount를 받음.
 	public int getYochengAdminListAllCount();
 	
+
+	//YochengMapper.xml에서 id값 getYochengAdminListSearch를 받음.
+
 	/* 페이지 작업을 yochengCode로 하려고 했던 작업 내용
 	* //요청 코드. YochengMapper.xml에서 id값 getYochengCode를 받음. public Yochenglist
 	* getYochengCode(int yochengCode);
 	*/
 
 	//검색. YochengMapper.xml에서 id값 getYochengAdminListSearch를 받음.
+
 	public List<Yochenglist> getYochengAdminListSearch(String sk1, String sv1);
 	
 	//MDS 진료 정보 등록. YochengMapper.xml에서 id값 getYochenglist_ById를 받음.

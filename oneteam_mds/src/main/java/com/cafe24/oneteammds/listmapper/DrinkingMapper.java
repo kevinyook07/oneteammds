@@ -31,7 +31,7 @@ public interface DrinkingMapper {
 	public List<Drinking> getDrinkingdbList();
 
 	// MDS DB - 음주상태 검색
-	public List<Drinking> getDrinkingdbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
+	public List<Drinking> getDrinkingdbSearchList(String sk1, String sk2, String sk3, String sv1, String sv2, String sv3, String start_date, String finish_date);
 
 	// MDS DB - 음주상태 삭제
 	public int delDrinking(String dcCode, String hospitalId, String patientId);

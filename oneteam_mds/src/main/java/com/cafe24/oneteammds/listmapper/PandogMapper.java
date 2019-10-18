@@ -31,7 +31,7 @@ public interface PandogMapper {
 	public List<Pandog> getPandogdbList();
 
 	// MDS DB - 영상판독정보 검색
-	public List<Pandog> getPandogdbSearchList(String sk1, String sk2, String sv1, String sv2, String start_date, String finish_date);
+	public List<Pandog> getPandogdbSearchList(String sk1, String sk2, String sk3, String sv1, String sv2, String sv3, String start_date, String finish_date);
 
 	// MDS DB - 영상판독정보 삭제
 	public int delPandog(String iidCode, String hospitalId, String patientId);

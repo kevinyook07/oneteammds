@@ -79,6 +79,9 @@ public class YochengService {
 		return resultMap;
 	}
 	
+
+	//접근 지정자 설정 후 getYochengAdminListSearch 메서드 입력, return 값 입력 // return은 호출된 곳으로 return 된다.
+
 	/*페이지 작업을 yochengCode로 하려고 했던 작업 내용
 	 * //접근 지정자 설정 후 getYochengCode 메서드 입력, return 값 입력 // return은 호출된 곳으로 return
 	 * 된다. public Yochenglist getYochengCode(int yochengCode) {
@@ -88,6 +91,7 @@ public class YochengService {
 	
 	
 	//검색. 접근 지정자 설정 후 getYochengAdminListSearch 메서드 입력, return 값 입력 // return은 호출된 곳으로 return 된다.
+
 	public List<Yochenglist> getYochengAdminListSearch(String sk1, String sv1){
 		
 		return yochengMapper.getYochengAdminListSearch(sk1, sv1);

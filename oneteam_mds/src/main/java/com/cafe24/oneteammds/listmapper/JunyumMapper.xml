@@ -199,9 +199,12 @@
 		</if>
 		<if test="sv2 != null and sv2 neq ''.toString()">	
 		</if>
+		<if test="sv3 != null and sv3 neq ''.toString()">	
+		</if>
 		WHERE 					
 		${sk1} Like CONCAT('%',#{sv1},'%') 
-		and ${sk2} Like CONCAT('%',#{sv2},'%')				
+		and ${sk2} Like CONCAT('%',#{sv2},'%')
+		and ${sk3} Like CONCAT('%',#{sv3},'%')				
 		<if test="start_date neq null and start_date neq ''.toString()">
 			AND lcidDate >= #{start_date} 		
 		</if>

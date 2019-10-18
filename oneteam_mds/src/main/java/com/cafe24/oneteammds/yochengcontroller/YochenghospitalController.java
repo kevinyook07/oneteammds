@@ -29,9 +29,9 @@ public class YochenghospitalController {
 	public String yochengHinsert() {      
 		
 		// 진료 정보 요청 insert form 출력 확인 test
-		/***************************************************************************/
+		/***************************************************************************
 		System.out.println("yochengHinsert" + "<-- 진료 정보 요청 insert form");
-		/***************************************************************************/
+		***************************************************************************/
 		
 		return "/yochenghospital/yochengHospitalInsert/yochengHospitalInsert"; 
 	}
@@ -42,9 +42,9 @@ public class YochenghospitalController {
 		yochenghospitalService.yochengHinsert(Yochenghospital);
 		
 		// 진료 정보 요청 insert 입력한 값 삽입 확인 test
-		/**************************************************************************/
+		/**************************************************************************
 		System.out.println(Yochenghospital + "<-- 진료 정보 요청 insert 입력한 값");
-		/**************************************************************************/
+		**************************************************************************/
 		
 		return "redirect:/yochenghWanlyo";
 	}
@@ -52,9 +52,9 @@ public class YochenghospitalController {
 	public String yochenghWanlyo() {
 		
 		// 진료 정보 요청 insert 후 완료 from 출력 확인 test
-		/**************************************************************************/
+		/**************************************************************************
 		System.out.println("yochenghWanlyo" + "<-- 진료 정보 요청 insert 후 완료 from");
-		/**************************************************************************/
+		**************************************************************************/
 		
 		return "/yochenghospital/yochenghWanlyo/yochenghWanlyo";
 	}
@@ -65,9 +65,9 @@ public class YochenghospitalController {
 		model.addAttribute("yochengHList", yochenghospitalService.yochengHList(yochengoutHospitalId));
 		
 		// 아이디 로그인시 해당 LIST 출력 확인 test
-		/**********************************************************/
+		/**********************************************************
 		System.out.println(yochengoutHospitalId + "<-- 로그인한 정보 값 해당 아이디 list 출력");
-		/**********************************************************/
+		**********************************************************/
 	
 		return "/yochenghospital/yochengHospitalList/yochengHospitalList";
 	}
@@ -79,11 +79,11 @@ public class YochenghospitalController {
 								 @RequestParam(value="yochengoutHospitalId", required = false) String yochengoutHospitalId,
 								 Model model) {
 		//검색 항목 선택, text 입력 후 출력 확인 test 
-		/**********************************************************/
+		/**********************************************************
 		System.out.println(search1 + "<-- 항목 선택 값");
 		System.out.println(search2 + "<-- 항목 선택 후 text 입력 값");
 		System.out.println(yochengoutHospitalId + "<-- 로그인한 정보 값 해당 아이디 list 출력");
-		/**********************************************************/
+		**********************************************************/
 		
 		model.addAttribute("yochengHList", yochenghospitalService.yochenghSearch(search1, search2, yochengoutHospitalId));
 		
