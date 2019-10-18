@@ -15,7 +15,7 @@ public class YochengAllergyController {
 	@Autowired // 서비스 연결
 	private YochengAllergyService yochengAllergyService;
 	
-	@RequestMapping("/yochengAdminInsert") // 요청 내역에서 전송 클리 후 나오는 리스트 등록화면
+	@RequestMapping("/yochengAdminInsert") // 요청 내역에서 전송 클리 후 나오는 insert화면
 	public String getYochengAdminInsert(YochengAllergy yochengAllergy, Model model) {
 		
 		model.addAttribute("yochengAdminInsert", yochengAllergyService.getYochengAdminInsert(yochengAllergy));
