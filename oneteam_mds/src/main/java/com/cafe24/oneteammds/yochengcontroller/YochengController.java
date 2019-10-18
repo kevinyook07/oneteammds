@@ -91,13 +91,19 @@ public class YochengController {
 	}	
 	
 	
-	
+	//발신등록 화면
 	@RequestMapping("/balsinInsert")
 	public String getBalsinInsert() {
 		
 		return "/balsin/balsinInsert/balsinInsert";
 	}
 	
+	//발신 내역 화면
+	@RequestMapping("/balsinList")
+	public String getBalsinList() {
+		
+		return "/balsin/balsinList/balsinList";
+	}
 	 
 	 
 	
