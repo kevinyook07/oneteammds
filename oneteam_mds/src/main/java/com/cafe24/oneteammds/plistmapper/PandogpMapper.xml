@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.plistmapper.PandogpMapper">
+ 	
+	<!-- 환자 - 영상판독정보 -->	
+	<select id="getPandogpList"
+			resultType="com.cafe24.oneteammds.listvo.Pandog">
+		SELECT 
+ 		   pd.iidCode
+ 		  ,pd.hospitalId
+ 		  ,pd.patientId
+ 		  ,pd.liContent
+ 		  ,pd.iUrl
+ 		  ,pd.idName
+ 		  ,pd.pDoctor
+ 		  ,pd.ifdTime
+ 		  ,pd.iliDate
+ 		  ,pd.adminId
+ 		  ,pd.iidrDate 		 
+ 		  ,pit.pName
+		FROM 
+			pandog pd
+		JOIN
+			patient pit
+			ON
+				pd.hospitalId = pit.hospitalId
+			AND
+				pd.patientId = pit.patientId
+			WHERE			
+				pd.patientId = 'patientId01'		
+	</select>
+	
+	<!-- 환자 - 영상판독정보 검색 -->
+	<select id="getPandogpSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Pandog">
+	  	SELECT 
+ 		   pd.iidCode
+ 		  ,pd.hospitalId
+ 		  ,pd.patientId
+ 		  ,pd.liContent
+ 		  ,pd.iUrl
+ 		  ,pd.idName
+ 		  ,pd.pDoctor
+ 		  ,pd.ifdTime
+ 		  ,pd.iliDate
+ 		  ,pd.adminId
+ 		  ,pd.iidrDate 		 
+ 		  ,pit.pName
+		FROM 
+			pandog pd
+		JOIN
+			patient pit
+			ON
+				pd.hospitalId = pit.hospitalId
+			AND
+				pd.patientId = pit.patientId
+			WHERE			
+				pd.patientId = 'patientId01'							
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND iidrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND iidrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
+	</select>
+	
+		
+ </mapper>

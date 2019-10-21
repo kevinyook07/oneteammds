@@ -7,7 +7,7 @@
 	<div class="page-content">
 	 <!-- **************윗상단 메인 메뉴 ************** -->
 		<div class="page-header">
-		<h2 style="text-align:center">진단내역 리스트</h2>
+		<h2 style="text-align:center">영상판독정보 리스트</h2>
 			<div class="container-fluid"></div>
 	<!-- **************윗상단 메인 메뉴END ************** -->
 	<!--************메인 컨텐트 ************ -->		
@@ -26,31 +26,36 @@
 		</tr>
 		</thead>
 						<tbody>
-		<tr th:each="list:${jindandbDesc}">
+		<tr th:each="list:${pandogpDesc}">
 			<td th:text="${list.hospitalId}"></td>
 			<td th:text="${list.patientId}"></td>
 		</tr>
 		</tbody>
 		<thead>
 		<tr>
-			<th style="white-space:nowrap;">진단내역 코드</th>
-					        <th style="white-space:nowrap;">상병명</th>
-					        <th style="white-space:nowrap;">상병코드</th>
-					        <th style="white-space:nowrap;">진단일자</th>
-					        <th style="white-space:nowrap;">담당의</th>
-					        <th style="white-space:nowrap;">등록자 고유번호</th>
-					        <th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">영상판독정보 코드</th>						
+							<th style="white-space:nowrap;">최종 판독내용</th>
+							<th style="white-space:nowrap;">이미지 URL</th>
+							<th style="white-space:nowrap;">판독의 성명</th>
+							<th style="white-space:nowrap;">담당의</th>
+							<th style="white-space:nowrap;">영상 촬영일시</th>
+							<th style="white-space:nowrap;">영상 최종판독일자</th>
+							<th style="white-space:nowrap;">등록자 고유번호</th>
+							<th style="white-space:nowrap;">등록일자</th>
+			
 		</tr>
 		</thead>
 						<tbody>
-		<tr th:each="list:${jindandbDesc}">
-			<td th:text="${list.dbCode}"></td>
-			<td th:text="${list.dName}"></td>
-			<td th:text="${list.dCode}"></td>
-			<td th:text="${list.dDate}"></td>
+		<tr th:each="list:${pandogpDesc}">
+			<td th:text="${list.iidCode}"></td>
+			<td th:text="${list.liContent}"></td>
+			<td th:text="${list.iUrl}"></td>
+			<td th:text="${list.idName}"></td>
 			<td th:text="${list.pDoctor}"></td>
+			<td th:text="${list.ifdTime}"></td>
+			<td th:text="${list.iliDate}"></td>
 			<td th:text="${list.adminId}"></td>
-			<td th:text="${list.drDate}"></td>
+			<td th:text="${list.iidrDate}"></td>
 		</tr>
 		
 	 </tbody>

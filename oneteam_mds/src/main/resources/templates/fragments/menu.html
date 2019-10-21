@@ -30,8 +30,8 @@
                     <li><a href="patientList">유저 리스트</a></li>
                   </ul>
                 </li>
-                 <li><a href="#exampledropdownDropdown0" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '병원'}"><i class="icon-grid"></i>병원 진료 리스트</a>
-                  <ul id="exampledropdownDropdown0" class="collapse list-unstyled">
+                 <li><a href="#exampledropdownDropdown1" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '병원'}"><i class="icon-grid"></i>병원 진료 리스트</a>
+                  <ul id="exampledropdownDropdown1" class="collapse list-unstyled">
                   	<li><a th:href="@{/totalhList(hospitalId=${session.SID})}">전체진료정보 리스트</a></li>
                     <li><a th:href="@{/jindanhList(hospitalId=${session.SID})}">진단내역</a></li>
                     <li><a th:href="@{/yakmulhList(hospitalId=${session.SID})}">약물처방내역</a></li>
@@ -49,8 +49,8 @@
                     <li><a th:href="@{/pandoghList(hospitalId=${session.SID})}">영상판독정보</a></li>
                   </ul>
                 </li>
-                <li><a href="#exampledropdownDropdown3" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '관리자'}"> <i class="icon-grid"></i>MDS 진료 리스트</a>
-                  <ul id="exampledropdownDropdown3" class="collapse list-unstyled">
+                <li><a href="#exampledropdownDropdown2" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '관리자'}"> <i class="icon-grid"></i>MDS 진료 리스트</a>
+                  <ul id="exampledropdownDropdown2" class="collapse list-unstyled">
                   	<li><a href="totaldbList">전체 진료정보내역</a></li>
                     <li><a href="jindandbList">진단내역</a></li>
                     <li><a href="yakmuldbList">약물처방 내역</a></li>
@@ -68,6 +68,49 @@
                     <li><a href="pandogdbList">영상판독정보</a></li>
                   </ul>
                 </li>
-      	</nav>
+                <li><a href="#exampledropdownDropdown3" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '환자'}"> <i class="icon-grid"></i>환자 진료 리스트</a>
+                  <ul id="exampledropdownDropdown3" class="collapse list-unstyled">
+                  	<li><a href="totalpList">전체 진료정보내역</a></li>
+                    <li><a href="jindanpList">진단내역</a></li>
+                    <li><a href="yakmulpList">약물처방 내역</a></li>
+                    <li><a href="gumchepList">검체검사 결과</a></li>
+                    <li><a href="byungripList">병리검사 결과</a></li>
+                    <li><a href="youngsangpList">영상검사 결과</a></li>
+                    <li><a href="ginuengpList">기능검사 결과</a></li>
+                    <li><a href="susulpList">수술내역</a></li>
+                    <li><a th:href="allergypList">알러지 및 부작용</a></li>
+                    <li><a href="yebangpList">예방접종 내역</a></li>
+                    <li><a href="saengchaepList">생체 신호 및 상태</a></li>
+                    <li><a href="smokingpList">흡연상태</a></li>
+                    <li><a href="drinkingpList">음주상태</a></li>
+                    <li><a href="junyumpList">법정 전염성감염병</a></li>
+                    <li><a href="pandogpList">영상판독정보</a></li>
+                  </ul>
+                </li>
+				<li><a href="#exampledropdownDropdown4" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '관리자'}"> <i class="icon-padnote"></i>!)진료 정보 발신 리스트</a>
+                  <ul id="exampledropdownDropdown4" class="collapse list-unstyled ">
+                    <li><a href="balsinInsert">진료 정보 발신</a></li>
+                    <li><a href="balsinList">진료 정보 발신 내역</a></li>
+                  </ul>
+                 </li>
+
+
+				<li><a href="#exampledropdownDropdown5" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '관리자'}"> <i class="icon-padnote"></i>진료 정보 요청</a>
+					<ul id="exampledropdownDropdown5" class="collapse list-unstyled ">
+	                    <li><a href="yochengAdminList">진료 정보 수신 요청 내역</a></li> <!-- 진료정보 요청 경로지정 -->
+					</ul>
+				</li>
+               	
+				
+				<li><a href="#exampledropdownDropdown6" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '병원'}"><i class="icon-padnote"></i>진료 정보 요청</a>
+					<ul id="exampledropdownDropdown6" class="collapse list-unstyled ">
+						<li><a th:href="@{/yochengHospitalInsert (yochengoutHospitalId=${session.SID})}">진료 정보 요청</a></li>
+	                    <li><a th:href="@{/yochengHospitalList   (yochengoutHospitalId=${session.SID})}">진료 정보 요청 내역 </a></li>
+	                    <li><a th:href="@{/susinHospitalList     (yochengoutHospitalId=${session.SID})}">진료 정보 수신 리스트 </a></li>
+					</ul>
+               		<li><a href="chatting" th:if="${session.SLEVEL == '관리자' }"> <i class="icon-email"></i>채팅</a></li>
+               		<li><a href="#" th:if="${session.SLEVEL eq '관리자'}"> <i class="icon-settings"></i>#)진료정보 공유 알림관리</a></li>
+               </ul>
+        </nav>
 </th:block>
 </html>
