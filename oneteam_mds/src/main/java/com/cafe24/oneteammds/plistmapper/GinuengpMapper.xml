@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.plistmapper.GinuengpMapper">
+ 	
+
+	
+	<!-- MDS p - 기능검사결과 -->
+	
+	<select id="getGinuengpList"
+			resultType="com.cafe24.oneteammds.listvo.Ginueng">
+		SELECT 
+ 		   gn.ftrCode
+ 		  ,gn.hospitalId
+ 		  ,gn.patientId
+ 		  ,gn.ftName
+ 		  ,gn.ftCode
+ 		  ,gn.ftrValue
+ 		  ,gn.pDoctor
+ 		  ,gn.ftdTime
+ 		  ,gn.adminId
+ 		  ,gn.ftrDate
+ 		  ,pit.pName	  
+		FROM 
+			ginueng gn
+		JOIN
+			patient pit
+			ON
+				gn.hospitalId = pit.hospitalId
+			AND
+				gn.patientId = pit.patientId
+			WHERE			
+				gn.patientId = 'patientId01'		
+	</select>
+	
+	<!-- MDS p - 기능검사결과 검색 -->
+	<select id="getGinuengpSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Ginueng">
+	  	SELECT 
+ 		   gn.ftrCode
+ 		  ,gn.hospitalId
+ 		  ,gn.patientId
+ 		  ,gn.ftName
+ 		  ,gn.ftCode
+ 		  ,gn.ftrValue
+ 		  ,gn.pDoctor
+ 		  ,gn.ftdTime
+ 		  ,gn.adminId
+ 		  ,gn.ftrDate
+ 		  ,pit.pName	  
+		FROM 
+			ginueng gn
+		JOIN
+			patient pit
+			ON
+				gn.hospitalId = pit.hospitalId
+			AND
+				gn.patientId = pit.patientId
+			WHERE			
+				gn.patientId = 'patientId01'		
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND ftrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND ftrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
+	</select>
+	
+	
+ 	
+ </mapper>

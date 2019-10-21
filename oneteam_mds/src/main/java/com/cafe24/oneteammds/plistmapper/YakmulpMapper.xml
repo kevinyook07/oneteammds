@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.plistmapper.YakmulpMapper">
+ 	
+ 	
+	
+	<!-- MDS p - 약물처방내역 -->
+	
+	<select id="getYakmulpList"
+			resultType="com.cafe24.oneteammds.listvo.Yakmul">
+		SELECT 
+ 		   ym.mbCode
+ 		  ,ym.hospitalId
+ 		  ,ym.patientId
+ 		  ,ym.mmName
+ 		  ,ym.mmCode
+ 		  ,ym.miName
+ 		  ,ym.miCode
+ 		  ,ym.mVolume
+ 		  ,ym.mdUnit
+ 		  ,ym.mdNumber
+ 		  ,ym.mPeriod
+ 		  ,ym.mUsage
+ 		  ,ym.pDoctor
+ 		  ,ym.mdTime
+ 		  ,ym.adminId
+ 		  ,ym.mrDate
+ 		  ,pit.pName
+		FROM 
+			yakmul ym
+		JOIN
+			patient pit
+			ON
+				ym.hospitalId = pit.hospitalId
+			AND
+				ym.patientId = pit.patientId
+			WHERE			
+				ym.patientId = 'patientId01'		
+	</select>
+	
+	
+	<!-- MDS p - 약물처방내역  검색 --> 
+	<select id="getYakmulpSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Yakmul">
+	  	SELECT 
+ 		   ym.mbCode
+ 		  ,ym.hospitalId
+ 		  ,ym.patientId
+ 		  ,ym.mmName
+ 		  ,ym.mmCode
+ 		  ,ym.miName
+ 		  ,ym.miCode
+ 		  ,ym.mVolume
+ 		  ,ym.mdUnit
+ 		  ,ym.mdNumber
+ 		  ,ym.mPeriod
+ 		  ,ym.mUsage
+ 		  ,ym.pDoctor
+ 		  ,ym.mdTime
+ 		  ,ym.adminId
+ 		  ,ym.mrDate
+ 		  ,pit.pName
+		FROM 
+			yakmul ym
+		JOIN
+			patient pit
+			ON
+				ym.hospitalId = pit.hospitalId
+			AND
+				ym.patientId = pit.patientId
+			WHERE			
+				ym.patientId = 'patientId01'			
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND mrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND mrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
+	</select>
+	
+	 	
+ </mapper>

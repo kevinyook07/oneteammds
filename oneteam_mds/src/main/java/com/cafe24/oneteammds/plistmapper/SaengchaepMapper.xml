@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.plistmapper.SaengchaepMapper">
+ 	
+ 	
+	
+	<!-- MDS p - 생체신호 및 상태 -->
+	
+	<select id="getSaengchaepList"
+			resultType="com.cafe24.oneteammds.listvo.Saengchae">
+		SELECT 
+ 		   sc.vscCode
+ 		  ,sc.hospitalId
+ 		  ,sc.patientId
+ 		  ,sc.vscHeight
+ 		  ,sc.vscWeight
+ 		  ,sc.bpMin
+ 		  ,sc.bpMax
+ 		  ,sc.bheat
+ 		  ,sc.pDoctor
+ 		  ,sc.vscCheck
+ 		  ,sc.adminId
+ 		  ,sc.vscrDate
+ 		  ,pit.pName
+		FROM 
+			saengchae sc
+		JOIN
+			patient pit
+			ON
+				sc.hospitalId = pit.hospitalId
+			AND
+				sc.patientId = pit.patientId
+			WHERE			
+				sc.patientId = 'patientId01'		
+	</select>
+	
+	
+	<!-- MDS p - 생체신호 및 상태  검색 -->
+	<select id="getSaengchaepSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Saengchae">
+	  	SELECT 
+ 		   sc.vscCode
+ 		  ,sc.hospitalId
+ 		  ,sc.patientId
+ 		  ,sc.vscHeight
+ 		  ,sc.vscWeight
+ 		  ,sc.bpMin
+ 		  ,sc.bpMax
+ 		  ,sc.bheat
+ 		  ,sc.pDoctor
+ 		  ,sc.vscCheck
+ 		  ,sc.adminId
+ 		  ,sc.vscrDate
+ 		  ,pit.pName
+		FROM 
+			saengchae sc
+		JOIN
+			patient pit
+			ON
+				sc.hospitalId = pit.hospitalId
+			AND
+				sc.patientId = pit.patientId
+			WHERE			
+				sc.patientId = 'patientId01'		
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND vscrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND vscrDate <![CDATA[<=]]> #{finish_date} 
+		</if>	
+	</select>
+	
+	
+	
+ </mapper>

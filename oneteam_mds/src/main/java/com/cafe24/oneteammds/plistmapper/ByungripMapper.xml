@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.plistmapper.ByungripMapper">
+ 	
+
+	
+	<!-- MDS p - 병리검사결과 -->
+	
+	<select id="getByungripList"
+			resultType="com.cafe24.oneteammds.listvo.Byungri">
+		SELECT 
+ 		   br.ptrCode
+ 		  ,br.hospitalId
+ 		  ,br.patientId
+ 		  ,br.ptName
+ 		  ,br.ptCode
+ 		  ,br.ptrValue
+ 		  ,br.pDoctor
+ 		  ,br.ptdTime
+ 		  ,br.adminId
+ 		  ,br.ptrDate
+ 		  ,pit.pName	  
+		FROM 
+			byungri br
+		JOIN
+			patient pit
+			ON
+				br.hospitalId = pit.hospitalId
+			AND
+				br.patientId = pit.patientId
+			WHERE			
+				br.patientId = 'patientId01'		
+	</select>
+	
+	<!-- MDS p - 병리검사결과  검색-->
+	<select id="getByungripSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Byungri">
+	  	SELECT 
+ 		   br.ptrCode
+ 		  ,br.hospitalId
+ 		  ,br.patientId
+ 		  ,br.ptName
+ 		  ,br.ptCode
+ 		  ,br.ptrValue
+ 		  ,br.pDoctor
+ 		  ,br.ptdTime
+ 		  ,br.adminId
+ 		  ,br.ptrDate
+ 		  ,pit.pName	  
+		FROM 
+			byungri br
+		JOIN
+			patient pit
+			ON
+				br.hospitalId = pit.hospitalId
+			AND
+				br.patientId = pit.patientId
+			WHERE			
+				br.patientId = 'patientId01'			
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND ptrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND ptrDate <![CDATA[<=]]> #{finish_date} 
+		</if>	
+	</select>
+	
+	
+	
+ 	
+ </mapper>

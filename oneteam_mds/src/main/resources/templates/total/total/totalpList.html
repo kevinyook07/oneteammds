@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout/default}">
+
+<th:block layout:fragment="customContents">
+	<div class="page-content">
+	 <!-- **************윗상단 메인 메뉴 ************** -->
+		<div class="page-header">
+		<h2 style="text-align:center">전체 리스트</h2>
+			<div class="container-fluid"></div>
+	<!-- **************윗상단 메인 메뉴END ************** -->
+	<!--************메인 컨텐트 ************ -->		
+	   	</div>
+	   	  <!-- Form Elements -->
+              <div class="col-lg-12">
+                <div class="block">
+                  
+                  <div class="block-body">
+                    <form action="/totalpList" method="post">	
+		<input type="date" name="start_date">~
+     	<input type="date" name="finish_date">
+		<button type="submit" class="btn btn-secondary">검색</button>
+	</form>
+                     <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">진단내역</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">진단내역코드</th>
+			<th style="white-space:nowrap;">병원고유번호</th>
+			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.dbCode}"></td>
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.drDate}"></td>
+			<td>
+				<a th:href="@{/jindanpDesc(dbCode=${list.dbCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">약물처방내역</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">약물처방내역코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.mbCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.mrDate}"></td>
+			<td>
+				<a th:href="@{/yakmulpDesc(mbCode=${list.mbCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">검체검사결과</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">검체검사결과코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.strCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.strDate}"></td>
+			<td>
+				<a th:href="@{/gumchepDesc(strCode=${list.strCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">병리검사결과</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">병리검사결과코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.ptrCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.ptrDate}"></td>
+			<td>
+				<a th:href="@{/byungripDesc(ptrCode=${list.ptrCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">영상검사결과</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">영상검사결과코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.itrCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.itrDate}"></td>
+			<td>
+				<a th:href="@{/youngsangpDesc(itrCode=${list.itrCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">영상판독정보</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">영상판독정보코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.iidCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.iidrDate}"></td>
+			<td>
+				<a th:href="@{/pandogpDesc(iidCode=${list.iidCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">기능검사결과</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">기능검사결과코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.ftrCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.ftrDate}"></td>
+			<td>
+				<a th:href="@{/ginuengpDesc(ftrCode=${list.ftrCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">수술내역</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">수술내역코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.sbCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.sbDate}"></td>
+			<td>
+				<a th:href="@{/susulpDesc(sbCode=${list.sbCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">알러지및부작용</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">알러지및부작용코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.aseCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.aserDate}"></td>
+			<td>
+				<a th:href="@{/allergypDesc(aseCode=${list.aseCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">예방접종내역</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">예방접종내역코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.pibCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.pirDate}"></td>
+			<td>
+				<a th:href="@{/yebangpDesc(pibCode=${list.pibCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">생체신호및상태</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">생체신호및상태코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.vscCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.vscrDate}"></td>
+			<td>
+				<a th:href="@{/saengchaepDesc(vscCode=${list.vscCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">흡연상태</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">흡연상태코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.scCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.scrDate}"></td>
+			<td>
+				<a th:href="@{/smokingpDesc(scCode=${list.scCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">음주상태</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">음주상태코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.dcCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.dcrDate}"></td>
+			<td>
+				<a th:href="@{/drinkingpDesc(dcCode=${list.dcCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">법정전염성감염병</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">법정전염성감염병코드</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+			<th style="white-space:nowrap;">등록일자</th>
+			<th style="white-space:nowrap;">상세보기</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.lcidCode}"></td>
+			<td th:text="${list.pName}"></td>
+			<td th:text="${list.lcidDate}"></td>
+			<td>
+				<a th:href="@{/junyumpDesc(lcidCode=${list.lcidCode})}">상세</a>
+			</td>
+		</tr>
+	</table>
+	
+	 <table class="table">
+                      <thead>
+		<tr>
+			<th style="white-space:nowrap;">해당환자 전체 진료정보 상세확인</th>
+		</tr>
+		<tr>
+			<th style="white-space:nowrap;">병원고유번호</th>
+			<th style="white-space:nowrap;">환자고유번호</th>
+			<th style="white-space:nowrap;">환자 이름</th>
+		</tr>
+		</thead>
+						<tbody>
+		<tr th:each="list:${totalpList}">
+			<td th:text="${list.hospitalId}"></td>
+			<td th:text="${list.patientId}"></td>
+			<td th:text="${list.pName}"></td>
+			<td>
+				<a th:href="@{/totalpDesc(dbCode=${list.dbCode}
+										 , mbCode=${list.mbCode}
+										 , strCode=${list.strCode}
+										 , ptrCode=${list.ptrCode}
+										 , itrCode=${list.itrCode}
+										 , iidCode=${list.iidCode}
+										 , ftrCode=${list.ftrCode}
+										 , sbCode=${list.sbCode}
+										 , aseCode=${list.aseCode}
+										 , pibCode=${list.pibCode}
+										 , vscCode=${list.vscCode}
+										 , scCode=${list.scCode}
+										 , dcCode=${list.dcCode}
+										 , lcidCode=${list.lcidCode})}">전체상세확인</a>
+			</td>
+		</tr>
+	  </tbody>
+                    </table>
+                      <div class="line"></div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          <!--************메인 컨텐트 END************ -->	
+</th:block>
+</html>

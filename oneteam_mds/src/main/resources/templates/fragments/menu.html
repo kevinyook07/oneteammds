@@ -68,6 +68,25 @@
                     <li><a href="pandogdbList">영상판독정보</a></li>
                   </ul>
                 </li>
+                <li><a href="#exampledropdownDropdown5" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '환자'}"> <i class="icon-grid"></i>환자 진료 리스트</a>
+                  <ul id="exampledropdownDropdown5" class="collapse list-unstyled">
+                  	<li><a href="totalpList">전체 진료정보내역</a></li>
+                    <li><a href="jindanpList">진단내역</a></li>
+                    <li><a href="yakmulpList">약물처방 내역</a></li>
+                    <li><a href="gumchepList">검체검사 결과</a></li>
+                    <li><a href="byungripList">병리검사 결과</a></li>
+                    <li><a href="youngsangpList">영상검사 결과</a></li>
+                    <li><a href="ginuengpList">기능검사 결과</a></li>
+                    <li><a href="susulpList">수술내역</a></li>
+                    <li><a th:href="allergypList">알러지 및 부작용</a></li>
+                    <li><a href="yebangpList">예방접종 내역</a></li>
+                    <li><a href="saengchaepList">생체 신호 및 상태</a></li>
+                    <li><a href="smokingpList">흡연상태</a></li>
+                    <li><a href="drinkingpList">음주상태</a></li>
+                    <li><a href="junyumpList">법정 전염성감염병</a></li>
+                    <li><a href="pandogpList">영상판독정보</a></li>
+                  </ul>
+                </li>
 				<li><a href="#exampledropdownDropdown8" aria-expanded="false" data-toggle="collapse" th:if="${session.SLEVEL eq '관리자'}"> <i class="icon-padnote"></i>!)진료 정보 발신 리스트</a>
                   <ul id="exampledropdownDropdown8" class="collapse list-unstyled ">
                     <li><a href="balsinInsert">진료 정보 발신</a></li>

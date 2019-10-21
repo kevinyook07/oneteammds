@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.plistmapper.SmokingpMapper">
+ 	
+ 	
+	
+	<!-- MDS p - 흡연상태 -->
+	
+	<select id="getSmokingpList"
+			resultType="com.cafe24.oneteammds.listvo.Smoking">
+		SELECT 
+ 		   smk.scCode
+ 		  ,smk.hospitalId
+ 		  ,smk.patientId
+ 		  ,smk.sccName
+ 		  ,smk.pDoctor
+ 		  ,smk.adminId
+ 		  ,smk.scrDate
+ 		  ,pit.pName
+		FROM 
+			smoking smk
+		JOIN
+			patient pit
+			ON
+				smk.hospitalId = pit.hospitalId
+			AND
+				smk.patientId = pit.patientId
+			WHERE			
+				smk.patientId = 'patientId01'		
+	</select>
+	
+	<!-- MDS p - 흡연상태  검색 -->
+	<select id="getSmokingpSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Smoking">
+	  	SELECT 
+ 		   smk.scCode
+ 		  ,smk.hospitalId
+ 		  ,smk.patientId
+ 		  ,smk.sccName
+ 		  ,smk.pDoctor
+ 		  ,smk.adminId
+ 		  ,smk.scrDate
+ 		  ,pit.pName
+		FROM 
+			smoking smk
+		JOIN
+			patient pit
+			ON
+				smk.hospitalId = pit.hospitalId
+			AND
+				smk.patientId = pit.patientId
+			WHERE			
+				smk.patientId = 'patientId01'			
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND scrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND scrDate <![CDATA[<=]]> #{finish_date} 
+		</if>
+	</select>
+	
+		
+ </mapper>

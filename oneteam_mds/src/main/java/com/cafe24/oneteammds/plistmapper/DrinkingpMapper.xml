@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.plistmapper.DrinkingpMapper">
+ 	
+ 
+	
+	<!-- MDS p - 음주상태 -->
+	
+	<select id="getDrinkingpList"
+			resultType="com.cafe24.oneteammds.listvo.Drinking">
+		SELECT 
+ 		   drk.dcCode
+ 		  ,drk.hospitalId
+ 		  ,drk.patientId
+ 		  ,drk.dccName
+ 		  ,drk.pDoctor
+ 		  ,drk.adminId
+ 		  ,drk.dcrDate
+ 		  ,pit.pName	  
+		FROM 
+			drinking drk
+		JOIN
+			patient pit
+			ON
+				drk.hospitalId = pit.hospitalId
+			AND
+				drk.patientId = pit.patientId	
+			WHERE			
+				drk.patientId = 'patientId01'	
+	</select>
+	
+	<!-- MDS p - 음주상태 검색 -->
+	<select id="getDrinkingpSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Drinking">
+	  	SELECT 
+ 		   drk.dcCode
+ 		  ,drk.hospitalId
+ 		  ,drk.patientId
+ 		  ,drk.dccName
+ 		  ,drk.pDoctor
+ 		  ,drk.adminId
+ 		  ,drk.dcrDate
+ 		  ,pit.pName	  
+		FROM 
+			drinking drk
+		JOIN
+			patient pit
+			ON
+				drk.hospitalId = pit.hospitalId
+			AND
+				drk.patientId = pit.patientId
+			WHERE			
+				drk.patientId = 'patientId01'		
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND dcrDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND dcrDate <![CDATA[<=]]> #{finish_date} 
+		</if>	
+	</select>
+	
+
+	
+ </mapper>

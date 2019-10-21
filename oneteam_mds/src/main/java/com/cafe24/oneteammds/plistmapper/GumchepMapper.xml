@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.plistmapper.GumchepMapper">
+ 	
+ 	
+	
+	<!-- MDS p - 검체검사결과 -->
+	
+	<select id="getGumchepList"
+			resultType="com.cafe24.oneteammds.listvo.Gumche">
+		SELECT 
+ 		   gc.strCode
+ 		  ,gc.hospitalId
+ 		  ,gc.patientId
+ 		  ,gc.stiName
+ 		  ,gc.stiCode
+ 		  ,gc.stName
+ 		  ,gc.strValue
+ 		  ,gc.strrValue
+ 		  ,gc.pDoctor
+ 		  ,gc.stdTime
+ 		  ,gc.adminId
+ 		  ,gc.strDate
+ 		  ,pit.pName	  
+		FROM 
+			gumche gc
+		JOIN
+			patient pit
+			ON
+				gc.hospitalId = pit.hospitalId
+			AND
+				gc.patientId = pit.patientId
+			WHERE			
+				gc.patientId = 'patientId01'			
+	</select>
+	
+	
+	<!-- MDS p - 검체검사결과 검색 -->
+	<select id="getGumchepSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Gumche">
+	  	SELECT 
+ 		   gc.strCode
+ 		  ,gc.hospitalId
+ 		  ,gc.patientId
+ 		  ,gc.stiName
+ 		  ,gc.stiCode
+ 		  ,gc.stName
+ 		  ,gc.strValue
+ 		  ,gc.strrValue
+ 		  ,gc.pDoctor
+ 		  ,gc.stdTime
+ 		  ,gc.adminId
+ 		  ,gc.strDate
+ 		  ,pit.pName
+		FROM 
+			gumche gc
+		JOIN
+			patient pit
+			ON
+				gc.hospitalId = pit.hospitalId
+			AND
+				gc.patientId = pit.patientId
+			WHERE			
+				gc.patientId = 'patientId01'			
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND strDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND strDate <![CDATA[<=]]> #{finish_date} 
+		</if>
+	</select>
+	
+
+ </mapper>
