@@ -8,14 +8,16 @@ import org.springframework.web.socket.config.annotation.*;
 @EnableWebSocketMessageBroker // 웹 소켓 서버를 활성화
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
-    @Override
+    @Override //오버라이더 설정
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws").withSockJS();
+        //websocket 설정
     }
 
-    @Override
+    @Override //오버라이더 설정
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.setApplicationDestinationPrefixes("/app");
+        // 메세지 입력시 셋팅
+    	registry.setApplicationDestinationPrefixes("/app");
         registry.enableSimpleBroker("/topic");   
 
     }

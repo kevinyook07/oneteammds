@@ -13,22 +13,24 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 import com.cafe24.oneteammds.chattingvo.ChatMessage;
 
 
-@Component
+@Component  //사용된 클래스를 자동으로 빈에 등록
 public class WebSocketEventListener {
-
+    // 접근지정자 설정
     private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class);
 
-    @Autowired
+    @Autowired //저장 후 사용
     private SimpMessageSendingOperations messagingTemplate;
 
-    @EventListener
+    @EventListener //메소드를 애플리케이션 이벤트의 리스너로 표시
     public void handleWebSocketConnectListener(SessionConnectedEvent event) {
-        logger.info("Received a new web socket connection");
+        // 새 웹 소켓 연결 수신 
+    	logger.info("Received a new web socket connection");
     }
 
-    @EventListener
+    @EventListener //메소드를 애플리케이션 이벤트의 리스너로 표시
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
-        StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
+        // 채팅방 사용자 접속
+    	StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 
         String username = (String) headerAccessor.getSessionAttributes().get("username");
         if(username != null) {
