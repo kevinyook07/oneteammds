@@ -18,19 +18,16 @@ public class GumchepService {
 	@Autowired
 	private GumchepMapper gumchepMapper;
 
-
-	// MDS p - 검체검사결과
+	// 환자 - 검체검사결과
 	public List<Gumche> getGumchepList() {
 		return gumchepMapper.getGumchepList();
 	}
 
-	// MDS p - 검체검사결과 검색
+	// 환자 - 검체검사결과 검색
 	public List<Gumche> getGumchepSearchList(String start_date, String finish_date) {
 		List<Gumche> list = gumchepMapper.getGumchepSearchList(start_date, finish_date);
 
 		return list;
 	}
-
-	
 
 }

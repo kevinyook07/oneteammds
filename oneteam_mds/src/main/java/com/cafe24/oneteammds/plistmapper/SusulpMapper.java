@@ -10,14 +10,10 @@ import com.cafe24.oneteammds.listvo.Susulh;
 @Mapper
 public interface SusulpMapper {
 
-	
-
-	// 수술내역 regist complete --> MDS p - 수술내역
+	// 환자 - 수술내역
 	public List<Susul> getSusulpList();
 
-	// MDS p - 수술내역 검색
-	public List<Susul> getSusulpSearchList( String start_date, String finish_date);
-
-	
+	// 환자 - 수술내역 검색
+	public List<Susul> getSusulpSearchList(String start_date, String finish_date);
 
 }

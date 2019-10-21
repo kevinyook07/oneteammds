@@ -22,9 +22,7 @@ public class SaengchaepController {
 	@Autowired
 	private SaengchaepService saengchaepService;
 
-	
-
-	// MDS p - 생체신호 및 상태 리스트
+	// 환자 - 생체신호 및 상태 리스트
 	@RequestMapping("/saengchaepList")
 	public String getSaengchaepList(Model model) {
 
@@ -33,17 +31,14 @@ public class SaengchaepController {
 		return "/saengchae/saengchae/saengchaepList";
 	}
 
-	// MDS p - 생체신호 및 상태 검색
+	// 환자 - 생체신호 및 상태 검색
 	@PostMapping("/saengchaepList")
-	public String getSaengchaepList(
-									@RequestParam(value = "start_date") String start_date
-									,@RequestParam(value = "finish_date") String finish_date,
-			Model model) {
+	public String getSaengchaepList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Saengchae> list = saengchaepService.getSaengchaepSearchList(start_date, finish_date);
 		model.addAttribute("saengchaepList", list);
 
 		return "/saengchae/saengchae/saengchaepList";
 	}
 
-	
 }

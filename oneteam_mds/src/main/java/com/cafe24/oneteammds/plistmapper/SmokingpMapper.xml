@@ -6,7 +6,7 @@
  	
  	
 	
-	<!-- MDS p - 흡연상태 -->
+	<!-- 환자 - 흡연상태 -->
 	
 	<select id="getSmokingpList"
 			resultType="com.cafe24.oneteammds.listvo.Smoking">
@@ -31,7 +31,7 @@
 				smk.patientId = 'patientId01'		
 	</select>
 	
-	<!-- MDS p - 흡연상태  검색 -->
+	<!-- 환자 - 흡연상태  검색 -->
 	<select id="getSmokingpSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Smoking">
 	  	SELECT 

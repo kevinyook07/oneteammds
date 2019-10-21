@@ -10,14 +10,10 @@ import com.cafe24.oneteammds.listvo.Smokingh;
 @Mapper
 public interface SmokingpMapper {
 
-	
-
-	// 흡연상태 regist complete --> MDS p - 흡연상태
+	// 환자 - 흡연상태 리스트
 	public List<Smoking> getSmokingpList();
 
-	// MDS p - 흡연상태 검색
-	public List<Smoking> getSmokingpSearchList( String start_date, String finish_date);
-
-	
+	// 환자 - 흡연상태 검색
+	public List<Smoking> getSmokingpSearchList(String start_date, String finish_date);
 
 }

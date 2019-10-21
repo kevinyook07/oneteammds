@@ -36,8 +36,7 @@ public class TotalpController {
 	@Autowired
 	private TotalpService totalpService;
 
-
-
+	// 환자 - 전체 리스트
 	@RequestMapping("/totalpList")
 	public String getTotalpList(Model model) {
 
@@ -46,20 +45,16 @@ public class TotalpController {
 		return "/total/total/totalpList";
 	}
 
-	// MDS p - 전체 검색
+	// 환자 - 전체 검색
 	@PostMapping("/totalpList")
-	public String getTotalpList(
-								@RequestParam(value = "start_date") String start_date
-								,@RequestParam(value = "finish_date") String finish_date,
-			Model model) {
+	public String getTotalpList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Total> list = totalpService.getTotalpSearchList(start_date, finish_date);
 		model.addAttribute("totalpList", list);
 
 		return "/total/total/totalpList";
 
 	}
-
-	
 
 	// 진단내역 상세
 	@RequestMapping("/jindanpDesc")

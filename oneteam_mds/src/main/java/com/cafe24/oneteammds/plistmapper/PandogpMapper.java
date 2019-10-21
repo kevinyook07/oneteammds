@@ -10,13 +10,10 @@ import com.cafe24.oneteammds.listvo.Pandogh;
 @Mapper
 public interface PandogpMapper {
 
-	
-
-	// 음주상태 regist complete --> MDS p - 영상판독정보
+	// 환자 - 영상판독정보 리스트
 	public List<Pandog> getPandogpList();
 
-	// MDS p - 영상판독정보 검색
-	public List<Pandog> getPandogpSearchList( String start_date, String finish_date);
-
+	// 환자 - 영상판독정보 검색
+	public List<Pandog> getPandogpSearchList(String start_date, String finish_date);
 
 }

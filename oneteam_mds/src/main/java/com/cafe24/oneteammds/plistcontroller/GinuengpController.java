@@ -1,6 +1,5 @@
 package com.cafe24.oneteammds.plistcontroller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,28 +21,24 @@ public class GinuengpController {
 
 	@Autowired
 	private GinuengpService ginuengpService;
-	
-	
-		@RequestMapping("/ginuengpList")
-		public String getGinuengpList(Model model) {
-			
-			model.addAttribute("ginuengpList", ginuengpService.getGinuengpList());
-			
-			return "/ginueng/ginueng/ginuengpList";
-		}
-	
-	// MDS p - 기능검사결과 검색
+
+	// 환자 - 기능검사결과 리스트
+	@RequestMapping("/ginuengpList")
+	public String getGinuengpList(Model model) {
+
+		model.addAttribute("ginuengpList", ginuengpService.getGinuengpList());
+
+		return "/ginueng/ginueng/ginuengpList";
+	}
+
+	// 환자 - 기능검사결과 검색
 	@PostMapping("/ginuengpList")
-	public String getGinuengpList(
-								  @RequestParam(value = "start_date") String start_date
-								  ,@RequestParam(value = "finish_date") String finish_date,
-			Model model) {
+	public String getGinuengpList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Ginueng> list = ginuengpService.getGinuengpSearchList(start_date, finish_date);
 		model.addAttribute("ginuengpList", list);
 
 		return "/ginueng/ginueng/ginuengpList";
 	}
-	
-	
-	
+
 }

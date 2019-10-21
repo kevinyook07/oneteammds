@@ -18,21 +18,17 @@ public class PandogpService {
 	@Autowired
 	private PandogpMapper pandogpMapper;
 
-	
-
-	// MDS p - 영상판독정보
+	// 환자 - 영상판독정보
 	public List<Pandog> getPandogpList() {
 		return pandogpMapper.getPandogpList();
 	}
 
-	// MDS p - 영상판독정보 검색
+	// 환자 - 영상판독정보 검색
 	public List<Pandog> getPandogpSearchList(String start_date, String finish_date) {
 
 		List<Pandog> list = pandogpMapper.getPandogpSearchList(start_date, finish_date);
 
 		return list;
 	}
-
-	
 
 }

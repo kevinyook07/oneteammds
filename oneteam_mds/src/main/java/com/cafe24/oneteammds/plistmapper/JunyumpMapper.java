@@ -10,14 +10,10 @@ import com.cafe24.oneteammds.listvo.Junyumh;
 @Mapper
 public interface JunyumpMapper {
 
-	
-
-	// 법정 전염성 감염병 regist complete --> MDS p - 법정 전염성 감염병
+	// 환자 - 법정 전염성 감염병 리스트
 	public List<Junyum> getJunyumpList();
 
-	// MDS p - 법정 전염성 감염병 검색
-	public List<Junyum> getJunyumpSearchList( String start_date, String finish_date);
-
-
+	// 환자 - 법정 전염성 감염병 검색
+	public List<Junyum> getJunyumpSearchList(String start_date, String finish_date);
 
 }

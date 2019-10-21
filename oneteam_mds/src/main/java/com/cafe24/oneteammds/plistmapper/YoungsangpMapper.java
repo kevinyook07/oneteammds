@@ -10,14 +10,10 @@ import com.cafe24.oneteammds.listvo.Youngsangh;
 @Mapper
 public interface YoungsangpMapper {
 
-	
-
-	// 영상검사결과 regist complete --> MDS p - 영상검사결과
+	// 환자 - 영상검사결과 리스트
 	public List<Youngsang> getYoungsangpList();
 
-	// MDS p - 영상검사결과 검색
-	public List<Youngsang> getYoungsangpSearchList( String start_date, String finish_date);
-
-	
+	// 환자 - 영상검사결과 검색
+	public List<Youngsang> getYoungsangpSearchList(String start_date, String finish_date);
 
 }

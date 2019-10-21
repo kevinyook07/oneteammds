@@ -6,7 +6,7 @@
  	
  	
 	
-	<!-- MDS p - 수술내역 -->
+	<!-- 환자 - 수술내역 -->
 	
 	<select id="getSusulpList"
 			resultType="com.cafe24.oneteammds.listvo.Susul">
@@ -35,7 +35,7 @@
 	</select>
 	
 	
-	<!-- MDS p - 수술내역 검색 -->
+	<!-- 환자 - 수술내역 검색 -->
 	<select id="getSusulpSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Susul">
 	  	SELECT 

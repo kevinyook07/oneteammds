@@ -4,10 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.plistmapper.GinuengpMapper">
  	
-
-	
-	<!-- MDS p - 기능검사결과 -->
-	
+	<!-- 환자 - 기능검사결과 -->	
 	<select id="getGinuengpList"
 			resultType="com.cafe24.oneteammds.listvo.Ginueng">
 		SELECT 

@@ -22,9 +22,7 @@ public class PandogpController {
 	@Autowired
 	private PandogpService pandogpService;
 
-	
-
-	// MDS p - 영상판독정보 리스트
+	// 환자 - 영상판독정보 리스트
 	@RequestMapping("/pandogpList")
 	public String getPandogpList(Model model) {
 
@@ -33,12 +31,10 @@ public class PandogpController {
 		return "/pandog/pandog/pandogpList";
 	}
 
-	// MDS p - 영상판독정보 검색
+	// 환자 - 영상판독정보 검색
 	@PostMapping("/pandogpList")
-	public String getPandogpList(
-								 @RequestParam(value = "start_date") String start_date
-								 ,@RequestParam(value = "finish_date") String finish_date,
-			Model model) {
+	public String getPandogpList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Pandog> list = pandogpService.getPandogpSearchList(start_date, finish_date);
 		model.addAttribute("pandogpList", list);
 

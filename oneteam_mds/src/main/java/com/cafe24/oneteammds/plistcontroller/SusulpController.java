@@ -22,9 +22,7 @@ public class SusulpController {
 	@Autowired
 	private SusulpService susulpService;
 
-	
-
-	// MDS p - 수술내역 리스트
+	// 환자 - 수술내역 리스트
 	@RequestMapping("/susulpList")
 	public String getSusulpList(Model model) {
 
@@ -33,18 +31,14 @@ public class SusulpController {
 		return "/susul/susul/susulpList";
 	}
 
-	// MDS p - 수술내역 검색
+	// 환자 - 수술내역 검색
 	@PostMapping("/susulpList")
-	public String getSusulpList(
-								@RequestParam(value = "start_date") String start_date
-								,@RequestParam(value = "finish_date") String finish_date,
-			Model model) {
+	public String getSusulpList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Susul> list = susulpService.getSusulpSearchList(start_date, finish_date);
 		model.addAttribute("susulpList", list);
 
 		return "/susul/susul/susulpList";
 	}
-
-
 
 }

@@ -18,14 +18,12 @@ public class SmokingpService {
 	@Autowired
 	private SmokingpMapper smokingpMapper;
 
-	
-
-	// MDS p - 흡연상태
+	// 환자 - 흡연상태
 	public List<Smoking> getSmokingpList() {
 		return smokingpMapper.getSmokingpList();
 	}
 
-	// MDS p - 흡연상태 검색
+	// 환자 - 흡연상태 검색
 	public List<Smoking> getSmokringpSearchList(String start_date, String finish_date) {
 
 		List<Smoking> list = smokingpMapper.getSmokingpSearchList(start_date, finish_date);
@@ -33,5 +31,4 @@ public class SmokingpService {
 		return list;
 	}
 
-	
 }

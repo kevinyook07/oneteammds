@@ -10,13 +10,10 @@ import com.cafe24.oneteammds.listvo.Byungrih;
 @Mapper
 public interface ByungripMapper {
 
-	
-
-	// 병리검사결과 regist complete --> MDS p - 병리검사결과
+	// 환자 - 병리검사결과
 	public List<Byungri> getByungripList();
 
-	// MDS p - 병리검사결과 검색
-	public List<Byungri> getByungripSearchList( String start_date, String finish_date);
+	// 환자 - 병리검사결과 검색
+	public List<Byungri> getByungripSearchList(String start_date, String finish_date);
 
-	
 }

@@ -22,9 +22,7 @@ public class SmokingpController {
 	@Autowired
 	private SmokingpService smokingpService;
 
-	
-
-	// MDS p - 흡연상태 리스트
+	// 환자 - 흡연상태 리스트
 	@RequestMapping("/smokingpList")
 	public String getSmokingpList(Model model) {
 
@@ -33,18 +31,14 @@ public class SmokingpController {
 		return "/smoking/smoking/smokingpList";
 	}
 
-	// MDS p - 흡연상태 검색
+	// 환자 - 흡연상태 검색
 	@PostMapping("/smokingpList")
-	public String getSmokingpList(
-								  @RequestParam(value = "start_date") String start_date
-								  ,@RequestParam(value = "finish_date") String finish_date,
-			Model model) {
+	public String getSmokingpList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Smoking> list = smokingpService.getSmokringpSearchList(start_date, finish_date);
 		model.addAttribute("smokingpList", list);
 
 		return "/smoking/smoking/smokingpList";
 	}
-
-	
 
 }

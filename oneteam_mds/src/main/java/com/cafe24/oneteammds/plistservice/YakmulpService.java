@@ -18,20 +18,16 @@ public class YakmulpService {
 	@Autowired
 	private YakmulpMapper yakmulpMapper;
 
-	
-
-	// MDS p - 약물처방내역
+	// 환자 - 약물처방내역
 	public List<Yakmul> getYakmulpList() {
 		return yakmulpMapper.getYakmulpList();
 	}
 
-	// MDS p - 약물처방내역 검색
+	// 환자 - 약물처방내역 검색
 	public List<Yakmul> getYakmulpSearchList(String start_date, String finish_date) {
 		List<Yakmul> list = yakmulpMapper.getYakmulpSearchList(start_date, finish_date);
 
 		return list;
 	}
-
-	
 
 }

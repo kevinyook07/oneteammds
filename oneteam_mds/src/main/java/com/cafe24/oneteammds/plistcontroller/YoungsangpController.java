@@ -22,9 +22,7 @@ public class YoungsangpController {
 	@Autowired
 	private YoungsangpService youngsangpService;
 
-	
-
-	// MDS p - 영상검사결과 리스트
+	// 환자 - 영상검사결과 리스트
 	@RequestMapping("/youngsangpList")
 	public String getYoungsangpList(Model model) {
 
@@ -33,18 +31,14 @@ public class YoungsangpController {
 		return "/youngsang/youngsang/youngsangpList";
 	}
 
-	// MDS p - 영상검사결과 검색
+	// 환자 - 영상검사결과 검색
 	@PostMapping("/youngsangpList")
-	public String getYoungsangpList(
-									@RequestParam(value = "start_date") String start_date
-									,@RequestParam(value = "finish_date") String finish_date,
-			Model model) {
+	public String getYoungsangpList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Youngsang> list = youngsangpService.getYoungsangpSearchList(start_date, finish_date);
 		model.addAttribute("youngsangpList", list);
 
 		return "/youngsang/youngsang/youngsangpList";
 	}
-
-
 
 }

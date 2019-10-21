@@ -6,7 +6,7 @@
  	
  	
 	
-	<!-- 시스템p -->
+	<!-- 환자 - 전체 -->
 	<select id="getTotalpList"
 			resultType="com.cafe24.oneteammds.listvo.Total">
 		SELECT 
@@ -137,7 +137,7 @@
 				tt.patientId = 'patientId01'		
 	</select>
 	
-	<!-- 시스템p 전체 검색 -->
+	<!-- 환자 - 전체 검색 -->
 	<select	id="getTotalpSearchList" parameterType="String"
  			resultType="com.cafe24.oneteammds.listvo.Total">
 		SELECT 

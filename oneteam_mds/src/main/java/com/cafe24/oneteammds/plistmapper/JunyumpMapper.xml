@@ -4,10 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.plistmapper.JunyumpMapper">
  	
- 	
-	
-	<!-- MDS p - 법정 전염성 감염병 -->
-	
+	<!-- 환자 - 법정 전염성 감염병 -->	
 	<select id="getJunyumpList"
 			resultType="com.cafe24.oneteammds.listvo.Junyum">
 		SELECT 
@@ -38,8 +35,7 @@
 				jy.patientId = 'patientId01'		
 	</select>
 	
-	
-	<!-- MDS p - 법정 전염성 감염병 검색 -->
+	<!-- 환자 - 법정 전염성 감염병 검색 -->
 	<select id="getJunyumpSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Junyum">
 	  	SELECT 

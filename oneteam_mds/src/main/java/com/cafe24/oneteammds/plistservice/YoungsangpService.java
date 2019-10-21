@@ -18,12 +18,12 @@ public class YoungsangpService {
 	@Autowired
 	private YoungsangpMapper youngsangpMapper;
 
-	// MDS p - 영상검사결과
+	// 환자 - 영상검사결과
 	public List<Youngsang> getYoungsangpList() {
 		return youngsangpMapper.getYoungsangpList();
 	}
 
-	// MDS p - 영상검사결과 검색
+	// 환자 - 영상검사결과 검색
 	public List<Youngsang> getYoungsangpSearchList(String start_date, String finish_date) {
 
 		List<Youngsang> list = youngsangpMapper.getYoungsangpSearchList(start_date, finish_date);

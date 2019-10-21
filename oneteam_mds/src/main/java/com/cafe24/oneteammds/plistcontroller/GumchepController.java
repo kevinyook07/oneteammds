@@ -1,6 +1,5 @@
 package com.cafe24.oneteammds.plistcontroller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,32 +21,25 @@ public class GumchepController {
 
 	@Autowired
 	private GumchepService gumchepService;
-	
-	
-		
-		// MDS p - 검체검사결과 리스트
-		@RequestMapping("/gumchepList")
-		public String getGumchepList(Model model) {
-			
-			model.addAttribute("gumchepList", gumchepService.getGumchepList());
-			
-			return "/gumche/gumche/gumchepList";
-		}
-	
-	
-	// MDS p - 검체검사결과 검색
+
+	// 환자 - 검체검사결과 리스트
+	@RequestMapping("/gumchepList")
+	public String getGumchepList(Model model) {
+
+		model.addAttribute("gumchepList", gumchepService.getGumchepList());
+
+		return "/gumche/gumche/gumchepList";
+	}
+
+	// 환자 - 검체검사결과 검색
 	@PostMapping("/gumchepList")
-	public String getGumchepList(
-							   	 @RequestParam(value = "start_date") String start_date
-							   	 ,@RequestParam(value = "finish_date") String finish_date,
-			Model model) {
+	public String getGumchepList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Gumche> list = gumchepService.getGumchepSearchList(start_date, finish_date);
 		model.addAttribute("gumchepList", list);
 
 		return "/gumche/gumche/gumchepList";
 
 	}
-	
-	
-	 	 
+
 }

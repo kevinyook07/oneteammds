@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import com.cafe24.oneteammds.listvo.Allergy;
 import com.cafe24.oneteammds.listvo.Allergyh;
 import com.cafe24.oneteammds.listvo.Byungri;
@@ -46,21 +45,17 @@ public class TotalpService {
 	@Autowired
 	private TotalpMapper totalpMapper;
 
-	
-
-	// 시스템 p
+	// 환자 - 전체
 	public List<Total> getTotalpList() {
 		return totalpMapper.getTotalpList();
 	}
-	
-	// MDS p - 전체 검색
-		public List<Total> getTotalpSearchList(String start_date, String finish_date) {
-			List<Total> list = totalpMapper.getTotalpSearchList(start_date, finish_date);
 
-			return list;
-		}
+	// 환자 - 전체 검색
+	public List<Total> getTotalpSearchList(String start_date, String finish_date) {
+		List<Total> list = totalpMapper.getTotalpSearchList(start_date, finish_date);
 
-		
+		return list;
+	}
 
 	// 진단내역 상세
 	public Jindanh getJindanhByCode(String dbCode) {
@@ -247,8 +242,8 @@ public class TotalpService {
 	public Total getTotalReplace(String dbCode, String mbCode, String strCode, String ptrCode, String itrCode,
 			String iidCode, String ftrCode, String sbCode, String aseCode, String pibCode, String vscCode,
 			String scCode, String dcCode, String lcidCode) {
-		return totalpMapper.getTotalReplace(dbCode, mbCode, strCode, ptrCode, itrCode, iidCode, ftrCode, sbCode, aseCode,
-				pibCode, vscCode, scCode, dcCode, lcidCode);
+		return totalpMapper.getTotalReplace(dbCode, mbCode, strCode, ptrCode, itrCode, iidCode, ftrCode, sbCode,
+				aseCode, pibCode, vscCode, scCode, dcCode, lcidCode);
 	}
 
 }

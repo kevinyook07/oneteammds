@@ -18,20 +18,17 @@ public class SaengchaepService {
 	@Autowired
 	private SaengchaepMapper saengchaepMapper;
 
-	
-
-	// MDS p - 생체신호 및 상태
+	// 환자 - 생체신호 및 상태
 	public List<Saengchae> getSaengchaepList() {
 		return saengchaepMapper.getSaengchaepList();
 	}
 
-	// 생체신호 및 상태 검색
+	// 환자 - 생체신호 및 상태 검색
 	public List<Saengchae> getSaengchaepSearchList(String start_date, String finish_date) {
 
 		List<Saengchae> list = saengchaepMapper.getSaengchaepSearchList(start_date, finish_date);
 
 		return list;
 	}
-
 
 }

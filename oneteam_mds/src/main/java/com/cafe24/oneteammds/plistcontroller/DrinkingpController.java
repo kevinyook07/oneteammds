@@ -22,33 +22,24 @@ public class DrinkingpController {
 	@Autowired
 	private DrinkingpService drinkingpService;
 
-
-
-	// 시스템p
-
-
-	
+	// 환자 - 음주상태 리스트
 	@RequestMapping("/drinkingpList")
 	public String getDrinkingpList(Model model) {
-		
+
 		model.addAttribute("drinkingpList", drinkingpService.getDrinkingpList());
-		
+
 		return "/drinking/drinking/drinkingpList";
 	}
 
-	// MDS p - 음주상태 검색
+	// 환자 - 음주상태 검색
 	@PostMapping("drinkingpList")
-	public String getDrinkingpList(
-								   @RequestParam(value = "start_date") String start_date
-								   ,@RequestParam(value = "finish_date") String finish_date,
-			Model model) {
+	public String getDrinkingpList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Drinking> list = drinkingpService.getDrinkingpSearchList(start_date, finish_date);
 		model.addAttribute("drinkingpList", list);
 
 		return "/drinking/drinking/drinkingpList";
 
 	}
-
-	
 
 }

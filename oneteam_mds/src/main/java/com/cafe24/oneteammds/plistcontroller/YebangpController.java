@@ -22,9 +22,7 @@ public class YebangpController {
 	@Autowired
 	private YebangpService yebangpService;
 
-
-
-	// MDS p - 예방접종내역 리스트
+	// 환자 - 예방접종내역 리스트
 	@RequestMapping("/yebangpList")
 	public String getYebangpList(Model model) {
 
@@ -33,18 +31,14 @@ public class YebangpController {
 		return "/yebang/yebang/yebangpList";
 	}
 
-	// MDS p - 예방접종내역 검색
+	// 환자 - 예방접종내역 검색
 	@PostMapping("/yebangpList")
-	public String getYebangpList(
-								 @RequestParam(value = "start_date") String start_date
-								 ,@RequestParam(value = "finish_date") String finish_date,
-			Model model) {
+	public String getYebangpList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Yebang> list = yebangpService.getYebangpSearchList(start_date, finish_date);
 		model.addAttribute("yebangpList", list);
 
 		return "/yebang/yebang/yebangpList";
 	}
-
-	
 
 }

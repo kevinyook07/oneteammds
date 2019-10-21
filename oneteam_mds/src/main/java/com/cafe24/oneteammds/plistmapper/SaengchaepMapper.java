@@ -10,14 +10,10 @@ import com.cafe24.oneteammds.listvo.Saengchaeh;
 @Mapper
 public interface SaengchaepMapper {
 
-	
-
-	// 생체신호 및 상태 regist complete --> MDS p - 생체신호 및 상태
+	// 환자 - 생체신호 및 상태 리스트
 	public List<Saengchae> getSaengchaepList();
 
-	// MDS p - 생체신호 및 상태 검색
-	public List<Saengchae> getSaengchaepSearchList( String start_date, String finish_date);
-
-	
+	// 환자 - 생체신호 및 상태 검색
+	public List<Saengchae> getSaengchaepSearchList(String start_date, String finish_date);
 
 }

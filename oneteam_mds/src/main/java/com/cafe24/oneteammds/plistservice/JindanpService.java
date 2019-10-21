@@ -16,10 +16,12 @@ public class JindanpService {
 	@Autowired
 	private JindanpMapper jindanpMapper;
 
+	// 환자 - 진단내역
 	public List<Jindan> getJindanpList() {
 		return jindanpMapper.getJindanpList();
 	}
 	
+	// 환자 - 진단내역 검색
 	public List<Jindan> getJindanpSearchList(String start_date, String finish_date){
 		List<Jindan> list = jindanpMapper.getJindanpSearchList(start_date, finish_date);
 		

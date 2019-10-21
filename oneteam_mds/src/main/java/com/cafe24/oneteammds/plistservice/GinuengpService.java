@@ -18,21 +18,17 @@ public class GinuengpService {
 	@Autowired
 	private GinuengpMapper ginuengpMapper;
 
-	
-
-	// MDS p - 기능검사결과
+	// 환자 - 기능검사결과
 	public List<Ginueng> getGinuengpList() {
 		return ginuengpMapper.getGinuengpList();
 	}
 
-	// MDS p - 기능검사결과 검색
+	// 환자 - 기능검사결과 검색
 	public List<Ginueng> getGinuengpSearchList(String start_date, String finish_date) {
 
 		List<Ginueng> list = ginuengpMapper.getGinuengpSearchList(start_date, finish_date);
 
 		return list;
 	}
-
-	
 
 }

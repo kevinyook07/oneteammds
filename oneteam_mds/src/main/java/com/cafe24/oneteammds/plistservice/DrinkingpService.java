@@ -18,21 +18,17 @@ public class DrinkingpService {
 	@Autowired
 	private DrinkingpMapper drinkingpMapper;
 
-	
-
-	// MDS p - 음주상태
+	// 환자 - 음주상태
 	public List<Drinking> getDrinkingpList() {
 		return drinkingpMapper.getDrinkingpList();
 	}
 
-	// MDS p - 음주상태 검색
+	// 환자 - 음주상태 검색
 	public List<Drinking> getDrinkingpSearchList(String start_date, String finish_date) {
 
 		List<Drinking> list = drinkingpMapper.getDrinkingpSearchList(start_date, finish_date);
 
 		return list;
 	}
-
-	
 
 }

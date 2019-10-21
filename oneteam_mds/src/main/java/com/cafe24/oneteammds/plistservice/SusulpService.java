@@ -18,14 +18,12 @@ public class SusulpService {
 	@Autowired
 	private SusulpMapper susulpMapper;
 
-	
-
-	// MDS p - 수술내역
+	// 환자 - 수술내역
 	public List<Susul> getSusulpList() {
 		return susulpMapper.getSusulpList();
 	}
 
-	// MDS p - 수술내역 검색
+	// 환자 - 수술내역 검색
 	public List<Susul> getSusulpSearchList(String start_date, String finish_date) {
 
 		List<Susul> list = susulpMapper.getSusulpSearchList(start_date, finish_date);
@@ -33,5 +31,4 @@ public class SusulpService {
 		return list;
 	}
 
-	
 }

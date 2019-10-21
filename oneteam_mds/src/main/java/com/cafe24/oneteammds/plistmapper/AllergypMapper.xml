@@ -4,10 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.cafe24.oneteammds.plistmapper.AllergypMapper">
  	
- 	
-	
-	<!-- MDS p - 알러지 및 부작용 -->
-	
+	<!-- 환자 - 알러지 및 부작용 -->	
 	<select id="getAllergypList"
 			resultType="com.cafe24.oneteammds.listvo.Allergy">
 		SELECT 
@@ -35,7 +32,7 @@
 				alg.patientId = 'patientId01'		
 	</select>
 	
-	<!-- MDS p - 알러지 및 부작용 검색 -->
+	<!-- 환자 - 알러지 및 부작용 검색 -->
 	<select id="getAllergypSearchList" parameterType="String" 
 			resultType="com.cafe24.oneteammds.listvo.Allergy">
 	  	SELECT 

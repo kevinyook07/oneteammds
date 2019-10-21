@@ -11,13 +11,10 @@ import com.cafe24.oneteammds.listvo.Yebangh;
 @Mapper
 public interface YebangpMapper {
 
-	
-
-	// 예방접종내역 regist complete --> MDS p - 예방접종내역
+	// 환자 - 예방접종내역 리스트
 	public List<Yebang> getYebangpList();
 
-	// MDS p - 예방접종내역 검색
-	public List<Yebang> getYebangpSearchList( String start_date, String finish_date);
-
+	// 환자 - 예방접종내역 검색
+	public List<Yebang> getYebangpSearchList(String start_date, String finish_date);
 
 }

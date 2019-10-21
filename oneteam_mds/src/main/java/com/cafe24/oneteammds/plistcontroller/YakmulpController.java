@@ -22,9 +22,7 @@ public class YakmulpController {
 	@Autowired
 	private YakmulpService yakmulpService;
 
-	
-
-	// MDS p - 약물처방내역 리스트
+	// 환자 - 약물처방내역 리스트
 	@RequestMapping("/yakmulpList")
 	public String getYakmulpList(Model model) {
 
@@ -33,19 +31,15 @@ public class YakmulpController {
 		return "/yakmul/yakmul/yakmulpList";
 	}
 
-	// MDS p - 약물처방내역 검색
+	// 환자 - 약물처방내역 검색
 	@PostMapping("/yakmulpList")
-	public String getYakmulpList(
-								 @RequestParam(value = "start_date") String start_date
-								 ,@RequestParam(value = "finish_date") String finish_date,
-			Model model) {
+	public String getYakmulpList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Yakmul> list = yakmulpService.getYakmulpSearchList(start_date, finish_date);
 		model.addAttribute("yakmulpList", list);
 
 		return "/yakmul/yakmul/yakmulpList";
 
 	}
-
-	
 
 }

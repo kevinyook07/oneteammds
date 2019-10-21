@@ -1,6 +1,5 @@
 package com.cafe24.oneteammds.plistcontroller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,30 +21,24 @@ public class JunyumpController {
 
 	@Autowired
 	private JunyumpService junyumpService;
-	
-	
-		
-		// MDS p - 법정 전염성 감염병 리스트
-		@RequestMapping("/junyumpList")
-		public String getJunyumpList(Model model) {
-			
-			model.addAttribute("junyumpList", junyumpService.getJunyumpList());
-			
-			return "/junyum/junyum/junyumpList";
-		}
-	
-	// MDS p - 법정 전염성 감염병 검색	
+
+	// 환자 - 법정 전염성 감염병 리스트
+	@RequestMapping("/junyumpList")
+	public String getJunyumpList(Model model) {
+
+		model.addAttribute("junyumpList", junyumpService.getJunyumpList());
+
+		return "/junyum/junyum/junyumpList";
+	}
+
+	// 환자 - 법정 전염성 감염병 검색
 	@PostMapping("/junyumpList")
-	public String getJunyumpList(
-							     @RequestParam(value = "start_date") String start_date
-							     ,@RequestParam(value = "finish_date") String finish_date,
-			Model model) {
+	public String getJunyumpList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Junyum> list = junyumpService.getJunyumpSearchList(start_date, finish_date);
 		model.addAttribute("junyumpList", list);
 
 		return "/junyum/junyum/junyumpList";
 	}
-	
-	
-	 
+
 }

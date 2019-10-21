@@ -22,11 +22,7 @@ public class AllergypController {
 	@Autowired
 	private AllergypService allergypService;
 
-	
-	
-
-	
-
+	// 환자 - 알러지 및 부작용 리스트
 	@RequestMapping("/allergypList")
 	public String getAllergypList(Model model) {
 
@@ -35,12 +31,10 @@ public class AllergypController {
 		return "/allergy/allergy/allergypList";
 	}
 
-	// MDS p - 알러지 및 부작용 검색
+	// 환자 - 알러지 및 부작용 검색
 	@PostMapping("/allergypList")
-	public String getAllergypSearchList(
-										@RequestParam(value = "start_date") String start_date
-										,@RequestParam(value = "finish_date") String finish_date,						
-			Model model) {
+	public String getAllergypSearchList(@RequestParam(value = "start_date") String start_date,
+			@RequestParam(value = "finish_date") String finish_date, Model model) {
 		List<Allergy> list = allergypService.getAllergypSearchList(start_date, finish_date);
 		model.addAttribute("allergypList", list);
 
