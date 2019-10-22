@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.plistmapper.YebangpMapper">
+ 	
+ 	
+	
+	<!-- 환자 - 예방접종내역 -->
+	<select id="getYebangpList"
+			resultType="com.cafe24.oneteammds.listvo.Yebang">
+		SELECT 
+ 		   yb.pibCode
+ 		  ,yb.hospitalId
+ 		  ,yb.patientId
+ 		  ,yb.piName
+ 		  ,yb.piCode
+ 		  ,yb.pivName
+ 		  ,yb.piBalance
+ 		  ,yb.pDoctor
+ 		  ,yb.piDate
+ 		  ,yb.adminId
+ 		  ,yb.pirDate
+ 		  ,pit.pName
+		FROM 
+			yebang yb
+		JOIN
+			patient pit
+			ON
+				yb.hospitalId = pit.hospitalId
+			AND
+				yb.patientId = pit.patientId	
+			WHERE			
+				yb.patientId = 'patientId01'	
+	</select>
+	
+	<!-- 환자 - 예방접종내역 검색 -->
+	<select id="getYebangpSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Yebang">
+	  	SELECT 
+ 		   yb.pibCode
+ 		  ,yb.hospitalId
+ 		  ,yb.patientId
+ 		  ,yb.piName
+ 		  ,yb.piCode
+ 		  ,yb.pivName
+ 		  ,yb.piBalance
+ 		  ,yb.pDoctor
+ 		  ,yb.piDate
+ 		  ,yb.adminId
+ 		  ,yb.pirDate
+ 		  ,pit.pName
+		FROM 
+			yebang yb
+		JOIN
+			patient pit
+			ON
+				yb.hospitalId = pit.hospitalId
+			AND
+				yb.patientId = pit.patientId
+			WHERE			
+				yb.patientId = 'patientId01'			
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND pirDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND pirDate <![CDATA[<=]]> #{finish_date} 
+		</if>
+	</select>
+	
+	
+ 	
+ </mapper>

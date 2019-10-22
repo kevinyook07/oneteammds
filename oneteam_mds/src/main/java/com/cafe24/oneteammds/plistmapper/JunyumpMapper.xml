@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.plistmapper.JunyumpMapper">
+ 	
+	<!-- 환자 - 법정 전염성 감염병 -->	
+	<select id="getJunyumpList"
+			resultType="com.cafe24.oneteammds.listvo.Junyum">
+		SELECT 
+ 		   jy.lcidCode
+ 		  ,jy.hospitalId
+ 		  ,jy.patientId
+ 		  ,jy.lcidName
+ 		  ,jy.lcidpGroup
+ 		  ,jy.lcidtResult
+ 		  ,jy.lcidinOut
+ 		  ,jy.lcidArea
+ 		  ,jy.pDoctor
+ 		  ,jy.lcidoDate
+ 		  ,jy.lciddDate
+ 		  ,jy.lcidrDate
+ 		  ,jy.adminId
+ 		  ,jy.lcidDate
+ 		  ,pit.pName		  
+		FROM 
+			junyum jy
+		JOIN
+			patient pit
+			ON
+				jy.hospitalId = pit.hospitalId
+			AND
+				jy.patientId = pit.patientId
+			WHERE			
+				jy.patientId = 'patientId01'		
+	</select>
+	
+	<!-- 환자 - 법정 전염성 감염병 검색 -->
+	<select id="getJunyumpSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Junyum">
+	  	SELECT 
+ 		   jy.lcidCode
+ 		  ,jy.hospitalId
+ 		  ,jy.patientId
+ 		  ,jy.lcidName
+ 		  ,jy.lcidpGroup
+ 		  ,jy.lcidtResult
+ 		  ,jy.lcidinOut
+ 		  ,jy.lcidArea
+ 		  ,jy.pDoctor
+ 		  ,jy.lcidoDate
+ 		  ,jy.lciddDate
+ 		  ,jy.lcidrDate
+ 		  ,jy.adminId
+ 		  ,jy.lcidDate
+ 		  ,pit.pName		  
+		FROM 
+			junyum jy
+		JOIN
+			patient pit
+			ON
+				jy.hospitalId = pit.hospitalId
+			AND
+				jy.patientId = pit.patientId
+			WHERE			
+				jy.patientId = 'patientId01'			
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND lcidDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND lcidDate <![CDATA[<=]]> #{finish_date} 
+		</if>
+	</select>
+	
+
+	
+ </mapper>

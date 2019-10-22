@@ -18,7 +18,7 @@ public class YochenghospitalService {
 	@Autowired  //@Autowired을 통해 SusinHospitalMapper 에 담긴 메서드를 불러오는 과정 susinHospitalMapper 변수설정
 	private YochenghospitalMapper yochenghospitalMapper;
 	
-	//insert 값을 넣는 메서드
+	// 진료 요청시 insert 값을 넣는 메서드
 	public int yochengHinsert(Yochenghospital Yochenghospital) {
 		return yochenghospitalMapper.yochengHinsert(Yochenghospital);
 	}
@@ -26,7 +26,7 @@ public class YochenghospitalService {
 	public List<Yochenghospital> yochengHList(String hospitalId){
 		return yochenghospitalMapper.yochengHList(hospitalId);	
 	}
-	//특정 아이디 항목 선택 후 검색 list select 조회
+	//특정 아이디 로그인 후 항목 선택 검색 list select 조회
 	public List<Yochenghospital> yochenghSearch(String search1, String search2, String yochengoutHospitalId){
 		return yochenghospitalMapper.yochenghSearch(search1, search2, yochengoutHospitalId);
 	}

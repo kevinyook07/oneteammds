@@ -10,10 +10,10 @@ import com.cafe24.oneteammds.yochengvo.Yochenghospital;
 @Mapper //어노테이션 mapper 설정
 public interface YochenghospitalMapper {
 	
-	//susinHospitalInsert insert interface 
+	//yochengHinsert insert interface 
 	public int yochengHinsert(Yochenghospital Yochenghospital);
 	
-	//susinHospitalList select interface
+	//yochengHList select interface
 	public List<Yochenghospital> yochengHList(String yochengoutHospitalId);
 		
 	//yochenghSearch select interface

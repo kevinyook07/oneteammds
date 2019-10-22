@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.cafe24.oneteammds.plistmapper.SusulpMapper">
+ 	
+ 	
+	
+	<!-- 환자 - 수술내역 -->
+	
+	<select id="getSusulpList"
+			resultType="com.cafe24.oneteammds.listvo.Susul">
+		SELECT 
+ 		   ss.sbCode
+ 		  ,ss.hospitalId
+ 		  ,ss.patientId
+ 		  ,ss.sName
+ 		  ,ss.sCode
+ 		  ,ss.aKind
+ 		  ,ss.pDoctor
+ 		  ,ss.sdTime
+ 		  ,ss.adminId
+ 		  ,ss.sbDate
+ 		  ,pit.pName
+		FROM 
+			susul ss
+		JOIN
+			patient pit
+			ON
+				ss.hospitalId = pit.hospitalId
+			AND
+				ss.patientId = pit.patientId	
+			WHERE			
+				ss.patientId = 'patientId01'	
+	</select>
+	
+	
+	<!-- 환자 - 수술내역 검색 -->
+	<select id="getSusulpSearchList" parameterType="String" 
+			resultType="com.cafe24.oneteammds.listvo.Susul">
+	  	SELECT 
+ 		   ss.sbCode
+ 		  ,ss.hospitalId
+ 		  ,ss.patientId
+ 		  ,ss.sName
+ 		  ,ss.sCode
+ 		  ,ss.aKind
+ 		  ,ss.pDoctor
+ 		  ,ss.sdTime
+ 		  ,ss.adminId
+ 		  ,ss.sbDate
+ 		  ,pit.pName
+		FROM 
+			susul ss
+		JOIN
+			patient pit
+			ON
+				ss.hospitalId = pit.hospitalId
+			AND
+				ss.patientId = pit.patientId
+			WHERE			
+				ss.patientId = 'patientId01'			
+		<if test="start_date neq null and start_date neq ''.toString()">
+			AND sbDate >= #{start_date} 		
+		</if>
+		<if test="finish_date neq null and finish_date neq ''.toString()">
+			AND sbDate <![CDATA[<=]]> #{finish_date} 
+		</if>
+	</select>
+	
+	
+	
+ </mapper>

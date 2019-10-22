@@ -48,6 +48,7 @@ public class YochenghospitalController {
 		
 		return "redirect:/yochenghWanlyo";
 	}
+	// insert 후 완료 처리 화면 출력 
 	@GetMapping("/yochenghWanlyo")
 	public String yochenghWanlyo() {
 		
@@ -89,5 +90,10 @@ public class YochenghospitalController {
 		
 		return "/yochenghospital/yochengHospitalList/yochengHospitalList";
 		
+	}
+	// 진료 정보 수신 내역 리스트
+	@GetMapping("/susinHospitalList")
+	public String susinHospitalList() {
+		return "/yochenghospital/yochengSusinHospitalList/susinHospitalList";
 	}
 }
