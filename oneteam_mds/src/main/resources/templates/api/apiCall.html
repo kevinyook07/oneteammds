@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout/default}">
+
+	<th:block layout:fragment="customContents">
+		<div class="page-content">
+		<!-- **************윗상단 메인 메뉴 ************** -->
+			<div class="page-header">
+			<h2 style="text-align:center">관리자 → 병원 전송</h2>
+				<div class="container-fluid"></div>
+			<!-- **************윗상단 메인 메뉴END ************** -->
+			<!--************메인 컨텐트 ************ -->		
+		   	</div>
+			<!-- Form Elements -->
+
+			<head>
+				<meta charset="UTF-8">
+				<title>jQuery를 활용한 ajax</title>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+				<script type="text/javascript">
+					$(function() {
+						$('#apiCall').change(function(){
+						
+							var stnId = $(this).val();
+						
+							var request = $.ajax({
+								url: "/apiCallProcess", //호출할 url
+								method: "POST", //method 타입
+								data: { stnId : stnId }, //전송할 데이터
+								dataType: "json" //응답 타입
+							});
+						
+							//정상 호출 완료 이후 실행되는 메서드
+							request.done(function( data ) {
+								console.log(data);
+							
+							
+							
+							
+							
+							});
+							
+		                	//에러 발생시 실행되는 메서드 
+							request.fail(function( jqXHR, textStatus ) {
+							 	alert( "Request failed: " + textStatus );
+							});
+						});
+						
+					});
+		
+				</script>
+			</head>
+			<body>
+				<!-- 전라북도 146
+					서울/경기 109
+					제주도 184
+		 		-->
+				<select id="apiCall">
+					<option value="108"> :: 전국 ::</option>
+					<option value="146"> :: 전라북도 ::</option>
+					<option value="109"> :: 서울/경기 ::</option>
+					<option value="184"> :: 제주도 ::</option>
+				</select>
+				<div class = "row">
+		        	<div class = "col-md-4">
+		           		<div class = "input-group">
+		                	<span class = "input-group-addon">전국</span>
+	                		<input type = "text" class = "form-control" id = "jenguk" name = "jenguk">				                                
+	            		</div>
+		        	</div>
+		    	</div>
+			    <div class = "row">
+			        <div class = "col-md-4">
+			            <div class = "input-group">
+			                <span class = "input-group-addon">전라북도</span>
+			                <input type = "text" class = "form-control" id = "jenla" name = "jenla">				                                
+			            </div>
+			        </div>
+			    </div>
+			    <div class = "row">
+			        <div class = "col-md-4">
+			            <div class = "input-group">
+			                <span class = "input-group-addon">서울/경기</span>
+			                <input type = "text" class = "form-control" id = "seoul" name = "seoul">				                                
+			            </div>
+			        </div>
+			    </div>
+			    <div class = "row">
+			        <div class = "col-md-4">
+			            <div class = "input-group">
+			                <span class = "input-group-addon">제주</span>
+			                <input type = "text" class = "form-control" id = "jeju" name = "jeju">				                                
+			            </div>
+			        </div>
+			    </div>		
+			</body>
+		</div>
+		<!--************메인 컨텐트 END************ -->	
+	</th:block>
+</html>
